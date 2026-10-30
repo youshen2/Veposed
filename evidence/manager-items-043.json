@@ -1,0 +1,38 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "reference": "https://github.com/AstralSightStudios/Canopus/blob/4928f1eb70594263292c32ffc531a7cad3aea555/manager/target/canopus_ui_host.c",
+  "bindings": {
+    "list_row_create": {
+      "address": "0x0c54ca3d",
+      "prototype": "void *(void *parent, const char *primary, const char *secondary, uint8_t trailing)",
+      "verification": "Exact AP disassembly preserves primary in r5, secondary in r6, trailing in r4; calls row factory 0x0c4c8514 and add-content 0x0c4c8560 with null icon, value 0 and selected 0."
+    },
+    "list_row_update": {
+      "address": "0x0c4c8905",
+      "prototype": "void(void *row, const void *icon, const char *primary, const char *secondary, int32_t value, uint8_t selected)",
+      "verification": "Exact AP decompilation updates stock title/secondary labels and the trailing widget's checked state from the sixth argument."
+    },
+    "list_row_trailing": {
+      "address": "0x0c4c8c61",
+      "prototype": "void *(void *row)",
+      "verification": "Exact AP function returns the row-owned pointer at offset 80."
+    },
+    "content_pad_bottom": {
+      "address": "0x0c5893c1",
+      "prototype": "void(void *object, int32_t padding, uint32_t selector)",
+      "verification": "Veneer reaches 0x002be404, forwarding padding as local property 17 and the explicit third argument as selector."
+    }
+  },
+  "trailing_kinds": {
+    "0": "none",
+    "1": "stock switch",
+    "3": "stock forward icon"
+  },
+  "interaction": "Only the card is clickable. The trailing widget is non-clickable, so one pointer click invokes one module operation; row_update renders the registry state after success or failure.",
+  "ownership": "Widgets and their children belong to the firmware page root. Page destruction clears borrowed pointers; the firmware frees the tree.",
+  "validation": {
+    "host": "scripts/test-manager.py checks module identity, switch and card taps, failed toggles, safe-mode reset success/failure, empty-list transitions and page reopen.",
+    "device": "pending; this layout has not been rendered on the physical band by the build process"
+  }
+}

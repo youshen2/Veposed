@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "device": "Xiaomi Smart Band 10 Pro / p67cn",
+  "version": "3.101.043",
+  "build": "CONBINE_LTALM078_T3.101.043_08041658",
+  "cpu": "cortex-m33",
+  "rust_target": "thumbv8m.main-none-eabi",
+  "package_sha256": "a4ce8564778624f8287ea91015867dc1725b649fbc10f2c4fa4b6813af7bc4d9",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "ap_size": 13795728,
+  "identity": {
+    "version": {
+      "file_offset": "0x810",
+      "address": "0x0c0c0810"
+    },
+    "build": {
+      "file_offset": "0x850",
+      "address": "0x0c0c0850"
+    }
+  },
+  "mappings": [
+    {
+      "name": "flash-xip",
+      "execute": "0x0c0c0000",
+      "file_offset": "0x0",
+      "length": "0xd28190",
+      "writable": false
+    },
+    {
+      "name": "kernel-sram",
+      "execute": "0x002765c0",
+      "write": "0x200765c0",
+      "file_offset": "0x23a4",
+      "length": "0x3a328",
+      "writable": true
+    },
+    {
+      "name": "startup-sram",
+      "execute": "0x002b2860",
+      "write": "0x200b2860",
+      "file_offset": "0x3c6cc",
+      "length": "0x10d6c",
+      "writable": true
+    },
+    {
+      "name": "startup-psram",
+      "execute": "0x1c000000",
+      "write": "0x3c000000",
+      "file_offset": "0x4d440",
+      "length": "0x80500",
+      "writable": true
+    }
+  ],
+  "symbols": {
+    "open": "0x0c1d0a29",
+    "write": "0x0c1d2641",
+    "close": "0x0c1b9d81",
+    "read": "0x0c1d129d",
+    "register_driver": "0x0c1aff61",
+    "unregister_driver": "0x0c1b002d",
+    "fsync": "0x0c1d2a7d",
+    "errno_location": "0x0c1e45bd",
+    "unlink": "0x0c1d2355",
+    "insmod": "0x0c203a51",
+    "cache_clean": "0x0c588f89",
+    "cache_invalidate": "0x0c588449",
+    "app_lookup": "0x0ca69935",
+    "app_install": "0x0ca6a30d",
+    "launcher_add": "0x0c513a45",
+    "list_row_create": "0x0c54ca3d",
+    "list_row_update": "0x0c4c8905",
+    "list_row_trailing": "0x0c4c8c61",
+    "label_create": "0x0c588f31",
+    "label_set_text": "0x0c589491",
+    "content_create": "0x0ca67245",
+    "object_set_size": "0x0c588629",
+    "object_align": "0x0c589189",
+    "page_title_create": "0x0c4ca6c5",
+    "event_add": "0x0c5883f1",
+    "event_user_data": "0x0c588311",
+    "object_add_flag": "0x0cac00c1",
+    "object_clear_flag": "0x0c5891b1",
+    "content_pad_bottom": "0x0c5893c1",
+    "page_finish": "0x0ca6b9e9",
+    "style_apply": "0x0c4bf899",
+    "style_24": "0x2010cee0"
+  },
+  "hooks": {
+    "lv_image_create": {
+      "address": "0x1c06cac1",
+      "file_offset": "0xb9f00",
+      "expected": "98b503460c4600af19460448bcf758fa",
+      "prototype": "void *(void *parent, const uint8_t *options)",
+      "status": "static-confirmed; device-not-probed"
+    },
+    "lvx_label_set_text": {
+      "address": "0x1c06f039",
+      "file_offset": "0xbc478",
+      "expected": "2de9f0410d4600af0446bcf75ff9b5b3",
+      "prototype": "void(void *label, const char *text)",
+      "status": "static-confirmed; device-not-probed"
+    }
+  },
+  "verification_windows": [
+    {
+      "name": "cache-clean-thunk",
+      "file_offset": "0x4c8f88",
+      "expected": "5ff800f039d32900"
+    },
+    {
+      "name": "cache-invalidate-thunk",
+      "file_offset": "0x4c8448",
+      "expected": "5ff800f06dd32900"
+    },
+    {
+      "name": "cache-clean-body",
+      "file_offset": "0x2911c",
+      "expected": "18b1012807d1094b00e0094bb2f5ff5f03d901225a63002070470a4421f01f01"
+    },
+    {
+      "name": "cache-invalidate-body",
+      "file_offset": "0x29150",
+      "expected": "18b1012808d1094b00e0094b47f6e070824203d901229a63002070470a4421f0"
+    },
+    {
+      "name": "about-os-value-call",
+      "file_offset": "0x48d3e4",
+      "expected": "a06a08f160013cf051f8"
+    },
+    {
+      "name": "umem-heap-bounds",
+      "file_offset": "0xdd4fc",
+      "expected": "80b4054a054b00af9b1a02600b60bd465df8047b704700bf0014273c0000fc3d"
+    },
+    {
+      "name": "manager-list-row-create",
+      "file_offset": "0x48ca3c",
+      "expected": "f0b585b004af0d4616461c467bf764fd0021cde901140446"
+    },
+    {
+      "name": "manager-list-row-update",
+      "file_offset": "0x408904",
+      "expected": "2de9f04782b000af044616461d4697f82c8019b1406b08b1"
+    },
+    {
+      "name": "manager-list-row-trailing",
+      "file_offset": "0x408c60",
+      "expected": "80b4006d00afbd465df8047b704700bfb0b50446006d00af"
+    }
+  ],
+  "reference": {
+    "repository": "https://github.com/AstralSightStudios/Canopus",
+    "commit": "4928f1eb70594263292c32ffc531a7cad3aea555",
+    "evidence": [
+      "EVID-ID-1043-001",
+      "EVID-MODLIB-1043-001",
+      "EVID-RESOURCE-XIP-THUNKS-1043-001"
+    ]
+  },
+  "device_validation": "pending",
+  "named_hooks": {
+    "settings.about.os_version": {
+      "about_root": "0x20111c20",
+      "os_label_slot": "0x20111c48",
+      "os_setter_call": "0x0c54d3ea",
+      "os_setter_return": "0x0c54d3ee",
+      "language_key": "os_ver.settings",
+      "language_key_address": "0x2cba9068",
+      "contract": "void2",
+      "target": "lvx_label_set_text"
+    },
+    "ui.image.create": {
+      "contract": "word2",
+      "target": "lv_image_create"
+    }
+  },
+  "runtime_memory": {
+    "umem": {
+      "data_start": "0x3c271400",
+      "data_end": "0x3dfc0000",
+      "execute_start": "0x1c271400",
+      "execute_end": "0x1dfc0000",
+      "allocator": "kumm_memalign",
+      "allocator_address": "0x0c1f9064",
+      "bounds_function": "0x0c19d4fc"
+    }
+  }
+}

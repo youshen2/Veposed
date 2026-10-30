@@ -1,0 +1,4 @@
+interface:
+  display_name: "Veposed 固件适配"
+  short_description: "Recover Vela firmware mappings and validate target profiles"
+  default_prompt: "使用 $veposed-firmware-port 分析给定 Vela 固件，恢复地址映射、函数 ABI 和 Hook 范围，并生成可校验的适配表。"

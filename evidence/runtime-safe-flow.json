@@ -1,0 +1,25 @@
+{
+  "issue": "Installation reported E_RUNTIME_SAFE at step 2 without exposing the native isolation cause.",
+  "behavior": {
+    "safe_runtime": "finish recovery Manager registration and skip module loading",
+    "existing_safe_runtime": "reuse service; do not insmod a second runtime",
+    "fault_preservation": "do not repeat manual isolation when already safe with zero sites and no rollback error",
+    "reset": "remains an explicit native Manager operation; never automatic"
+  },
+  "display": [
+    "operation INSTALL/RECOVERY",
+    "reason",
+    "failures",
+    "last_error (signed)",
+    "rollback_error (signed)",
+    "active_sites"
+  ],
+  "validation": [
+    "normal install",
+    "safe-on-load",
+    "existing-safe service",
+    "explicit recovery with original reason preserved",
+    "rollback failure blocks completion"
+  ],
+  "device_validation": "pending"
+}

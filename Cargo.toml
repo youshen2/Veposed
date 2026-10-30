@@ -1,0 +1,15 @@
+[workspace]
+members = ["crates/veposed-core", "crates/veposed-runtime"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "AGPL-3.0-only"
+
+[profile.release]
+panic = "abort"
+opt-level = "s"
+lto = false
+codegen-units = 1
+

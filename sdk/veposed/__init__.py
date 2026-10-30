@@ -1,0 +1,258 @@
+"""Host-side Python DSL that compiles named hook rules into native C callbacks."""
+
+from dataclasses import dataclass, field
+import json
+import re
+
+
+def literal(value):
+    if isinstance(value, Expr):
+        return value.code
+    if isinstance(value, bool):
+        return "1" if value else "0"
+    if isinstance(value, int):
+        if not -(2**31) <= value <= 0xFFFFFFFF:
+            raise ValueError("word literal is outside 32-bit range")
+        return f"((uintptr_t)(int32_t){value})" if value < 0 else str(value) + "u"
+    if isinstance(value, str):
+        return "(uintptr_t)" + json.dumps(value, ensure_ascii=False)
+    raise TypeError("expected integer, string, arg() or result() expression")
+
+
+@dataclass(eq=False)
+class Expr:
+    code: str
+    arguments: frozenset = frozenset()
+    uses_result: bool = False
+
+    def _binary(self, other, op):
+        rhs = other if isinstance(other, Expr) else Expr(literal(other))
+        return Expr(
+            f"({self.code} {op} {rhs.code})",
+            self.arguments | rhs.arguments,
+            self.uses_result or rhs.uses_result,
+        )
+
+    def __add__(self, other):
+        return self._binary(other, "+")
+
+    def __sub__(self, other):
+        return self._binary(other, "-")
+
+    def __mul__(self, other):
+        return self._binary(other, "*")
+
+    def __and__(self, other):
+        return self._binary(other, "&")
+
+    def __or__(self, other):
+        return self._binary(other, "|")
+
+    def __xor__(self, other):
+        return self._binary(other, "^")
+
+    def __eq__(self, other):
+        return self._binary(other, "==")
+
+    def __ne__(self, other):
+        return self._binary(other, "!=")
+
+    def __lt__(self, other):
+        return self._binary(other, "<")
+
+    def __le__(self, other):
+        return self._binary(other, "<=")
+
+    def __gt__(self, other):
+        return self._binary(other, ">")
+
+    def __ge__(self, other):
+        return self._binary(other, ">=")
+
+    def __bool__(self):
+        raise TypeError("hook expressions run on the device; use .when(expr)")
+
+
+def arg(index):
+    if not isinstance(index, int) or not 0 <= index < 4:
+        raise ValueError("argument index must be 0..3")
+    return Expr(f"call->args[{index}]", frozenset({index}))
+
+
+def result():
+    return Expr("call->result", uses_result=True)
+
+
+@dataclass
+class Rule:
+    point: str
+    phase: str
+    priority: int = 0
+    condition: Expr | None = None
+    actions: list = field(default_factory=list)
+
+    def when(self, expression):
+        if not isinstance(expression, Expr):
+            raise TypeError("when requires a hook expression")
+        self.condition = expression
+        return self
+
+    def set_arg(self, index, value):
+        arg(index)
+        if self.phase == "after":
+            raise ValueError("set_arg is a before/replace action")
+        self.actions.append(("arg", index, value))
+        return self
+
+    def set_result(self, value):
+        self.actions.append(("result", None, value))
+        return self
+
+    def return_(self, value):
+        if self.phase == "after":
+            raise ValueError("return_ is a before/replace action")
+        self.actions.append(("return", None, value))
+        return self
+
+    def skip(self):
+        if self.phase == "after":
+            raise ValueError("skip is a before/replace action")
+        self.actions.append(("skip", None, 0))
+        return self
+
+    def call_original(self):
+        self.actions.append(("original", None, 0))
+        return self
+
+    def call(self, point, *arguments):
+        self.actions.append(("call", point, arguments))
+        return self
+
+
+class Module:
+    def __init__(self, module_id, name, version="1.0.0", *, status_path=None):
+        if not re.fullmatch(r"[a-z][a-z0-9_.]{0,46}", module_id):
+            raise ValueError("invalid module id")
+        if not isinstance(name, str) or not name:
+            raise ValueError("module name is required")
+        if not re.fullmatch(r"\d+\.\d+\.\d+", version):
+            raise ValueError("version must be x.y.z")
+        self.id, self.name, self.version = module_id, name, version
+        self.status_path = status_path or "/data/veposed/" + module_id + ".status"
+        self.rules = []
+
+    def replace_text(self, point, text):
+        if not isinstance(text, str) or len(text.encode()) > 95 or "\0" in text:
+            raise ValueError("text must be at most 95 UTF-8 bytes, with no NUL")
+        self.rules.append((point, text))
+        return self
+
+    def before(self, point, priority=0):
+        return self._rule(point, "before", priority)
+
+    def after(self, point, priority=0):
+        return self._rule(point, "after", priority)
+
+    def replace(self, point, priority=0):
+        return self._rule(point, "replace", priority)
+
+    def _rule(self, point, phase, priority):
+        if not isinstance(priority, int) or not -(2**31) <= priority < 2**31:
+            raise ValueError("invalid priority")
+        rule = Rule(point, phase, priority)
+        self.rules.append(rule)
+        return rule
+
+    def emit_c(self, points):
+        if not self.rules:
+            raise ValueError("module needs at least one hook")
+        functions, installs = [], []
+        for i, rule in enumerate(self.rules):
+            point = rule[0] if isinstance(rule, tuple) else rule.point
+            if point not in points:
+                raise ValueError("unknown hook point: " + point)
+            contract = points[point]["contract"]
+            if isinstance(rule, tuple):
+                if contract != "void2":
+                    raise ValueError("replace_text needs a void2 text setter")
+                installs.append(
+                    f"rc = vep->hook_text(vep_owner, (const uint8_t *){json.dumps(point)}, (const uint8_t *){json.dumps(rule[1], ensure_ascii=False)}, &handle);"
+                )
+                continue
+            if not rule.actions:
+                raise ValueError("empty callback: " + point)
+            expressions = [rule.condition] if rule.condition is not None else []
+            expressions += [v for _, _, v in rule.actions if isinstance(v, Expr)]
+            expressions += [
+                v
+                for k, _, values in rule.actions
+                if k == "call"
+                for v in values
+                if isinstance(v, Expr)
+            ]
+            argc = 4 if contract == "word4" else 2
+            if any(any(n >= argc for n in e.arguments) for e in expressions):
+                raise ValueError("argument exceeds " + contract)
+            if contract == "void2" and (
+                any(e.uses_result for e in expressions)
+                or any(k in ("result", "return") for k, _, _ in rule.actions)
+            ):
+                raise ValueError("void2 has no return value; use skip() to suppress it")
+            statements = ["call->return_early = 1;"] if rule.phase == "replace" else []
+            for kind, index, value in rule.actions:
+                if kind == "arg":
+                    if index >= argc:
+                        raise ValueError("argument exceeds " + contract)
+                    statements.append(f"call->args[{index}] = {literal(value)};")
+                elif kind == "original":
+                    statements.append("(void)vep->call_original(call);")
+                elif kind == "call":
+                    if index not in points:
+                        raise ValueError("unknown function: " + index)
+                    count = 4 if points[index]["contract"] == "word4" else 2
+                    if len(value) != count:
+                        raise ValueError("wrong argument count for " + index)
+                    local = f"arguments_{len(statements)}"
+                    values = [literal(v) for v in value] + ["0"] * (4 - count)
+                    statements.append(f"const uintptr_t {local}[4] = {{" + ", ".join(values) + "};")
+                    statements.append(
+                        f"if (vep->call_named((const uint8_t *){json.dumps(index)}, {local}, &call->result)) {{ call->result = 0; call->return_early = 1; return; }}"
+                    )
+                elif kind == "result":
+                    statements.append(f"call->result = {literal(value)};")
+                elif kind == "return":
+                    statements += [
+                        f"call->result = {literal(value)};",
+                        "call->return_early = 1;",
+                        "return;",
+                    ]
+                else:
+                    statements += ["call->return_early = 1;", "return;"]
+            body = "\n    ".join(statements)
+            if rule.condition is not None:
+                condition = rule.condition.code
+                if not condition.startswith("("):
+                    condition = "(" + condition + ")"
+                body = f"if {condition} {{\n        {body}\n    }}"
+            functions.append(
+                f"static void hook_{i}(vep_call *call, void *data) {{\n    (void)data;\n    {body}\n}}"
+            )
+            phase = "before" if rule.phase == "replace" else rule.phase
+            installs += [
+                f"const vep_callbacks callbacks_{i} = {{ .{phase} = hook_{i}, .priority = {rule.priority} }};",
+                f"rc = vep->attach_named(vep_owner, (const uint8_t *){json.dumps(point)}, &callbacks_{i}, &handle);",
+            ]
+        setup = []
+        for line in installs:
+            setup.append(line)
+            if line.startswith("rc ="):
+                setup.append("if (rc) return rc;")
+        return (
+            f"#define VEP_MODULE_ID {json.dumps(self.id)}\n"
+            f"#define VEP_MODULE_STATUS_PATH {json.dumps(self.status_path)}\n"
+            '#include "veposed_module.h"\n\n'
+            + "\n\n".join(functions)
+            + "\n\nstatic int32_t vep_module_setup(void) {\n    uint32_t handle;\n    int32_t rc;\n    "
+            + "\n    ".join(setup)
+            + "\n    return 0;\n}\n"
+        )

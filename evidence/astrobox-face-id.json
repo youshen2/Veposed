@@ -1,0 +1,26 @@
+{
+  "issue": "10-digit watchface IDs are not recognized by AstroBox",
+  "source": {
+    "repository": "https://github.com/AstralSightStudios/AstroBox-NG-Module-Core",
+    "commit": "a15b0ba0260f28812063fac474255c08bdd7c4b8",
+    "id_parser": "src/device/xiaomi/resutils.rs::find_bin_watchface_id_range",
+    "config": "src/device/xiaomi/config.rs::ResConfig::default",
+    "field_offset": 34,
+    "field_length": 24,
+    "accepted_complete_run_lengths": [
+      9,
+      12
+    ],
+    "accepted_characters": "ASCII alphanumeric"
+  },
+  "format": {
+    "id_offset": 40,
+    "length_offset": 5,
+    "fixed_header_bytes": 172
+  },
+  "outputs": {
+    "framework_id": "190067000101",
+    "os_version_module_id": "194551093727"
+  },
+  "validation": "Generated faces are tested with the unmodified upstream Rust ID-range function; device install remains pending."
+}

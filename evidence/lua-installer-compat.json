@@ -1,0 +1,30 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "font": {
+    "lua_constant": "lvgl.BUILTIN_FONT.MONTSERRAT_14",
+    "name_string_ap_offset": "0xbfa01c",
+    "ui_charset": "ASCII"
+  },
+  "diagnostics": {
+    "failed_step": "FAIL S<n>",
+    "examples": [
+      "E_STAT: errno=<n>",
+      "E_WRITE",
+      "E_COMMAND_WRITE",
+      "E_BOOT_BLOCKED"
+    ]
+  },
+  "io_contract": {
+    "write": "requires a non-nil successful write result",
+    "flush_close": "accept no return values; reject false or nil plus error",
+    "bootstrap": "read back pending marker before insmod"
+  },
+  "reference": "https://github.com/AstralSightStudios/Canopus/blob/4928f1eb70594263292c32ffc531a7cad3aea555/watchfaces/canopus-installer-prod/xiaomi-band-10-pro/main.lua",
+  "validation": [
+    "ASCII text and built-in font checked by Lua UI harness",
+    "No-return flush/close accepted",
+    "Explicit I/O failure blocks installation",
+    "Bootstrap load marker read back before native load"
+  ],
+  "device_validation": "pending"
+}

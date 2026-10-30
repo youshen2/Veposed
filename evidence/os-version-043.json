@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "analysis": "Local IDA/Hex-Rays plus independent LLVM Thumb disassembly of the provided AP",
+  "page_create": "0x0c54d634",
+  "page_update": "0x0c54d248",
+  "page_language_key": "about.settings",
+  "target_language_key": "os_ver.settings",
+  "target_label_slot": "0x20111c48",
+  "target_call": "0x0c54d3ea",
+  "target_return": "0x0c54d3ee",
+  "target_value_source": "settings device-info buffer + 0x60",
+  "adjacent_system_version_call": "0x0c54d382",
+  "setup_wizard_os_call": "0x0c5756ec",
+  "setter_thunk": "0x0c589490",
+  "setter_executable": "0x1c06f038",
+  "setter_write_alias": "0x3c06f038",
+  "setter_file_offset": "0xbc478",
+  "setter_prologue": "2de9f0410d4600af0446bcf75ff9b5b3",
+  "text_lifetime": "The setter allocates or reallocates label-owned text and copies the input. The module does not keep or mutate a destroyed page's label.",
+  "cache": {
+    "startup_copy": "AP[0x23a4:0x3c6cc] -> data 0x200765c0, executable 0x002765c0",
+    "clean_thunk": "0x0c588f88 -> 0x0029d338",
+    "invalidate_thunk": "0x0c588448 -> 0x0029d36c",
+    "data_id": 1,
+    "data_controller": "0x07ffc000",
+    "instruction_id": 0,
+    "instruction_controller": "0x07ffa000",
+    "order": "DSB/ISB -> D-cache clean on write alias -> DSB/ISB -> I-cache invalidate on execution alias -> DSB/ISB"
+  },
+  "native_manager": {
+    "application_id": "0xce",
+    "package": "org.veposed.manager",
+    "page_descriptor_bytes": 116,
+    "application_descriptor_bytes": 64,
+    "reference_commit": "4928f1eb70594263292c32ffc531a7cad3aea555",
+    "registration": "app_install and app_lookup, followed by launcher_add on a separate Lua event turn",
+    "launcher_return": "Ignored: exact function ends with a logging call, whose return is not a status code"
+  },
+  "device_validation": "pending"
+}

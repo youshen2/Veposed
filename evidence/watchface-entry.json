@@ -1,0 +1,34 @@
+{
+  "issue": "Opening the installer immediately showed a black screen before any install action.",
+  "root_cause": {
+    "incorrect_rule": "Use the last resource index as the Lua element target.",
+    "installer_old_target": {
+      "index": 7,
+      "file": "lua/veposed.bin"
+    },
+    "module_old_target": {
+      "index": 2,
+      "file": "lua/module_config.lua"
+    },
+    "correct_rule": "Element type 0x05 must target the index of lua/main.lua in the resource table."
+  },
+  "compiler_fixture": {
+    "source": "https://github.com/m0tral/MiWatchLuaWatchfaces/blob/master/MiBand8Pro/Accelerometer/output/Accelerometer.face",
+    "resource_names": [
+      "lua/cat.bin",
+      "lua/image.lua",
+      "lua/main.lua",
+      "lua/root.lua"
+    ],
+    "element_table_offset": 256,
+    "element_payload_offset": 336,
+    "element_target": "0x05000002"
+  },
+  "validation": [
+    "Reject a Lua element targeting a binary or another script.",
+    "Execute the selected embedded entry with Lua and a UI binding harness.",
+    "Opening creates controls and does not execute shell commands or native loads.",
+    "Missing script or SCRIPT_PATH displays a visible initialization error."
+  ],
+  "device_validation": "pending"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Veposed 模块开发"
+  short_description: "Build and package Veposed Python or native hook modules"
+  default_prompt: "使用 $veposed-module-dev 为指定功能开发模块，编译成独立 .face，并验证启停与恢复。"

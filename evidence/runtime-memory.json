@@ -1,0 +1,52 @@
+{
+  "firmware_ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "observed_device_status": {
+    "reason": 2,
+    "last_error": -7,
+    "active_sites": 0
+  },
+  "issue": "The startup-only PSRAM memory gate excluded native module allocations from Umem.",
+  "heap": {
+    "start": "0x3c271400",
+    "end_exclusive": "0x3dfc0000",
+    "size": "0x1d4ec00",
+    "instruction_alias_start": "0x1c271400",
+    "instruction_alias_end_exclusive": "0x1dfc0000"
+  },
+  "firmware_evidence": [
+    {
+      "address": "0x0c19d4fc",
+      "purpose": "up_allocate_heap",
+      "result": "writes start 0x3c271400 and size 0x1d4ec00 to output pointers",
+      "bytes_offset": "0xdd4fc",
+      "bytes": "80b4054a054b00af9b1a02600b60bd465df8047b704700bf0014273c0000fc3d"
+    },
+    {
+      "address": "0x0c1f8f98",
+      "purpose": "user heap initialization",
+      "result": "calls mm_initialize(\"Umem\", start, size), stores heap handle at 0x200f4c28"
+    },
+    {
+      "address": "0x0c1f9064",
+      "purpose": "kumm_memalign",
+      "result": "calls mm_memalign with heap handle at 0x200f4c28"
+    },
+    {
+      "address": "0x0c1e7bf8",
+      "purpose": "modlib_load",
+      "result": "allocates ELF text and data using kumm_memalign"
+    }
+  ],
+  "changes": [
+    "Include the confirmed dynamic Umem range in the pointer read/write policy",
+    "Resolve dynamic code/trampolines through either the instruction alias or original heap address",
+    "Publish dynamic PSRAM code with D-cache clean and I-cache invalidate",
+    "Record startup phase and self-test slot in /data/veposed-status.txt"
+  ],
+  "validation": [
+    "Host memory-map bounds regression",
+    "Dynamic code cache publisher regression",
+    "Existing rollback and persistent isolation tests"
+  ],
+  "device_retest": "pending"
+}
