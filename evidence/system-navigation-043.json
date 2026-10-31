@@ -1,0 +1,117 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "startup_copy": {
+    "routine": "0x0c0c003a",
+    "source_data_alias": "0x2cdc40e8",
+    "ap_offset": "0xd040e8",
+    "destination_start": "0x200c7a70",
+    "destination_end_exclusive": "0x200eb9ac",
+    "evidence": "The startup loop loads source, destination and end, then copies 32-bit words until destination reaches end."
+  },
+  "points": [
+    {
+      "name": "system.navigation.page",
+      "slot": "0x200eb6e4",
+      "expected_pointer": "0x0ca6d2f9",
+      "file_offset": "0xd27d5c",
+      "contract": "word1"
+    },
+    {
+      "name": "system.navigation.app",
+      "slot": "0x200eb6e8",
+      "expected_pointer": "0x0ca6d4b5",
+      "file_offset": "0xd27d60",
+      "contract": "word1"
+    },
+    {
+      "name": "system.navigation.back",
+      "slot": "0x200eb6ec",
+      "expected_pointer": "0x0ca6d695",
+      "file_offset": "0xd27d64",
+      "contract": "word1"
+    },
+    {
+      "name": "system.navigation.finish_page",
+      "slot": "0x200eb6e0",
+      "expected_pointer": "0xca6d2d1",
+      "file_offset": "0xd27d58",
+      "contract": "word1",
+      "prototype": "uint32_t(const void *navigation_action)"
+    },
+    {
+      "name": "system.navigation.home",
+      "slot": "0x200eb6f0",
+      "expected_pointer": "0xca6d2c5",
+      "file_offset": "0xd27d68",
+      "contract": "word1",
+      "prototype": "uint32_t(uint32_t mode)"
+    },
+    {
+      "name": "system.navigation.background_page",
+      "slot": "0x200eb6f4",
+      "expected_pointer": "0xca6d595",
+      "file_offset": "0xd27d6c",
+      "contract": "word1",
+      "prototype": "uint32_t(const void *navigation_action)"
+    },
+    {
+      "name": "system.apps.kill_background",
+      "slot": "0x200eb6f8",
+      "expected_pointer": "0xca6d2b9",
+      "file_offset": "0xd27d70",
+      "contract": "word2",
+      "prototype": "uint32_t(const char *requester, uint32_t reason)"
+    },
+    {
+      "name": "system.apps.kill",
+      "slot": "0x200eb6fc",
+      "expected_pointer": "0xca6d2ad",
+      "file_offset": "0xd27d74",
+      "contract": "word3",
+      "prototype": "uint32_t(const char *requester, uint32_t reason, const char *package)"
+    }
+  ],
+  "evidence": "The startup data contains Thumb pointers to the page, app and back navigation functions. Many system pages load this shared table at 0x200eb6e0 and call these slots with a pointer to a 44-byte navigation action. The page and app implementations read target fields and return 0 or 1; the back implementation logs navigate_back. Runtime pointer attach checks the live slot against its expected initialized value before publishing an aligned pointer store.",
+  "limitations": "The data-copy result describes startup, not a guarantee that no firmware component overwrites the slot later. The action pointer and embedded page/app names, parameters and callbacks must remain valid according to the actual caller. Navigation and app termination affect system state; altering or skipping them can disrupt normal operation. Direct calls to the original implementation bypass the table slot. Atomic slot publication and retained callback dispatchers do not establish system-wide quiescence or make runtime unload safe. No device validation.",
+  "verification_windows": [
+    "navigator-startup-copy",
+    "navigator-page-implementation",
+    "navigator-app-implementation",
+    "navigator-back-implementation",
+    "navigator-finish-implementation",
+    "navigator-home-implementation",
+    "navigator-background-implementation",
+    "apps-kill-background-wrapper",
+    "apps-kill-wrapper",
+    "apps-kill-background-battery-call",
+    "apps-kill-call",
+    "navigator-background-call"
+  ],
+  "device_validation": "pending",
+  "additional_evidence": [
+    "The finish slot extracts an action page ID or resolves a page name, then calls finish_page; null action selects the current top page.",
+    "The home wrapper forwards a mode word to a routine constructing a home action and calling the background-page slot; zero and nonzero choose different transition callbacks.",
+    "The background-page implementation logs navigate_page_with_background and forwards the action to the page manager.",
+    "The kill-background wrapper forwards requester and reason unchanged to activitymanager_kill_bg_apps; the battery long-endurance path calls it with requester settings_battery and reason 0. Its return can be a log function return, so do not assume it is a boolean.",
+    "The kill-app wrapper forwards requester, reason and package unchanged to activitymanager_kill_app; one observed call uses snap, 0 and com.xiaomi.miwear.breath."
+  ],
+  "action_fields": {
+    "page_id": {
+      "offset": 4,
+      "width": 2,
+      "evidence": "The page navigation implementation loads the combined word at +4 as a page target. Callers initialize the low halfword as page ID."
+    },
+    "app_id": {
+      "offset": 6,
+      "width": 2,
+      "evidence": "Page and app navigation implementations read a halfword at +6 and pass it as an app identifier to the app lookup."
+    },
+    "source": {
+      "offset": 8,
+      "width": 1,
+      "evidence": "Page and app navigation implementations load the byte at +8 and pass it to the start-source setter, which clamps it and stores it at 0x200eb6dc."
+    },
+    "limitations": "These fields are for the currently observed 44-byte action passed through the named table slots. Null action is allowed by finish_page. The source byte is an input to a clamp, not necessarily the stored source. Lifetimes and other fields are caller-dependent; no device validation."
+  }
+}

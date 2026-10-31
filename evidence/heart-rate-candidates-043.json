@@ -1,0 +1,14 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "status": "research-only; not registered",
+  "settings_page_create": "0x0c6681f4",
+  "settings_page_destroy": "0x0c667e90",
+  "settings_root_slot": "0x2011f9b4",
+  "settings_builder": "0x0c667f04",
+  "shared_action_callback": "0x0c661454",
+  "getter_call": "0x0c66145a",
+  "return_pc": "0x0c66145e",
+  "finding": "Heart-rate settings rows include action codes 8 through 11 and point to the same action callback. That callback is also registered by multiple other heart-rate pages. A page-root-only filter cannot prove which page originated an invocation if those pages coexist; recover event target ownership or further call context before registering a settings-only hook.",
+  "device_validation": "pending"
+}

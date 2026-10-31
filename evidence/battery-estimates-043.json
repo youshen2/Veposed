@@ -1,0 +1,66 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page_create": "0x0c54f678",
+  "build_ui": "0x0c54ebc0",
+  "battery_event_update": "0x0c54f378",
+  "page_cleanup": "0x0c54e464",
+  "page_root_slot": "0x20111d5c",
+  "evidence": "Creation stores the page root and builds the UI. The primary estimate label is stored at 0x20111d6c and the label following the long-endurance switch is stored at 0x20111d74. Their creation setters are at 0x0c54eeb8 and 0x0c54f08e; battery event updates use 0x0c54f486 and 0x0c54f52c. Page cleanup zeroes 40 bytes starting at 0x20111d5c, including the root and both slots. Each Hook matches its two return PCs, label slot and active root.",
+  "points": {
+    "estimate": {
+      "contract": "void2",
+      "target": "lvx_label_set_text",
+      "caller": "0xc54eebc",
+      "caller2": "0xc54f48a",
+      "subject_slot": "0x20111d6c",
+      "quiescent_slot": "0x20111d5c",
+      "active_slot": "0x20111d5c",
+      "text_arg1": true,
+      "setter_calls": [
+        "0xc54eeb8",
+        "0xc54f486"
+      ],
+      "status": "static-confirmed; device-not-probed"
+    },
+    "long_mode_estimate": {
+      "contract": "void2",
+      "target": "lvx_label_set_text",
+      "caller": "0xc54f092",
+      "caller2": "0xc54f530",
+      "subject_slot": "0x20111d74",
+      "quiescent_slot": "0x20111d5c",
+      "active_slot": "0x20111d5c",
+      "text_arg1": true,
+      "setter_calls": [
+        "0xc54f08e",
+        "0xc54f52c"
+      ],
+      "status": "static-confirmed; device-not-probed"
+    }
+  },
+  "verification_windows": [
+    {
+      "name": "battery-estimate-create",
+      "file_offset": "0x48eeb2",
+      "expected": "206907f588713af0eafa0023ff222849"
+    },
+    {
+      "name": "battery-estimate-update",
+      "file_offset": "0x48f480",
+      "expected": "286907f168013af003f83046eef1a4fc"
+    },
+    {
+      "name": "battery-long-mode-estimate-create",
+      "file_offset": "0x48f088",
+      "expected": "a06907f5c0713af0fff9a0694ff49871"
+    },
+    {
+      "name": "battery-long-mode-estimate-update",
+      "file_offset": "0x48f526",
+      "expected": "07f1cc01a86939f0b0ff07f59877bd46"
+    }
+  ],
+  "scope": "battery settings page estimated-duration display strings; physical battery state and charging controls are unchanged",
+  "device_validation": "pending"
+}

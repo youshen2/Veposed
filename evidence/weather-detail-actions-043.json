@@ -1,0 +1,58 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "descriptor": "0x200da2f4",
+  "descriptor_root_slot": "0x200da324",
+  "state_slot": "0x2011a3a8",
+  "create": "0x0c60aa2c",
+  "destroy": "0x0c609f18",
+  "draw_callback": "0x0c60a08c",
+  "refresh_callback": "0x0c60a3f4",
+  "points": [
+    {
+      "name": "apps.weather.detail.draw_register",
+      "call": "0xc60ab18",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The root view registers callback 0x0c60a08d with filter 21 and user data 0.",
+      "verification_window": "weather-detail-draw_register"
+    },
+    {
+      "name": "apps.weather.detail.draw_event_code",
+      "call": "0xc60a096",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The registered root callback reads the event code and enters its draw branch only for code 21.",
+      "verification_window": "weather-detail-draw_event_code"
+    },
+    {
+      "name": "apps.weather.detail.refresh_register",
+      "call": "0xc60abc2",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The detail page registers callback 0x0c60a3f5 with filter 11 and user data 0 on its view.",
+      "verification_window": "weather-detail-refresh_register"
+    },
+    {
+      "name": "apps.weather.detail.refresh_text",
+      "call": "0xc60a45c",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The down-refresh handler sets updating.weather when the scroll threshold and required objects permit the refresh path.",
+      "verification_window": "weather-detail-refresh_text"
+    }
+  ],
+  "evidence": "The weather manifest registers the detail descriptor. Create stores the supplied root and registers draw and scroll callbacks. The draw handler reads and checks event code 21. The down-refresh handler examines scrolling, guards an existing timer and sets the updating label before entering its refresh UI path. Destroy clears the root and cancels associated timers.",
+  "scope": "Only the listed detail-page call sites and callbacks. Other weather data refresh paths are not intercepted.",
+  "limitations": "Suppressing callbacks can leave refresh UI or state inconsistent. Root slots are not thread barriers; shared-entry publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "lifecycle-state-clear-apps-weather-detail",
+    "weather-detail-draw_register",
+    "weather-detail-draw_event_code",
+    "weather-detail-refresh_register",
+    "weather-detail-refresh_text",
+    "weather-detail-draw-callback",
+    "weather-detail-refresh-callback"
+  ],
+  "device_validation": "pending"
+}

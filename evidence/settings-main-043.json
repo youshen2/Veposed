@@ -1,0 +1,192 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 22,
+  "page_id": 0,
+  "state_slot": "0x201130a0",
+  "descriptor_root_slot": "0x200d34d0",
+  "points": [
+    {
+      "name": "settings.main.row_register_create",
+      "call": "0xc566bfe",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc56654d, filter 0; user data is row index",
+      "verification_window": "settings-main-row-register-create"
+    },
+    {
+      "name": "settings.main.row_register_update",
+      "call": "0xc566488",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc56654d, filter 7; user data is row index",
+      "verification_window": "settings-main-row-register-update"
+    },
+    {
+      "name": "settings.main.row_event_code",
+      "call": "0xc566554",
+      "target": "lv_event_get_code",
+      "meaning": "callback compares code 7",
+      "verification_window": "settings-main-row-event-code"
+    },
+    {
+      "name": "settings.main.row_index",
+      "call": "0xc566564",
+      "target": "lv_event_get_user_data",
+      "meaning": "index used to read the selected table; no bounds check in callback",
+      "verification_window": "settings-main-row-index"
+    }
+  ],
+  "menu_tables": [
+    {
+      "branch": "feature_on",
+      "condition": "sub_C4BF490 returns nonzero; list count is 10 minus the returned byte; nine rows are used when the byte is 1",
+      "count": 9,
+      "rows": [
+        {
+          "index": 0,
+          "translation_key": "system.settings",
+          "destination": "0x13",
+          "icon_data_address": "0x2cbad440"
+        },
+        {
+          "index": 1,
+          "translation_key": "notify.settings",
+          "destination": "0x1c",
+          "icon_data_address": "0x2cbad46c"
+        },
+        {
+          "index": 2,
+          "translation_key": "desktop.settings",
+          "destination": "0x28",
+          "icon_data_address": "0x2cbad494"
+        },
+        {
+          "index": 3,
+          "translation_key": "display.settings",
+          "destination": "0x6",
+          "icon_data_address": "0x2cbad4bc"
+        },
+        {
+          "index": 4,
+          "translation_key": "sound.settings",
+          "destination": "0x5",
+          "icon_data_address": "0x2cbad4e4"
+        },
+        {
+          "index": 5,
+          "translation_key": "app_management.settings",
+          "destination": "0x27",
+          "icon_data_address": "0x2cbad50c"
+        },
+        {
+          "index": 6,
+          "translation_key": "battery.settings",
+          "destination": "0x1d",
+          "icon_data_address": "0x2cbad534"
+        },
+        {
+          "index": 7,
+          "translation_key": "sports.settings",
+          "destination": "0x42",
+          "icon_data_address": "0x2cbad55c"
+        },
+        {
+          "index": 8,
+          "translation_key": "prefer.settings",
+          "destination": "0x3d",
+          "icon_data_address": "0x2cbad584"
+        }
+      ],
+      "row_window": "settings-main-feature_on-rows",
+      "translation_window": "settings-main-feature_on-translations",
+      "count_note": "These are the first nine static entries; effective count depends on the byte at 0x2010cc5c and is not assumed to be Boolean."
+    },
+    {
+      "branch": "feature_off",
+      "condition": "sub_C4BF490 returns zero",
+      "count": 10,
+      "rows": [
+        {
+          "index": 0,
+          "translation_key": "system.settings",
+          "destination": "0x13",
+          "icon_data_address": "0x2cbad440"
+        },
+        {
+          "index": 1,
+          "translation_key": "notify.settings",
+          "destination": "0x1c",
+          "icon_data_address": "0x2cbad46c"
+        },
+        {
+          "index": 2,
+          "translation_key": "desktop.settings",
+          "destination": "0x28",
+          "icon_data_address": "0x2cbad494"
+        },
+        {
+          "index": 3,
+          "translation_key": "display.settings",
+          "destination": "0x6",
+          "icon_data_address": "0x2cbad4bc"
+        },
+        {
+          "index": 4,
+          "translation_key": "sound.settings",
+          "destination": "0x5",
+          "icon_data_address": "0x2cbad4e4"
+        },
+        {
+          "index": 5,
+          "translation_key": "pwd.settings",
+          "destination": "0x11",
+          "icon_data_address": "0x2cbad5b0"
+        },
+        {
+          "index": 6,
+          "translation_key": "app_management.settings",
+          "destination": "0x27",
+          "icon_data_address": "0x2cbad50c"
+        },
+        {
+          "index": 7,
+          "translation_key": "battery.settings",
+          "destination": "0x1d",
+          "icon_data_address": "0x2cbad534"
+        },
+        {
+          "index": 8,
+          "translation_key": "sports.settings",
+          "destination": "0x42",
+          "icon_data_address": "0x2cbad55c"
+        },
+        {
+          "index": 9,
+          "translation_key": "prefer.settings",
+          "destination": "0x3d",
+          "icon_data_address": "0x2cbad584"
+        }
+      ],
+      "row_window": "settings-main-feature_off-rows",
+      "translation_window": "settings-main-feature_off-translations"
+    }
+  ],
+  "evidence": "Manifest 0xc54d214 registers the main page. The create callback installs the list callback table at 0x200d3514 and calls list refresh before setting 0x201130a0; descriptor root is used as active guard. Row create and update register callback 0xc56654c, with filters 0 and 7 respectively. The callback reads event code and index, then loads a destination from one of the two tables. Destination 0x20001 is handled specially as an app navigation request rather than an ordinary page ID.",
+  "scope": "The two recovered row tables and the four listed event call sites; indices describe static order, with two layouts selected by sub_C4BF490. The nonzero table documents its first nine rows; actual count is 10 minus the byte returned by sub_C4BF490.",
+  "limitations": "Returned row index is used for indexed table access without a local bounds check; changing it to an invalid value can crash. Menu arrays contain app/page destinations, not verified public API IDs. Page slots do not prove thread quiescence, and true event behavior and recovery require device testing.",
+  "verification_windows": [
+    "settings-main-row-register-create",
+    "settings-main-row-register-update",
+    "settings-main-row-event-code",
+    "settings-main-row-index",
+    "settings-main-feature_on-rows",
+    "settings-main-feature_on-translations",
+    "settings-main-feature_off-rows",
+    "settings-main-feature_off-translations",
+    "settings-main-create",
+    "settings-main-list-callback",
+    "settings-main-list-builder",
+    "settings-main-list-update",
+    "settings-main-list-callback-table"
+  ],
+  "device_validation": "pending"
+}

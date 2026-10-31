@@ -1,0 +1,93 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 22,
+  "page_id": 32,
+  "state_slot": "0x20112a20",
+  "descriptor_root_slot": "0x200d3108",
+  "points": [
+    {
+      "name": "settings.quick_gesture.off_switch_register",
+      "call": "0xc55e524",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc55e7e9, user_data 0",
+      "verification_window": "quick-gesture-off-switch-register"
+    },
+    {
+      "name": "settings.quick_gesture.off_guide_register",
+      "call": "0xc55e624",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc55e7e9, user_data 5",
+      "verification_window": "quick-gesture-off-guide-register"
+    },
+    {
+      "name": "settings.quick_gesture.on_switch_register",
+      "call": "0xc55ea5c",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc55f43d, user_data 1",
+      "verification_window": "quick-gesture-on-switch-register"
+    },
+    {
+      "name": "settings.quick_gesture.on_option2_register",
+      "call": "0xc55ec74",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc55f43d, user_data 2",
+      "verification_window": "quick-gesture-on-option2-register"
+    },
+    {
+      "name": "settings.quick_gesture.on_option3_register",
+      "call": "0xc55ed22",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc55f43d, user_data 3",
+      "verification_window": "quick-gesture-on-option3-register"
+    },
+    {
+      "name": "settings.quick_gesture.on_option6_register",
+      "call": "0xc55ed90",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc55f43d, user_data 6",
+      "verification_window": "quick-gesture-on-option6-register"
+    },
+    {
+      "name": "settings.quick_gesture.on_guide_register",
+      "call": "0xc55ee12",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc55f43d, user_data 5",
+      "verification_window": "quick-gesture-on-guide-register"
+    },
+    {
+      "name": "settings.quick_gesture.off_description",
+      "call": "0xc55e58e",
+      "target": "lvx_label_set_text",
+      "meaning": "guesture_op_des.setting",
+      "verification_window": "quick-gesture-off-description"
+    },
+    {
+      "name": "settings.quick_gesture.on_heading",
+      "call": "0xc55ead2",
+      "target": "lvx_label_set_text",
+      "meaning": "guesture_settings.setting",
+      "verification_window": "quick-gesture-on-heading"
+    }
+  ],
+  "evidence": "The page creator selects the off or on layout based on gesture state; rebuild 0xc55f22c can create a layout again. Off layout registers callback 0xc55e7e9 with event data 0 and 5. On layout registers callback 0xc55f43d with event data 1, 2, 3, 6 and 5. The callback reads event data at offset 12; 1 may disable the gesture and rebuild the page, 2 and 3 open the gesture sub-settings page, 5 and 6 navigate to other pages. Text labels use the two listed localization keys.",
+  "scope": "Seven row callback registrations and two text setters; individual branches and callbacks may repeat during a rebuild.",
+  "limitations": "The callback registration point is not the underlying gesture state setter. Replacing event callbacks or user data changes navigation or gesture state and may desynchronize the UI. Page state slots are not synchronization and do not prove queued callbacks have stopped; device behavior and rollback are unverified.",
+  "verification_windows": [
+    "quick-gesture-off-switch-register",
+    "quick-gesture-off-guide-register",
+    "quick-gesture-on-switch-register",
+    "quick-gesture-on-option2-register",
+    "quick-gesture-on-option3-register",
+    "quick-gesture-on-option6-register",
+    "quick-gesture-on-guide-register",
+    "quick-gesture-off-description",
+    "quick-gesture-on-heading",
+    "quick-gesture-off-builder",
+    "quick-gesture-on-builder",
+    "quick-gesture-off-callback",
+    "quick-gesture-on-callback",
+    "quick-gesture-rebuild"
+  ],
+  "device_validation": "pending"
+}

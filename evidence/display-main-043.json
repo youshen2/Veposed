@@ -1,0 +1,178 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 22,
+  "pages": [
+    "display",
+    "brightalwaysdetail",
+    "brightalwayson"
+  ],
+  "points": [
+    {
+      "name": "settings.display.main.brightness_register",
+      "call": "0xc552bc0",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C552A2C with filter 7 and data 0; the callback navigates to app 0x16 page 7.",
+      "verification_window": "display-main-settings-display-main-brightness_register"
+    },
+    {
+      "name": "settings.display.main.timeout_register",
+      "call": "0xc552c26",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C552A2C with filter 7 and data 1; the callback navigates to app 0x16 page 9.",
+      "verification_window": "display-main-settings-display-main-timeout_register"
+    },
+    {
+      "name": "settings.display.main.wrist_register",
+      "call": "0xc552d36",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C552A2C with filter 7 and data 2; the callback navigates to app 0x16 page 13.",
+      "verification_window": "display-main-settings-display-main-wrist_register"
+    },
+    {
+      "name": "settings.display.main.aod_register",
+      "call": "0xc552da0",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C552A2C with filter 7 and data 3; the callback selects page 10 or 11 according to current state.",
+      "verification_window": "display-main-settings-display-main-aod_register"
+    },
+    {
+      "name": "settings.display.main.event_data",
+      "call": "0xc552a32",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The shared callback selects a navigation branch from the event user-data value.",
+      "verification_window": "display-main-settings-display-main-event_data"
+    },
+    {
+      "name": "settings.display.main.timeout_caption",
+      "call": "0xc552c84",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets a formatted timeout text assembled from the current timeout value.",
+      "verification_window": "display-main-settings-display-main-timeout_caption"
+    },
+    {
+      "name": "settings.display.aod_detail.switch_register",
+      "call": "0xc5538e2",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C554028 with filter 7 and data 0.",
+      "verification_window": "display-main-settings-display-aod_detail-switch_register"
+    },
+    {
+      "name": "settings.display.aod_detail.wrist_register",
+      "call": "0xc553940",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C554028 with filter 7 and data 1.",
+      "verification_window": "display-main-settings-display-aod_detail-wrist_register"
+    },
+    {
+      "name": "settings.display.aod_detail.timed_register",
+      "call": "0xc5539c0",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C554028 with filter 7 and data 2.",
+      "verification_window": "display-main-settings-display-aod_detail-timed_register"
+    },
+    {
+      "name": "settings.display.aod_detail.start_register",
+      "call": "0xc553a50",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C554028 with filter 7 and data 3.",
+      "verification_window": "display-main-settings-display-aod_detail-start_register"
+    },
+    {
+      "name": "settings.display.aod_detail.end_register",
+      "call": "0xc553b34",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C554028 with filter 7 and data 4.",
+      "verification_window": "display-main-settings-display-aod_detail-end_register"
+    },
+    {
+      "name": "settings.display.aod_detail.dial_register",
+      "call": "0xc553bbc",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C554028 with filter 7 and data 5.",
+      "verification_window": "display-main-settings-display-aod_detail-dial_register"
+    },
+    {
+      "name": "settings.display.aod_detail.event_data",
+      "call": "0xc554036",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The shared callback dispatches on the full event user-data value.",
+      "verification_window": "display-main-settings-display-aod_detail-event_data"
+    },
+    {
+      "name": "settings.display.aod_detail.dial_info",
+      "call": "0xc553be0",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the system_always_on_display_dial_info.settings translation.",
+      "verification_window": "display-main-settings-display-aod_detail-dial_info"
+    },
+    {
+      "name": "settings.display.aod_detail.wrist_info",
+      "call": "0xc553cd4",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the always_on_display_first.settings translation when the wrist mode is zero.",
+      "verification_window": "display-main-settings-display-aod_detail-wrist_info"
+    },
+    {
+      "name": "settings.display.aod_switch.register",
+      "call": "0xc5548fa",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C554764 with filter 7 and data 0.",
+      "verification_window": "display-main-settings-display-aod_switch-register"
+    },
+    {
+      "name": "settings.display.aod_switch.event_data",
+      "call": "0xc55476a",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The callback proceeds only when the event user-data value equals zero.",
+      "verification_window": "display-main-settings-display-aod_switch-event_data"
+    }
+  ],
+  "evidence": "The settings manifest registers the page descriptors. Creators store allocated state, and destroyers free and clear it. The display main builder registers four actions whose common callback navigates to brightness, timeout, wrist and AOD pages. AOD detail builds six option controls sharing an event callback; the switch page has a separate callback.",
+  "scope": "Only the listed UI call sites and lifecycle slots, not all ways to change display or navigate.",
+  "limitations": "Changing event data may navigate to another page or alter display power and scheduling settings. The state and root slots do not establish system-wide quiescence. Device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "display-main-settings-display-main-brightness_register",
+    "display-main-settings-display-main-timeout_register",
+    "display-main-settings-display-main-wrist_register",
+    "display-main-settings-display-main-aod_register",
+    "display-main-settings-display-main-event_data",
+    "display-main-settings-display-main-timeout_caption",
+    "display-main-settings-display-aod_detail-switch_register",
+    "display-main-settings-display-aod_detail-wrist_register",
+    "display-main-settings-display-aod_detail-timed_register",
+    "display-main-settings-display-aod_detail-start_register",
+    "display-main-settings-display-aod_detail-end_register",
+    "display-main-settings-display-aod_detail-dial_register",
+    "display-main-settings-display-aod_detail-event_data",
+    "display-main-settings-display-aod_detail-dial_info",
+    "display-main-settings-display-aod_detail-wrist_info",
+    "display-main-settings-display-aod_switch-register",
+    "display-main-settings-display-aod_switch-event_data",
+    "display-main-create",
+    "display-main-destroy",
+    "display-main-handler",
+    "display-aod-detail-create",
+    "display-aod-detail-handler",
+    "display-aod-switch-create",
+    "display-aod-switch-handler"
+  ],
+  "device_validation": "pending"
+}

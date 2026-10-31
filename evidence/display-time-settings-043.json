@@ -1,0 +1,114 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 22,
+  "pages": [
+    "displayresttime",
+    "displayalwayson"
+  ],
+  "points": [
+    {
+      "name": "settings.display.timeout.top_icon",
+      "call": "0xc557dee",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets time_top2.bin.",
+      "verification_window": "display-time-settings-display-timeout-top_icon"
+    },
+    {
+      "name": "settings.display.timeout.bottom_icon",
+      "call": "0xc557e16",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets time_bottom2.bin.",
+      "verification_window": "display-time-settings-display-timeout-bottom_icon"
+    },
+    {
+      "name": "settings.display.timeout.seconds_caption",
+      "call": "0xc557e4e",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the sec1.settings translation.",
+      "verification_window": "display-time-settings-display-timeout-seconds_caption"
+    },
+    {
+      "name": "settings.display.timeout.top_shadow",
+      "call": "0xc557e7a",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets shadow_top.bin.",
+      "verification_window": "display-time-settings-display-timeout-top_shadow"
+    },
+    {
+      "name": "settings.display.timeout.bottom_shadow",
+      "call": "0xc557ea0",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets shadow_btm.bin.",
+      "verification_window": "display-time-settings-display-timeout-bottom_shadow"
+    },
+    {
+      "name": "settings.display.timeout.confirm_event",
+      "call": "0xc557ce0",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The confirm callback proceeds only for event code 7.",
+      "verification_window": "display-time-settings-display-timeout-confirm_event"
+    },
+    {
+      "name": "settings.display.keep_awake.off_register",
+      "call": "0xc555dde",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers the common option callback with filter 7 and index 0.",
+      "verification_window": "display-time-settings-display-keep_awake-off_register"
+    },
+    {
+      "name": "settings.display.keep_awake.duration_register",
+      "call": "0xc555d20",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers the common option callback with filter 7 and indices 1 through 4.",
+      "verification_window": "display-time-settings-display-keep_awake-duration_register"
+    },
+    {
+      "name": "settings.display.keep_awake.event_data",
+      "call": "0xc555ac6",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The handler reads the row index to determine the clicked option.",
+      "verification_window": "display-time-settings-display-keep_awake-event_data"
+    },
+    {
+      "name": "settings.display.keep_awake.event_target",
+      "call": "0xc555ace",
+      "target": "lv_event_current_target",
+      "contract": "word1",
+      "interpretation": "The handler compares the current event target with the radio items.",
+      "verification_window": "display-time-settings-display-keep_awake-event_target"
+    }
+  ],
+  "evidence": "The settings manifest registers both page descriptors. Creators allocate and store page state and the destroyers free and clear it. The timeout picker contains localized units and static image resources; the confirm callback checks event code 7 and its action applies the chosen time or opens an additional prompt. The always-on page builds an off option and four duration options with a common callback.",
+  "scope": "Specific lifecycle and recorded UI call sites, not all system display state changes.",
+  "limitations": "The timeout and always-on handlers can change screen power behavior. Invalid event data or suppressing actions may desynchronize UI state. State and root slots do not provide thread quiescence. Device behavior and recovery are unverified.",
+  "verification_windows": [
+    "display-time-settings-display-timeout-top_icon",
+    "display-time-settings-display-timeout-bottom_icon",
+    "display-time-settings-display-timeout-seconds_caption",
+    "display-time-settings-display-timeout-top_shadow",
+    "display-time-settings-display-timeout-bottom_shadow",
+    "display-time-settings-display-timeout-confirm_event",
+    "display-time-settings-display-keep_awake-off_register",
+    "display-time-settings-display-keep_awake-duration_register",
+    "display-time-settings-display-keep_awake-event_data",
+    "display-time-settings-display-keep_awake-event_target",
+    "display-time-timeout-create",
+    "display-time-timeout-destroy",
+    "display-time-confirm",
+    "display-time-confirm-action",
+    "display-time-awake-create",
+    "display-time-awake-destroy",
+    "display-time-awake-event"
+  ],
+  "device_validation": "pending"
+}

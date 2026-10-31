@@ -1,0 +1,310 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "warmup",
+    "warmup explanation",
+    "warmup animation",
+    "ephemeris update",
+    "ephemeris subordinate",
+    "general sport settings"
+  ],
+  "points": [
+    {
+      "name": "sports.warmup.start_register",
+      "call": "0xc5d170e",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C5D1DA4, which reports warmup control and navigates to animation page 21.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup-start_register"
+      ]
+    },
+    {
+      "name": "sports.warmup.switch_register",
+      "call": "0xc5d1926",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C5D14B8 to toggle course selection and update course label.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup-switch_register"
+      ]
+    },
+    {
+      "name": "sports.warmup.explain_register",
+      "call": "0xc5d19e4",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C5D13DC, which navigates to explanation page 20.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup-explain_register"
+      ]
+    },
+    {
+      "name": "sports.warmup.switch_icon",
+      "call": "0xc5d186e",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets sports/warmup/image/switch_button.bin.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup-switch_icon"
+      ]
+    },
+    {
+      "name": "sports.warmup.run_text",
+      "call": "0xc5d1750",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The initial running-course branch sets Warmupbeforun.sport.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup-run_text"
+      ]
+    },
+    {
+      "name": "sports.warmup.long_run_text",
+      "call": "0xc5d1a6a",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The initial long-distance branch sets longdistancewarmup.sport.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup-long_run_text"
+      ]
+    },
+    {
+      "name": "sports.warmup.cycling_text",
+      "call": "0xc5d1b50",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The initial cycling branch sets compre_hensive_warmup_for_cycling.sport.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup-cycling_text"
+      ]
+    },
+    {
+      "name": "sports.warmup.whole_body_text",
+      "call": "0xc5d1bc2",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The initial full-body branch sets warmup_for_thewholebody.sport.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup-whole_body_text"
+      ]
+    },
+    {
+      "name": "sports.warmup.rope_text",
+      "call": "0xc5d1c14",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The initial jump-rope branch sets warmup_before_skippingrope.sport.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup-rope_text"
+      ]
+    },
+    {
+      "name": "sports.warmup_anim.pause_register",
+      "call": "0xc5cf26c",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C5D0F78 on the pause control; the callback toggles pause/resume state and timers.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup_anim-pause_register"
+      ]
+    },
+    {
+      "name": "sports.warmup_anim.resume_register",
+      "call": "0xc5cf2ac",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers the same C5D0F78 callback on the continue control.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup_anim-resume_register"
+      ]
+    },
+    {
+      "name": "sports.warmup_anim.end_register",
+      "call": "0xc5cf2f0",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C5D052C on the end control with filter 0; it handles multiple event codes.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup_anim-end_register"
+      ]
+    },
+    {
+      "name": "sports.warmup_anim.end_event_code",
+      "call": "0xc5d0530",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "C5D052C branches on event code 1 and 8 to manage the end dialog.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup_anim-end_event_code"
+      ]
+    },
+    {
+      "name": "sports.warmup_anim.paused_text",
+      "call": "0xc5d1046",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The pause branch sets paused.sport.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup_anim-paused_text"
+      ]
+    },
+    {
+      "name": "sports.warmup_anim.preview_text",
+      "call": "0xc5d0fb0",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The resume branch sets action_preview.sport.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup_anim-preview_text"
+      ]
+    },
+    {
+      "name": "sports.warmup_explain.action_text",
+      "call": "0xc5ce76e",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The explanation builder sets per-action names in a loop.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup_explain-action_text"
+      ]
+    },
+    {
+      "name": "sports.warmup_explain.duration_text",
+      "call": "0xc5ce61c",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The explanation builder formats per-action time or repetition count.",
+      "verification_windows": [
+        "sports-warmup-sports-warmup_explain-duration_text"
+      ]
+    },
+    {
+      "name": "sports.settings.ephemeris.valid_text",
+      "call": "0xc5b9e94",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The ephemeris page sets ephemeris_validity_data.sport.",
+      "verification_windows": [
+        "sports-warmup-sports-settings-ephemeris-valid_text"
+      ]
+    },
+    {
+      "name": "sports.settings.ephemeris.expired_text",
+      "call": "0xc5ba0ee",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The ephemeris page sets expired_sky.sport in an expired branch.",
+      "verification_windows": [
+        "sports-warmup-sports-settings-ephemeris-expired_text"
+      ]
+    },
+    {
+      "name": "sports.settings.ephemeris.status_text",
+      "call": "0xc5ba168",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The page sets a branch-selected ephemeris impact text.",
+      "verification_windows": [
+        "sports-warmup-sports-settings-ephemeris-status_text"
+      ]
+    },
+    {
+      "name": "sports.settings.ephemeris.info_icon",
+      "call": "0xc5ba188",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The page sets ephemeris_instructions.bin.",
+      "verification_windows": [
+        "sports-warmup-sports-settings-ephemeris-info_icon"
+      ]
+    },
+    {
+      "name": "sports.settings.ephemeris.info_register",
+      "call": "0xc5ba19c",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "C5B9C38 opens ephemeris subordinate page with argument 1.",
+      "verification_windows": [
+        "sports-warmup-sports-settings-ephemeris-info_register"
+      ]
+    },
+    {
+      "name": "sports.settings.ephemeris.update_register",
+      "call": "0xc5ba20c",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "C5B9C48 checks connectivity and opens update flow or a prompt.",
+      "verification_windows": [
+        "sports-warmup-sports-settings-ephemeris-update_register"
+      ]
+    },
+    {
+      "name": "sports.settings.ephemeris_sub.position_text",
+      "call": "0xc5ba9c8",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The subordinate page sets ephemeris_positioning.sport.",
+      "verification_windows": [
+        "sports-warmup-sports-settings-ephemeris_sub-position_text"
+      ]
+    },
+    {
+      "name": "sports.settings.ephemeris_sub.progress_text",
+      "call": "0xc5baae4",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The subordinate page sets ephemeris_update_progress.sport.",
+      "verification_windows": [
+        "sports-warmup-sports-settings-ephemeris_sub-progress_text"
+      ]
+    },
+    {
+      "name": "sports.settings.ephemeris_sub.network_text",
+      "call": "0xc5bac02",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The subordinate page sets ephemeris_network_connection.sport.",
+      "verification_windows": [
+        "sports-warmup-sports-settings-ephemeris_sub-network_text"
+      ]
+    }
+  ],
+  "evidence": "The sports manifest registers the six page descriptors. The warmup animation installs separate pause, continue and end controls; pause and continue share one state-changing callback. The ephemeris update view registers information and update callbacks, the latter checks connection before navigation or prompt. The descriptor-root and page-state cleanup paths are separately audited.",
+  "scope": "Recorded shared UI and event calls only; training algorithms, GPS, network transfer and stored ephemeris data are outside these points.",
+  "limitations": "Altering event callbacks can interrupt timers, navigation, position data updates or page cleanup. Displayed information may diverge from actual device state. Root and state guards are not thread barriers; device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "sports-warmup-sports-warmup-start_register",
+    "sports-warmup-sports-warmup-switch_register",
+    "sports-warmup-sports-warmup-explain_register",
+    "sports-warmup-sports-warmup-switch_icon",
+    "sports-warmup-sports-warmup-run_text",
+    "sports-warmup-sports-warmup-long_run_text",
+    "sports-warmup-sports-warmup-cycling_text",
+    "sports-warmup-sports-warmup-whole_body_text",
+    "sports-warmup-sports-warmup-rope_text",
+    "sports-warmup-sports-warmup_anim-pause_register",
+    "sports-warmup-sports-warmup_anim-resume_register",
+    "sports-warmup-sports-warmup_anim-end_register",
+    "sports-warmup-sports-warmup_anim-end_event_code",
+    "sports-warmup-sports-warmup_anim-paused_text",
+    "sports-warmup-sports-warmup_anim-preview_text",
+    "sports-warmup-sports-warmup_explain-action_text",
+    "sports-warmup-sports-warmup_explain-duration_text",
+    "sports-warmup-sports-settings-ephemeris-valid_text",
+    "sports-warmup-sports-settings-ephemeris-expired_text",
+    "sports-warmup-sports-settings-ephemeris-status_text",
+    "sports-warmup-sports-settings-ephemeris-info_icon",
+    "sports-warmup-sports-settings-ephemeris-info_register",
+    "sports-warmup-sports-settings-ephemeris-update_register",
+    "sports-warmup-sports-settings-ephemeris_sub-position_text",
+    "sports-warmup-sports-settings-ephemeris_sub-progress_text",
+    "sports-warmup-sports-settings-ephemeris_sub-network_text",
+    "sports-warmup-warmup-start",
+    "sports-warmup-warmup-toggle",
+    "sports-warmup-warmup-end-event",
+    "sports-warmup-ephemeris-update"
+  ],
+  "device_validation": "pending"
+}

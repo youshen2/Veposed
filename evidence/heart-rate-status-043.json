@@ -1,0 +1,43 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "names": [
+    "health.heart_rate.current_caption",
+    "health.heart_rate.measuring_caption",
+    "health.heart_rate.timeout_caption",
+    "health.heart_rate.retry_caption"
+  ],
+  "page_create": "0x0c664ffc",
+  "page_destroy": "0x0c664c64",
+  "state_slot": "0x2011f99c",
+  "entry": "0x1c06f039",
+  "contract": "void2",
+  "calls": {
+    "current.hr": [
+      "0x0c667606"
+    ],
+    "measuring.hr": [
+      "0x0c6670ce",
+      "0x0c66729e"
+    ],
+    "timeout.hr": [
+      "0x0c665fc6"
+    ],
+    "retry.hr": [
+      "0x0c665fd4"
+    ]
+  },
+  "evidence": "The heart-rate main page allocates its state object into 0x2011f99c and clears that slot after freeing it on destruction. The identified show/refresh paths resolve their corresponding language keys and pass the results as argument 1 to the common label-text veneer. The measuring state has two separate call sites. The label objects are stored inside dynamic page state or local variables, so caller plus active-state filters define scope.",
+  "scope": "the specified heart-rate main-page status label writes while its state object is alive",
+  "limitations": "These hooks alter status text only, not measured heart rate, alerts or health data. The page state is not a proof of system-wide quiescence for the shared setter. Static analysis only.",
+  "verification_windows": [
+    "heart-rate-current-caption",
+    "heart-rate-measuring-caption",
+    "heart-rate-measuring-caption-rebuild",
+    "heart-rate-timeout-caption",
+    "heart-rate-retry-caption",
+    "heart-rate-state-create",
+    "heart-rate-state-destroy"
+  ],
+  "device_validation": "pending"
+}

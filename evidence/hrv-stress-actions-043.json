@@ -1,0 +1,698 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "sleep HRV detail",
+    "sleep HRV explanation",
+    "sleep HRV information",
+    "stress measurement",
+    "stress month chart"
+  ],
+  "points": [
+    {
+      "name": "health.sleep.hrv_detail.average_text",
+      "calls": [
+        "0xc63cb8e"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Distribution view sets sleep_mode_avg_hrv.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_detail-average_text"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_detail.low_text",
+      "calls": [
+        "0xc63cbea"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Distribution view sets lower_than_normal.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_detail-low_text"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_detail.high_text",
+      "calls": [
+        "0xc63cc46"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Distribution view sets higher_than_normal.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_detail-high_text"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_detail.no_data_text",
+      "calls": [
+        "0xc63ccc0"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Distribution view sets sleep_hrv_nodata.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_detail-no_data_text"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_detail.baseline_text",
+      "calls": [
+        "0xc63cd5e"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Distribution view sets baseline_tip.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_detail-baseline_text"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_detail.scale_text",
+      "calls": [
+        "0xc63cee8"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Distribution view sets personal_hrv_scale.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_detail-scale_text"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_detail.no_data_icon",
+      "calls": [
+        "0xc63cdce"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Distribution view sets sleep_hrv_no_data.bin.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_detail-no_data_icon"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_detail.info_icon",
+      "calls": [
+        "0xc63cfc0"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Distribution view sets icon_info.bin.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_detail-info_icon"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_detail.bar_icon",
+      "calls": [
+        "0xc63cfea"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Distribution view sets sleep_hrv_bar.bin.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_detail-bar_icon"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_detail.indicator_icon",
+      "calls": [
+        "0xc63d040"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Distribution view sets hrv_bar_indicate.bin.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_detail-indicator_icon"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_detail.info_register",
+      "calls": [
+        "0xc63cfcc"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C63C204, which requests sleep page 7, with event filter 7 and user data 0.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_detail-info_register"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_explain.title1",
+      "calls": [
+        "0xc63d5d8"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation builder sets sleep_hrv_exp_title1.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_explain-title1"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_explain.detail1",
+      "calls": [
+        "0xc63d5e6"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation builder sets sleep_hrv_exp_detail1.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_explain-detail1"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_explain.title2",
+      "calls": [
+        "0xc63d5f4"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation builder sets sleep_hrv_exp_title2.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_explain-title2"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_explain.detail2",
+      "calls": [
+        "0xc63d602"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation builder sets sleep_hrv_exp_detail2.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_explain-detail2"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_explain.title3",
+      "calls": [
+        "0xc63d610"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation builder sets sleep_hrv_exp_title3.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_explain-title3"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_explain.detail3",
+      "calls": [
+        "0xc63d61e"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation builder sets sleep_hrv_exp_detail3.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_explain-detail3"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_explain.title4",
+      "calls": [
+        "0xc63d62c"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation builder sets sleep_hrv_exp_title4.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_explain-title4"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_explain.detail4",
+      "calls": [
+        "0xc63d63a"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation builder sets sleep_hrv_exp_detail4.sleep.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_explain-detail4"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.normal_title1",
+      "calls": [
+        "0xc63dc38"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 1 title in its normal branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-normal_title1"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.normal_detail1",
+      "calls": [
+        "0xc63dc46"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 1 detail in its normal branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-normal_detail1"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.normal_title2",
+      "calls": [
+        "0xc63dc54"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 2 title in its normal branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-normal_title2"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.normal_detail2",
+      "calls": [
+        "0xc63dc62"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 2 detail in its normal branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-normal_detail2"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.normal_title3",
+      "calls": [
+        "0xc63dc70"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 3 title in its normal branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-normal_title3"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.normal_detail3",
+      "calls": [
+        "0xc63dc7e"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 3 detail in its normal branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-normal_detail3"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.high_title1",
+      "calls": [
+        "0xc63db5e"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 1 title in its high branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-high_title1"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.high_detail1",
+      "calls": [
+        "0xc63db6c"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 1 detail in its high branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-high_detail1"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.high_title2",
+      "calls": [
+        "0xc63db7a"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 2 title in its high branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-high_title2"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.high_detail2",
+      "calls": [
+        "0xc63db88"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 2 detail in its high branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-high_detail2"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.high_title3",
+      "calls": [
+        "0xc63db96"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 3 title in its high branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-high_title3"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.high_detail3",
+      "calls": [
+        "0xc63dba4"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 3 detail in its high branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-high_detail3"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.high_title4",
+      "calls": [
+        "0xc63dbb2"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 4 title in its high branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-high_title4"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.high_detail4",
+      "calls": [
+        "0xc63dbc0"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 4 detail in its high branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-high_detail4"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.low_title1",
+      "calls": [
+        "0xc63dcb8"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 1 title in its low branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-low_title1"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.low_detail1",
+      "calls": [
+        "0xc63dcc6"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 1 detail in its low branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-low_detail1"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.low_title2",
+      "calls": [
+        "0xc63dcd4"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 2 title in its low branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-low_title2"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.low_detail2",
+      "calls": [
+        "0xc63dce2"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 2 detail in its low branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-low_detail2"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.low_title3",
+      "calls": [
+        "0xc63dcf0"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 3 title in its low branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-low_title3"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.low_detail3",
+      "calls": [
+        "0xc63dcfe"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 3 detail in its low branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-low_detail3"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.low_title4",
+      "calls": [
+        "0xc63dd0c"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 4 title in its low branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-low_title4"
+      ]
+    },
+    {
+      "name": "health.sleep.hrv_info.low_detail4",
+      "calls": [
+        "0xc63dd1a"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Information builder sets section 4 detail in its low branch; firmware resource key is evidenced by disassembly.",
+      "verification_windows": [
+        "hrv-stress-health-sleep-hrv_info-low_detail4"
+      ]
+    },
+    {
+      "name": "health.stress.measure.prep_icon",
+      "calls": [
+        "0xc631bea"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The preparation screen sets health/wear1.bin.",
+      "verification_windows": [
+        "hrv-stress-health-stress-measure-prep_icon"
+      ]
+    },
+    {
+      "name": "health.stress.measure.prep_text",
+      "calls": [
+        "0xc631c82"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The preparation screen sets measure3_1.health.",
+      "verification_windows": [
+        "hrv-stress-health-stress-measure-prep_text"
+      ]
+    },
+    {
+      "name": "health.stress.measure.measuring_text",
+      "calls": [
+        "0xc632504"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The countdown callback sets measuring.health after starting measurement.",
+      "verification_windows": [
+        "hrv-stress-health-stress-measure-measuring_text"
+      ]
+    },
+    {
+      "name": "health.stress.measure.screen_up_text",
+      "calls": [
+        "0xc6325ae"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The measuring screen sets screen_up.health.",
+      "verification_windows": [
+        "hrv-stress-health-stress-measure-screen_up_text"
+      ]
+    },
+    {
+      "name": "health.stress.measure.still_text",
+      "calls": [
+        "0xc632628"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The same measuring screen subsequently sets stay_still.health.",
+      "verification_windows": [
+        "hrv-stress-health-stress-measure-still_text"
+      ]
+    },
+    {
+      "name": "health.stress.month.date_today",
+      "calls": [
+        "0xc632ee0"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The chart sets a formatted date label for the current time.",
+      "verification_windows": [
+        "hrv-stress-health-stress-month-date_today"
+      ]
+    },
+    {
+      "name": "health.stress.month.date_prev1",
+      "calls": [
+        "0xc632f36"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The chart sets the date label after subtracting 259200 seconds.",
+      "verification_windows": [
+        "hrv-stress-health-stress-month-date_prev1"
+      ]
+    },
+    {
+      "name": "health.stress.month.date_prev2",
+      "calls": [
+        "0xc632f88"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The chart sets a second preceding date label.",
+      "verification_windows": [
+        "hrv-stress-health-stress-month-date_prev2"
+      ]
+    },
+    {
+      "name": "health.stress.month.empty_value",
+      "calls": [
+        "0xc6331f6"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The chart sets the no-value placeholder when the average is zero.",
+      "verification_windows": [
+        "hrv-stress-health-stress-month-empty_value"
+      ]
+    },
+    {
+      "name": "health.stress.month.average_label",
+      "calls": [
+        "0xc633244"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The chart sets ave.pressure as the average label.",
+      "verification_windows": [
+        "hrv-stress-health-stress-month-average_label"
+      ]
+    },
+    {
+      "name": "health.stress.month.chart_register",
+      "calls": [
+        "0xc63302c"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The chart registers C632C80 with event filter 0x1d; callback handles drawing-related state.",
+      "verification_windows": [
+        "hrv-stress-health-stress-month-chart_register"
+      ]
+    }
+  ],
+  "evidence": "The sleep and pressure app manifests register these page descriptors. Their create and destroy paths assign and clear the state slots audited separately. The HRV detail uses separate distribution and trend builders; distribution can open the information page. Explanation and information builders select distinct localized strings. Pressure measurement builds preparation UI and later countdown callback builds the measuring state. Pressure month chart builds date labels, an average and a draw event callback.",
+  "scope": "Recorded shared UI calls only. HRV data interpretation, pressure measurement, storage and other rendering paths remain outside these named points.",
+  "limitations": "Changing health status or chart labels may misrepresent actual data. Callback modification can affect page behavior. Text and image resources must remain valid. State slots do not provide a thread barrier; device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "hrv-stress-health-sleep-hrv_detail-average_text",
+    "hrv-stress-health-sleep-hrv_detail-low_text",
+    "hrv-stress-health-sleep-hrv_detail-high_text",
+    "hrv-stress-health-sleep-hrv_detail-no_data_text",
+    "hrv-stress-health-sleep-hrv_detail-baseline_text",
+    "hrv-stress-health-sleep-hrv_detail-scale_text",
+    "hrv-stress-health-sleep-hrv_detail-no_data_icon",
+    "hrv-stress-health-sleep-hrv_detail-info_icon",
+    "hrv-stress-health-sleep-hrv_detail-bar_icon",
+    "hrv-stress-health-sleep-hrv_detail-indicator_icon",
+    "hrv-stress-health-sleep-hrv_detail-info_register",
+    "hrv-stress-health-sleep-hrv_explain-title1",
+    "hrv-stress-health-sleep-hrv_explain-detail1",
+    "hrv-stress-health-sleep-hrv_explain-title2",
+    "hrv-stress-health-sleep-hrv_explain-detail2",
+    "hrv-stress-health-sleep-hrv_explain-title3",
+    "hrv-stress-health-sleep-hrv_explain-detail3",
+    "hrv-stress-health-sleep-hrv_explain-title4",
+    "hrv-stress-health-sleep-hrv_explain-detail4",
+    "hrv-stress-health-sleep-hrv_info-normal_title1",
+    "hrv-stress-health-sleep-hrv_info-normal_detail1",
+    "hrv-stress-health-sleep-hrv_info-normal_title2",
+    "hrv-stress-health-sleep-hrv_info-normal_detail2",
+    "hrv-stress-health-sleep-hrv_info-normal_title3",
+    "hrv-stress-health-sleep-hrv_info-normal_detail3",
+    "hrv-stress-health-sleep-hrv_info-high_title1",
+    "hrv-stress-health-sleep-hrv_info-high_detail1",
+    "hrv-stress-health-sleep-hrv_info-high_title2",
+    "hrv-stress-health-sleep-hrv_info-high_detail2",
+    "hrv-stress-health-sleep-hrv_info-high_title3",
+    "hrv-stress-health-sleep-hrv_info-high_detail3",
+    "hrv-stress-health-sleep-hrv_info-high_title4",
+    "hrv-stress-health-sleep-hrv_info-high_detail4",
+    "hrv-stress-health-sleep-hrv_info-low_title1",
+    "hrv-stress-health-sleep-hrv_info-low_detail1",
+    "hrv-stress-health-sleep-hrv_info-low_title2",
+    "hrv-stress-health-sleep-hrv_info-low_detail2",
+    "hrv-stress-health-sleep-hrv_info-low_title3",
+    "hrv-stress-health-sleep-hrv_info-low_detail3",
+    "hrv-stress-health-sleep-hrv_info-low_title4",
+    "hrv-stress-health-sleep-hrv_info-low_detail4",
+    "hrv-stress-health-stress-measure-prep_icon",
+    "hrv-stress-health-stress-measure-prep_text",
+    "hrv-stress-health-stress-measure-measuring_text",
+    "hrv-stress-health-stress-measure-screen_up_text",
+    "hrv-stress-health-stress-measure-still_text",
+    "hrv-stress-health-stress-month-date_today",
+    "hrv-stress-health-stress-month-date_prev1",
+    "hrv-stress-health-stress-month-date_prev2",
+    "hrv-stress-health-stress-month-empty_value",
+    "hrv-stress-health-stress-month-average_label",
+    "hrv-stress-health-stress-month-chart_register",
+    "hrv-stress-hrv-info-navigation",
+    "hrv-stress-pressure-chart-register",
+    "hrv-stress-pressure-start-timer"
+  ],
+  "device_validation": "pending"
+}

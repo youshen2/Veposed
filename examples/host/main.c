@@ -19,7 +19,7 @@ static void after(vep_call *call, void *unused) { (void)unused; call->result *= 
 static uintptr_t (*volatile slot)(uintptr_t, uintptr_t, uintptr_t, uintptr_t) = sum;
 
 int main(void) {
-    vep_platform platform = { VEP_ABI_VERSION, sizeof(vep_platform), 0, guard_read, guard_write, 0, 0 };
+    vep_platform platform = { VEP_ABI_VERSION, sizeof(vep_platform), 0, guard_read, guard_write, 0, 0, sizeof(vep_named_point) };
     assert(veposed_init(&platform) == 0);
     const vep_api *api = veposed_get_api();
     assert(api->abi_version == VEP_ABI_VERSION && api->struct_size == sizeof(*api));

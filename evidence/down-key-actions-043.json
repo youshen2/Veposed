@@ -1,0 +1,43 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page_id": 22,
+  "state_slot": "0x20112a04",
+  "descriptor_root_slot": "0x200d2fc8",
+  "list_slot": "0x201129fc",
+  "event_callback": "0xc55dc3d",
+  "points": [
+    {
+      "name": "settings.down_key.selected_index",
+      "call": "0xc55dc44",
+      "target": "lv_event_get_user_data",
+      "verification_window": "down-key-selected-index"
+    },
+    {
+      "name": "settings.down_key.register_create",
+      "call": "0xc55df9a",
+      "target": "lv_obj_add_event_cb",
+      "verification_window": "down-key-register-create"
+    },
+    {
+      "name": "settings.down_key.register_update",
+      "call": "0xc55dd32",
+      "target": "lv_obj_add_event_cb",
+      "verification_window": "down-key-register-update"
+    }
+  ],
+  "evidence": "Creation at 0xc55df9a and update at 0xc55dd32 register callback 0xc55dc3d with event filter 7 and row index as user data. Callback reads index at 0xc55dc44, uses it to index 28-byte records at 0x201129fc, stores the chosen index at 0x200d3034, passes record +12 to system-state setter 0xc4beb74 for key 11, then sends an update. The list builder creates one 28-byte record per available option and increments the count in the state object.",
+  "scope": "Click event user-data read and callback registration at row creation and update; no global behavior when the page is closed.",
+  "limitations": "The callback does not check the index before indexing the list. Replacements must be an integer in [0, current count); out-of-range or negative indices can corrupt or crash the system. The state setter is not itself exposed by this entry. The page state checks do not synchronize threads or queued callbacks; on-device operation and recovery are unverified.",
+  "verification_windows": [
+    "down-key-selected-index",
+    "down-key-register-create",
+    "down-key-register-update",
+    "down-key-select-callback",
+    "down-key-list-build",
+    "down-key-read-current",
+    "down-key-row-create",
+    "down-key-row-update"
+  ],
+  "device_validation": "pending"
+}

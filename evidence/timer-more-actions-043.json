@@ -1,0 +1,219 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "timer main",
+    "timer custom"
+  ],
+  "points": [
+    {
+      "name": "apps.timer.preset_register",
+      "calls": [
+        "0xc4ffbe4"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The main page registers C4FFF2C for each preset; its event user-data field points to an eight-byte duration.",
+      "verification_windows": [
+        "timer-more-apps-timer-preset_register-1"
+      ]
+    },
+    {
+      "name": "apps.timer.add_register",
+      "calls": [
+        "0xc4ffd72"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The main page registers C4FF578 on the add control; callback enters the custom time flow.",
+      "verification_windows": [
+        "timer-more-apps-timer-add_register-1"
+      ]
+    },
+    {
+      "name": "apps.timer.mask_icon",
+      "calls": [
+        "0xc4ffd1c"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The main page sets timer/icon/graph_musk.bin.",
+      "verification_windows": [
+        "timer-more-apps-timer-mask_icon-1"
+      ]
+    },
+    {
+      "name": "apps.timer.add_icon",
+      "calls": [
+        "0xc4ffd50"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The main page sets common/icon/add.bin.",
+      "verification_windows": [
+        "timer-more-apps-timer-add_icon-1"
+      ]
+    },
+    {
+      "name": "apps.timer.plus_icon",
+      "calls": [
+        "0xc4ffd8c"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The add button sets common/icon/icon_plus.bin.",
+      "verification_windows": [
+        "timer-more-apps-timer-plus_icon-1"
+      ]
+    },
+    {
+      "name": "apps.timer.custom.hours_event11",
+      "calls": [
+        "0xc5015da"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Hour roller registers C501094 with filter 11 and user data 1.",
+      "verification_windows": [
+        "timer-more-apps-timer-custom-hours_event11-1"
+      ]
+    },
+    {
+      "name": "apps.timer.custom.minutes_event11",
+      "calls": [
+        "0xc5015e8"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Minute roller registers C501094 with filter 11 and user data 2.",
+      "verification_windows": [
+        "timer-more-apps-timer-custom-minutes_event11-1"
+      ]
+    },
+    {
+      "name": "apps.timer.custom.seconds_event11",
+      "calls": [
+        "0xc5015f6"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Second roller registers C501094 with filter 11 and user data 3.",
+      "verification_windows": [
+        "timer-more-apps-timer-custom-seconds_event11-1"
+      ]
+    },
+    {
+      "name": "apps.timer.custom.hours_event12",
+      "calls": [
+        "0xc501604"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Hour roller registers C501094 with filter 12.",
+      "verification_windows": [
+        "timer-more-apps-timer-custom-hours_event12-1"
+      ]
+    },
+    {
+      "name": "apps.timer.custom.minutes_event12",
+      "calls": [
+        "0xc501612"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Minute roller registers C501094 with filter 12.",
+      "verification_windows": [
+        "timer-more-apps-timer-custom-minutes_event12-1"
+      ]
+    },
+    {
+      "name": "apps.timer.custom.seconds_event12",
+      "calls": [
+        "0xc501620"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Second roller registers C501094 with filter 12.",
+      "verification_windows": [
+        "timer-more-apps-timer-custom-seconds_event12-1"
+      ]
+    },
+    {
+      "name": "apps.timer.custom.picker_event_code",
+      "calls": [
+        "0xc5010a2"
+      ],
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "C501094 reads the event code to update the start control after picker changes.",
+      "verification_windows": [
+        "timer-more-apps-timer-custom-picker_event_code-1"
+      ]
+    },
+    {
+      "name": "apps.timer.custom.colon_icon",
+      "calls": [
+        "0xc501516",
+        "0xc50153a"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Two image calls set timer/icon/colon.bin between the rollers.",
+      "verification_windows": [
+        "timer-more-apps-timer-custom-colon_icon-1",
+        "timer-more-apps-timer-custom-colon_icon-2"
+      ]
+    },
+    {
+      "name": "apps.timer.custom.top_shadow",
+      "calls": [
+        "0xc50155e"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The page sets timer/icon/shadow_top.bin.",
+      "verification_windows": [
+        "timer-more-apps-timer-custom-top_shadow-1"
+      ]
+    },
+    {
+      "name": "apps.timer.custom.bottom_shadow",
+      "calls": [
+        "0xc501590"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The page sets timer/icon/shadow_btm.bin.",
+      "verification_windows": [
+        "timer-more-apps-timer-custom-bottom_shadow-1"
+      ]
+    }
+  ],
+  "evidence": "The timer manifest registers the custom descriptor; its state allocation is freed and cleared in destroy. The main preset builder registers one callback per preset. The custom builder registers one handler with event filters 11 and 12 on each of three rollers; the callback checks selected values before enabling start.",
+  "scope": "Recorded shared UI and event calls, not the timer scheduling backend or every timer state transition. Existing focus-related registration points cover different call sites.",
+  "limitations": "The preset event data is a pointer, not a duration integer; changing it incorrectly can crash. Altering events can leave start availability or timer state inconsistent. State slots are not thread barriers; device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "lifecycle-state-clear-apps-timer-custom",
+    "timer-more-apps-timer-preset_register-1",
+    "timer-more-apps-timer-add_register-1",
+    "timer-more-apps-timer-mask_icon-1",
+    "timer-more-apps-timer-add_icon-1",
+    "timer-more-apps-timer-plus_icon-1",
+    "timer-more-apps-timer-custom-hours_event11-1",
+    "timer-more-apps-timer-custom-minutes_event11-1",
+    "timer-more-apps-timer-custom-seconds_event11-1",
+    "timer-more-apps-timer-custom-hours_event12-1",
+    "timer-more-apps-timer-custom-minutes_event12-1",
+    "timer-more-apps-timer-custom-seconds_event12-1",
+    "timer-more-apps-timer-custom-picker_event_code-1",
+    "timer-more-apps-timer-custom-colon_icon-1",
+    "timer-more-apps-timer-custom-colon_icon-2",
+    "timer-more-apps-timer-custom-top_shadow-1",
+    "timer-more-apps-timer-custom-bottom_shadow-1",
+    "timer-more-preset-callback",
+    "timer-more-custom-value-event",
+    "timer-more-custom-start",
+    "timer-more-custom-create"
+  ],
+  "device_validation": "pending"
+}

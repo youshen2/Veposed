@@ -1,0 +1,98 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "state_slot": "0x2010fcc8",
+  "descriptor_root_slot": "0x200d02ec",
+  "points": [
+    {
+      "name": "apps.timer.run.initial_hide",
+      "call": "0xc4ffec2",
+      "target": "lv_obj_add_flag",
+      "contract": "void2",
+      "interpretation": "run view receives flag 1 after its creation.",
+      "verification_window": "timer-view-apps-timer-run-initial_hide"
+    },
+    {
+      "name": "apps.timer.run.initial_clear_flag16",
+      "call": "0xc4ffeba",
+      "target": "lv_obj_clear_flag",
+      "contract": "void2",
+      "interpretation": "run view clears flag 16 after its creation.",
+      "verification_window": "timer-view-apps-timer-run-initial_clear_flag16"
+    },
+    {
+      "name": "apps.timer.run.show",
+      "call": "0xc4ffe80",
+      "target": "lv_obj_clear_flag",
+      "contract": "void2",
+      "interpretation": "run view clears flag 1 when entering the running view.",
+      "verification_window": "timer-view-apps-timer-run-show"
+    },
+    {
+      "name": "apps.timer.main.hide",
+      "call": "0xc4ffe8a",
+      "target": "lv_obj_add_flag",
+      "contract": "void2",
+      "interpretation": "main content receives flag 1 when entering the running view.",
+      "verification_window": "timer-view-apps-timer-main-hide"
+    },
+    {
+      "name": "apps.timer.main.clear_flag16",
+      "call": "0xc4ffe94",
+      "target": "lv_obj_clear_flag",
+      "contract": "void2",
+      "interpretation": "main content clears flag 16 when entering the running view.",
+      "verification_window": "timer-view-apps-timer-main-clear_flag16"
+    },
+    {
+      "name": "apps.timer.run.hide",
+      "call": "0xc4fff8a",
+      "target": "lv_obj_add_flag",
+      "contract": "void2",
+      "interpretation": "run view receives flag 1 when returning to the main view.",
+      "verification_window": "timer-view-apps-timer-run-hide"
+    },
+    {
+      "name": "apps.timer.main.show",
+      "call": "0xc4fff94",
+      "target": "lv_obj_clear_flag",
+      "contract": "void2",
+      "interpretation": "main content clears flag 1 when returning to the main view.",
+      "verification_window": "timer-view-apps-timer-main-show"
+    },
+    {
+      "name": "apps.timer.main.add_flag16",
+      "call": "0xc4fff9e",
+      "target": "lv_obj_add_flag",
+      "contract": "void2",
+      "interpretation": "main content receives flag 16 when returning to the main view.",
+      "verification_window": "timer-view-apps-timer-main-add_flag16"
+    },
+    {
+      "name": "apps.timer.recent_caption_refresh",
+      "call": "0xc5001a2",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "when the recent caption needs creating during a main-page refresh, this call sets the recent.timer translation.",
+      "verification_window": "timer-view-apps-timer-recent_caption_refresh"
+    }
+  ],
+  "evidence": "The show-run routine uses the main state at 0x2010fcc8; offsets 28 and 36 hold the run and main views respectively. It creates the run view if absent, then changes the listed flags on both views. The show-main routine applies the reverse operations. Refresh can recreate the recent caption with a separate label call.",
+  "scope": "Specific recorded calls with the main state active; flags on other widgets and other call paths are not covered.",
+  "limitations": "Suppressing or changing flag operations may cause both views to overlap or make the UI inconsistent. The state and descriptor-root slots do not establish thread quiescence; publication and rollback of shared entries require system-wide quiescence. Static analysis only; device behavior and recovery are unverified.",
+  "verification_windows": [
+    "timer-view-apps-timer-run-initial_hide",
+    "timer-view-apps-timer-run-initial_clear_flag16",
+    "timer-view-apps-timer-run-show",
+    "timer-view-apps-timer-main-hide",
+    "timer-view-apps-timer-main-clear_flag16",
+    "timer-view-apps-timer-run-hide",
+    "timer-view-apps-timer-main-show",
+    "timer-view-apps-timer-main-add_flag16",
+    "timer-view-apps-timer-recent_caption_refresh",
+    "timer-view-show-run",
+    "timer-view-show-main",
+    "timer-view-refresh"
+  ],
+  "device_validation": "pending"
+}

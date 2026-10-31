@@ -1,0 +1,20 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "ui.object.send_event",
+  "entry": "0x002bf691",
+  "file_offset": "0x494fc",
+  "xip_veneer": "0x0c588870",
+  "psram_veneer": "0x1c07a990",
+  "contract": "word3",
+  "prototype": "uint32_t(void *object, uint16_t event_code, void *parameter)",
+  "evidence": "The SRAM function initializes an event record from object, the low 16 bits of the event code and the parameter, dispatches the event to its object event list and class handlers, and may propagate it to parent objects. Null object returns 1 without dispatch. The object-clean routine invokes the PSRAM veneer with object, codes 0x24, 0x25 and 0x27 and a null parameter, and checks the return on the first call. The XIP and PSRAM veneers both branch to this SRAM entry.",
+  "relocation": "A firmware-address and byte-signature guarded trampoline retains the first three instructions and rewrites the CBZ into two absolute resume paths: original entry + 8 for non-null object and + 0x58 for null object. Unicorn compares both paths, register/stack state and condition flags with the original prologue. Full event dispatch is not emulated.",
+  "scope": "all calls reaching this shared event-dispatch entry, including firmware calls via its veneers; calls bypassing this entry are outside scope",
+  "limitations": "Modifying or skipping event dispatch can disrupt object lifecycle, input, drawing and other system behavior. Code is truncated to 16 bits; parameter lifetime and layout depend on event. Callers can inspect the returned status, so replacement must respect each caller. Hooks that send more events may recurse. This heavily shared entry requires system-wide quiescence during publication and restoration; device behavior is unverified.",
+  "verification_windows": [
+    "object-send-event-xip-veneer",
+    "object-send-event-psram-veneer"
+  ],
+  "device_validation": "pending"
+}

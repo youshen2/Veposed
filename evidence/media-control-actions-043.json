@@ -1,0 +1,96 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "media main page",
+  "state_slot": "0x20110918",
+  "descriptor_root_slot": "0x200d0f50",
+  "common_callback": "0x0c51dad8",
+  "builder": "0x0c51f034",
+  "points": [
+    {
+      "name": "apps.media.control.register_other",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc51f534",
+        "0xc51fb20"
+      ],
+      "interpretation": "The two builder paths register the shared callback for control items in the ordinary branches; the actual item and availability depend on the media view state.",
+      "verification_windows": [
+        "media-control-apps-media-control-register_other-1",
+        "media-control-apps-media-control-register_other-2"
+      ]
+    },
+    {
+      "name": "apps.media.control.register_23",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc51f918",
+        "0xc51fd0c"
+      ],
+      "interpretation": "The two builder paths assign item type 3 or 2, respectively from an iteration over items 2 and 3, and register the common media callback.",
+      "verification_windows": [
+        "media-control-apps-media-control-register_23-1",
+        "media-control-apps-media-control-register_23-2"
+      ]
+    },
+    {
+      "name": "apps.media.control.register_4",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc51f960",
+        "0xc51fc88"
+      ],
+      "interpretation": "The two builder paths register the common callback in the item-4 branch subject to view and connectivity conditions.",
+      "verification_windows": [
+        "media-control-apps-media-control-register_4-1",
+        "media-control-apps-media-control-register_4-2"
+      ]
+    },
+    {
+      "name": "apps.media.control.event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "calls": [
+        "0xc51dae0"
+      ],
+      "interpretation": "The shared callback checks for event code 7 before dispatching an operation based on current control metadata.",
+      "verification_windows": [
+        "media-control-apps-media-control-event_code-1"
+      ]
+    },
+    {
+      "name": "apps.media.control.current_target",
+      "target": "lv_event_current_target",
+      "contract": "word1",
+      "calls": [
+        "0xc51daea"
+      ],
+      "interpretation": "The callback reads its current object and uses the first byte of its object-associated metadata to choose the control operation.",
+      "verification_windows": [
+        "media-control-apps-media-control-current_target-1"
+      ]
+    }
+  ],
+  "evidence": "The media builder registers the same callback in multiple branches. The callback fetches the event code and current target, requires code 7 and a non-null target, then reads the type byte of object-associated metadata. Types 0..3 route command values 5, 6, 3 and 2 through the player-control function; types 4 and 5 enter other navigation branches. The page lifecycle publishes and clears the main view state.",
+  "scope": "Only the listed registration/getter call sites while the media main view state is present. Other command sources, registration calls and media pages are outside scope.",
+  "limitations": "Do not substitute arbitrary current-target pointers; the callback dereferences target-associated data. Rewriting code or registration can desynchronize UI and remote playback state. The recorder of command values does not establish their complete public semantics across player backends. Shared-entry publication and rollback require system-wide quiescence; device behavior is unverified.",
+  "verification_windows": [
+    "media-control-handler",
+    "media-control-command-routing",
+    "media-control-callback-literal-a",
+    "media-control-callback-literal-b",
+    "media-control-callback-literal-c",
+    "media-control-apps-media-control-register_other-1",
+    "media-control-apps-media-control-register_other-2",
+    "media-control-apps-media-control-register_23-1",
+    "media-control-apps-media-control-register_23-2",
+    "media-control-apps-media-control-register_4-1",
+    "media-control-apps-media-control-register_4-2",
+    "media-control-apps-media-control-event_code-1",
+    "media-control-apps-media-control-current_target-1"
+  ],
+  "device_validation": "pending"
+}

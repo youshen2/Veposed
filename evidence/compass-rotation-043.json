@@ -1,0 +1,74 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "compass",
+  "root_slot": "0x2010fbec",
+  "descriptor_root_slot": "0x200d0234",
+  "refresh": "0x0c4fdfac",
+  "rotation_target": "0x1c06caf9",
+  "rotation_entry_file_offset": "0xb9f38",
+  "points": [
+    {
+      "name": "apps.compass.north_angle",
+      "call": "0xc4fe000",
+      "target": "lv_image_set_angle",
+      "contract": "void2",
+      "verification_window": "compass-rotation-north_angle"
+    },
+    {
+      "name": "apps.compass.east_angle",
+      "call": "0xc4fe0ce",
+      "target": "lv_image_set_angle",
+      "contract": "void2",
+      "verification_window": "compass-rotation-east_angle"
+    },
+    {
+      "name": "apps.compass.south_angle",
+      "call": "0xc4fe0da",
+      "target": "lv_image_set_angle",
+      "contract": "void2",
+      "verification_window": "compass-rotation-south_angle"
+    },
+    {
+      "name": "apps.compass.west_angle",
+      "call": "0xc4fe0e6",
+      "target": "lv_image_set_angle",
+      "contract": "void2",
+      "verification_window": "compass-rotation-west_angle"
+    }
+  ],
+  "sensor_registration": "0x0c4fd768",
+  "sensor_registration_call": "0x0c4fd776",
+  "sensor_watcher": "0x2010fb44",
+  "sensor_callback_slot": "0x2010fbd0",
+  "sensor_callback_store": "0x0c2e6628",
+  "sensor_dispatch": "0x0c2e6428",
+  "sensor_callback": "0x0c4fe278",
+  "sensor_sample_fields_observed": {
+    "state_byte_offset": 8,
+    "direction_float_offset": 10,
+    "gravity_direction_float_offset": 14,
+    "gravity_magnitude_float_offset": 18
+  },
+  "evidence": "The sensor registration passes watcher 0x2010fb44 and callback 0x0c4fe279 to the registration function, which stores the callback at watcher + 140. The dispatcher reads that slot and invokes it with a status and sample pointer. The callback updates the compass state and refreshes the view. Refresh computes tenths-of-degree angles from the direction and calls the image angle setter for each cardinal image.",
+  "scope": "Only the four listed image setter calls while the compass page state exists. This does not modify sensor readings, formatted heading, calibration or other image angles.",
+  "limitations": "The watcher callback slot is written during registration; current static-pointer hooks cannot safely assume it remains installed across registration or teardown, so it is documented as a candidate and not exported. Sample field alignment, lifetime and cross-thread ownership require further validation before mutation. Inline publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "compass-rotation-north_angle",
+    "compass-rotation-east_angle",
+    "compass-rotation-south_angle",
+    "compass-rotation-west_angle",
+    "compass-sensor-registration",
+    "compass-sensor-slot-store",
+    "compass-sensor-dispatch",
+    "compass-sensor-callback"
+  ],
+  "device_validation": "pending",
+  "global_point": {
+    "name": "ui.image.set_angle",
+    "contract": "void2",
+    "scope": "all callers of rotation_target",
+    "basis": "The target normalizes its signed second argument in a 3600-unit circle and updates image transform state. Its observed behavior resembles the upstream LVGL image rotation implementation; the firmware build and device behavior are not established by that similarity.",
+    "upstream_reference": "https://github.com/lvgl/lvgl/blob/master/src/widgets/image/lv_image.c"
+  }
+}

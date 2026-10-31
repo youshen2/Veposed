@@ -1,0 +1,23 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "settings.about.os_version_size",
+  "page_create": "0x0c54d634",
+  "page_root_slot": "0x20111c20",
+  "subject_slot": "0x20111c48",
+  "call": "0x0c54d7e6",
+  "return_pc": "0x0c54d7ea",
+  "entry": "0x1c02a2d1",
+  "data_alias": "0x3c02a2d0",
+  "file_offset": "0x77710",
+  "signature": "f0b5144683b000af0e46002301213a1d",
+  "evidence": "The about-page constructor stores the created OS-value label at 0x20111c48, loads it into R0, loads 304 into R1 and 0x200007d1 into R2, then calls veneer 0x0c588628. That veneer branches to the executable function. The implementation compares and sets width and height properties.",
+  "scope": "this size-setting call for the OS value label while the about page is active",
+  "verification_window": {
+    "name": "about-os-size-call",
+    "file_offset": "0x48d7de",
+    "expected": "4ff49871404aa06a3af01fff30463bf0"
+  },
+  "device_validation": "pending",
+  "upstream": "https://github.com/lvgl/lvgl/blob/master/src/core/lv_obj_pos.c"
+}

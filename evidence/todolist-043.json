@@ -1,0 +1,113 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 60,
+  "points": [
+    {
+      "name": "apps.todolist.detail.title_full",
+      "call": "0xc6813cc",
+      "target": "lvx_label_set_text",
+      "source": "full title",
+      "verification_window": "todolist-apps-todolist-detail-title_full"
+    },
+    {
+      "name": "apps.todolist.detail.title_truncated",
+      "call": "0xc6812ec",
+      "target": "lvx_label_set_text",
+      "source": "truncated title",
+      "verification_window": "todolist-apps-todolist-detail-title_truncated"
+    },
+    {
+      "name": "apps.todolist.detail.status_register",
+      "call": "0xc681376",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc680d09 filter 7",
+      "verification_window": "todolist-apps-todolist-detail-status_register"
+    },
+    {
+      "name": "apps.todolist.list.row_checkbox_register",
+      "call": "0xc681fee",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc681ad9 filter 7",
+      "verification_window": "todolist-apps-todolist-list-row_checkbox_register"
+    },
+    {
+      "name": "apps.todolist.list.row_register_ordinary",
+      "call": "0xc6820f8",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc6815f1 filter 7",
+      "verification_window": "todolist-apps-todolist-list-row_register_ordinary"
+    },
+    {
+      "name": "apps.todolist.list.row_register_alternate",
+      "call": "0xc68218e",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc6815ad filter 7",
+      "verification_window": "todolist-apps-todolist-list-row_register_alternate"
+    },
+    {
+      "name": "apps.todolist.list.row_due_icon",
+      "call": "0xc6824e8",
+      "target": "lv_image_set_src",
+      "source": "mask_right.bin or mask_gray.bin",
+      "verification_window": "todolist-apps-todolist-list-row_due_icon"
+    },
+    {
+      "name": "apps.todolist.sub_list.item_text",
+      "call": "0xc683084",
+      "target": "lvx_label_set_text",
+      "source": "item title",
+      "verification_window": "todolist-apps-todolist-sub_list-item_text"
+    },
+    {
+      "name": "apps.todolist.sub_list.checkbox_register_create",
+      "call": "0xc683b2c",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc683261 filter 7",
+      "verification_window": "todolist-apps-todolist-sub_list-checkbox_register_create"
+    },
+    {
+      "name": "apps.todolist.sub_list.row_register_create",
+      "call": "0xc683ba8",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc683261 filter 7",
+      "verification_window": "todolist-apps-todolist-sub_list-row_register_create"
+    },
+    {
+      "name": "apps.todolist.sub_list.row_register_update",
+      "call": "0xc683c5a",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc683261 filter 7",
+      "verification_window": "todolist-apps-todolist-sub_list-row_register_update"
+    },
+    {
+      "name": "apps.todolist.sub_list.checkbox_register_update",
+      "call": "0xc683c6e",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc683261 filter 7",
+      "verification_window": "todolist-apps-todolist-sub_list-checkbox_register_update"
+    }
+  ],
+  "evidence": "Manifest 0xc680cc4 registers four descriptors. Their creators store the root in distinct globals, and their destroy paths clear those globals. Detail builder chooses full or truncated task text; list and sub-list builders register row callbacks on creation or update. The sub-list text helper can be called for multiple rows.",
+  "scope": "Listed page lifecycle slots and individual UI setter/registration calls only. List row points may trigger repeatedly for different tasks.",
+  "limitations": "State slots are not thread synchronization. Input navigation data contains task state and must remain valid. Changing callback pointers or skipping page callbacks can disrupt task state; static-only evidence does not verify device behavior or recovery. Do not record task contents.",
+  "verification_windows": [
+    "todolist-apps-todolist-detail-title_full",
+    "todolist-apps-todolist-detail-title_truncated",
+    "todolist-apps-todolist-detail-status_register",
+    "todolist-apps-todolist-list-row_checkbox_register",
+    "todolist-apps-todolist-list-row_register_ordinary",
+    "todolist-apps-todolist-list-row_register_alternate",
+    "todolist-apps-todolist-list-row_due_icon",
+    "todolist-apps-todolist-sub_list-item_text",
+    "todolist-apps-todolist-sub_list-checkbox_register_create",
+    "todolist-apps-todolist-sub_list-row_register_create",
+    "todolist-apps-todolist-sub_list-row_register_update",
+    "todolist-apps-todolist-sub_list-checkbox_register_update",
+    "todolist-detail-create",
+    "todolist-list-create",
+    "todolist-main-create",
+    "todolist-sub-list-create"
+  ],
+  "device_validation": "pending"
+}

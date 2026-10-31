@@ -1,0 +1,25 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "previous_named_limit": 1024,
+  "named_limit": 2048,
+  "physical_site_limit": 32,
+  "build_comparison": {
+    "catalog_entries": 767,
+    "previous_resident_section_bytes": 315099,
+    "new_resident_section_bytes": 438027,
+    "increase_bytes": 122928,
+    "meaning": "Sum of resident ELF section sizes reported by the build; not a measurement of peak heap usage or device memory availability."
+  },
+  "validation": [
+    "Runtime maximum-size hash table test covers collisions, duplicate rejection and retry.",
+    "Host C API test configures and enumerates 2048 names and attaches the final entries.",
+    "Firmware verifier rejects catalogs exceeding the runtime limit."
+  ],
+  "limitations": [
+    "Catalog storage remains a fixed-size copied array. Increasing the cap does not remove the limit.",
+    "ARM build size does not establish that loading will succeed on the device, nor does it validate concurrency or failure recovery.",
+    "Physical hook sites and retired dispatch slots remain limited independently of catalog capacity."
+  ],
+  "device_validation": "pending"
+}

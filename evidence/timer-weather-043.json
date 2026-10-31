@@ -1,0 +1,79 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "points": [
+    {
+      "name": "apps.timer.preset_unit",
+      "calls": [
+        "0xc4ffc7a"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "state_slot": "0x2010fcc8",
+      "interpretation": "The main page creates each preset label in its grid and passes the translation for min.timer to the text setter. This call occurs once per generated preset, not for the formatted numeric labels.",
+      "verification_windows": [
+        "timer-weather-apps-timer-preset_unit-1"
+      ]
+    },
+    {
+      "name": "apps.timer.recent_caption",
+      "calls": [
+        "0xc4ffcf4"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "state_slot": "0x2010fcc8",
+      "interpretation": "The main page obtains the translation for recent.timer and passes it to the newly created recent-area label.",
+      "verification_windows": [
+        "timer-weather-apps-timer-recent_caption-1"
+      ]
+    },
+    {
+      "name": "apps.weather.city.initial_icon",
+      "calls": [
+        "0xc60f34a"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "state_slot": "0x2011ad7c",
+      "interpretation": "The city list initializer assigns lb_clear0.bin to each newly created item image; subsequent update calls can replace it.",
+      "verification_windows": [
+        "timer-weather-apps-weather-city-initial_icon-1"
+      ]
+    },
+    {
+      "name": "apps.weather.city.condition_icon",
+      "calls": [
+        "0xc60f5cc",
+        "0xc60f73e"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "state_slot": "0x2011ad7c",
+      "interpretation": "The update path assigns lb_clear4.bin for an unavailable item and assigns the resource returned by the condition-to-icon function on the populated-item path.",
+      "verification_windows": [
+        "timer-weather-apps-weather-city-condition_icon-1",
+        "timer-weather-apps-weather-city-condition_icon-2"
+      ]
+    },
+    {
+      "name": "apps.weather.city.location_icon",
+      "calls": [
+        "0xc60f978",
+        "0xc60f9b6"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "state_slot": "0x2011ad7c",
+      "interpretation": "Two update branches allocate the location indicator and set i_blocation.bin on the created image.",
+      "verification_windows": [
+        "timer-weather-apps-weather-city-location_icon-1",
+        "timer-weather-apps-weather-city-location_icon-2"
+      ]
+    }
+  ],
+  "evidence": "Timer main-page creator 0x0c4ffab0 creates the preset grid and recent caption. Weather main-page builder 0x0c60f1dc creates the city list and updates each item. The firmware verifier checks each recorded Thumb BL and its veneer to the expected target; the active page state is established and cleared by the corresponding lifecycle callbacks.",
+  "scope": "Only the recorded call sites while the corresponding page state slot is nonzero; other UI update paths are not covered.",
+  "limitations": "Static analysis only. Resource source may be a path, symbol or image descriptor whose lifetime must match the UI use; changing it may affect later redraws. Shared-entry patch publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "device_validation": "pending"
+}

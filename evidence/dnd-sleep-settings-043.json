@@ -1,0 +1,58 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page_create": "0x0c559ca8",
+  "page_destroy": "0x0c559704",
+  "page_rebuild": "0x0c559e40",
+  "content_builder": "0x0c559a08",
+  "page_root_slot": "0x20112648",
+  "points": [
+    {
+      "name": "settings.dnd.info",
+      "call": "0x0c559ac6",
+      "return_pc": "0x0c559aca",
+      "target": "lvx_label_set_text",
+      "contract": "void2"
+    },
+    {
+      "name": "settings.sleep_mode.info",
+      "call": "0x0c559b6c",
+      "return_pc": "0x0c559b70",
+      "target": "lvx_label_set_text",
+      "contract": "void2"
+    },
+    {
+      "name": "settings.dnd.schedule_register",
+      "call": "0x0c559a72",
+      "return_pc": "0x0c559a76",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4"
+    },
+    {
+      "name": "settings.sleep_mode.toggle_register",
+      "call": "0x0c559b18",
+      "return_pc": "0x0c559b1c",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4"
+    },
+    {
+      "name": "settings.dnd.schedule_click_data",
+      "call": "0x0c5599b4",
+      "return_pc": "0x0c5599b8",
+      "target": "lv_event_get_user_data",
+      "contract": "word1"
+    }
+  ],
+  "evidence": "The disturb/sleep page stores its root before invoking the content builder and clears the root on destruction. The rebuild path invokes the same builder while the root remains set. The builder sets localized not_disturb_mode_info.settings and sleep_mode_info.settings text on locally held labels. It registers event 7 with user data 0 for the disturb schedule row and event 7 with user data 1 for the sleep switch. The two registrations ignore the returned descriptor. The schedule callback reads user data and navigates to the timing page if its low byte is zero. The sleep callback reads the switch state and updates persist.switch_sleep_state plus the sleep-mode service.",
+  "limitations": "Text hooks change these displayed descriptions only. Blocking the schedule registration or altering its data prevents that specific navigation callback, not other DND settings paths. Blocking the sleep callback can leave switch appearance and persisted state inconsistent. Root and caller filters do not prove other threads are quiescent during shared-entry patch publication or restoration.",
+  "verification_windows": [
+    "dnd-info-set",
+    "sleep-mode-info-set",
+    "dnd-schedule-register",
+    "sleep-mode-toggle-register",
+    "dnd-schedule-click-data",
+    "dnd-root-create",
+    "dnd-root-destroy"
+  ],
+  "device_validation": "pending"
+}

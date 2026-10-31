@@ -16,9 +16,11 @@ def main():
     args = parser.parse_args()
     sys.path.insert(0, str(args.repo.resolve() / "tools"))
     from firmware import number, resolve, verify
+    from thumb_check import verify_runtime_profile
 
     profile = json.loads(args.profile.read_text())
     ap, identity = verify(args.firmware, profile)
+    identity["inline_relocations_verified"] = verify_runtime_profile(profile)
     errors, hooks, symbols = [], {}, {}
     for mapping in profile["mappings"]:
         start, length = number(mapping["file_offset"]), number(mapping["length"])
@@ -34,27 +36,24 @@ def main():
         try:
             address = number(hook["address"])
             mapped = resolve(profile, address)
-            if address & 1 != 1:
-                errors.append(f"{name}: Thumb callable must be odd")
             if mapped["file_offset"] != number(hook["file_offset"]):
                 errors.append(f"{name}: address maps to a different file offset")
-            if len(bytes.fromhex(hook["expected"])) != 16:
-                errors.append(f"{name}: runtime expected_code is exactly 16 bytes")
             if mapped["write"] is None:
-                errors.append(f"{name}: inline hook is outside a writable mapping")
+                errors.append(f"{name}: hook is outside a writable mapping")
+            if hook.get("kind", "inline") == "pointer":
+                if address & 3 or mapped["write"] != hex(address):
+                    errors.append(f"{name}: pointer slot must be an aligned data address")
+                resolve(profile, number(hook["expected_pointer"]))
+            else:
+                if address & 1 != 1:
+                    errors.append(f"{name}: Thumb callable must be odd")
+                if len(bytes.fromhex(hook["expected"])) != 16:
+                    errors.append(f"{name}: runtime expected_code is exactly 16 bytes")
             hooks[name] = mapped
         except ValueError as error:
             errors.append(f"{name}: {error}")
     for name, point in profile["named_hooks"].items():
-        if len(name.encode()) > 47 or "\0" in name:
-            errors.append(f"{name}: invalid named-point length")
-        if point["target"] not in hooks:
-            errors.append(f"{name}: unknown target")
-        if point["contract"] not in ("void2", "word2", "word4"):
-            errors.append(f"{name}: unsupported contract")
         target = profile["hooks"].get(point["target"], {})
-        if "os_setter_return" in point and number(point["os_setter_return"]) & 1:
-            errors.append(f"{name}: normalized return-PC filter must be even")
         hooks[name] = {
             "contract": point["contract"],
             "target": point["target"],

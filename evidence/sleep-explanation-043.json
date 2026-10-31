@@ -1,0 +1,46 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 12,
+  "page_id": 1,
+  "descriptor": "0x200daf98",
+  "state_slot": "0x2011d5fc",
+  "descriptor_root_slot": "0x200dafc8",
+  "points": [
+    {
+      "name": "health.sleep.explanation.instructions1",
+      "call": "0xc63be90",
+      "translation": "instructions1.sleep",
+      "verification_window": "sleep-explanation-instructions1"
+    },
+    {
+      "name": "health.sleep.explanation.instructions2",
+      "call": "0xc63bf04",
+      "translation": "instructions2.sleep",
+      "verification_window": "sleep-explanation-instructions2"
+    },
+    {
+      "name": "health.sleep.explanation.longshort",
+      "call": "0xc63bf74",
+      "translation": "longshort.sleep",
+      "verification_window": "sleep-explanation-longshort"
+    },
+    {
+      "name": "health.sleep.explanation.instructions3",
+      "call": "0xc63bfe2",
+      "translation": "instructions3.sleep",
+      "verification_window": "sleep-explanation-instructions3"
+    }
+  ],
+  "evidence": "The sleep manifest 0xc628e94 registers nine descriptors, including page 1. Its creator allocates state and sets the listed four translation labels; destructor 0xc63bd78 frees and clears the state. The distinct HRV explanation uses the same descriptor name but page ID 8 and separate state.",
+  "scope": "Page 1 lifecycle and the four listed label setter call sites; the title is set through a different API.",
+  "limitations": "State and descriptor slots are not thread synchronization primitives. Skipping lifecycle callbacks can leak state or disrupt the page. Static analysis only; device behavior and recovery are unverified.",
+  "verification_windows": [
+    "sleep-explanation-instructions1",
+    "sleep-explanation-instructions2",
+    "sleep-explanation-longshort",
+    "sleep-explanation-instructions3",
+    "sleep-explanation-create"
+  ],
+  "device_validation": "pending"
+}

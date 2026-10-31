@@ -1,0 +1,68 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 22,
+  "page_id": 38,
+  "descriptor": "0x200d3038",
+  "state_slot": "0x20112a14",
+  "descriptor_root_slot": "0x200d3068",
+  "row_builder": "0xc55e1cd",
+  "row_table_file_offset": "0xd0f724",
+  "points": [
+    {
+      "name": "settings.gnss.row_register",
+      "call": "0xc55e204",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The option row registers callback 0xc55e39d with filter 7 and the row index as event user data.",
+      "verification_window": "gnss-settings-row_register"
+    },
+    {
+      "name": "settings.gnss.radio_register",
+      "call": "0xc55e258",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The radio control registers the same callback, filter, and index.",
+      "verification_window": "gnss-settings-radio_register"
+    },
+    {
+      "name": "settings.gnss.event_code",
+      "call": "0xc55e3a4",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The handler proceeds only for event code 7.",
+      "verification_window": "gnss-settings-event_code"
+    },
+    {
+      "name": "settings.gnss.event_data",
+      "call": "0xc55e3b4",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The low byte of user data is used as the selected index; only 0, 1 and 2 reach the persist.gnss_mode write.",
+      "verification_window": "gnss-settings-event_data"
+    },
+    {
+      "name": "settings.gnss.info_clear_flag",
+      "call": "0xc55e290",
+      "target": "lv_obj_clear_flag",
+      "contract": "void2",
+      "interpretation": "Rows with index greater than 2 clear flag 2 on the row object.",
+      "verification_window": "gnss-settings-info_clear_flag"
+    }
+  ],
+  "evidence": "The settings manifest registers the descriptor; create associates the row table with the stored list view. The first three rows register the same callback on the row and radio object; their index is passed as user data. The event handler checks code 7 and accepts low-byte indices 0, 1 or 2 before calling the persistent property setter. Destroy clears the list view.",
+  "scope": "Only listed calls on this page. Other consumers and writers of persist.gnss_mode are not intercepted.",
+  "limitations": "Changing the event data can change the saved GNSS mode; invalid values do not enter the setter branch. State slots are not thread synchronization. Device behavior and recovery are unverified.",
+  "verification_windows": [
+    "gnss-settings-row_register",
+    "gnss-settings-radio_register",
+    "gnss-settings-event_code",
+    "gnss-settings-event_data",
+    "gnss-settings-info_clear_flag",
+    "gnss-settings-row-table",
+    "gnss-settings-create",
+    "gnss-settings-destroy",
+    "gnss-settings-event"
+  ],
+  "device_validation": "pending"
+}

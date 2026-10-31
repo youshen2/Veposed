@@ -1,0 +1,96 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "stopwatch main",
+  "descriptor": "0x200d0118",
+  "descriptor_root_slot": "0x200d0148",
+  "state_slot": "0x2010f9a4",
+  "create": "0x0c4fa1c0",
+  "destroy": "0x0c4fb044",
+  "view_builder": "0x0c4fb8f0",
+  "points": [
+    {
+      "name": "apps.stopwatch.start_register",
+      "call": "0xc4fbb42",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers start callback 0x0c4fa7c1 for event filter 7 and passes the page state.",
+      "verification_window": "stopwatch-start_register"
+    },
+    {
+      "name": "apps.stopwatch.pause_register",
+      "call": "0xc4fbb4e",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers pause callback 0x0c4fa6b9 for event filter 7 and passes the page state.",
+      "verification_window": "stopwatch-pause_register"
+    },
+    {
+      "name": "apps.stopwatch.lap_register",
+      "call": "0xc4fbb5a",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers lap callback 0x0c4fb145 for event filter 7 and passes the page state.",
+      "verification_window": "stopwatch-lap_register"
+    },
+    {
+      "name": "apps.stopwatch.stop_register",
+      "call": "0xc4fbb66",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers stop callback 0x0c4fa939 for event filter 7 and passes the page state.",
+      "verification_window": "stopwatch-stop_register"
+    },
+    {
+      "name": "apps.stopwatch.start_data",
+      "call": "0xc4fa7d6",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The start callback obtains the page state pointer and starts or resumes the stopwatch.",
+      "verification_window": "stopwatch-start_data"
+    },
+    {
+      "name": "apps.stopwatch.pause_data",
+      "call": "0xc4fa6be",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The pause callback obtains the page state pointer and pauses the timer.",
+      "verification_window": "stopwatch-pause_data"
+    },
+    {
+      "name": "apps.stopwatch.lap_data",
+      "call": "0xc4fb15c",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The lap callback obtains the page state pointer and records a lap if its internal guards pass.",
+      "verification_window": "stopwatch-lap_data"
+    },
+    {
+      "name": "apps.stopwatch.stop_data",
+      "call": "0xc4fa940",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The stop callback obtains the page state pointer and resets timing and lap state.",
+      "verification_window": "stopwatch-stop_data"
+    }
+  ],
+  "evidence": "The stopwatch manifest registers its main descriptor. Create allocates the page state and destroy frees and clears it. The view builder stored in the descriptor registers start, pause, lap and stop callbacks with filter 7 and the allocated page state as event user data. Each handler fetches and dereferences this data; the callbacks update stopwatch and UI state along distinct paths.",
+  "scope": "Only these button registration and event-data getter calls while the stopwatch page state is active. Background timer operations or other ways to affect timing are not intercepted.",
+  "limitations": "The callback data must remain a valid stopwatch page state. Replacing handlers or data can desynchronize timing and display or crash the device. State slots are not thread barriers; shared-entry publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "stopwatch-start_register",
+    "stopwatch-pause_register",
+    "stopwatch-lap_register",
+    "stopwatch-stop_register",
+    "stopwatch-start_data",
+    "stopwatch-pause_data",
+    "stopwatch-lap_data",
+    "stopwatch-stop_data",
+    "stopwatch-callback-registration",
+    "stopwatch-start-callback",
+    "stopwatch-pause-callback",
+    "stopwatch-lap-callback",
+    "stopwatch-stop-callback"
+  ],
+  "device_validation": "pending"
+}

@@ -1,0 +1,123 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 22,
+  "points": [
+    {
+      "name": "settings.bluetooth.off_caption",
+      "call": "0xc563e9a",
+      "target": "lvx_label_set_text",
+      "meaning": "bt_label.settings",
+      "verification_window": "bluetooth-settings-settings-bluetooth-off_caption"
+    },
+    {
+      "name": "settings.bluetooth.paired_heading",
+      "call": "0xc562648",
+      "target": "lvx_label_set_text",
+      "meaning": "my_headphone.settings",
+      "verification_window": "bluetooth-settings-settings-bluetooth-paired_heading"
+    },
+    {
+      "name": "settings.bluetooth.search_caption",
+      "call": "0xc562060",
+      "target": "lvx_label_set_text",
+      "meaning": "searching.common in refresh",
+      "verification_window": "bluetooth-settings-settings-bluetooth-search_caption"
+    },
+    {
+      "name": "settings.bluetooth.search_click_caption",
+      "call": "0xc56333a",
+      "target": "lvx_label_set_text",
+      "meaning": "searching.common in click",
+      "verification_window": "bluetooth-settings-settings-bluetooth-search_click_caption"
+    },
+    {
+      "name": "settings.bluetooth.toggle_register",
+      "call": "0xc563da8",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc563181 filter 7",
+      "verification_window": "bluetooth-settings-settings-bluetooth-toggle_register"
+    },
+    {
+      "name": "settings.bluetooth.toggle_event_code",
+      "call": "0xc563188",
+      "target": "lv_event_get_code",
+      "meaning": "callback compares 7",
+      "verification_window": "bluetooth-settings-settings-bluetooth-toggle_event_code"
+    },
+    {
+      "name": "settings.bluetooth.headphone.name",
+      "call": "0xc56489c",
+      "target": "lvx_label_set_text",
+      "meaning": "formatted device name",
+      "verification_window": "bluetooth-settings-settings-bluetooth-headphone-name"
+    },
+    {
+      "name": "settings.bluetooth.headphone.connected",
+      "call": "0xc564a60",
+      "target": "lvx_label_set_text",
+      "meaning": "connected.common",
+      "verification_window": "bluetooth-settings-settings-bluetooth-headphone-connected"
+    },
+    {
+      "name": "settings.bluetooth.headphone.disconnected",
+      "call": "0xc564a2c",
+      "target": "lvx_label_set_text",
+      "meaning": "un_connect.settings",
+      "verification_window": "bluetooth-settings-settings-bluetooth-headphone-disconnected"
+    },
+    {
+      "name": "settings.bluetooth.headphone.connect_register",
+      "call": "0xc564bc6",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc56471d filter 7",
+      "verification_window": "bluetooth-settings-settings-bluetooth-headphone-connect_register"
+    },
+    {
+      "name": "settings.bluetooth.headphone.unpair_register",
+      "call": "0xc564bd4",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc5646ad filter 7",
+      "verification_window": "bluetooth-settings-settings-bluetooth-headphone-unpair_register"
+    },
+    {
+      "name": "settings.bluetooth.headphone.connect_event_code",
+      "call": "0xc564722",
+      "target": "lv_event_get_code",
+      "meaning": "callback compares 7",
+      "verification_window": "bluetooth-settings-settings-bluetooth-headphone-connect_event_code"
+    },
+    {
+      "name": "settings.bluetooth.headphone.unpair_event_code",
+      "call": "0xc5646b2",
+      "target": "lv_event_get_code",
+      "meaning": "callback compares 7",
+      "verification_window": "bluetooth-settings-settings-bluetooth-headphone-unpair_event_code"
+    }
+  ],
+  "evidence": "Settings manifest registers page 2 and page 3. The scan-page creator stores the root at 0x20112d8c; page 3 stores content at 0x20112dd8 only if its navigation data is nonzero. Their destroy callbacks clear the respective state. The scan switch and detail buttons register separate callbacks, which check event code 7. The named setters are in the scan or detail builders.",
+  "scope": "Only listed lifecycle callbacks and individual UI/event call sites. Device name setter receives the selected device name and can run on redraw.",
+  "limitations": "Changing event results or callback pointers can affect adapter state, device connection or pairing. Both pages register asynchronous work; root slots are not thread synchronization. Firmware behavior and recovery are not device-verified. Avoid recording device identifiers or names.",
+  "verification_windows": [
+    "bluetooth-settings-settings-bluetooth-off_caption",
+    "bluetooth-settings-settings-bluetooth-paired_heading",
+    "bluetooth-settings-settings-bluetooth-search_caption",
+    "bluetooth-settings-settings-bluetooth-search_click_caption",
+    "bluetooth-settings-settings-bluetooth-toggle_register",
+    "bluetooth-settings-settings-bluetooth-toggle_event_code",
+    "bluetooth-settings-settings-bluetooth-headphone-name",
+    "bluetooth-settings-settings-bluetooth-headphone-connected",
+    "bluetooth-settings-settings-bluetooth-headphone-disconnected",
+    "bluetooth-settings-settings-bluetooth-headphone-connect_register",
+    "bluetooth-settings-settings-bluetooth-headphone-unpair_register",
+    "bluetooth-settings-settings-bluetooth-headphone-connect_event_code",
+    "bluetooth-settings-settings-bluetooth-headphone-unpair_event_code",
+    "bluetooth-settings-create",
+    "bluetooth-headphone-create",
+    "bluetooth-headphone-draw",
+    "bluetooth-toggle-callback",
+    "bluetooth-headphone-connect",
+    "bluetooth-headphone-unpair"
+  ],
+  "device_validation": "pending"
+}

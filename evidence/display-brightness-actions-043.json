@@ -1,0 +1,47 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page_create": "0x0c5555ac",
+  "page_builder": "0x0c5551d8",
+  "page_destroy": "0x0c554ea0",
+  "page_root_slot": "0x2011233c",
+  "page_state_slot": "0x20112350",
+  "event_callback": "0x0c554f64",
+  "points": [
+    {
+      "name": "settings.display.brightness.auto_register",
+      "call": "0x0c555284",
+      "return_pc": "0x0c555288",
+      "contract": "word4"
+    },
+    {
+      "name": "settings.display.brightness.sunshine_register",
+      "call": "0x0c5553d6",
+      "return_pc": "0x0c5553da",
+      "contract": "word4"
+    },
+    {
+      "name": "settings.display.brightness.manual_register",
+      "call": "0x0c555310",
+      "return_pc": "0x0c555314",
+      "contract": "word4"
+    },
+    {
+      "name": "settings.display.brightness.action_data",
+      "call": "0x0c554f70",
+      "return_pc": "0x0c554f74",
+      "contract": "word1"
+    }
+  ],
+  "evidence": "Page creation stores the root and allocates the state object before invoking the builder. The builder registers the same callback for event 7 at three call sites: auto brightness with user data 0, sunshine mode with 1 and manual brightness with 2. The registration descriptor return is ignored in each case. The callback checks that state exists, reads event user data and selects the auto, sunshine or remaining-value branch. Destroy clears the root and frees and clears state.",
+  "limitations": "Replacing event user data can change real brightness or persistent sunshine settings; nonzero values other than 1 enter the remaining-value branch and are not a general skip mechanism. Suppressing one registration only prevents that specific UI callback and may leave the displayed state unsynchronized. Page and state slots do not provide system-wide quiescence for shared targets.",
+  "verification_windows": [
+    "brightness-auto-register",
+    "brightness-manual-register",
+    "brightness-sunshine-register",
+    "brightness-action-data",
+    "brightness-page-root-create",
+    "brightness-hint-destroy"
+  ],
+  "device_validation": "pending"
+}

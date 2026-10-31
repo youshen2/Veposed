@@ -1,0 +1,32 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "names": [
+    "ui.event.code",
+    "settings.return_to_dial.event_code"
+  ],
+  "entry": "0x002bfd65",
+  "write_alias": "0x200bfd64",
+  "file_offset": "0x49bd0",
+  "expected": "80b4008900afc0f30e00bd465df8047b",
+  "veneer": "0x0c588210",
+  "contract": "word1",
+  "return_to_dial": {
+    "page_create": "0x0c54e2f0",
+    "page_destroy": "0x0c54e0dc",
+    "page_root_slot": "0x20111c90",
+    "event_callback": "0x0c54e374",
+    "getter_call": "0x0c54e37c",
+    "return_pc": "0x0c54e380",
+    "click_code": 7
+  },
+  "evidence": "The veneer jumps to SRAM getter that reads a halfword from event + 8 and returns its low 15 bits. The return-to-dial callback compares the result to 7 and only enters its selection-and-persistence branch on equality. Page creation stores its root and page destroy clears the root slot. The entry prologue includes UBFX R0,R0,#0,#15, so a 10-byte relocated prologue is necessary.",
+  "scope": "ui.event.code covers all callers; the settings point covers the specified callback while its page is active",
+  "limitations": "Changing event code affects downstream branches; the global point affects all calls to the getter. Shared entry publication and rollback still require all affected threads to be quiescent; not device-validated.",
+  "verification_windows": [
+    "event-code-veneer",
+    "return-to-dial-click-event-code",
+    "return-to-dial-destroy"
+  ],
+  "device_validation": "pending"
+}

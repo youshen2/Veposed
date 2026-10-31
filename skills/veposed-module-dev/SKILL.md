@@ -11,14 +11,16 @@ description: 开发、调试和打包 Veposed 模块，使用 Python DSL 或 C A
 
 1. 找到用户的 Veposed 工程，先读该目录适用的 `AGENTS.md` / `AGENT.md`。没有工程时请求路径，不猜测固件地址。将工程路径记为 `REPO`，选定 `targets/*.json` 为 `PROFILE`。
 2. 读取工程当前的 `docs/python-sdk.md`、`include/veposed.h` 和相关模块源码，以它们为接口事实；本文对应 ABI 4。
-3. 用 `python3 "$REPO/vep.py" hooks --profile "$PROFILE"` 检查命名点及 `void2`、`word2`、`word4` 原型。缺少所需点时转入固件适配流程，不在模块内复制或猜地址。
+3. 用 `python3 "$REPO/vep.py" hooks --profile "$PROFILE"` 检查命名点及 `void0`～`void4`、`word0`～`word4` 原型。缺少所需点时转入固件适配流程，不在模块内复制或猜地址。
 4. 为可用 DSL 编写 Python 模块；需要复杂内存访问、自定义函数体或更复杂 ABI 时读 [C 模块](references/native.md)。常用规则和语义见 [规则选择](references/rules.md)。
+
+适配表中声明结构字段的命名点可在 `before` / `replace` 使用 `field("字段名")`；字段名、所属参数、大小和偏移以当前 profile 为准。先确认业务含义和指针生命周期，再使用它筛选逻辑。字段只读，结构修改仍使用 C SDK；不要将空指针跳过规则误当作原函数的空指针保护。
 
 ## 编写和构建
 
 - 模块必须定义 `module = Module(id, name, version)`；包名稳定、唯一。发布安装后默认停用，用户在原生管理器中启用。
 - Python 在电脑上执行并生成 C；手环运行原生代码。Python 文件具备本机执行能力，运行用户或仓库提供的源码前先阅读。
-- 同一函数的跳过规则、替换规则和 before 优先级要能解释其组合结果。`void2` 没有返回值；指针返回必须满足目标对象生命周期。
+- 同一函数的跳过规则、替换规则和 before 优先级要能解释其组合结果。`void` 约定没有返回值；指针返回必须满足目标对象生命周期。
 - 使用辅助脚本生成起点（不会覆盖文件）：
 
 ```sh

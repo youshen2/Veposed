@@ -1,0 +1,88 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 31,
+  "notes_page_id": 1,
+  "notes_descriptor": "0x200da6ec",
+  "notes_descriptor_root_slot": "0x200da71c",
+  "main_page_id": 0,
+  "main_state_slot": "0x2011ce40",
+  "main_descriptor_root_slot": "0x200da7d0",
+  "points": [
+    {
+      "name": "health.women.notes.chart_caption",
+      "call": "0xc620810",
+      "target": "lvx_label_set_text",
+      "source": "chart_exp.wm",
+      "verification_window": "women-pages-notes-chart_caption"
+    },
+    {
+      "name": "health.women.notes.chart_description",
+      "call": "0xc620870",
+      "target": "lvx_label_set_text",
+      "source": "chart_content.wm",
+      "verification_window": "women-pages-notes-chart_description"
+    },
+    {
+      "name": "health.women.notes.chart_notes",
+      "call": "0xc6208a2",
+      "target": "lvx_label_set_text",
+      "source": "chart_content_notes.wm",
+      "verification_window": "women-pages-notes-chart_notes"
+    },
+    {
+      "name": "health.women.notes.legend_icon",
+      "call": "0xc6206e0",
+      "target": "lv_image_set_src",
+      "source": "indexed resource table",
+      "verification_window": "women-pages-notes-legend_icon"
+    },
+    {
+      "name": "health.women.notes.legend_caption",
+      "call": "0xc620718",
+      "target": "lvx_label_set_text",
+      "source": "indexed translation table",
+      "verification_window": "women-pages-notes-legend_caption"
+    },
+    {
+      "name": "health.women.notes.know_register",
+      "call": "0xc62090a",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc620631; filter 7",
+      "verification_window": "women-pages-notes-know_register"
+    },
+    {
+      "name": "health.women.empty_icon",
+      "call": "0xc6218be",
+      "target": "lv_image_set_src",
+      "source": "/resource/app/womenhealth/no_data.bin",
+      "verification_window": "women-pages-empty_icon"
+    },
+    {
+      "name": "health.women.empty_caption",
+      "call": "0xc62191e",
+      "target": "lvx_label_set_text",
+      "source": "nodata.wm",
+      "verification_window": "women-pages-empty_caption"
+    }
+  ],
+  "evidence": "Manifest 0xc621174 registers main and notes. The notes creator invokes the builder; the builder invokes the legend helper four times (indices 0 through 3), whose two setters each share a call site. Event registration uses callback 0xc620631 and filter 7. The notes destroy only logs; the synchronous page-manager path clears descriptor root. Main empty-state builder supplies the named image and translation.",
+  "scope": "Only the listed call sites and notes lifecycle callbacks; legend hooks fire for each of the four items.",
+  "limitations": "Descriptor root is not a thread synchronization mechanism; the asynchronous destruction path is not confirmed. Skipping lifecycle or event registration can disrupt navigation. Static analysis only; device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "women-pages-notes-chart_caption",
+    "women-pages-notes-chart_description",
+    "women-pages-notes-chart_notes",
+    "women-pages-notes-legend_icon",
+    "women-pages-notes-legend_caption",
+    "women-pages-notes-know_register",
+    "women-pages-empty_icon",
+    "women-pages-empty_caption",
+    "women-notes-builder",
+    "women-notes-create",
+    "women-notes-destroy",
+    "women-notes-legend",
+    "women-main-empty"
+  ],
+  "device_validation": "pending"
+}

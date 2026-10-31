@@ -1,0 +1,196 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 69,
+  "points": [
+    {
+      "name": "apps.perpetual.main.today_text",
+      "call": "0xc4f366a",
+      "target": "lvx_label_set_text",
+      "meaning": "today_t.calendar",
+      "verification_window": "perpetual-calendar-apps-perpetual-main-today_text"
+    },
+    {
+      "name": "apps.perpetual.main.month_text",
+      "call": "0xc4f3250",
+      "target": "lvx_label_set_text",
+      "meaning": "formatted month",
+      "verification_window": "perpetual-calendar-apps-perpetual-main-month_text"
+    },
+    {
+      "name": "apps.perpetual.main.today_register",
+      "call": "0xc4f36b0",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc4f2869 filter 7",
+      "verification_window": "perpetual-calendar-apps-perpetual-main-today_register"
+    },
+    {
+      "name": "apps.perpetual.main.previous_register",
+      "call": "0xc4f32a8",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc4f3035 filter 7",
+      "verification_window": "perpetual-calendar-apps-perpetual-main-previous_register"
+    },
+    {
+      "name": "apps.perpetual.main.next_register",
+      "call": "0xc4f32f6",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc4f27e9 filter 7",
+      "verification_window": "perpetual-calendar-apps-perpetual-main-next_register"
+    },
+    {
+      "name": "apps.perpetual.main.scroll_start_register",
+      "call": "0xc4f3494",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc4f28f9 filter 9",
+      "verification_window": "perpetual-calendar-apps-perpetual-main-scroll_start_register"
+    },
+    {
+      "name": "apps.perpetual.main.scroll_end_register",
+      "call": "0xc4f34a2",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc4f28f9 filter 11",
+      "verification_window": "perpetual-calendar-apps-perpetual-main-scroll_end_register"
+    },
+    {
+      "name": "apps.perpetual.main.today_event_code",
+      "call": "0xc4f289e",
+      "target": "lv_event_get_code",
+      "meaning": "callback checks code after changing state",
+      "verification_window": "perpetual-calendar-apps-perpetual-main-today_event_code"
+    },
+    {
+      "name": "apps.perpetual.main.previous_event_code",
+      "call": "0xc4f3054",
+      "target": "lv_event_get_code",
+      "meaning": "callback checks code after changing state",
+      "verification_window": "perpetual-calendar-apps-perpetual-main-previous_event_code"
+    },
+    {
+      "name": "apps.perpetual.main.next_event_code",
+      "call": "0xc4f2808",
+      "target": "lv_event_get_code",
+      "meaning": "callback checks code after changing state",
+      "verification_window": "perpetual-calendar-apps-perpetual-main-next_event_code"
+    },
+    {
+      "name": "apps.perpetual.day_detail.scroll_register",
+      "call": "0xc4f11cc",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc4f0eed filter 12",
+      "verification_window": "perpetual-calendar-apps-perpetual-day_detail-scroll_register"
+    },
+    {
+      "name": "apps.perpetual.schedule.title",
+      "call": "0xc4f682c",
+      "target": "lvx_label_set_text",
+      "meaning": "schedule title",
+      "verification_window": "perpetual-calendar-apps-perpetual-schedule-title"
+    },
+    {
+      "name": "apps.perpetual.schedule.empty_title",
+      "call": "0xc4f6aea",
+      "target": "lvx_label_set_text",
+      "meaning": "no_title.calendar",
+      "verification_window": "perpetual-calendar-apps-perpetual-schedule-empty_title"
+    },
+    {
+      "name": "apps.perpetual.schedule.location_icon",
+      "call": "0xc4f68b0",
+      "target": "lv_image_set_src",
+      "meaning": "loca.bin",
+      "verification_window": "perpetual-calendar-apps-perpetual-schedule-location_icon"
+    },
+    {
+      "name": "apps.perpetual.schedule.location_full",
+      "call": "0xc4f6b22",
+      "target": "lvx_label_set_text",
+      "meaning": "location full",
+      "verification_window": "perpetual-calendar-apps-perpetual-schedule-location_full"
+    },
+    {
+      "name": "apps.perpetual.schedule.location_short",
+      "call": "0xc4f6952",
+      "target": "lvx_label_set_text",
+      "meaning": "location truncated",
+      "verification_window": "perpetual-calendar-apps-perpetual-schedule-location_short"
+    },
+    {
+      "name": "apps.perpetual.schedule.description_icon",
+      "call": "0xc4f699a",
+      "target": "lv_image_set_src",
+      "meaning": "desc.bin",
+      "verification_window": "perpetual-calendar-apps-perpetual-schedule-description_icon"
+    },
+    {
+      "name": "apps.perpetual.schedule.description_full",
+      "call": "0xc4f6b18",
+      "target": "lvx_label_set_text",
+      "meaning": "description full",
+      "verification_window": "perpetual-calendar-apps-perpetual-schedule-description_full"
+    },
+    {
+      "name": "apps.perpetual.schedule.description_short",
+      "call": "0xc4f6a52",
+      "target": "lvx_label_set_text",
+      "meaning": "description truncated",
+      "verification_window": "perpetual-calendar-apps-perpetual-schedule-description_short"
+    },
+    {
+      "name": "apps.perpetual.week.today_text",
+      "call": "0xc4f9844",
+      "target": "lvx_label_set_text",
+      "meaning": "today_t.calendar",
+      "verification_window": "perpetual-calendar-apps-perpetual-week-today_text"
+    },
+    {
+      "name": "apps.perpetual.week.today_register",
+      "call": "0xc4f9896",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc4f9a31 filter 7",
+      "verification_window": "perpetual-calendar-apps-perpetual-week-today_register"
+    },
+    {
+      "name": "apps.perpetual.week.today_event_code",
+      "call": "0xc4f9a36",
+      "target": "lv_event_get_code",
+      "meaning": "callback compares code 7",
+      "verification_window": "perpetual-calendar-apps-perpetual-week-today_event_code"
+    }
+  ],
+  "evidence": "Manifest 0xc4f0020 registers five pages. Page 1 and page 4 both use descriptor name detail but have distinct creation functions and state. Page 3 title renders selected schedule details. Week page allocates state before setting its root and frees it on destroy. Main and week today buttons use different callbacks; main today and month callbacks update some state before retrieving event code.",
+  "scope": "Listed lifecycle callbacks, text/image setters and registrations. Schedule title, location and description contain user-provided calendar data.",
+  "limitations": "Date navigation data and schedule pointers must remain valid; root and allocation state slots do not synchronize deferred work or threads. Changing event codes cannot undo state changes that precede the getter. Device behavior and recovery remain unverified. Avoid recording schedule contents.",
+  "verification_windows": [
+    "perpetual-calendar-apps-perpetual-main-today_text",
+    "perpetual-calendar-apps-perpetual-main-month_text",
+    "perpetual-calendar-apps-perpetual-main-today_register",
+    "perpetual-calendar-apps-perpetual-main-previous_register",
+    "perpetual-calendar-apps-perpetual-main-next_register",
+    "perpetual-calendar-apps-perpetual-main-scroll_start_register",
+    "perpetual-calendar-apps-perpetual-main-scroll_end_register",
+    "perpetual-calendar-apps-perpetual-main-today_event_code",
+    "perpetual-calendar-apps-perpetual-main-previous_event_code",
+    "perpetual-calendar-apps-perpetual-main-next_event_code",
+    "perpetual-calendar-apps-perpetual-day_detail-scroll_register",
+    "perpetual-calendar-apps-perpetual-schedule-title",
+    "perpetual-calendar-apps-perpetual-schedule-empty_title",
+    "perpetual-calendar-apps-perpetual-schedule-location_icon",
+    "perpetual-calendar-apps-perpetual-schedule-location_full",
+    "perpetual-calendar-apps-perpetual-schedule-location_short",
+    "perpetual-calendar-apps-perpetual-schedule-description_icon",
+    "perpetual-calendar-apps-perpetual-schedule-description_full",
+    "perpetual-calendar-apps-perpetual-schedule-description_short",
+    "perpetual-calendar-apps-perpetual-week-today_text",
+    "perpetual-calendar-apps-perpetual-week-today_register",
+    "perpetual-calendar-apps-perpetual-week-today_event_code",
+    "perpetual-calendar-main-create",
+    "perpetual-calendar-day-create",
+    "perpetual-calendar-show-create",
+    "perpetual-calendar-schedule-create",
+    "perpetual-calendar-week-create",
+    "perpetual-calendar-today-handler",
+    "perpetual-calendar-week-handler"
+  ],
+  "device_validation": "pending"
+}

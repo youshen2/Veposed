@@ -1,0 +1,20 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "ui.object.create",
+  "entry": "0x1c028bb5",
+  "file_offset": "0x75ff4",
+  "write_alias": "0x3c028bb4",
+  "expected": "0246b0b506480d4600af114600f0def9",
+  "veneer": "0x0c5881e0",
+  "literal_address": "0x1c028bd4",
+  "literal_file_offset": "0x76014",
+  "literal_expected": "0803ce2c",
+  "contract": "word2",
+  "evidence": "The entry calls 0x1c028f80 with class pointer 0x2cce0308 and the supplied parent, then calls 0x1c029074 with the allocated object and second argument when allocation succeeds. The class allocation routine contains the firmware log name lv_obj_class_create_obj. The initializer substitutes a default when the second argument is NULL, otherwise reads its first byte. Caller 0x1c070560 supplies a parent and NULL options and uses the returned object. The XIP veneer and PSRAM entry bytes were verified in the exact AP.",
+  "relocation": "For this exact entry and first eight bytes, replace the PC-relative LDR with MOVW/MOVT of the original literal address followed by a load from that address, then execute the displaced MOV and jump to entry + 8. This preserves the live pool value rather than embedding its initial contents; other literal patterns are rejected.",
+  "validation": "scripts/test-thumb-relocation.py runs both paths in Unicorn using original and altered pool values and compares the destination, registers, flags and saved stack. This does not execute the full allocation or initialization.",
+  "scope": "all calls through this base-object entry; widgets that call the class allocator directly are outside scope",
+  "limitations": "Callers may not handle a NULL result. Any replacement result must obey the expected object type, parent relation and lifetime; skipping creation can break UI. Shared-entry publication and rollback require proven system-wide quiescence; no device validation.",
+  "device_validation": "pending"
+}

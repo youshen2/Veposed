@@ -1,0 +1,33 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "points": [
+    {
+      "name": "ui.object.clear_flag",
+      "entry": "0x1c028c85",
+      "contract": "void2",
+      "semantics": "clear supplied bits from object flags; may trigger redraw/layout operations"
+    },
+    {
+      "name": "ui.object.has_flag",
+      "entry": "0x1c028d95",
+      "contract": "word2",
+      "semantics": "returns 1 if every requested flag bit is present, else 0"
+    },
+    {
+      "name": "ui.object.has_state",
+      "entry": "0x1c028dd5",
+      "contract": "word2",
+      "semantics": "returns 1 if any requested state bit is present, else 0"
+    }
+  ],
+  "evidence": "The clear-flag implementation masks object + 44 with the complement of flags and performs associated layout/redraw work. The flag getter computes requested_bits & ~object_flags and returns 1 iff zero. The state getter tests requested_bits against the halfword at object + 48 and returns 1 iff nonzero. Their veneers and PSRAM signatures are verified from the exact AP.",
+  "relocation": "For both getters the first 8 bytes end in a flags-setting instruction; the trampoline absolute jump does not modify condition flags, and execution resumes at the IT instruction. This is supported by static instruction analysis and relocation plan tests, not device execution.",
+  "scope": "all calls to the respective shared entries",
+  "limitations": "Results from global getters influence many system branches, and bypassing clear_flag can alter rendering, interaction and lifecycle. Shared entry publication and rollback require system-wide quiescence; no device validation.",
+  "verification_windows": [
+    "object-clear-flag-veneer",
+    "object-has-state-veneer"
+  ],
+  "device_validation": "pending"
+}

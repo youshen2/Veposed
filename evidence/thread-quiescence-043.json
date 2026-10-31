@@ -1,0 +1,106 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "status": "research candidate; not used by runtime",
+  "observations": [
+    {
+      "function": "0x0c205e54",
+      "fact": "Iterates a pointer array from global 0x200b24b0 with signed count at 0x200b24ac, invokes callback(pointer, context), and brackets iteration with BASEPRI and internal scheduler lock/unlock calls."
+    },
+    {
+      "function": "0x0c20347c",
+      "fact": "Assert dump invokes that iterator with dump_task callback 0x0c2032c8; the current-task pointer is read from 0x200b24d4 outside an exception."
+    },
+    {
+      "function": "0x0c1a0bc8",
+      "fact": "When unwinding a task other than the current task, reads a saved-context pointer at task + 188 and uses entries 0, 5, 34 and 35."
+    },
+    {
+      "function": "0x0c1a007c",
+      "fact": "The register dump labels saved-context words 34 and 35 as LR and PC, respectively."
+    },
+    {
+      "function": "0x0c205eb4 / 0x0c205ee8",
+      "fact": "The first routine increments a signed halfword at current task + 0x44 outside exception context; the second decrements it, may merge pending tasks and may issue SVC 0 when the count reaches zero. Their firmware assertion strings identify sched_lock.c and sched_unlock.c. This does not by itself prove all CPUs or exception contexts are stopped."
+    },
+    {
+      "function": "0x0c19b7e0 / 0x0c19bb8c",
+      "fact": "The exception entry saves registers on the selected MSP/PSP stack and calls 0x0c19bb8c with the resulting frame. The dispatcher stores this frame at the task pointer from 0x200b24d0 + 0xbc and later obtains the next task frame from the pointer at 0x200b24d4 + 0xbc. This corroborates frame ownership during this exception path, but not all task states or processors."
+    },
+    {
+      "function": "0x0c19b876",
+      "fact": "A separate synchronous register-capture routine writes LR to both frame + 0x88 and frame + 0x8c; these offsets cannot always be treated as an interrupted PC and LR without knowing how the frame was produced."
+    },
+    {
+      "function": "Veposed dispatch / detach",
+      "fact": "The original entry branches to an indexed dispatcher before IN_FLIGHT is incremented inside dispatch. A preempted thread in that interval is not represented by the counter. Callback-site metadata and trampoline are retained with callbacks cleared after detach or a failed publication, including while restoration is pending; their index is not reused in this runtime session. Raw replacements, runtime unloading and threads in an inline prologue still require independent synchronization."
+    }
+  ],
+  "windows": [
+    {
+      "name": "task-iterator",
+      "address": "0xc205e54",
+      "file_offset": "0x145e54",
+      "expected": "2de9f0470646884600afeff31189802383f31188104d00f023f82b68002b0ddd"
+    },
+    {
+      "name": "task-backtrace",
+      "address": "0xc1a0bc8",
+      "file_offset": "0xe0bc8",
+      "expected": "2de9f0418ab000af0e4614467b60eff305833bb3424b002cd3f8008027dd002e"
+    },
+    {
+      "name": "register-dump",
+      "address": "0xc1a007c",
+      "file_offset": "0xe007c",
+      "expected": "f0b585b004af00284bd00446636fa56fe16fd4f880600120cde901160095224a"
+    },
+    {
+      "name": "assert-dump",
+      "address": "0xc20347c",
+      "file_offset": "0x14347c",
+      "expected": "2de9f04fbbb0dff818b30caf9bf800408146e4b2884616461d46fc60eff30583"
+    },
+    {
+      "name": "scheduler-lock",
+      "address": "0xc205eb4",
+      "file_offset": "0x145eb4",
+      "expected": "0a4b1b684bb1eff3058232b9b3f944107e2904dc0131a3f844100020704780b5"
+    },
+    {
+      "name": "scheduler-unlock",
+      "address": "0xc205ee8",
+      "file_offset": "0x145ee8",
+      "expected": "f8b5194d00af2c683cb3eff3058222bbeff31186802383f31188b4f94430002b"
+    },
+    {
+      "name": "exception-entry",
+      "address": "0xc19b7e0",
+      "file_offset": "0xdb7e0",
+      "expected": "eff3148c1ef0040f02d0eff3098107e0eff30881a1f1740282f30888bff36f8f"
+    },
+    {
+      "name": "exception-dispatch",
+      "address": "0xc19bb8c",
+      "file_offset": "0xdbb8c",
+      "expected": "2de9f041154e044633680d4600af0bb1c3f8bc102046dff84c8000f0dbfb0e2c"
+    },
+    {
+      "name": "synchronous-register-capture",
+      "address": "0xc19b876",
+      "file_offset": "0xdb876",
+      "expected": "40678167c267c0f88030c0f884c0c0f888e0c0f88ce0eff30381c0f8901000f1"
+    }
+  ],
+  "open_questions": [
+    "Confirm live task table and saved-context ownership for every task state, including newly created or exiting tasks.",
+    "Establish whether other processors or unmaskable exception contexts can execute the target code concurrently.",
+    "Prove when saved contexts are stable and how the currently running task and nested exceptions are handled.",
+    "Check both executable/data aliases, return paths and any indirect callers; validate the check is held throughout code publication and rollback.",
+    "Obtain independent emulator or device observations before using this candidate as an execution barrier.",
+    "Include suspended PCs in entry thunks and dispatch code before the in-flight increment, and ensure a site index or trampoline is not reused while any old invocation can still reach it.",
+    "Account for raw replacements and return addresses held on stacks or in exception frames; a zero callback counter and a scan of only current PCs are not sufficient.",
+    "Distinguish exception frames from synchronous register captures and newly initialized contexts before interpreting the saved PC/LR fields."
+  ],
+  "device_validation": "pending"
+}

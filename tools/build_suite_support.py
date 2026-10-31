@@ -32,7 +32,6 @@ SOURCE_FILES = (
     "Cargo.toml",
     "LICENSE",
     "Makefile",
-    "NOTICE.md",
     "README.md",
     "pyproject.toml",
     "requirements-dev.txt",

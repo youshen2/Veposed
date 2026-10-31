@@ -1,0 +1,74 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "media volume",
+  "points": [
+    {
+      "name": "apps.media.volume.minus_icon",
+      "call": "0xc51eeb4",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The page sets media/minus.bin on the decrease button.",
+      "verification_windows": [
+        "media-volume-apps-media-volume-minus_icon"
+      ]
+    },
+    {
+      "name": "apps.media.volume.plus_icon",
+      "call": "0xc51ef10",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The page sets media/plus.bin on the increase button.",
+      "verification_windows": [
+        "media-volume-apps-media-volume-plus_icon"
+      ]
+    },
+    {
+      "name": "apps.media.volume.minus_register",
+      "call": "0xc51eef8",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C51E2EC with event filter 7. The handler reduces the volume in steps of 10 and can send a media volume command.",
+      "verification_windows": [
+        "media-volume-apps-media-volume-minus_register"
+      ]
+    },
+    {
+      "name": "apps.media.volume.plus_register",
+      "call": "0xc51ef52",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C51E394 with event filter 7. The handler increases volume in steps of 10 and may show a sound-level prompt.",
+      "verification_windows": [
+        "media-volume-apps-media-volume-plus_register"
+      ]
+    },
+    {
+      "name": "apps.media.volume.bar_icon",
+      "call": "0xc51e3fc",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The increase callback sets media/volume_bar.bin when the previous volume is zero.",
+      "verification_windows": [
+        "media-volume-apps-media-volume-bar_icon"
+      ]
+    }
+  ],
+  "create_analysis": "The descriptor points to 0x0c51edc5. At 0x0c51edc4 the Thumb entry checks R1, then allocates 12 bytes and writes the pointer to 0x20110b3c at 0x0c51edda. IDA did not recover a function, so the entry and calls were inspected as instructions. The observed page wrapper ignores create return; the named contract exposes no result.",
+  "evidence": "The media manifest registers the page descriptor. Destroy unregisters the display callback, frees and clears the state slot, then deletes UI objects. The minus and plus icons register separate callbacks; handlers bound volume in ten-unit steps and route media volume commands.",
+  "scope": "The listed image and registration calls only; this does not intercept all media volume changes, sound-limit prompts, remote device behavior, or volume backend APIs.",
+  "limitations": "Changing callbacks may bypass a sound-level prompt or leave UI and actual volume inconsistent. The state slot is not a thread barrier and the create return ABI is not independently confirmed. Device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "lifecycle-state-clear-apps-media-volume",
+    "media-volume-apps-media-volume-minus_icon",
+    "media-volume-apps-media-volume-plus_icon",
+    "media-volume-apps-media-volume-minus_register",
+    "media-volume-apps-media-volume-plus_register",
+    "media-volume-apps-media-volume-bar_icon",
+    "media-volume-create-entry",
+    "media-volume-minus-callback",
+    "media-volume-plus-callback",
+    "media-volume-volume-zero-bar"
+  ],
+  "device_validation": "pending"
+}

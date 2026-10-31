@@ -1,0 +1,207 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 41,
+  "pages": [
+    "main",
+    "upload",
+    "remind",
+    "interrupt"
+  ],
+  "points": [
+    {
+      "name": "apps.recorder.start_register",
+      "call": "0xc61aa2a",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The main button registers C61AD84 with filter 7 and event data 0.",
+      "verification_window": "recorder-pages-apps-recorder-start_register"
+    },
+    {
+      "name": "apps.recorder.button_data",
+      "call": "0xc61ad90",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The shared button callback dispatches on user data; data 0 enters its start path.",
+      "verification_window": "recorder-pages-apps-recorder-button_data"
+    },
+    {
+      "name": "apps.recorder.empty_icon",
+      "call": "0xc6195ea",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets the warning.bin image when the recording list is empty.",
+      "verification_window": "recorder-pages-apps-recorder-empty_icon"
+    },
+    {
+      "name": "apps.recorder.empty_caption",
+      "call": "0xc619628",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the norecord.recorder translation when the list is empty.",
+      "verification_window": "recorder-pages-apps-recorder-empty_caption"
+    },
+    {
+      "name": "apps.recorder.upload.percent",
+      "call": "0xc61bcfe",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the percent-sign label during upload screen creation.",
+      "verification_window": "recorder-pages-apps-recorder-upload-percent"
+    },
+    {
+      "name": "apps.recorder.upload.exit_register",
+      "call": "0xc61bf44",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C61C1C0 with filter 7; the handler navigates and calls recorder helpers.",
+      "verification_window": "recorder-pages-apps-recorder-upload-exit_register"
+    },
+    {
+      "name": "apps.recorder.upload.resume_register",
+      "call": "0xc61be6e",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C61C13C with filter 7; the handler changes which upload view is visible.",
+      "verification_window": "recorder-pages-apps-recorder-upload-resume_register"
+    },
+    {
+      "name": "apps.recorder.upload.exit_caption",
+      "call": "0xc61bf7e",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets signout_mi.recorder or signout.recorder according to a condition.",
+      "verification_window": "recorder-pages-apps-recorder-upload-exit_caption"
+    },
+    {
+      "name": "apps.recorder.upload.continue_caption",
+      "call": "0xc61bff8",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets again.mi or continue.recorder according to a condition.",
+      "verification_window": "recorder-pages-apps-recorder-upload-continue_caption"
+    },
+    {
+      "name": "apps.recorder.upload.fail_icon",
+      "call": "0xc61c0a6",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Conditionally sets the common failure icon.",
+      "verification_window": "recorder-pages-apps-recorder-upload-fail_icon"
+    },
+    {
+      "name": "apps.recorder.remind.sync_caption",
+      "call": "0xc61b68c",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets synchronous.mi on one reminder branch.",
+      "verification_window": "recorder-pages-apps-recorder-remind-sync_caption"
+    },
+    {
+      "name": "apps.recorder.remind.goto_caption",
+      "call": "0xc61b6e4",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets goto.recorder on the alternate reminder branch.",
+      "verification_window": "recorder-pages-apps-recorder-remind-goto_caption"
+    },
+    {
+      "name": "apps.recorder.remind.sync_icon",
+      "call": "0xc61b69c",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets list_unsync.bin on the corresponding reminder branch.",
+      "verification_window": "recorder-pages-apps-recorder-remind-sync_icon"
+    },
+    {
+      "name": "apps.recorder.remind.finish_register",
+      "call": "0xc61b778",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C61B53C with filter 7 and data 0.",
+      "verification_window": "recorder-pages-apps-recorder-remind-finish_register"
+    },
+    {
+      "name": "apps.recorder.remind.disable_register",
+      "call": "0xc61b80a",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C61B588 with filter 7 and data 0; callback writes persist.upload_remind.",
+      "verification_window": "recorder-pages-apps-recorder-remind-disable_register"
+    },
+    {
+      "name": "apps.recorder.interrupt.fail_icon",
+      "call": "0xc618976",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets the failure icon in interruption type 1.",
+      "verification_window": "recorder-pages-apps-recorder-interrupt-fail_icon"
+    },
+    {
+      "name": "apps.recorder.interrupt.caption",
+      "call": "0xc618996",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets interrupt.mi or interrupt.recorder in interruption type 1.",
+      "verification_window": "recorder-pages-apps-recorder-interrupt-caption"
+    },
+    {
+      "name": "apps.recorder.interrupt.know_register",
+      "call": "0xc618a58",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C618730 with filter 7 in interruption type 1.",
+      "verification_window": "recorder-pages-apps-recorder-interrupt-know_register"
+    },
+    {
+      "name": "apps.recorder.interrupt.bt_caption",
+      "call": "0xc618872",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets btfail.mi in interruption type 2.",
+      "verification_window": "recorder-pages-apps-recorder-interrupt-bt_caption"
+    },
+    {
+      "name": "apps.recorder.interrupt.bt_register",
+      "call": "0xc61890a",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C618760 with filter 7 in interruption type 2.",
+      "verification_window": "recorder-pages-apps-recorder-interrupt-bt_register"
+    }
+  ],
+  "registration_condition": "The analyzed application registration branch is taken only when factory.board.id differs from CN.",
+  "evidence": "The recorder registration array includes four descriptors. The reminder creates content before storing its application root, so its scoped calls use descriptor root as the active slot. The interrupt destroy callback has no application state to clear, so its guard uses only descriptor root. Upload state is allocated and cleared during its lifecycle.",
+  "scope": "Recorded shared calls and descriptor callback slots; not all recording, playback, storage, upload, or interruption paths.",
+  "limitations": "Recording and upload callbacks affect saved recordings and device state. Do not infer functionality on CN boards from static descriptors. Page slots do not prove thread quiescence. Device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "recorder-pages-apps-recorder-start_register",
+    "recorder-pages-apps-recorder-button_data",
+    "recorder-pages-apps-recorder-empty_icon",
+    "recorder-pages-apps-recorder-empty_caption",
+    "recorder-pages-apps-recorder-upload-percent",
+    "recorder-pages-apps-recorder-upload-exit_register",
+    "recorder-pages-apps-recorder-upload-resume_register",
+    "recorder-pages-apps-recorder-upload-exit_caption",
+    "recorder-pages-apps-recorder-upload-continue_caption",
+    "recorder-pages-apps-recorder-upload-fail_icon",
+    "recorder-pages-apps-recorder-remind-sync_caption",
+    "recorder-pages-apps-recorder-remind-goto_caption",
+    "recorder-pages-apps-recorder-remind-sync_icon",
+    "recorder-pages-apps-recorder-remind-finish_register",
+    "recorder-pages-apps-recorder-remind-disable_register",
+    "recorder-pages-apps-recorder-interrupt-fail_icon",
+    "recorder-pages-apps-recorder-interrupt-caption",
+    "recorder-pages-apps-recorder-interrupt-know_register",
+    "recorder-pages-apps-recorder-interrupt-bt_caption",
+    "recorder-pages-apps-recorder-interrupt-bt_register",
+    "recorder-pages-upload-create",
+    "recorder-pages-upload-destroy",
+    "recorder-pages-remind-create",
+    "recorder-pages-remind-destroy",
+    "recorder-pages-interrupt-create",
+    "recorder-pages-interrupt-destroy",
+    "recorder-pages-start-handler"
+  ],
+  "device_validation": "pending"
+}

@@ -1,0 +1,19 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "ui.object.clean",
+  "entry": "0x1c02ecf1",
+  "file_offset": "0x7c130",
+  "write_alias": "0x3c02ecf0",
+  "expected": "f8b5054600affcf705fbaa68002a60d0",
+  "veneer": "0x0c588a30",
+  "callee": "0x1c02b304",
+  "contract": "void1",
+  "evidence": "The implementation invalidates the supplied object, iterates its children, deletes eligible children, resets scrolling and sends child notifications. Its first ten bytes push the caller link register and call 0x1c02b304. This matches the object-clean operation, with target semantics checked against the exact firmware and the analogous LVGL API.",
+  "relocation": "Rewrite the initial call into LR materialization plus an absolute branch. The callee returns to the trampoline, which branches back to 0x1c02ecfa. The rewritten call changes the return address observed by the callee; hooks which distinguish that callee by caller address must account for it. This rewrite is restricted to the verified entry and exact ten-byte prologue for this firmware; other calls fail closed.",
+  "validation": "Rust relocation plan tests and scripts/test-thumb-relocation.py with a mock callee in Unicorn; both paths reached the same callee and resume with equal saved stack, general registers and condition flags. This does not execute the full firmware function.",
+  "reference": "https://github.com/lvgl/lvgl/blob/v8.3.11/src/core/lv_obj_tree.c",
+  "scope": "all calls through the shared object-clean entry",
+  "limitations": "Skipping or changing a cleanup can retain child objects or break UI state. Shared-entry install and rollback still require all affected threads quiescent; no device validation.",
+  "device_validation": "pending"
+}

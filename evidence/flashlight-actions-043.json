@@ -1,0 +1,121 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "flashlight main",
+  "descriptor": "0x200d0770",
+  "descriptor_root_slot": "0x200d07a0",
+  "state_slot": "0x2011003c",
+  "create": "0x0c509004",
+  "destroy": "0x0c508710",
+  "points": [
+    {
+      "name": "apps.flashlight.white_register",
+      "call": "0xc508952",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers white-mode callback 0x0c508985 with filter 0 and user data 0.",
+      "verification_window": "flashlight-white_register"
+    },
+    {
+      "name": "apps.flashlight.blink_register",
+      "call": "0xc5086dc",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers blink-mode callback 0x0c508a29 with filter 0 and user data 0.",
+      "verification_window": "flashlight-blink_register"
+    },
+    {
+      "name": "apps.flashlight.red_register",
+      "call": "0xc5088b6",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers red-mode callback 0x0c508acd with filter 0 and user data 0.",
+      "verification_window": "flashlight-red_register"
+    },
+    {
+      "name": "apps.flashlight.page_register",
+      "call": "0xc509062",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers main callback 0x0c5084e9 with filter 0 when the flashlight page is allowed to open.",
+      "verification_window": "flashlight-page_register"
+    },
+    {
+      "name": "apps.flashlight.white_event_code",
+      "call": "0xc50898a",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The white-mode callback reads the event code and reacts to code 4.",
+      "verification_window": "flashlight-white_event_code"
+    },
+    {
+      "name": "apps.flashlight.blink_event_code",
+      "call": "0xc508a2e",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The blink-mode callback reads the event code and reacts to code 4.",
+      "verification_window": "flashlight-blink_event_code"
+    },
+    {
+      "name": "apps.flashlight.red_event_code",
+      "call": "0xc508ad2",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The red-mode callback reads the event code and reacts to code 4.",
+      "verification_window": "flashlight-red_event_code"
+    },
+    {
+      "name": "apps.flashlight.page_event_code",
+      "call": "0xc5084ec",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The main callback switches on event codes 11, 12 and 36.",
+      "verification_window": "flashlight-page_event_code"
+    },
+    {
+      "name": "apps.flashlight.warning_icon",
+      "call": "0xc508c14",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The warning view uses low.bin after the warning alarm setup succeeds.",
+      "verification_window": "flashlight-warning_icon"
+    },
+    {
+      "name": "apps.flashlight.warning_title",
+      "call": "0xc508c4e",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The warning view displays warning.flashlight.",
+      "verification_window": "flashlight-warning_title"
+    },
+    {
+      "name": "apps.flashlight.warning_body",
+      "call": "0xc508c9e",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The warning view displays warning2.flashlight.",
+      "verification_window": "flashlight-warning_body"
+    }
+  ],
+  "evidence": "The flashlight manifest registers the main descriptor; create stores its root. The normal view registers separate main, white, blink and red callbacks with filter 0. The mode callbacks fetch event code 4 and choose a navigation or animation path; the main callback checks other event codes. The alternate warning builder displays an icon and two localized strings.",
+  "scope": "Only listed callback registration, event-code reads and warning display calls. Battery policy, physical display brightness and other paths remain outside this scope.",
+  "limitations": "Altering event processing can interfere with dismissal, animation or page state. Image resources must stay valid while used. State slots are not thread barriers; shared-entry publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "flashlight-white_register",
+    "flashlight-blink_register",
+    "flashlight-red_register",
+    "flashlight-page_register",
+    "flashlight-white_event_code",
+    "flashlight-blink_event_code",
+    "flashlight-red_event_code",
+    "flashlight-page_event_code",
+    "flashlight-warning_icon",
+    "flashlight-warning_title",
+    "flashlight-warning_body",
+    "flashlight-white-handler",
+    "flashlight-blink-handler",
+    "flashlight-red-handler",
+    "flashlight-page-handler"
+  ],
+  "device_validation": "pending"
+}

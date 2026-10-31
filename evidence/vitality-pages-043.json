@@ -1,0 +1,181 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 54,
+  "pages": [
+    "main",
+    "setting",
+    "explanation",
+    "setting page 4"
+  ],
+  "points": [
+    {
+      "name": "health.vitality.weekly_caption",
+      "call": "0xc64ffac",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the hebdomad_vitalityvalue_schedule.vv translation.",
+      "verification_window": "vitality-pages-health-vitality-weekly_caption"
+    },
+    {
+      "name": "health.vitality.weekly_value_caption",
+      "call": "0xc65019c",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the hebdomad_vitalityvalue.vv translation.",
+      "verification_window": "vitality-pages-health-vitality-weekly_value_caption"
+    },
+    {
+      "name": "health.vitality.today_icon",
+      "call": "0xc65028a",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets today.bin.",
+      "verification_window": "vitality-pages-health-vitality-today_icon"
+    },
+    {
+      "name": "health.vitality.today_caption",
+      "call": "0xc6502ac",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the daily_get.vv translation.",
+      "verification_window": "vitality-pages-health-vitality-today_caption"
+    },
+    {
+      "name": "health.vitality.little_icon",
+      "call": "0xc650352",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets little.bin.",
+      "verification_window": "vitality-pages-health-vitality-little_icon"
+    },
+    {
+      "name": "health.vitality.little_caption",
+      "call": "0xc650388",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the little_vl_action.vv translation.",
+      "verification_window": "vitality-pages-health-vitality-little_caption"
+    },
+    {
+      "name": "health.vitality.medium_icon",
+      "call": "0xc65047a",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets mid.bin.",
+      "verification_window": "vitality-pages-health-vitality-medium_icon"
+    },
+    {
+      "name": "health.vitality.medium_caption",
+      "call": "0xc6504b4",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the mid_vl_action.vv translation.",
+      "verification_window": "vitality-pages-health-vitality-medium_caption"
+    },
+    {
+      "name": "health.vitality.large_icon",
+      "call": "0xc650586",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets larger.bin.",
+      "verification_window": "vitality-pages-health-vitality-large_icon"
+    },
+    {
+      "name": "health.vitality.large_caption",
+      "call": "0xc6505c0",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the larger_vl_action.vv translation.",
+      "verification_window": "vitality-pages-health-vitality-large_caption"
+    },
+    {
+      "name": "health.vitality.setting_register",
+      "call": "0xc65078e",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C64F990 with filter 4; callback requests app 0x36 page 1.",
+      "verification_window": "vitality-pages-health-vitality-setting_register"
+    },
+    {
+      "name": "health.vitality.explanation_register",
+      "call": "0xc65082e",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C64F9C4 with filter 4; callback requests app 0x36 page 2.",
+      "verification_window": "vitality-pages-health-vitality-explanation_register"
+    },
+    {
+      "name": "health.vitality.setting.option_register",
+      "call": "0xc650d14",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C650BE4 with filter 4 and data 8; callback requests app 0x36 page 4.",
+      "verification_window": "vitality-pages-health-vitality-setting-option_register"
+    },
+    {
+      "name": "health.vitality.setting.option_data",
+      "call": "0xc650bea",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The callback passes the event data to the page 4 navigation request.",
+      "verification_window": "vitality-pages-health-vitality-setting-option_data"
+    },
+    {
+      "name": "health.vitality.setting.next_icon",
+      "call": "0xc650d2a",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets next.bin on the settings button.",
+      "verification_window": "vitality-pages-health-vitality-setting-next_icon"
+    },
+    {
+      "name": "health.vitality.setting.description",
+      "call": "0xc650dbc",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the setting_explanation.vv translation.",
+      "verification_window": "vitality-pages-health-vitality-setting-description"
+    },
+    {
+      "name": "health.vitality.explanation.text",
+      "call": "0xc64f8be",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the explanation_detail.vv translation.",
+      "verification_window": "vitality-pages-health-vitality-explanation-text"
+    }
+  ],
+  "evidence": "The vitality manifest registers four page descriptors. The main callbacks navigate to page IDs 1 and 2; the settings button passes its user data to page 4. Page 4 uses the same creation and destruction functions and globals as the heart-rate catalog page, but has a distinct descriptor and app ID.",
+  "scope": "Recorded UI and page-descriptor callback slots only; other data processing or health services are not covered.",
+  "limitations": "The heart-rate and vitality page-4 descriptors share state and implementation, so their application lifetimes are not independent. Rewriting event data can change the target settings category. Page slots are not thread synchronization. Device behavior and recovery are unverified.",
+  "verification_windows": [
+    "vitality-pages-health-vitality-weekly_caption",
+    "vitality-pages-health-vitality-weekly_value_caption",
+    "vitality-pages-health-vitality-today_icon",
+    "vitality-pages-health-vitality-today_caption",
+    "vitality-pages-health-vitality-little_icon",
+    "vitality-pages-health-vitality-little_caption",
+    "vitality-pages-health-vitality-medium_icon",
+    "vitality-pages-health-vitality-medium_caption",
+    "vitality-pages-health-vitality-large_icon",
+    "vitality-pages-health-vitality-large_caption",
+    "vitality-pages-health-vitality-setting_register",
+    "vitality-pages-health-vitality-explanation_register",
+    "vitality-pages-health-vitality-setting-option_register",
+    "vitality-pages-health-vitality-setting-option_data",
+    "vitality-pages-health-vitality-setting-next_icon",
+    "vitality-pages-health-vitality-setting-description",
+    "vitality-pages-health-vitality-explanation-text",
+    "vitality-pages-setting-create",
+    "vitality-pages-setting-destroy",
+    "vitality-pages-explanation-create",
+    "vitality-pages-explanation-destroy",
+    "vitality-pages-hr-create",
+    "vitality-pages-hr-destroy",
+    "vitality-pages-main-setting-callback",
+    "vitality-pages-main-explanation-callback",
+    "vitality-pages-setting-callback"
+  ],
+  "device_validation": "pending"
+}

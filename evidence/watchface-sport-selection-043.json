@@ -1,0 +1,37 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "watchface.sport_selection.item_data",
+  "category_create": "0x0c5f57f0",
+  "category_destroy": "0x0c5f5330",
+  "category_root_slot": "0x201198a8",
+  "sport_create": "0x0c5f5988",
+  "sport_destroy": "0x0c5f5304",
+  "sport_root_slot": "0x201198b8",
+  "row_create": "0x0c5f5708",
+  "row_update": "0x0c5f565c",
+  "register_event_calls": [
+    "0x0c5f578a",
+    "0x0c5f56b2"
+  ],
+  "event_callback": "0x0c5f54f0",
+  "getter_call": "0x0c5f54f6",
+  "return_pc": "0x0c5f54fa",
+  "entry": "0x002bfd89",
+  "contract": "word1",
+  "evidence": "Both page creation callbacks store their non-null root arguments into independent global slots, and their destroy callbacks clear them. The common row create/update functions register event code 7 with a pointer to the relevant 20-byte item as user data. The shared callback checks the returned pointer for null, then reads its item type and fields to navigate to a category or publish a chosen sport.",
+  "scope": "item-data reads from the shared watchface sport/category selection callback while at least one of its pages is active",
+  "limitations": "Return 0 to bypass this callback; any nonzero replacement must be a valid live item pointer with the expected 20-byte layout. Either page being open blocks installation. This does not prove shared-entry quiescence across other threads; device behavior remains unverified.",
+  "verification_windows": [
+    "watchface-sport-click-read",
+    "watchface-sport-register-create",
+    "watchface-sport-register-update",
+    "watchface-sport-page-cleanup",
+    "watchface-sport-category-cleanup"
+  ],
+  "device_validation": "pending",
+  "registration_names": [
+    "watchface.sport_selection.item_register"
+  ],
+  "registration_evidence": "The create and update row paths register the same event-7 callback with the item pointer as user data. The create path ignores the descriptor; the update function returns it to its caller."
+}

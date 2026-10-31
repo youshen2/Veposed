@@ -1,0 +1,20 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "health.heart_rate.action_id",
+  "event_callback": "0x0c661454",
+  "getter_call": "0x0c66145a",
+  "return_pc": "0x0c66145e",
+  "entry": "0x002bfd89",
+  "contract": "word1",
+  "scope": "all invocations of the common heart-rate action callback, including its main, settings and other views; exact caller filter, no page-root filter",
+  "evidence": "The main heart-rate list and settings list populate action callbacks with the same function. Its event-user-data getter returns an action ID, used in a 15-case jump table to select a navigation category, with the original ID passed on in the navigation request. Main rows use IDs 0 and 1 for rest and settings; settings rows use 8, 9, 10 and 11 for monitoring, health monitoring, high and low warning rows respectively. Other views also register this callback.",
+  "limitations": "Changing an ID can navigate to a different screen or trigger other callback side effects, including a helper call for IDs 12 and 13. Out-of-range values still result in a navigation request and are not a safe suppression mechanism. Exact source page is not determined by this hook; close all relevant heart-rate views before installation and ensure system-wide quiescence for the shared getter during publication and rollback. Device behavior unverified.",
+  "verification_windows": [
+    "heart-rate-action-read",
+    "heart-rate-action-dispatch",
+    "heart-rate-settings-action-binding",
+    "heart-rate-main-action-binding"
+  ],
+  "device_validation": "pending"
+}

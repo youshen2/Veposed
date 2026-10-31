@@ -1,0 +1,2753 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "status": "heuristic candidates; not independently verified",
+  "scope": "initialized SRAM copied from the exact AP; fixed p67cn descriptor patterns",
+  "limitations": "Names, IDs, packages and create pointers are candidate associations; independently verify each lifecycle and runtime registration. Only descriptors with an XIP create callback and matching patterns are included. This is not a complete inventory.",
+  "applications": [
+    {
+      "app_id": 19,
+      "package": "com.xiaomi.miwear.activities",
+      "address": "0x200cef68",
+      "file_offset": "0xd0b5e0"
+    },
+    {
+      "app_id": 30,
+      "package": "com.xiaomi.miwear.alipay",
+      "address": "0x200cf0fc",
+      "file_offset": "0xd0b774"
+    },
+    {
+      "app_id": 37,
+      "package": "com.xiaomi.miwear.wxpay",
+      "address": "0x200cf3ac",
+      "file_offset": "0xd0ba24"
+    },
+    {
+      "app_id": 27,
+      "package": "com.xiaomi.miwear.calendar",
+      "address": "0x200cf568",
+      "file_offset": "0xd0bbe0"
+    },
+    {
+      "app_id": 69,
+      "package": "com.xiaomi.miwear.perpetual_calendar",
+      "address": "0x200cf6e0",
+      "file_offset": "0xd0bd58"
+    },
+    {
+      "app_id": 32,
+      "package": "com.xiaomi.miwear.chronograph",
+      "address": "0x200cfb94",
+      "file_offset": "0xd0c20c"
+    },
+    {
+      "app_id": 24,
+      "package": "com.xiaomi.miwear.compass",
+      "address": "0x200d01c4",
+      "file_offset": "0xd0c83c"
+    },
+    {
+      "app_id": 38,
+      "package": "com.xiaomi.miwear.timer",
+      "address": "0x200d027c",
+      "file_offset": "0xd0c8f4"
+    },
+    {
+      "app_id": 63,
+      "package": "com.xiaomi.miwear.mijia",
+      "address": "0x200d04d0",
+      "file_offset": "0xd0cb48"
+    },
+    {
+      "app_id": 26,
+      "package": "com.xiaomi.miwear.flashlight",
+      "address": "0x200d0730",
+      "file_offset": "0xd0cda8"
+    },
+    {
+      "app_id": 16,
+      "package": "com.xiaomi.miwear.home",
+      "address": "0x200d0808",
+      "file_offset": "0xd0ce80"
+    },
+    {
+      "app_id": 1,
+      "package": "com.xiaomi.miwear.launcher",
+      "address": "0x200d0ccc",
+      "file_offset": "0xd0d344"
+    },
+    {
+      "app_id": 21,
+      "package": "com.xiaomi.wear.media",
+      "address": "0x200d0e6c",
+      "file_offset": "0xd0d4e4"
+    },
+    {
+      "app_id": 20,
+      "package": "com.xiaomi.miwear.notifications",
+      "address": "0x200d1080",
+      "file_offset": "0xd0d6f8"
+    },
+    {
+      "app_id": 35,
+      "package": "com.xiaomi.miwear.phone",
+      "address": "0x200d1210",
+      "file_offset": "0xd0d888"
+    },
+    {
+      "app_id": 40,
+      "package": "com.xiaomi.miwear.alarm",
+      "address": "0x200d131c",
+      "file_offset": "0xd0d994"
+    },
+    {
+      "app_id": 49,
+      "package": "com.xiaomi.miwear.share_device",
+      "address": "0x200d16d4",
+      "file_offset": "0xd0dd4c"
+    },
+    {
+      "app_id": 58,
+      "package": "com.xiaomi.miwear.tomatotimer",
+      "address": "0x200d19cc",
+      "file_offset": "0xd0e044"
+    },
+    {
+      "app_id": 28,
+      "package": "com.xiaomi.miwear.remote_camera",
+      "address": "0x200d1d10",
+      "file_offset": "0xd0e388"
+    },
+    {
+      "app_id": 22,
+      "package": "com.xiaomi.miwear.settings",
+      "address": "0x200d1ff0",
+      "file_offset": "0xd0e668"
+    },
+    {
+      "app_id": 17,
+      "package": "com.xiaomi.miwear.setupwizard",
+      "address": "0x200d458c",
+      "file_offset": "0xd10c04"
+    },
+    {
+      "app_id": 47,
+      "package": "com.xiaomi.miwear.sports.course",
+      "address": "0x200d80a8",
+      "file_offset": "0xd14720"
+    },
+    {
+      "app_id": 15,
+      "package": "com.xiaomi.miwear.sports",
+      "address": "0x200d80e8",
+      "file_offset": "0xd14760"
+    },
+    {
+      "app_id": 29,
+      "package": "com.xiaomi.miwear.sports.record",
+      "address": "0x200d8128",
+      "file_offset": "0xd147a0"
+    },
+    {
+      "app_id": 68,
+      "package": "com.xiaomi.miwear.sports.training",
+      "address": "0x200d8168",
+      "file_offset": "0xd147e0"
+    },
+    {
+      "app_id": 34,
+      "package": "com.xiaomi.miwear.system",
+      "address": "0x200d8738",
+      "file_offset": "0xd14db0"
+    },
+    {
+      "app_id": 2,
+      "package": "com.xiaomi.miwear.watchface",
+      "address": "0x200d8bac",
+      "file_offset": "0xd15224"
+    },
+    {
+      "app_id": 59,
+      "package": "com.xiaomi.miwear.worldclock",
+      "address": "0x200d9d24",
+      "file_offset": "0xd1639c"
+    },
+    {
+      "app_id": 33,
+      "package": "com.xiaomi.miwear.weather",
+      "address": "0x200da1cc",
+      "file_offset": "0xd16844"
+    },
+    {
+      "app_id": 41,
+      "package": "com.xiaomi.miwear.recorder",
+      "address": "0x200da4d8",
+      "file_offset": "0xd16b50"
+    },
+    {
+      "app_id": 31,
+      "package": "com.xiaomi.miwear.womenhealth",
+      "address": "0x200da760",
+      "file_offset": "0xd16dd8"
+    },
+    {
+      "app_id": 61,
+      "package": "com.xiaomi.miwear.phonemute",
+      "address": "0x200da858",
+      "file_offset": "0xd16ed0"
+    },
+    {
+      "app_id": 39,
+      "package": "com.xiaomi.miwear.find_phone",
+      "address": "0x200da910",
+      "file_offset": "0xd16f88"
+    },
+    {
+      "app_id": 54,
+      "package": "com.xiaomi.miwear.vitality",
+      "address": "0x200da9d4",
+      "file_offset": "0xd1704c"
+    },
+    {
+      "app_id": 81,
+      "package": "com.xiaomi.miwear.innovation_research",
+      "address": "0x200daa14",
+      "file_offset": "0xd1708c"
+    },
+    {
+      "app_id": 5,
+      "package": "com.xiaomi.miwear.heartrate",
+      "address": "0x200daa54",
+      "file_offset": "0xd170cc"
+    },
+    {
+      "app_id": 12,
+      "package": "com.xiaomi.miwear.sleep",
+      "address": "0x200daa94",
+      "file_offset": "0xd1710c"
+    },
+    {
+      "app_id": 3,
+      "package": "com.xiaomi.miwear.pressure",
+      "address": "0x200daad4",
+      "file_offset": "0xd1714c"
+    },
+    {
+      "app_id": 4,
+      "package": "com.xiaomi.miwear.breath",
+      "address": "0x200dab14",
+      "file_offset": "0xd1718c"
+    },
+    {
+      "app_id": 14,
+      "package": "com.xiaomi.miwear.oxygen",
+      "address": "0x200dab54",
+      "file_offset": "0xd171cc"
+    },
+    {
+      "app_id": 50,
+      "package": "com.xiaomi.miwear.demonstrate",
+      "address": "0x200dbc28",
+      "file_offset": "0xd182a0"
+    },
+    {
+      "app_id": 51,
+      "package": "com.xiaomi.miwear.easter_egg",
+      "address": "0x200dbcdc",
+      "file_offset": "0xd18354"
+    },
+    {
+      "app_id": 65,
+      "package": "com.xiaomi.miwear.sale",
+      "address": "0x200dc20c",
+      "file_offset": "0xd18884"
+    },
+    {
+      "app_id": 43,
+      "package": "com.xiaomi.miwear.nfccard",
+      "address": "0x200dcb88",
+      "file_offset": "0xd19200"
+    },
+    {
+      "app_id": 60,
+      "package": "com.xiaomi.miwear.todolist",
+      "address": "0x200dcc70",
+      "file_offset": "0xd192e8"
+    },
+    {
+      "app_id": 45,
+      "package": "com.xiaomi.miwear.voice",
+      "address": "0x200dce88",
+      "file_offset": "0xd19500"
+    },
+    {
+      "app_id": 67,
+      "package": "com.xiaomi.miwear.interconnect",
+      "address": "0x200dd054",
+      "file_offset": "0xd196cc"
+    },
+    {
+      "app_id": 82,
+      "package": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200dd4a0",
+      "file_offset": "0xd19b18"
+    },
+    {
+      "app_id": 83,
+      "package": "com.xiaomi.miwear.carcontrol",
+      "address": "0x200ddc90",
+      "file_offset": "0xd1a308"
+    }
+  ],
+  "pages": [
+    {
+      "app_id": 19,
+      "page_id": 1,
+      "name": "explain",
+      "package_candidate": "com.xiaomi.miwear.activities",
+      "address": "0x200cefa8",
+      "file_offset": "0xd0b620",
+      "create": "0xc4d10a5"
+    },
+    {
+      "app_id": 19,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.activities",
+      "address": "0x200cf04c",
+      "file_offset": "0xd0b6c4",
+      "create": "0xc4d1e2d"
+    },
+    {
+      "app_id": 30,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.alipay",
+      "address": "0x200cf13c",
+      "file_offset": "0xd0b7b4",
+      "create": "0xc4d8a51"
+    },
+    {
+      "app_id": 30,
+      "page_id": 4,
+      "name": "help",
+      "package_candidate": "com.xiaomi.miwear.alipay",
+      "address": "0x200cf1b4",
+      "file_offset": "0xd0b82c",
+      "create": "0xc4da229"
+    },
+    {
+      "app_id": 30,
+      "page_id": 3,
+      "name": "settings",
+      "package_candidate": "com.xiaomi.miwear.alipay",
+      "address": "0x200cf228",
+      "file_offset": "0xd0b8a0",
+      "create": "0xc4da539"
+    },
+    {
+      "app_id": 30,
+      "page_id": 2,
+      "name": "pay_nfc",
+      "package_candidate": "com.xiaomi.miwear.alipay",
+      "address": "0x200cf29c",
+      "file_offset": "0xd0b914",
+      "create": "0xc4d92c1"
+    },
+    {
+      "app_id": 30,
+      "page_id": 1,
+      "name": "pay_code",
+      "package_candidate": "com.xiaomi.miwear.alipay",
+      "address": "0x200cf310",
+      "file_offset": "0xd0b988",
+      "create": "0xc4db431"
+    },
+    {
+      "app_id": 37,
+      "page_id": 0,
+      "name": "pay",
+      "package_candidate": "com.xiaomi.miwear.wxpay",
+      "address": "0x200cf3ec",
+      "file_offset": "0xd0ba64",
+      "create": "0xc4e01d5"
+    },
+    {
+      "app_id": 37,
+      "page_id": 1,
+      "name": "tips",
+      "package_candidate": "com.xiaomi.miwear.wxpay",
+      "address": "0x200cf468",
+      "file_offset": "0xd0bae0",
+      "create": "0xc4e0ef9"
+    },
+    {
+      "app_id": 37,
+      "page_id": 2,
+      "name": "unbind",
+      "package_candidate": "com.xiaomi.miwear.wxpay",
+      "address": "0x200cf4dc",
+      "file_offset": "0xd0bb54",
+      "create": "0xc4e14ed"
+    },
+    {
+      "app_id": 27,
+      "page_id": 1,
+      "name": "detail",
+      "package_candidate": "com.xiaomi.miwear.calendar",
+      "address": "0x200cf5a8",
+      "file_offset": "0xd0bc20",
+      "create": "0xc4e6be5"
+    },
+    {
+      "app_id": 27,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.calendar",
+      "address": "0x200cf61c",
+      "file_offset": "0xd0bc94",
+      "create": "0xc4e9705"
+    },
+    {
+      "app_id": 69,
+      "page_id": 1,
+      "name": "detail",
+      "package_candidate": "com.xiaomi.miwear.perpetual_calendar",
+      "address": "0x200cf748",
+      "file_offset": "0xd0bdc0",
+      "create": "0xc4f12f9"
+    },
+    {
+      "app_id": 69,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.perpetual_calendar",
+      "address": "0x200cf98c",
+      "file_offset": "0xd0c004",
+      "create": "0xc4f35d5"
+    },
+    {
+      "app_id": 69,
+      "page_id": 2,
+      "name": "show",
+      "package_candidate": "com.xiaomi.miwear.perpetual_calendar",
+      "address": "0x200cfa00",
+      "file_offset": "0xd0c078",
+      "create": "0xc4f6075"
+    },
+    {
+      "app_id": 69,
+      "page_id": 3,
+      "name": "title",
+      "package_candidate": "com.xiaomi.miwear.perpetual_calendar",
+      "address": "0x200cfa74",
+      "file_offset": "0xd0c0ec",
+      "create": "0xc4f6b85"
+    },
+    {
+      "app_id": 69,
+      "page_id": 4,
+      "name": "detail",
+      "package_candidate": "com.xiaomi.miwear.perpetual_calendar",
+      "address": "0x200cfae8",
+      "file_offset": "0xd0c160",
+      "create": "0xc4f972d"
+    },
+    {
+      "app_id": 32,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.chronograph",
+      "address": "0x200d0118",
+      "file_offset": "0xd0c790",
+      "create": "0xc4fa1c1"
+    },
+    {
+      "app_id": 24,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.compass",
+      "address": "0x200d0204",
+      "file_offset": "0xd0c87c",
+      "create": "0xc4fe531"
+    },
+    {
+      "app_id": 38,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.timer",
+      "address": "0x200d02bc",
+      "file_offset": "0xd0c934",
+      "create": "0xc4ffab1"
+    },
+    {
+      "app_id": 38,
+      "page_id": 1,
+      "name": "set",
+      "package_candidate": "com.xiaomi.miwear.timer",
+      "address": "0x200d0390",
+      "file_offset": "0xd0ca08",
+      "create": "0xc5012b5"
+    },
+    {
+      "app_id": 63,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.mijia",
+      "address": "0x200d0510",
+      "file_offset": "0xd0cb88",
+      "create": "0xc5061dd"
+    },
+    {
+      "app_id": 63,
+      "page_id": 1,
+      "name": "show",
+      "package_candidate": "com.xiaomi.miwear.mijia",
+      "address": "0x200d0584",
+      "file_offset": "0xd0cbfc",
+      "create": "0xc5077b1"
+    },
+    {
+      "app_id": 26,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.flashlight",
+      "address": "0x200d0770",
+      "file_offset": "0xd0cde8",
+      "create": "0xc509005"
+    },
+    {
+      "app_id": 16,
+      "page_id": 3,
+      "name": "page_add",
+      "package_candidate": "com.xiaomi.miwear.home",
+      "address": "0x200d0848",
+      "file_offset": "0xd0cec0",
+      "create": "0xc50d501"
+    },
+    {
+      "app_id": 16,
+      "page_id": 2,
+      "name": "page_edit",
+      "package_candidate": "com.xiaomi.miwear.home",
+      "address": "0x200d08c8",
+      "file_offset": "0xd0cf40",
+      "create": "0xc50df9d"
+    },
+    {
+      "app_id": 16,
+      "page_id": 0,
+      "name": "page_main",
+      "package_candidate": "com.xiaomi.miwear.home",
+      "address": "0x200d0948",
+      "file_offset": "0xd0cfc0",
+      "create": "0xc50fb65"
+    },
+    {
+      "app_id": 16,
+      "page_id": 4,
+      "name": "page_pick",
+      "package_candidate": "com.xiaomi.miwear.home",
+      "address": "0x200d09c0",
+      "file_offset": "0xd0d038",
+      "create": "0xc511001"
+    },
+    {
+      "app_id": 16,
+      "page_id": 7,
+      "name": "page_select",
+      "package_candidate": "com.xiaomi.miwear.home",
+      "address": "0x200d0a54",
+      "file_offset": "0xd0d0cc",
+      "create": "0xc511e31"
+    },
+    {
+      "app_id": 16,
+      "page_id": 1,
+      "name": "page_select",
+      "package_candidate": "com.xiaomi.miwear.home",
+      "address": "0x200d0ad4",
+      "file_offset": "0xd0d14c",
+      "create": "0xc511f41"
+    },
+    {
+      "app_id": 16,
+      "page_id": 6,
+      "name": "page_sport",
+      "package_candidate": "com.xiaomi.miwear.home",
+      "address": "0x200d0b48",
+      "file_offset": "0xd0d1c0",
+      "create": "0xc51282d"
+    },
+    {
+      "app_id": 16,
+      "page_id": 5,
+      "name": "page_category",
+      "package_candidate": "com.xiaomi.miwear.home",
+      "address": "0x200d0bbc",
+      "file_offset": "0xd0d234",
+      "create": "0xc512695"
+    },
+    {
+      "app_id": 1,
+      "page_id": 3,
+      "name": "confirm_page",
+      "package_candidate": "com.xiaomi.miwear.launcher",
+      "address": "0x200d0c30",
+      "file_offset": "0xd0d2a8",
+      "create": "0xc512901"
+    },
+    {
+      "app_id": 1,
+      "page_id": 0,
+      "name": "page_main",
+      "package_candidate": "com.xiaomi.miwear.launcher",
+      "address": "0x200d0d0c",
+      "file_offset": "0xd0d384",
+      "create": "0xc517c81"
+    },
+    {
+      "app_id": 1,
+      "page_id": 1,
+      "name": "page_setting_layout",
+      "package_candidate": "com.xiaomi.miwear.launcher",
+      "address": "0x200d0df8",
+      "file_offset": "0xd0d470",
+      "create": "0xc518f25"
+    },
+    {
+      "app_id": 21,
+      "page_id": 2,
+      "name": "page_media_volume",
+      "package_candidate": "com.xiaomi.wear.media",
+      "address": "0x200d0eac",
+      "file_offset": "0xd0d524",
+      "create": "0xc51edc5"
+    },
+    {
+      "app_id": 21,
+      "page_id": 0,
+      "name": "page_media",
+      "package_candidate": "com.xiaomi.wear.media",
+      "address": "0x200d0f20",
+      "file_offset": "0xd0d598",
+      "create": "0xc51b1e1"
+    },
+    {
+      "app_id": 20,
+      "page_id": 1,
+      "name": "page_aggregation",
+      "package_candidate": "com.xiaomi.miwear.notifications",
+      "address": "0x200d10c0",
+      "file_offset": "0xd0d738",
+      "create": "0xc525afd"
+    },
+    {
+      "app_id": 20,
+      "page_id": 0,
+      "name": "page_detail",
+      "package_candidate": "com.xiaomi.miwear.notifications",
+      "address": "0x200d1134",
+      "file_offset": "0xd0d7ac",
+      "create": "0xc52613d"
+    },
+    {
+      "app_id": 35,
+      "page_id": 0,
+      "name": "page_calllog",
+      "package_candidate": "com.xiaomi.miwear.phone",
+      "address": "0x200d1250",
+      "file_offset": "0xd0d8c8",
+      "create": "0xc533e89"
+    },
+    {
+      "app_id": 40,
+      "page_id": 3,
+      "name": "custom_rule_setting",
+      "package_candidate": "com.xiaomi.miwear.alarm",
+      "address": "0x200d1360",
+      "file_offset": "0xd0d9d8",
+      "create": "0xc53c135"
+    },
+    {
+      "app_id": 40,
+      "page_id": 4,
+      "name": "alarm_edit",
+      "package_candidate": "com.xiaomi.miwear.alarm",
+      "address": "0x200d13fc",
+      "file_offset": "0xd0da74",
+      "create": "0xc53d0e9"
+    },
+    {
+      "app_id": 40,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.alarm",
+      "address": "0x200d1498",
+      "file_offset": "0xd0db10",
+      "create": "0xc53d711"
+    },
+    {
+      "app_id": 40,
+      "page_id": 2,
+      "name": "repeate_rule_setting",
+      "package_candidate": "com.xiaomi.miwear.alarm",
+      "address": "0x200d1534",
+      "file_offset": "0xd0dbac",
+      "create": "0xc53ebd9"
+    },
+    {
+      "app_id": 40,
+      "page_id": 5,
+      "name": "smart_remind",
+      "package_candidate": "com.xiaomi.miwear.alarm",
+      "address": "0x200d15d0",
+      "file_offset": "0xd0dc48",
+      "create": "0xc53f3f9"
+    },
+    {
+      "app_id": 40,
+      "page_id": 1,
+      "name": "time_setting",
+      "package_candidate": "com.xiaomi.miwear.alarm",
+      "address": "0x200d1644",
+      "file_offset": "0xd0dcbc",
+      "create": "0xc53f96d"
+    },
+    {
+      "app_id": 49,
+      "page_id": 5,
+      "name": "audio",
+      "package_candidate": "com.xiaomi.miwear.share_device",
+      "address": "0x200d1714",
+      "file_offset": "0xd0dd8c",
+      "create": "0xc541239"
+    },
+    {
+      "app_id": 49,
+      "page_id": 3,
+      "name": "headset",
+      "package_candidate": "com.xiaomi.miwear.share_device",
+      "address": "0x200d1788",
+      "file_offset": "0xd0de00",
+      "create": "0xc5413dd"
+    },
+    {
+      "app_id": 49,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.share_device",
+      "address": "0x200d17fc",
+      "file_offset": "0xd0de74",
+      "create": "0xc5417e5"
+    },
+    {
+      "app_id": 49,
+      "page_id": 1,
+      "name": "phone",
+      "package_candidate": "com.xiaomi.miwear.share_device",
+      "address": "0x200d1870",
+      "file_offset": "0xd0dee8",
+      "create": "0xc541b99"
+    },
+    {
+      "app_id": 49,
+      "page_id": 4,
+      "name": "sound",
+      "package_candidate": "com.xiaomi.miwear.share_device",
+      "address": "0x200d18e4",
+      "file_offset": "0xd0df5c",
+      "create": "0xc541c4d"
+    },
+    {
+      "app_id": 49,
+      "page_id": 2,
+      "name": "tv",
+      "package_candidate": "com.xiaomi.miwear.share_device",
+      "address": "0x200d1958",
+      "file_offset": "0xd0dfd0",
+      "create": "0xc541d8d"
+    },
+    {
+      "app_id": 58,
+      "page_id": 3,
+      "name": "activity",
+      "package_candidate": "com.xiaomi.miwear.tomatotimer",
+      "address": "0x200d1a0c",
+      "file_offset": "0xd0e084",
+      "create": "0xc544941"
+    },
+    {
+      "app_id": 58,
+      "page_id": 5,
+      "name": "end",
+      "package_candidate": "com.xiaomi.miwear.tomatotimer",
+      "address": "0x200d1aa0",
+      "file_offset": "0xd0e118",
+      "create": "0xc5450f9"
+    },
+    {
+      "app_id": 58,
+      "page_id": 2,
+      "name": "info",
+      "package_candidate": "com.xiaomi.miwear.tomatotimer",
+      "address": "0x200d1b14",
+      "file_offset": "0xd0e18c",
+      "create": "0xc5452f5"
+    },
+    {
+      "app_id": 58,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.tomatotimer",
+      "address": "0x200d1b88",
+      "file_offset": "0xd0e200",
+      "create": "0xc5458f5"
+    },
+    {
+      "app_id": 58,
+      "page_id": 4,
+      "name": "notice",
+      "package_candidate": "com.xiaomi.miwear.tomatotimer",
+      "address": "0x200d1bfc",
+      "file_offset": "0xd0e274",
+      "create": "0xc545ee9"
+    },
+    {
+      "app_id": 58,
+      "page_id": 1,
+      "name": "set",
+      "package_candidate": "com.xiaomi.miwear.tomatotimer",
+      "address": "0x200d1c70",
+      "file_offset": "0xd0e2e8",
+      "create": "0xc5461d5"
+    },
+    {
+      "app_id": 28,
+      "page_id": 0,
+      "name": "default",
+      "package_candidate": "com.xiaomi.miwear.remote_camera",
+      "address": "0x200d1d50",
+      "file_offset": "0xd0e3c8",
+      "create": "0xc54aee1"
+    },
+    {
+      "app_id": 22,
+      "page_id": 66,
+      "name": "sports",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d1e94",
+      "file_offset": "0xd0e50c",
+      "create": "0xc54cd6d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 51,
+      "name": "explain",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d1f08",
+      "file_offset": "0xd0e580",
+      "create": "0xc54cf8d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 49,
+      "name": "optimization",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d1f7c",
+      "file_offset": "0xd0e5f4",
+      "create": "0xc54d1cd"
+    },
+    {
+      "app_id": 22,
+      "page_id": 24,
+      "name": "about",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2030",
+      "file_offset": "0xd0e6a8",
+      "create": "0xc54d635"
+    },
+    {
+      "app_id": 22,
+      "page_id": 53,
+      "name": "cta_app",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d20a4",
+      "file_offset": "0xd0e71c",
+      "create": "0xc54dad1"
+    },
+    {
+      "app_id": 22,
+      "page_id": 52,
+      "name": "cta_app_main",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2118",
+      "file_offset": "0xd0e790",
+      "create": "0xc54db6d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 23,
+      "name": "applayout",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d21dc",
+      "file_offset": "0xd0e854",
+      "create": "0xc54de81"
+    },
+    {
+      "app_id": 22,
+      "page_id": 64,
+      "name": "settings_page_back_dial",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2250",
+      "file_offset": "0xd0e8c8",
+      "create": "0xc54e2f1"
+    },
+    {
+      "app_id": 22,
+      "page_id": 29,
+      "name": "battery_setting",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d22ec",
+      "file_offset": "0xd0e964",
+      "create": "0xc54f679"
+    },
+    {
+      "app_id": 22,
+      "page_id": 31,
+      "name": "battery.dialplate",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2368",
+      "file_offset": "0xd0e9e0",
+      "create": "0xc54f9bd"
+    },
+    {
+      "app_id": 22,
+      "page_id": 50,
+      "name": "state",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d23e0",
+      "file_offset": "0xd0ea58",
+      "create": "0xc550969"
+    },
+    {
+      "app_id": 22,
+      "page_id": 30,
+      "name": "battery.dialplate",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2454",
+      "file_offset": "0xd0eacc",
+      "create": "0xc550fa5"
+    },
+    {
+      "app_id": 22,
+      "page_id": 43,
+      "name": "settings_page_bt_network",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d24cc",
+      "file_offset": "0xd0eb44",
+      "create": "0xc5511e5"
+    },
+    {
+      "app_id": 22,
+      "page_id": 47,
+      "name": "center_disturb",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d256c",
+      "file_offset": "0xd0ebe4",
+      "create": "0xc551629"
+    },
+    {
+      "app_id": 22,
+      "page_id": 42,
+      "name": "settings_page_control_center",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d25e0",
+      "file_offset": "0xd0ec58",
+      "create": "0xc55183d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 40,
+      "name": "settings_page_desktop",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d267c",
+      "file_offset": "0xd0ecf4",
+      "create": "0xc551ee1"
+    },
+    {
+      "app_id": 22,
+      "page_id": 6,
+      "name": "display",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d26f0",
+      "file_offset": "0xd0ed68",
+      "create": "0xc552f29"
+    },
+    {
+      "app_id": 22,
+      "page_id": 11,
+      "name": "brightalwaysdetail",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2764",
+      "file_offset": "0xd0eddc",
+      "create": "0xc553d51"
+    },
+    {
+      "app_id": 22,
+      "page_id": 10,
+      "name": "brightalwayson",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d27d8",
+      "file_offset": "0xd0ee50",
+      "create": "0xc554969"
+    },
+    {
+      "app_id": 22,
+      "page_id": 7,
+      "name": "brightset",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d284c",
+      "file_offset": "0xd0eec4",
+      "create": "0xc5555ad"
+    },
+    {
+      "app_id": 22,
+      "page_id": 69,
+      "name": "displayalwayson",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d28c0",
+      "file_offset": "0xd0ef38",
+      "create": "0xc555ee1"
+    },
+    {
+      "app_id": 22,
+      "page_id": 12,
+      "name": "dispalyraisewrist",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2938",
+      "file_offset": "0xd0efb0",
+      "create": "0xc55645d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 8,
+      "name": "displayrestdisplay",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d29ac",
+      "file_offset": "0xd0f024",
+      "create": "0xc557619"
+    },
+    {
+      "app_id": 22,
+      "page_id": 9,
+      "name": "displayresttime",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2a20",
+      "file_offset": "0xd0f098",
+      "create": "0xc557f19"
+    },
+    {
+      "app_id": 22,
+      "page_id": 13,
+      "name": "wristliftbright",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2aa8",
+      "file_offset": "0xd0f120",
+      "create": "0xc559135"
+    },
+    {
+      "app_id": 22,
+      "page_id": 14,
+      "name": "disturb",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2b1c",
+      "file_offset": "0xd0f194",
+      "create": "0xc559ca9"
+    },
+    {
+      "app_id": 22,
+      "page_id": 46,
+      "name": "disturb_custom_setting",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2bc8",
+      "file_offset": "0xd0f240",
+      "create": "0xc55a1e1"
+    },
+    {
+      "app_id": 22,
+      "page_id": 70,
+      "name": "disturb_hyper",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2c64",
+      "file_offset": "0xd0f2dc",
+      "create": "0xc55abfd"
+    },
+    {
+      "app_id": 22,
+      "page_id": 44,
+      "name": "disturb_repeate",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2d10",
+      "file_offset": "0xd0f388",
+      "create": "0xc55b389"
+    },
+    {
+      "app_id": 22,
+      "page_id": 45,
+      "name": "disturb",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2db0",
+      "file_offset": "0xd0f428",
+      "create": "0xc55c795"
+    },
+    {
+      "app_id": 22,
+      "page_id": 15,
+      "name": "disturb_timing",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2eb0",
+      "file_offset": "0xd0f528",
+      "create": "0xc55d1d5"
+    },
+    {
+      "app_id": 22,
+      "page_id": 16,
+      "name": "disturbtimset",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2f24",
+      "file_offset": "0xd0f59c",
+      "create": "0xc55d3a5"
+    },
+    {
+      "app_id": 22,
+      "page_id": 22,
+      "name": "down_key",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d2f98",
+      "file_offset": "0xd0f610",
+      "create": "0xc55de05"
+    },
+    {
+      "app_id": 22,
+      "page_id": 38,
+      "name": "setting_gnss",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3038",
+      "file_offset": "0xd0f6b0",
+      "create": "0xc55e101"
+    },
+    {
+      "app_id": 22,
+      "page_id": 32,
+      "name": "quick_guesture",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d30d8",
+      "file_offset": "0xd0f750",
+      "create": "0xc55f58d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 33,
+      "name": "guesture_prof",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d314c",
+      "file_offset": "0xd0f7c4",
+      "create": "0xc55fadd"
+    },
+    {
+      "app_id": 22,
+      "page_id": 34,
+      "name": "guesture_sub_settings",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d31c0",
+      "file_offset": "0xd0f838",
+      "create": "0xc560f95"
+    },
+    {
+      "app_id": 22,
+      "page_id": 35,
+      "name": "guesture_tch",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d323c",
+      "file_offset": "0xd0f8b4",
+      "create": "0xc5612a9"
+    },
+    {
+      "app_id": 22,
+      "page_id": 2,
+      "name": "bluetooth",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d32b4",
+      "file_offset": "0xd0f92c",
+      "create": "0xc563c99"
+    },
+    {
+      "app_id": 22,
+      "page_id": 3,
+      "name": "headphone_info",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d33b8",
+      "file_offset": "0xd0fa30",
+      "create": "0xc564b25"
+    },
+    {
+      "app_id": 22,
+      "page_id": 56,
+      "name": "hr_broadcast",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d342c",
+      "file_offset": "0xd0faa4",
+      "create": "0xc565a79"
+    },
+    {
+      "app_id": 22,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d34a0",
+      "file_offset": "0xd0fb18",
+      "create": "0xc5669ad"
+    },
+    {
+      "app_id": 15,
+      "page_id": 29,
+      "name": "motion_reminder",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d3764",
+      "file_offset": "0xd0fddc",
+      "create": "0xc5675b1"
+    },
+    {
+      "app_id": 22,
+      "page_id": 28,
+      "name": "notify",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d37d8",
+      "file_offset": "0xd0fe50",
+      "create": "0xc56808d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 41,
+      "name": "settings_page_notify_center",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d384c",
+      "file_offset": "0xd0fec4",
+      "create": "0xc56863d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 27,
+      "name": "novice_guidance",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d38c0",
+      "file_offset": "0xd0ff38",
+      "create": "0xc569919"
+    },
+    {
+      "app_id": 22,
+      "page_id": 17,
+      "name": "pwd_set",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3938",
+      "file_offset": "0xd0ffb0",
+      "create": "0xc56cd55"
+    },
+    {
+      "app_id": 22,
+      "page_id": 18,
+      "name": "usage_freperence",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3a00",
+      "file_offset": "0xd10078",
+      "create": "0xc56d575"
+    },
+    {
+      "app_id": 22,
+      "page_id": 61,
+      "name": "settings_page_prefer",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3a74",
+      "file_offset": "0xd100ec",
+      "create": "0xc56db55"
+    },
+    {
+      "app_id": 22,
+      "page_id": 25,
+      "name": "about",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3ae8",
+      "file_offset": "0xd10160",
+      "create": "0xc56e11d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 36,
+      "name": "restore_factory",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3b5c",
+      "file_offset": "0xd101d4",
+      "create": "0xc56e305"
+    },
+    {
+      "app_id": 22,
+      "page_id": 65,
+      "name": "restore_system_settings",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3bd0",
+      "file_offset": "0xd10248",
+      "create": "0xc56ec1d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 63,
+      "name": "settings_page_screenshot",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3c80",
+      "file_offset": "0xd102f8",
+      "create": "0xc56f05d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 5,
+      "name": "sound",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3d1c",
+      "file_offset": "0xd10394",
+      "create": "0xc56f819"
+    },
+    {
+      "app_id": 22,
+      "page_id": 26,
+      "name": "vibration",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3d90",
+      "file_offset": "0xd10408",
+      "create": "0xc56ff6d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 67,
+      "name": "settings_heart",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3e04",
+      "file_offset": "0xd1047c",
+      "create": "0xc5703b9"
+    },
+    {
+      "app_id": 22,
+      "page_id": 55,
+      "name": "connect_newphone",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3e80",
+      "file_offset": "0xd104f8",
+      "create": "0xc571069"
+    },
+    {
+      "app_id": 22,
+      "page_id": 54,
+      "name": "system_update",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3ef4",
+      "file_offset": "0xd1056c",
+      "create": "0xc570c41"
+    },
+    {
+      "app_id": 22,
+      "page_id": 19,
+      "name": "system",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d3f68",
+      "file_offset": "0xd105e0",
+      "create": "0xc570c89"
+    },
+    {
+      "app_id": 22,
+      "page_id": 37,
+      "name": "volume_reminder",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d420c",
+      "file_offset": "0xd10884",
+      "create": "0xc5718dd"
+    },
+    {
+      "app_id": 22,
+      "page_id": 68,
+      "name": "wakeup_mode",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d4280",
+      "file_offset": "0xd108f8",
+      "create": "0xc571d4d"
+    },
+    {
+      "app_id": 22,
+      "page_id": 1,
+      "name": "watchface_manager",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d42f4",
+      "file_offset": "0xd1096c",
+      "create": "0xc572281"
+    },
+    {
+      "app_id": 22,
+      "page_id": 62,
+      "name": "settings_page_wear",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d4368",
+      "file_offset": "0xd109e0",
+      "create": "0xc572575"
+    },
+    {
+      "app_id": 22,
+      "page_id": 60,
+      "name": "settings_page_xiaoai",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d4450",
+      "file_offset": "0xd10ac8",
+      "create": "0xc572a41"
+    },
+    {
+      "app_id": 22,
+      "page_id": 39,
+      "name": "reinstall_manager",
+      "package_candidate": "com.xiaomi.miwear.settings",
+      "address": "0x200d44f0",
+      "file_offset": "0xd10b68",
+      "create": "0xc57312d"
+    },
+    {
+      "app_id": 17,
+      "page_id": 0,
+      "name": "phone_pair",
+      "package_candidate": "com.xiaomi.miwear.setupwizard",
+      "address": "0x200d45d4",
+      "file_offset": "0xd10c4c",
+      "create": "0xc573545"
+    },
+    {
+      "app_id": 47,
+      "page_id": 2,
+      "name": "page_details",
+      "package_candidate": "com.xiaomi.miwear.sports.course",
+      "address": "0x200d4bb4",
+      "file_offset": "0xd1122c",
+      "create": "0xc58cad1"
+    },
+    {
+      "app_id": 47,
+      "page_id": 1,
+      "name": "page_list",
+      "package_candidate": "com.xiaomi.miwear.sports.course",
+      "address": "0x200d4c28",
+      "file_offset": "0xd112a0",
+      "create": "0xc58cf9d"
+    },
+    {
+      "app_id": 15,
+      "page_id": 3,
+      "name": "page_same_newguide_sport",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d4d3c",
+      "file_offset": "0xd113b4",
+      "create": "0xc58ec75"
+    },
+    {
+      "app_id": 15,
+      "page_id": 1,
+      "name": "page_categories",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d4f30",
+      "file_offset": "0xd115a8",
+      "create": "0xc58ee85"
+    },
+    {
+      "app_id": 15,
+      "page_id": 5,
+      "name": "page_list_edit",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d4fa4",
+      "file_offset": "0xd1161c",
+      "create": "0xc58f66d"
+    },
+    {
+      "app_id": 15,
+      "page_id": 0,
+      "name": "page_home_list",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d5024",
+      "file_offset": "0xd1169c",
+      "create": "0xc58fb4d"
+    },
+    {
+      "app_id": 15,
+      "page_id": 2,
+      "name": "page_same_category_sport",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d5098",
+      "file_offset": "0xd11710",
+      "create": "0xc58fbed"
+    },
+    {
+      "app_id": 15,
+      "page_id": 4,
+      "name": "page_same_newguide_sport",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d510c",
+      "file_offset": "0xd11784",
+      "create": "0xc5904b1"
+    },
+    {
+      "app_id": 15,
+      "page_id": 16,
+      "name": "projection",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d51b0",
+      "file_offset": "0xd11828",
+      "create": "0xc592f2d"
+    },
+    {
+      "app_id": 15,
+      "page_id": 8,
+      "name": "page_realtime",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d5308",
+      "file_offset": "0xd11980",
+      "create": "0xc595f25"
+    },
+    {
+      "app_id": 15,
+      "page_id": 28,
+      "name": "page_countdown",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d5380",
+      "file_offset": "0xd119f8",
+      "create": "0xc596c65"
+    },
+    {
+      "app_id": 15,
+      "page_id": 15,
+      "name": "page_distance_calibration",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d53f4",
+      "file_offset": "0xd11a6c",
+      "create": "0xc597259"
+    },
+    {
+      "app_id": 15,
+      "page_id": 26,
+      "name": "sports_page_montion_recording",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d5468",
+      "file_offset": "0xd11ae0",
+      "create": "0xc597699"
+    },
+    {
+      "app_id": 15,
+      "page_id": 30,
+      "name": "sports_page_loading",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d54dc",
+      "file_offset": "0xd11b54",
+      "create": "0xc5977e5"
+    },
+    {
+      "app_id": 15,
+      "page_id": 17,
+      "name": "page_realtime_speech_volume",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d5550",
+      "file_offset": "0xd11bc8",
+      "create": "0xc5979a5"
+    },
+    {
+      "app_id": 29,
+      "page_id": 1,
+      "name": "page_details",
+      "package_candidate": "com.xiaomi.miwear.sports.record",
+      "address": "0x200d5dc4",
+      "file_offset": "0xd1243c",
+      "create": "0xc5a208d"
+    },
+    {
+      "app_id": 29,
+      "page_id": 5,
+      "name": "page_emotion_desc",
+      "package_candidate": "com.xiaomi.miwear.sports.record",
+      "address": "0x200d5e3c",
+      "file_offset": "0xd124b4",
+      "create": "0xc5a252d"
+    },
+    {
+      "app_id": 29,
+      "page_id": 0,
+      "name": "page_list",
+      "package_candidate": "com.xiaomi.miwear.sports.record",
+      "address": "0x200d5eb0",
+      "file_offset": "0xd12528",
+      "create": "0xc5a28ed"
+    },
+    {
+      "app_id": 29,
+      "page_id": 4,
+      "name": "page_segment",
+      "package_candidate": "com.xiaomi.miwear.sports.record",
+      "address": "0x200d5f4c",
+      "file_offset": "0xd125c4",
+      "create": "0xc5a3c35"
+    },
+    {
+      "app_id": 15,
+      "page_id": 25,
+      "name": "page_train_feel",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d5fe8",
+      "file_offset": "0xd12660",
+      "create": "0xc5a4c89"
+    },
+    {
+      "app_id": 15,
+      "page_id": 9,
+      "name": "page_setting_details",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d7c80",
+      "file_offset": "0xd142f8",
+      "create": "0xc5b9b51"
+    },
+    {
+      "app_id": 15,
+      "page_id": 13,
+      "name": "page_setting_ephemeris",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d7cf4",
+      "file_offset": "0xd1436c",
+      "create": "0xc5ba351"
+    },
+    {
+      "app_id": 15,
+      "page_id": 14,
+      "name": "page_setting_ephemeris_sub",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d7d68",
+      "file_offset": "0xd143e0",
+      "create": "0xc5bae0d"
+    },
+    {
+      "app_id": 15,
+      "page_id": 27,
+      "name": "page_setting",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d7ddc",
+      "file_offset": "0xd14454",
+      "create": "0xc5bb205"
+    },
+    {
+      "app_id": 15,
+      "page_id": 12,
+      "name": "page_setting_picker_select",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d7e64",
+      "file_offset": "0xd144dc",
+      "create": "0xc5bde45"
+    },
+    {
+      "app_id": 15,
+      "page_id": 11,
+      "name": "page_setting_radio_select",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d7ed8",
+      "file_offset": "0xd14550",
+      "create": "0xc5bdf69"
+    },
+    {
+      "app_id": 15,
+      "page_id": 7,
+      "name": "page_setting",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d7f4c",
+      "file_offset": "0xd145c4",
+      "create": "0xc5be3d9"
+    },
+    {
+      "app_id": 15,
+      "page_id": 10,
+      "name": "page_reminder_switch",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d800c",
+      "file_offset": "0xd14684",
+      "create": "0xc5bf0d1"
+    },
+    {
+      "app_id": 68,
+      "page_id": 1,
+      "name": "spotrs_training_main",
+      "package_candidate": "com.xiaomi.miwear.sports.training",
+      "address": "0x200d83e8",
+      "file_offset": "0xd14a60",
+      "create": "0xc5cbdc1"
+    },
+    {
+      "app_id": 68,
+      "page_id": 0,
+      "name": "spotrs_training_main",
+      "package_candidate": "com.xiaomi.miwear.sports.training",
+      "address": "0x200d845c",
+      "file_offset": "0xd14ad4",
+      "create": "0xc5cc3ad"
+    },
+    {
+      "app_id": 15,
+      "page_id": 6,
+      "name": "page_waiting",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d84d0",
+      "file_offset": "0xd14b48",
+      "create": "0xc5ccac5"
+    },
+    {
+      "app_id": 15,
+      "page_id": 18,
+      "name": "page_skiing_lock_tips",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d8548",
+      "file_offset": "0xd14bc0",
+      "create": "0xc5ccce5"
+    },
+    {
+      "app_id": 15,
+      "page_id": 20,
+      "name": "page_explain",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d85c0",
+      "file_offset": "0xd14c38",
+      "create": "0xc5ce89d"
+    },
+    {
+      "app_id": 15,
+      "page_id": 21,
+      "name": "page_warmup_animation",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d8634",
+      "file_offset": "0xd14cac",
+      "create": "0xc5cf0a5"
+    },
+    {
+      "app_id": 15,
+      "page_id": 19,
+      "name": "page_warmup",
+      "package_candidate": "com.xiaomi.miwear.sports",
+      "address": "0x200d86b4",
+      "file_offset": "0xd14d2c",
+      "create": "0xc5d1ced"
+    },
+    {
+      "app_id": 34,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.system",
+      "address": "0x200d8778",
+      "file_offset": "0xd14df0",
+      "create": "0xc5dc87d"
+    },
+    {
+      "app_id": 2,
+      "page_id": 8,
+      "name": "dual_time",
+      "package_candidate": "com.xiaomi.miwear.watchface",
+      "address": "0x200d8c60",
+      "file_offset": "0xd152d8",
+      "create": "0xc5f1f21"
+    },
+    {
+      "app_id": 2,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.watchface",
+      "address": "0x200d9960",
+      "file_offset": "0xd15fd8",
+      "create": "0xc5f353d"
+    },
+    {
+      "app_id": 2,
+      "page_id": 2,
+      "name": "edit",
+      "package_candidate": "com.xiaomi.miwear.watchface",
+      "address": "0x200d9c38",
+      "file_offset": "0xd162b0",
+      "create": "0xc5fac85"
+    },
+    {
+      "app_id": 59,
+      "page_id": 2,
+      "name": "page_detail",
+      "package_candidate": "com.xiaomi.miwear.worldclock",
+      "address": "0x200d9d64",
+      "file_offset": "0xd163dc",
+      "create": "0xc60008d"
+    },
+    {
+      "app_id": 59,
+      "page_id": 1,
+      "name": "add_list",
+      "package_candidate": "com.xiaomi.miwear.worldclock",
+      "address": "0x200d9dd8",
+      "file_offset": "0xd16450",
+      "create": "0xc6005bd"
+    },
+    {
+      "app_id": 59,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.worldclock",
+      "address": "0x200d9e4c",
+      "file_offset": "0xd164c4",
+      "create": "0xc601859"
+    },
+    {
+      "app_id": 33,
+      "page_id": 3,
+      "name": "alert",
+      "package_candidate": "com.xiaomi.miwear.weather",
+      "address": "0x200da20c",
+      "file_offset": "0xd16884",
+      "create": "0xc609941"
+    },
+    {
+      "app_id": 33,
+      "page_id": 4,
+      "name": "alert_detail",
+      "package_candidate": "com.xiaomi.miwear.weather",
+      "address": "0x200da280",
+      "file_offset": "0xd168f8",
+      "create": "0xc609af1"
+    },
+    {
+      "app_id": 33,
+      "page_id": 0,
+      "name": "detail",
+      "package_candidate": "com.xiaomi.miwear.weather",
+      "address": "0x200da2f4",
+      "file_offset": "0xd1696c",
+      "create": "0xc60aa2d"
+    },
+    {
+      "app_id": 33,
+      "page_id": 5,
+      "name": "fdaily_detail",
+      "package_candidate": "com.xiaomi.miwear.weather",
+      "address": "0x200da370",
+      "file_offset": "0xd169e8",
+      "create": "0xc60eb0d"
+    },
+    {
+      "app_id": 33,
+      "page_id": 1,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.weather",
+      "address": "0x200da3e4",
+      "file_offset": "0xd16a5c",
+      "create": "0xc60fa01"
+    },
+    {
+      "app_id": 33,
+      "page_id": 2,
+      "name": "reminder",
+      "package_candidate": "com.xiaomi.miwear.weather",
+      "address": "0x200da458",
+      "file_offset": "0xd16ad0",
+      "create": "0xc60fca9"
+    },
+    {
+      "app_id": 41,
+      "page_id": 6,
+      "name": "interrupt",
+      "package_candidate": "com.xiaomi.miwear.recorder",
+      "address": "0x200da518",
+      "file_offset": "0xd16b90",
+      "create": "0xc618795"
+    },
+    {
+      "app_id": 41,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.recorder",
+      "address": "0x200da58c",
+      "file_offset": "0xd16c04",
+      "create": "0xc61a88d"
+    },
+    {
+      "app_id": 41,
+      "page_id": 5,
+      "name": "remind",
+      "package_candidate": "com.xiaomi.miwear.recorder",
+      "address": "0x200da604",
+      "file_offset": "0xd16c7c",
+      "create": "0xc61b8f1"
+    },
+    {
+      "app_id": 41,
+      "page_id": 4,
+      "name": "upload",
+      "package_candidate": "com.xiaomi.miwear.recorder",
+      "address": "0x200da678",
+      "file_offset": "0xd16cf0",
+      "create": "0xc61bb69"
+    },
+    {
+      "app_id": 31,
+      "page_id": 1,
+      "name": "notes",
+      "package_candidate": "com.xiaomi.miwear.womenhealth",
+      "address": "0x200da6ec",
+      "file_offset": "0xd16d64",
+      "create": "0xc620955"
+    },
+    {
+      "app_id": 31,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.womenhealth",
+      "address": "0x200da7a0",
+      "file_offset": "0xd16e18",
+      "create": "0xc621945"
+    },
+    {
+      "app_id": 61,
+      "page_id": 0,
+      "name": "mute",
+      "package_candidate": "com.xiaomi.miwear.phonemute",
+      "address": "0x200da898",
+      "file_offset": "0xd16f10",
+      "create": "0xc6240c5"
+    },
+    {
+      "app_id": 39,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.find_phone",
+      "address": "0x200da950",
+      "file_offset": "0xd16fc8",
+      "create": "0xc625111"
+    },
+    {
+      "app_id": 4,
+      "page_id": 2,
+      "name": "info",
+      "package_candidate": "com.xiaomi.miwear.breath",
+      "address": "0x200daba0",
+      "file_offset": "0xd17218",
+      "create": "0xc629761"
+    },
+    {
+      "app_id": 4,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.breath",
+      "address": "0x200dac14",
+      "file_offset": "0xd1728c",
+      "create": "0xc629f31"
+    },
+    {
+      "app_id": 4,
+      "page_id": 1,
+      "name": "view",
+      "package_candidate": "com.xiaomi.miwear.breath",
+      "address": "0x200dac88",
+      "file_offset": "0xd17300",
+      "create": "0xc62b819"
+    },
+    {
+      "app_id": 3,
+      "page_id": 2,
+      "name": "explanation",
+      "package_candidate": "com.xiaomi.miwear.pressure",
+      "address": "0x200dad54",
+      "file_offset": "0xd173cc",
+      "create": "0xc62e2e1"
+    },
+    {
+      "app_id": 3,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.pressure",
+      "address": "0x200dadc8",
+      "file_offset": "0xd17440",
+      "create": "0xc63107d"
+    },
+    {
+      "app_id": 3,
+      "page_id": 1,
+      "name": "moniter",
+      "package_candidate": "com.xiaomi.miwear.pressure",
+      "address": "0x200dae3c",
+      "file_offset": "0xd174b4",
+      "create": "0xc631ddd"
+    },
+    {
+      "app_id": 3,
+      "page_id": 4,
+      "name": "month",
+      "package_candidate": "com.xiaomi.miwear.pressure",
+      "address": "0x200daeb0",
+      "file_offset": "0xd17528",
+      "create": "0xc63342d"
+    },
+    {
+      "app_id": 3,
+      "page_id": 3,
+      "name": "setting",
+      "package_candidate": "com.xiaomi.miwear.pressure",
+      "address": "0x200daf24",
+      "file_offset": "0xd1759c",
+      "create": "0xc6336c1"
+    },
+    {
+      "app_id": 12,
+      "page_id": 1,
+      "name": "explanation",
+      "package_candidate": "com.xiaomi.miwear.sleep",
+      "address": "0x200daf98",
+      "file_offset": "0xd17610",
+      "create": "0xc63bda9"
+    },
+    {
+      "app_id": 12,
+      "page_id": 6,
+      "name": "detail",
+      "package_candidate": "com.xiaomi.miwear.sleep",
+      "address": "0x200db00c",
+      "file_offset": "0xd17684",
+      "create": "0xc63c299"
+    },
+    {
+      "app_id": 12,
+      "page_id": 8,
+      "name": "explanation",
+      "package_candidate": "com.xiaomi.miwear.sleep",
+      "address": "0x200db080",
+      "file_offset": "0xd176f8",
+      "create": "0xc63d721"
+    },
+    {
+      "app_id": 12,
+      "page_id": 7,
+      "name": "info",
+      "package_candidate": "com.xiaomi.miwear.sleep",
+      "address": "0x200db0f4",
+      "file_offset": "0xd1776c",
+      "create": "0xc63dd6d"
+    },
+    {
+      "app_id": 12,
+      "page_id": 0,
+      "name": "default",
+      "package_candidate": "com.xiaomi.miwear.sleep",
+      "address": "0x200db178",
+      "file_offset": "0xd177f0",
+      "create": "0xc63e345"
+    },
+    {
+      "app_id": 12,
+      "page_id": 4,
+      "name": "research",
+      "package_candidate": "com.xiaomi.miwear.sleep",
+      "address": "0x200db1ec",
+      "file_offset": "0xd17864",
+      "create": "0xc640735"
+    },
+    {
+      "app_id": 12,
+      "page_id": 5,
+      "name": "researchtips",
+      "package_candidate": "com.xiaomi.miwear.sleep",
+      "address": "0x200db290",
+      "file_offset": "0xd17908",
+      "create": "0xc640da5"
+    },
+    {
+      "app_id": 12,
+      "page_id": 2,
+      "name": "setting",
+      "package_candidate": "com.xiaomi.miwear.sleep",
+      "address": "0x200db304",
+      "file_offset": "0xd1797c",
+      "create": "0xc640ef9"
+    },
+    {
+      "app_id": 12,
+      "page_id": 3,
+      "name": "settinglist",
+      "package_candidate": "com.xiaomi.miwear.sleep",
+      "address": "0x200db378",
+      "file_offset": "0xd179f0",
+      "create": "0xc641775"
+    },
+    {
+      "app_id": 14,
+      "page_id": 2,
+      "name": "explanation",
+      "package_candidate": "com.xiaomi.miwear.oxygen",
+      "address": "0x200db3ec",
+      "file_offset": "0xd17a64",
+      "create": "0xc6497b9"
+    },
+    {
+      "app_id": 14,
+      "page_id": 5,
+      "name": "low_chart",
+      "package_candidate": "com.xiaomi.miwear.oxygen",
+      "address": "0x200db460",
+      "file_offset": "0xd17ad8",
+      "create": "0xc64a189"
+    },
+    {
+      "app_id": 14,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.oxygen",
+      "address": "0x200db4d4",
+      "file_offset": "0xd17b4c",
+      "create": "0xc64be19"
+    },
+    {
+      "app_id": 14,
+      "page_id": 1,
+      "name": "monitor",
+      "package_candidate": "com.xiaomi.miwear.oxygen",
+      "address": "0x200db548",
+      "file_offset": "0xd17bc0",
+      "create": "0xc64c46d"
+    },
+    {
+      "app_id": 14,
+      "page_id": 3,
+      "name": "setting",
+      "package_candidate": "com.xiaomi.miwear.oxygen",
+      "address": "0x200db5bc",
+      "file_offset": "0xd17c34",
+      "create": "0xc64d745"
+    },
+    {
+      "app_id": 14,
+      "page_id": 4,
+      "name": "setting_low",
+      "package_candidate": "com.xiaomi.miwear.oxygen",
+      "address": "0x200db630",
+      "file_offset": "0xd17ca8",
+      "create": "0xc64dd11"
+    },
+    {
+      "app_id": 54,
+      "page_id": 2,
+      "name": "explanation",
+      "package_candidate": "com.xiaomi.miwear.vitality",
+      "address": "0x200db6dc",
+      "file_offset": "0xd17d54",
+      "create": "0xc64f931"
+    },
+    {
+      "app_id": 54,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.vitality",
+      "address": "0x200db750",
+      "file_offset": "0xd17dc8",
+      "create": "0xc650901"
+    },
+    {
+      "app_id": 54,
+      "page_id": 1,
+      "name": "setting",
+      "package_candidate": "com.xiaomi.miwear.vitality",
+      "address": "0x200db7f4",
+      "file_offset": "0xd17e6c",
+      "create": "0xc650e9d"
+    },
+    {
+      "app_id": 81,
+      "page_id": 5,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.innovation_research",
+      "address": "0x200db868",
+      "file_offset": "0xd17ee0",
+      "create": "0xc651985"
+    },
+    {
+      "app_id": 81,
+      "page_id": 4,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.innovation_research",
+      "address": "0x200db8dc",
+      "file_offset": "0xd17f54",
+      "create": "0xc652205"
+    },
+    {
+      "app_id": 81,
+      "page_id": 3,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.innovation_research",
+      "address": "0x200db950",
+      "file_offset": "0xd17fc8",
+      "create": "0xc65334d"
+    },
+    {
+      "app_id": 81,
+      "page_id": 8,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.innovation_research",
+      "address": "0x200db9c8",
+      "file_offset": "0xd18040",
+      "create": "0xc6559c1"
+    },
+    {
+      "app_id": 81,
+      "page_id": 6,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.innovation_research",
+      "address": "0x200dba3c",
+      "file_offset": "0xd180b4",
+      "create": "0xc65775d"
+    },
+    {
+      "app_id": 81,
+      "page_id": 7,
+      "name": "moniter",
+      "package_candidate": "com.xiaomi.miwear.innovation_research",
+      "address": "0x200dbab4",
+      "file_offset": "0xd1812c",
+      "create": "0xc658891"
+    },
+    {
+      "app_id": 81,
+      "page_id": 1,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.innovation_research",
+      "address": "0x200dbb28",
+      "file_offset": "0xd181a0",
+      "create": "0xc658f0d"
+    },
+    {
+      "app_id": 81,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.innovation_research",
+      "address": "0x200dbb9c",
+      "file_offset": "0xd18214",
+      "create": "0xc6598bd"
+    },
+    {
+      "app_id": 50,
+      "page_id": 0,
+      "name": "demo",
+      "package_candidate": "com.xiaomi.miwear.demonstrate",
+      "address": "0x200dbc68",
+      "file_offset": "0xd182e0",
+      "create": "0xc65ba41"
+    },
+    {
+      "app_id": 51,
+      "page_id": 0,
+      "name": "egg",
+      "package_candidate": "com.xiaomi.miwear.easter_egg",
+      "address": "0x200dbd1c",
+      "file_offset": "0xd18394",
+      "create": "0xc65e665"
+    },
+    {
+      "app_id": 5,
+      "page_id": 3,
+      "name": "abnormal",
+      "package_candidate": "com.xiaomi.miwear.heartrate",
+      "address": "0x200dbd98",
+      "file_offset": "0xd18410",
+      "create": "0xc662c95"
+    },
+    {
+      "app_id": 5,
+      "page_id": 2,
+      "name": "explanation",
+      "package_candidate": "com.xiaomi.miwear.heartrate",
+      "address": "0x200dbe0c",
+      "file_offset": "0xd18484",
+      "create": "0xc6643f5"
+    },
+    {
+      "app_id": 5,
+      "page_id": 0,
+      "name": "default",
+      "package_candidate": "com.xiaomi.miwear.heartrate",
+      "address": "0x200dbe80",
+      "file_offset": "0xd184f8",
+      "create": "0xc664ffd"
+    },
+    {
+      "app_id": 5,
+      "page_id": 5,
+      "name": "hrrest",
+      "package_candidate": "com.xiaomi.miwear.heartrate",
+      "address": "0x200dbf7c",
+      "file_offset": "0xd185f4",
+      "create": "0xc667a75"
+    },
+    {
+      "app_id": 5,
+      "page_id": 1,
+      "name": "setting",
+      "package_candidate": "com.xiaomi.miwear.heartrate",
+      "address": "0x200dbff0",
+      "file_offset": "0xd18668",
+      "create": "0xc6681f5"
+    },
+    {
+      "app_id": 54,
+      "page_id": 4,
+      "name": "setting",
+      "package_candidate": "com.xiaomi.miwear.vitality",
+      "address": "0x200dc064",
+      "file_offset": "0xd186dc",
+      "create": "0xc668b65"
+    },
+    {
+      "app_id": 5,
+      "page_id": 4,
+      "name": "settingvCatalog",
+      "package_candidate": "com.xiaomi.miwear.heartrate",
+      "address": "0x200dc0d8",
+      "file_offset": "0xd18750",
+      "create": "0xc668b65"
+    },
+    {
+      "app_id": 65,
+      "page_id": 8,
+      "name": "accel",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc24c",
+      "file_offset": "0xd188c4",
+      "create": "0xc66a4ad"
+    },
+    {
+      "app_id": 65,
+      "page_id": 12,
+      "name": "als",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc2c0",
+      "file_offset": "0xd18938",
+      "create": "0xc66a761"
+    },
+    {
+      "app_id": 65,
+      "page_id": 13,
+      "name": "audio",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc334",
+      "file_offset": "0xd189ac",
+      "create": "0xc66ac99"
+    },
+    {
+      "app_id": 65,
+      "page_id": 4,
+      "name": "bluetooth",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc3a8",
+      "file_offset": "0xd18a20",
+      "create": "0xc66b409"
+    },
+    {
+      "app_id": 65,
+      "page_id": 17,
+      "name": "charger",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc424",
+      "file_offset": "0xd18a9c",
+      "create": "0xc66b5c5"
+    },
+    {
+      "app_id": 65,
+      "page_id": 5,
+      "name": "GPS",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc498",
+      "file_offset": "0xd18b10",
+      "create": "0xc66b7dd"
+    },
+    {
+      "app_id": 65,
+      "page_id": 9,
+      "name": "gyro",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc50c",
+      "file_offset": "0xd18b84",
+      "create": "0xc66bbfd"
+    },
+    {
+      "app_id": 65,
+      "page_id": 20,
+      "name": "inactivity_prompt",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc580",
+      "file_offset": "0xd18bf8",
+      "create": "0xc66be95"
+    },
+    {
+      "app_id": 65,
+      "page_id": 15,
+      "name": "lcd",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc5f4",
+      "file_offset": "0xd18c6c",
+      "create": "0xc66c3d1"
+    },
+    {
+      "app_id": 65,
+      "page_id": 6,
+      "name": "mag",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc668",
+      "file_offset": "0xd18ce0",
+      "create": "0xc66c6b1"
+    },
+    {
+      "app_id": 65,
+      "page_id": 11,
+      "name": "manual_check",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc6dc",
+      "file_offset": "0xd18d54",
+      "create": "0xc66c8b1"
+    },
+    {
+      "app_id": 65,
+      "page_id": 18,
+      "name": "nfc",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc750",
+      "file_offset": "0xd18dc8",
+      "create": "0xc66cec1"
+    },
+    {
+      "app_id": 65,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc838",
+      "file_offset": "0xd18eb0",
+      "create": "0xc66d6e9"
+    },
+    {
+      "app_id": 65,
+      "page_id": 3,
+      "name": "result",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc8ac",
+      "file_offset": "0xd18f24",
+      "create": "0xc66db65"
+    },
+    {
+      "app_id": 65,
+      "page_id": 7,
+      "name": "ppg",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dc994",
+      "file_offset": "0xd1900c",
+      "create": "0xc66e2c9"
+    },
+    {
+      "app_id": 65,
+      "page_id": 10,
+      "name": "storage",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dca08",
+      "file_offset": "0xd19080",
+      "create": "0xc66ebd5"
+    },
+    {
+      "app_id": 65,
+      "page_id": 14,
+      "name": "tp",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dca7c",
+      "file_offset": "0xd190f4",
+      "create": "0xc66ee51"
+    },
+    {
+      "app_id": 65,
+      "page_id": 16,
+      "name": "vibration",
+      "package_candidate": "com.xiaomi.miwear.sale",
+      "address": "0x200dcaf0",
+      "file_offset": "0xd19168",
+      "create": "0xc66f57d"
+    },
+    {
+      "app_id": 43,
+      "page_id": 0,
+      "name": "page_main",
+      "package_candidate": "com.xiaomi.miwear.nfccard",
+      "address": "0x200dcbc8",
+      "file_offset": "0xd19240",
+      "create": "0xc674389"
+    },
+    {
+      "app_id": 60,
+      "page_id": 2,
+      "name": "detail",
+      "package_candidate": "com.xiaomi.miwear.todolist",
+      "address": "0x200dccb0",
+      "file_offset": "0xd19328",
+      "create": "0xc6814a9"
+    },
+    {
+      "app_id": 60,
+      "page_id": 1,
+      "name": "list_page",
+      "package_candidate": "com.xiaomi.miwear.todolist",
+      "address": "0x200dcd24",
+      "file_offset": "0xd1939c",
+      "create": "0xc681911"
+    },
+    {
+      "app_id": 60,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.todolist",
+      "address": "0x200dcd98",
+      "file_offset": "0xd19410",
+      "create": "0xc682bbd"
+    },
+    {
+      "app_id": 60,
+      "page_id": 3,
+      "name": "sub_list_page",
+      "package_candidate": "com.xiaomi.miwear.todolist",
+      "address": "0x200dce0c",
+      "file_offset": "0xd19484",
+      "create": "0xc683401"
+    },
+    {
+      "app_id": 45,
+      "page_id": 0,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.voice",
+      "address": "0x200dcec8",
+      "file_offset": "0xd19540",
+      "create": "0xc684c05"
+    },
+    {
+      "app_id": 67,
+      "page_id": 4,
+      "name": "category",
+      "package_candidate": "com.xiaomi.miwear.interconnect",
+      "address": "0x200dd094",
+      "file_offset": "0xd1970c",
+      "create": "0xc69125d"
+    },
+    {
+      "app_id": 67,
+      "page_id": 2,
+      "name": "dev_info",
+      "package_candidate": "com.xiaomi.miwear.interconnect",
+      "address": "0x200dd108",
+      "file_offset": "0xd19780",
+      "create": "0xc6916ed"
+    },
+    {
+      "app_id": 67,
+      "page_id": 7,
+      "name": "help",
+      "package_candidate": "com.xiaomi.miwear.interconnect",
+      "address": "0x200dd17c",
+      "file_offset": "0xd197f4",
+      "create": "0xc6919d9"
+    },
+    {
+      "app_id": 67,
+      "page_id": 0,
+      "name": "add",
+      "package_candidate": "com.xiaomi.miwear.interconnect",
+      "address": "0x200dd1f4",
+      "file_offset": "0xd1986c",
+      "create": "0xc691b29"
+    },
+    {
+      "app_id": 67,
+      "page_id": 3,
+      "name": "list",
+      "package_candidate": "com.xiaomi.miwear.interconnect",
+      "address": "0x200dd268",
+      "file_offset": "0xd198e0",
+      "create": "0xc691c75"
+    },
+    {
+      "app_id": 67,
+      "page_id": 1,
+      "name": "main",
+      "package_candidate": "com.xiaomi.miwear.interconnect",
+      "address": "0x200dd2dc",
+      "file_offset": "0xd19954",
+      "create": "0xc691dd5"
+    },
+    {
+      "app_id": 67,
+      "page_id": 5,
+      "name": "list",
+      "package_candidate": "com.xiaomi.miwear.interconnect",
+      "address": "0x200dd350",
+      "file_offset": "0xd199c8",
+      "create": "0xc691f71"
+    },
+    {
+      "app_id": 67,
+      "page_id": 6,
+      "name": "tv",
+      "package_candidate": "com.xiaomi.miwear.interconnect",
+      "address": "0x200dd3c4",
+      "file_offset": "0xd19a3c",
+      "create": "0xc692391"
+    },
+    {
+      "app_id": 82,
+      "page_id": 12,
+      "name": "conditioner",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200dd4e0",
+      "file_offset": "0xd19b58",
+      "create": "0xc6973d9"
+    },
+    {
+      "app_id": 82,
+      "page_id": 8,
+      "name": "gesture_detail",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200dd554",
+      "file_offset": "0xd19bcc",
+      "create": "0xc697495"
+    },
+    {
+      "app_id": 82,
+      "page_id": 9,
+      "name": "gesture_guide",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200dd5c8",
+      "file_offset": "0xd19c40",
+      "create": "0xc6975e9"
+    },
+    {
+      "app_id": 82,
+      "page_id": 1,
+      "name": "headset",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200dd654",
+      "file_offset": "0xd19ccc",
+      "create": "0xc697bbd"
+    },
+    {
+      "app_id": 82,
+      "page_id": 11,
+      "name": "lamp",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200dd6e8",
+      "file_offset": "0xd19d60",
+      "create": "0xc698809"
+    },
+    {
+      "app_id": 82,
+      "page_id": 0,
+      "name": "switch",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200dd75c",
+      "file_offset": "0xd19dd4",
+      "create": "0xc698cbd"
+    },
+    {
+      "app_id": 82,
+      "page_id": 3,
+      "name": "pad",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200dd808",
+      "file_offset": "0xd19e80",
+      "create": "0xc699ef1"
+    },
+    {
+      "app_id": 82,
+      "page_id": 4,
+      "name": "pc",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200dd8ac",
+      "file_offset": "0xd19f24",
+      "create": "0xc69a5d5"
+    },
+    {
+      "app_id": 82,
+      "page_id": 2,
+      "name": "phone",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200dd940",
+      "file_offset": "0xd19fb8",
+      "create": "0xc69abe5"
+    },
+    {
+      "app_id": 82,
+      "page_id": 6,
+      "name": "sound",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200dd9e4",
+      "file_offset": "0xd1a05c",
+      "create": "0xc69b971"
+    },
+    {
+      "app_id": 82,
+      "page_id": 13,
+      "name": "sweeper",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200dda78",
+      "file_offset": "0xd1a0f0",
+      "create": "0xc69bb65"
+    },
+    {
+      "app_id": 82,
+      "page_id": 7,
+      "name": "switch",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200ddaec",
+      "file_offset": "0xd1a164",
+      "create": "0xc69c279"
+    },
+    {
+      "app_id": 82,
+      "page_id": 5,
+      "name": "tv",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200ddb88",
+      "file_offset": "0xd1a200",
+      "create": "0xc69cb11"
+    },
+    {
+      "app_id": 82,
+      "page_id": 10,
+      "name": "volume",
+      "package_candidate": "com.xiaomi.miwear.fusion_center",
+      "address": "0x200ddc1c",
+      "file_offset": "0xd1a294",
+      "create": "0xc69cf11"
+    },
+    {
+      "app_id": 83,
+      "page_id": 0,
+      "name": "car_control",
+      "package_candidate": "com.xiaomi.miwear.carcontrol",
+      "address": "0x200ddcd0",
+      "file_offset": "0xd1a348",
+      "create": "0xc6a0c39"
+    },
+    {
+      "app_id": 0,
+      "page_id": 1,
+      "name": "PageProto",
+      "package_candidate": null,
+      "address": "0x200eb708",
+      "file_offset": "0xd27d80",
+      "create": "0xca6d7e1"
+    }
+  ]
+}

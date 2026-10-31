@@ -1,0 +1,56 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "activity main detail",
+  "descriptor": "0x200cf04c",
+  "descriptor_root_slot": "0x200cf07c",
+  "state_slot": "0x2010dcd4",
+  "builder": "0x0c4d1fd8",
+  "builder_callers": [
+    "0x0c4d2b4a",
+    "0x0c4d2de2",
+    "0x0c4d2f82"
+  ],
+  "explain_callback": "0x0c4d1cb8",
+  "points": [
+    {
+      "name": "health.activity.card_icon",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "call": "0xc4d24f8",
+      "interpretation": "The detail builder sets an image source for each constructed activity card. The call is shared by the loop; it does not identify an individual activity type.",
+      "verification_windows": [
+        "activity-cards-health-activity-card_icon"
+      ]
+    },
+    {
+      "name": "health.activity.card_title",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "call": "0xc4d257c",
+      "interpretation": "The detail builder sets each card title from the indexed activity record. The call is shared by the loop; values and formatted units use other calls.",
+      "verification_windows": [
+        "activity-cards-health-activity-card_title"
+      ]
+    },
+    {
+      "name": "health.activity.explain_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "call": "0xc4d2746",
+      "interpretation": "The detail builder registers callback 0x0c4d1cb9 with event filter 7 on the data explanation row. The callback tests the activity root and scroll position before requesting navigation.",
+      "verification_windows": [
+        "activity-cards-health-activity-explain_register"
+      ]
+    }
+  ],
+  "evidence": "The activity main page create and destroy paths publish and clear the root. The detail builder is called from the refresh path, deferred page build and resume path using that root. It iterates four activity records to construct cards and registers the data explanation row callback.",
+  "scope": "Only the listed builder calls while the activity page root is active. Card values, underlying activity data and other screen paths are not intercepted.",
+  "limitations": "The card calls are shared across loop iterations; callers must distinguish objects or values themselves. Modified image sources must remain valid while used. Root slots are not thread barriers; shared-entry publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "activity-cards-health-activity-card_icon",
+    "activity-cards-health-activity-card_title",
+    "activity-cards-health-activity-explain_register"
+  ],
+  "device_validation": "pending"
+}

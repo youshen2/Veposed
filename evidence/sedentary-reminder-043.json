@@ -1,0 +1,213 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "root_slot": "0x2010dd40",
+  "notification_create": "0x0c4d35d4",
+  "notification_destroy": "0x0c4d2fc0",
+  "notification_registration": "0x0c4d3838",
+  "reminder_create": "0x0c4d3020",
+  "reminder_destroy": "0x0c4d2fe8",
+  "reminder_registration": "0x0c4d393c",
+  "message_builder": "0x0c4d31b4",
+  "button_callback": "0x0c4d3624",
+  "points": [
+    {
+      "name": "health.sedentary.complete_icon",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "calls": [
+        "0xc4d3068"
+      ],
+      "interpretation": "The reminder create callback displays complete_sit.bin only when reminder type is 17.",
+      "verification_windows": [
+        "sedentary-health-sedentary-complete_icon-1"
+      ]
+    },
+    {
+      "name": "health.sedentary.complete_title",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc4d309e"
+      ],
+      "interpretation": "The type 17 completion screen displays the translated complete_sit.act.",
+      "verification_windows": [
+        "sedentary-health-sedentary-complete_title-1"
+      ]
+    },
+    {
+      "name": "health.sedentary.complete_tip",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc4d3100"
+      ],
+      "interpretation": "The type 17 completion screen displays the translated complete_sit_tip.act.",
+      "verification_windows": [
+        "sedentary-health-sedentary-complete_tip-1"
+      ]
+    },
+    {
+      "name": "health.sedentary.message_icon",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "calls": [
+        "0xc4d322e"
+      ],
+      "interpretation": "The sedentary message builder displays reminder_sit.bin.",
+      "verification_windows": [
+        "sedentary-health-sedentary-message_icon-1"
+      ]
+    },
+    {
+      "name": "health.sedentary.message_title",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc4d327c"
+      ],
+      "interpretation": "The sedentary message builder displays activities.act.",
+      "verification_windows": [
+        "sedentary-health-sedentary-message_title-1"
+      ]
+    },
+    {
+      "name": "health.sedentary.message_prompt",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc4d32c4"
+      ],
+      "interpretation": "The sedentary message builder displays please_act.act.",
+      "verification_windows": [
+        "sedentary-health-sedentary-message_prompt-1"
+      ]
+    },
+    {
+      "name": "health.sedentary.message_time",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc4d333c",
+        "0xc4d350e"
+      ],
+      "interpretation": "The sedentary message builder sets time text using different formatting branches.",
+      "verification_windows": [
+        "sedentary-health-sedentary-message_time-1",
+        "sedentary-health-sedentary-message_time-2"
+      ]
+    },
+    {
+      "name": "health.sedentary.primary_caption",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc4d3402"
+      ],
+      "interpretation": "The builder chooses a translated caption for the first button according to language.",
+      "verification_windows": [
+        "sedentary-health-sedentary-primary_caption-1"
+      ]
+    },
+    {
+      "name": "health.sedentary.no_reminder_caption",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc4d34aa"
+      ],
+      "interpretation": "The builder displays no_reminder_today.common on the second button.",
+      "verification_windows": [
+        "sedentary-health-sedentary-no_reminder_caption-1"
+      ]
+    },
+    {
+      "name": "health.sedentary.confirm_title",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc4d3746"
+      ],
+      "interpretation": "The button handler builds the confirmation screen and displays close_sedentary.act.",
+      "verification_windows": [
+        "sedentary-health-sedentary-confirm_title-1"
+      ]
+    },
+    {
+      "name": "health.sedentary.primary_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc4d340e"
+      ],
+      "interpretation": "Registers the common button callback with filter 7 and user data 0.",
+      "verification_windows": [
+        "sedentary-health-sedentary-primary_register-1"
+      ]
+    },
+    {
+      "name": "health.sedentary.no_reminder_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc4d34b6"
+      ],
+      "interpretation": "Registers the common button callback with filter 7 and user data 1; this opens a confirmation screen.",
+      "verification_windows": [
+        "sedentary-health-sedentary-no_reminder_register-1"
+      ]
+    },
+    {
+      "name": "health.sedentary.confirm_cancel_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc4d3788"
+      ],
+      "interpretation": "Registers the common button callback with filter 7 and user data 3; its branch rebuilds the message screen.",
+      "verification_windows": [
+        "sedentary-health-sedentary-confirm_cancel_register-1"
+      ]
+    },
+    {
+      "name": "health.sedentary.confirm_accept_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc4d37cc"
+      ],
+      "interpretation": "Registers the common button callback with filter 7 and user data 2; its branch submits a setting and closes the reminder.",
+      "verification_windows": [
+        "sedentary-health-sedentary-confirm_accept_register-1"
+      ]
+    }
+  ],
+  "evidence": "Separate notification and reminder registration paths provide the corresponding create and destroy callbacks. Both create callbacks store the same root slot, and both destroy callbacks clear it. The notification create callback invokes the message builder. The builder and button callback register the same callback with event filter 7 and user data 0, 1, 3 and 2. The callback reads the data byte and dispatches these cases. The reminder create callback builds the completion display for type 17.",
+  "scope": "Only recorded calls and their respective message or completion UI paths while the shared root is present. Other ways to modify reminder scheduling, persistence, delivery or notification content are not intercepted.",
+  "limitations": "Notification and reminder share the root; overlapping lifetimes are not established. The root check is not a thread barrier and does not establish safe simultaneous UI ownership. Changing registrations can desynchronize UI and settings. Image resources must remain valid while used. Shared-entry publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "sedentary-notification-registration",
+    "sedentary-reminder-registration",
+    "sedentary-notification-root-store",
+    "sedentary-reminder-root-store",
+    "sedentary-notification-root-clear",
+    "sedentary-reminder-root-clear",
+    "sedentary-button-handler",
+    "sedentary-health-sedentary-complete_icon-1",
+    "sedentary-health-sedentary-complete_title-1",
+    "sedentary-health-sedentary-complete_tip-1",
+    "sedentary-health-sedentary-message_icon-1",
+    "sedentary-health-sedentary-message_title-1",
+    "sedentary-health-sedentary-message_prompt-1",
+    "sedentary-health-sedentary-message_time-1",
+    "sedentary-health-sedentary-message_time-2",
+    "sedentary-health-sedentary-primary_caption-1",
+    "sedentary-health-sedentary-no_reminder_caption-1",
+    "sedentary-health-sedentary-confirm_title-1",
+    "sedentary-health-sedentary-primary_register-1",
+    "sedentary-health-sedentary-no_reminder_register-1",
+    "sedentary-health-sedentary-confirm_cancel_register-1",
+    "sedentary-health-sedentary-confirm_accept_register-1"
+  ],
+  "device_validation": "pending"
+}

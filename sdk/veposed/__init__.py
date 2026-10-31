@@ -1,6 +1,6 @@
 """Host-side Python DSL that compiles named hook rules into native C callbacks."""
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field as dataclass_field
 import json
 import re
 
@@ -24,6 +24,7 @@ class Expr:
     code: str
     arguments: frozenset = frozenset()
     uses_result: bool = False
+    fields: frozenset = frozenset()
 
     def _binary(self, other, op):
         rhs = other if isinstance(other, Expr) else Expr(literal(other))
@@ -31,6 +32,7 @@ class Expr:
             f"({self.code} {op} {rhs.code})",
             self.arguments | rhs.arguments,
             self.uses_result or rhs.uses_result,
+            self.fields | rhs.fields,
         )
 
     def __add__(self, other):
@@ -83,13 +85,20 @@ def result():
     return Expr("call->result", uses_result=True)
 
 
+def field(name):
+    """Read a named field of a Hook argument, as defined by its target profile."""
+    if not isinstance(name, str) or not re.fullmatch(r"[a-z][a-z0-9_]*", name):
+        raise ValueError("invalid field name")
+    return Expr(f"VEP_FIELD_{name}__", fields=frozenset({name}))
+
+
 @dataclass
 class Rule:
     point: str
     phase: str
     priority: int = 0
     condition: Expr | None = None
-    actions: list = field(default_factory=list)
+    actions: list = dataclass_field(default_factory=list)
 
     def when(self, expression):
         if not isinstance(expression, Expr):
@@ -173,7 +182,7 @@ class Module:
                 raise ValueError("unknown hook point: " + point)
             contract = points[point]["contract"]
             if isinstance(rule, tuple):
-                if contract != "void2":
+                if contract != "void2" or not points[point].get("text_arg1", False):
                     raise ValueError("replace_text needs a void2 text setter")
                 installs.append(
                     f"rc = vep->hook_text(vep_owner, (const uint8_t *){json.dumps(point)}, (const uint8_t *){json.dumps(rule[1], ensure_ascii=False)}, &handle);"
@@ -190,39 +199,84 @@ class Module:
                 for v in values
                 if isinstance(v, Expr)
             ]
-            argc = 4 if contract == "word4" else 2
+            if contract not in {
+                f"{kind}{count}" for kind in ("void", "word") for count in range(5)
+            }:
+                raise ValueError("unsupported contract: " + contract)
+            argc = int(contract[-1])
             if any(any(n >= argc for n in e.arguments) for e in expressions):
                 raise ValueError("argument exceeds " + contract)
-            if contract == "void2" and (
+            field_names = set().union(*(e.fields for e in expressions))
+            if field_names and rule.phase == "after":
+                raise ValueError("fields are available only before or during replacement")
+            layouts = points[point].get("fields", {})
+            field_code, field_args = {}, set()
+            for name in field_names:
+                if name not in layouts:
+                    raise ValueError("unknown field for " + point + ": " + name)
+                spec = layouts[name]
+                index, offset, width, size = spec["arg"], spec["offset"], spec["width"], spec["size"]
+                if not (isinstance(index, int) and 0 <= index < argc and
+                        isinstance(offset, int) and offset >= 0 and width in (1, 2, 4) and
+                        isinstance(size, int) and offset + width <= size):
+                    raise ValueError("invalid field layout for " + point + ": " + name)
+                field_args.add(index)
+                parts = [
+                    f"((uintptr_t)((const uint8_t *)call->args[{index}])[{offset + n}] << {n * 8})"
+                    for n in range(width)
+                ]
+                field_code[name] = "(" + " | ".join(parts) + ")"
+
+            called = False
+            for kind, index, value in rule.actions:
+                if kind == "arg" and index in field_args:
+                    raise ValueError("cannot replace an argument used by field() in the same rule")
+                values = value if kind == "call" else (value,)
+                if called and any(isinstance(v, Expr) and v.fields for v in values):
+                    raise ValueError("field() must be read before calling a native function")
+                called |= kind in ("call", "original")
+
+            def render(value):
+                code = literal(value)
+                if isinstance(value, Expr):
+                    for name in value.fields:
+                        code = code.replace(f"VEP_FIELD_{name}__", field_code[name])
+                return code
+            if contract.startswith("void") and (
                 any(e.uses_result for e in expressions)
                 or any(k in ("result", "return") for k, _, _ in rule.actions)
             ):
-                raise ValueError("void2 has no return value; use skip() to suppress it")
+                raise ValueError(contract + " has no return value; use skip() to suppress it")
             statements = ["call->return_early = 1;"] if rule.phase == "replace" else []
             for kind, index, value in rule.actions:
                 if kind == "arg":
                     if index >= argc:
                         raise ValueError("argument exceeds " + contract)
-                    statements.append(f"call->args[{index}] = {literal(value)};")
+                    statements.append(f"call->args[{index}] = {render(value)};")
                 elif kind == "original":
                     statements.append("(void)vep->call_original(call);")
                 elif kind == "call":
                     if index not in points:
                         raise ValueError("unknown function: " + index)
-                    count = 4 if points[index]["contract"] == "word4" else 2
+                    called_contract = points[index]["contract"]
+                    if called_contract not in {
+                        f"{kind}{count}" for kind in ("void", "word") for count in range(5)
+                    }:
+                        raise ValueError("unsupported contract: " + called_contract)
+                    count = int(called_contract[-1])
                     if len(value) != count:
                         raise ValueError("wrong argument count for " + index)
                     local = f"arguments_{len(statements)}"
-                    values = [literal(v) for v in value] + ["0"] * (4 - count)
+                    values = [render(v) for v in value] + ["0"] * (4 - count)
                     statements.append(f"const uintptr_t {local}[4] = {{" + ", ".join(values) + "};")
                     statements.append(
                         f"if (vep->call_named((const uint8_t *){json.dumps(index)}, {local}, &call->result)) {{ call->result = 0; call->return_early = 1; return; }}"
                     )
                 elif kind == "result":
-                    statements.append(f"call->result = {literal(value)};")
+                    statements.append(f"call->result = {render(value)};")
                 elif kind == "return":
                     statements += [
-                        f"call->result = {literal(value)};",
+                        f"call->result = {render(value)};",
                         "call->return_early = 1;",
                         "return;",
                     ]
@@ -230,12 +284,13 @@ class Module:
                     statements += ["call->return_early = 1;", "return;"]
             body = "\n    ".join(statements)
             if rule.condition is not None:
-                condition = rule.condition.code
+                condition = render(rule.condition)
                 if not condition.startswith("("):
                     condition = "(" + condition + ")"
                 body = f"if {condition} {{\n        {body}\n    }}"
+            guards = "".join(f"if (!call->args[{index}]) return;\n    " for index in sorted(field_args))
             functions.append(
-                f"static void hook_{i}(vep_call *call, void *data) {{\n    (void)data;\n    {body}\n}}"
+                f"static void hook_{i}(vep_call *call, void *data) {{\n    (void)data;\n    {guards}{body}\n}}"
             )
             phase = "before" if rule.phase == "replace" else rule.phase
             installs += [

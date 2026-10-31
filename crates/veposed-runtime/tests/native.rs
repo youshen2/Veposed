@@ -56,6 +56,7 @@ fn exported_api_redirects_real_function_pointer_and_restores_it() {
         guard_write: Some(guard_write),
         points: core::ptr::null(),
         point_count: 0,
+        point_size: size_of::<NamedPoint>(),
     };
     assert_eq!(unsafe { veposed_init(&platform) }, 0);
     let mut owner = 0;

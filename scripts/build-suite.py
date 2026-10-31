@@ -61,8 +61,7 @@ def main():
     ]
     for name in ("main.lua", "loader.lua", "bootstrap.lua", "recovery.lua"):
         shutil.copyfile(ROOT / "installer" / name, folder / name)
-    shutil.copyfile(ROOT / "installer/README.md", folder / "README.md")
-    for name in ("LICENSE", "NOTICE.md"):
+    for name in ("README.md", "LICENSE"):
         shutil.copyfile(ROOT / name, folder / name)
     shutil.copytree(ROOT / "licenses", folder / "licenses")
     shutil.copyfile(built / "report.json", folder / "build-report.json")

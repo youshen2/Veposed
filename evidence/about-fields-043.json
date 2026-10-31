@@ -1,0 +1,98 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page_create": "0x0c54d634",
+  "page_update": "0x0c54d248",
+  "page_root_slot": "0x20111c20",
+  "setter_thunk": "0x0c589491",
+  "setter_execution": "0x1c06f039",
+  "scope": "The about-page constructor stores the root before creating the labels and setting their text. The destroy callback zeroes 76 bytes from the root slot, including these label slots. Each recipe matches the return PC and label object, and requires an active page root during dispatch; attachment requires a zero root.",
+  "evidence": {
+    "device_type": {
+      "contract": "void2",
+      "target": "lvx_label_set_text",
+      "caller": "0xc54d332",
+      "subject_slot": "0x20111c38",
+      "quiescent_slot": "0x20111c20",
+      "setter_call": "0xc54d32e",
+      "language_key": "device_type.settings",
+      "language_key_address": "0x2cba903c",
+      "value_source_offset": "0x140",
+      "status": "static-confirmed; device-not-probed",
+      "active_slot": "0x20111c20"
+    },
+    "system_version": {
+      "contract": "void2",
+      "target": "lvx_label_set_text",
+      "caller": "0xc54d386",
+      "subject_slot": "0x20111c50",
+      "quiescent_slot": "0x20111c20",
+      "setter_call": "0xc54d382",
+      "language_key": "sys_ver.settings",
+      "language_key_address": "0x2cba9054",
+      "value_source_offset": "0x80",
+      "status": "static-confirmed; device-not-probed",
+      "active_slot": "0x20111c20"
+    },
+    "mac_address": {
+      "contract": "void2",
+      "target": "lvx_label_set_text",
+      "caller": "0xc54d442",
+      "subject_slot": "0x20111c40",
+      "quiescent_slot": "0x20111c20",
+      "setter_call": "0xc54d43e",
+      "language_key": "mac.settings",
+      "language_key_address": "0x2cba9078",
+      "value_source_offset": "0x20",
+      "status": "static-confirmed; device-not-probed",
+      "active_slot": "0x20111c20"
+    },
+    "serial_number": {
+      "contract": "void2",
+      "target": "lvx_label_set_text",
+      "caller": "0xc54d494",
+      "subject_slot": "0x20111c68",
+      "quiescent_slot": "0x20111c20",
+      "setter_call": "0xc54d490",
+      "language_key": "sn.settings",
+      "language_key_address": "0x2cba9088",
+      "value_source_offset": "0x0",
+      "status": "static-confirmed; device-not-probed",
+      "active_slot": "0x20111c20"
+    }
+  },
+  "verification_windows": [
+    {
+      "name": "about-device-type-value-call",
+      "file_offset": "0x48d328",
+      "expected": "a06908f5a0713cf0aff8be80be71"
+    },
+    {
+      "name": "about-system-version-value-call",
+      "file_offset": "0x48d37c",
+      "expected": "206b08f180013cf085f83e81be72"
+    },
+    {
+      "name": "about-mac-address-value-call",
+      "file_offset": "0x48d438",
+      "expected": "206a08f120013cf027f83e82be74"
+    },
+    {
+      "name": "about-serial-number-value-call",
+      "file_offset": "0x48d48a",
+      "expected": "32fd4146a06c3bf0feffbe82be75"
+    },
+    {
+      "name": "about-root-before-content",
+      "file_offset": "0x48d65a",
+      "expected": "00219e4d9f4a2b78c4f800801160002b00f00081404619f1"
+    },
+    {
+      "name": "about-root-and-labels-clear",
+      "file_offset": "0x48d560",
+      "expected": "4c2200210a483bf00bfa0a4b1a7802b980bd002208481a70"
+    }
+  ],
+  "device_validation": "pending",
+  "page_destroy": "0x0c54d550"
+}

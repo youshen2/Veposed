@@ -1,0 +1,26 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "settings.about.system_version_clickable",
+  "page_create": "0x0c54d634",
+  "page_update": "0x0c54d248",
+  "page_root_slot": "0x20111c20",
+  "subject_slot": "0x20111c50",
+  "call": "0x0c54d3a6",
+  "return_pc": "0x0c54d3aa",
+  "event_registration": "0x0c54d3b2",
+  "event_handler": "0x0c54d5c8",
+  "flag_value": 2,
+  "function": "0x1c028bd9",
+  "file_offset": "0x76018",
+  "data_alias": "0x3c028bd8",
+  "signature": "2de9f04188b00d4600af044601f04efc",
+  "evidence": "The update function loads the system-version value label, passes flag 2 to the add-flag veneer at 0x0c588960, then registers event callback 0x0c54d5c8 on that same label. The executable implementation ORs the supplied flag into object offset 44 and updates layout. The scoped point intercepts the flag addition only.",
+  "scope": "only this call on the system-version label while the about page is active",
+  "verification_window": {
+    "name": "about-system-version-clickable-call",
+    "file_offset": "0x48d3a2",
+    "expected": "206b02213bf0dbfa2b4604225049206b3bf01df8"
+  },
+  "device_validation": "pending"
+}

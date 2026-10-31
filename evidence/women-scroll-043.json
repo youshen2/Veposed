@@ -1,0 +1,192 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 31,
+  "page_id": 0,
+  "state_slot": "0x2011ce40",
+  "descriptor_root_slot": "0x200da7d0",
+  "points": [
+    {
+      "name": "health.women.main.reset_bar2",
+      "call": "0xc620ab8",
+      "target": "lv_image_set_src",
+      "source": "bar2.bin",
+      "verification_window": "women-scroll-reset-bar2"
+    },
+    {
+      "name": "health.women.main.reset_bar4",
+      "call": "0xc620ae8",
+      "target": "lv_image_set_src",
+      "source": "bar4.bin",
+      "verification_window": "women-scroll-reset-bar4"
+    },
+    {
+      "name": "health.women.main.reset_bar3",
+      "call": "0xc620af0",
+      "target": "lv_image_set_src",
+      "source": "bar3.bin",
+      "verification_window": "women-scroll-reset-bar3"
+    },
+    {
+      "name": "health.women.main.reset_bar1",
+      "call": "0xc620af8",
+      "target": "lv_image_set_src",
+      "source": "bar1.bin",
+      "verification_window": "women-scroll-reset-bar1"
+    },
+    {
+      "name": "health.women.main.reset_bar5",
+      "call": "0xc620bc0",
+      "target": "lv_image_set_src",
+      "source": "bar5.bin",
+      "verification_window": "women-scroll-reset-bar5"
+    },
+    {
+      "name": "health.women.main.positive_bar8",
+      "call": "0xc620b00",
+      "target": "lv_image_set_src",
+      "source": "bar8.bin",
+      "verification_window": "women-scroll-positive-bar8"
+    },
+    {
+      "name": "health.women.main.positive_bar7",
+      "call": "0xc620b14",
+      "target": "lv_image_set_src",
+      "source": "bar7.bin",
+      "verification_window": "women-scroll-positive-bar7"
+    },
+    {
+      "name": "health.women.main.positive_bar9",
+      "call": "0xc620b20",
+      "target": "lv_image_set_src",
+      "source": "bar9.bin",
+      "verification_window": "women-scroll-positive-bar9"
+    },
+    {
+      "name": "health.women.main.positive_bar6",
+      "call": "0xc620b2c",
+      "target": "lv_image_set_src",
+      "source": "bar6.bin",
+      "verification_window": "women-scroll-positive-bar6"
+    },
+    {
+      "name": "health.women.main.nonpositive_bar8",
+      "call": "0xc620b68",
+      "target": "lv_image_set_src",
+      "source": "bar8.bin",
+      "verification_window": "women-scroll-nonpositive-bar8"
+    },
+    {
+      "name": "health.women.main.nonpositive_bar6",
+      "call": "0xc620b7c",
+      "target": "lv_image_set_src",
+      "source": "bar6.bin",
+      "verification_window": "women-scroll-nonpositive-bar6"
+    },
+    {
+      "name": "health.women.main.nonpositive_bar7",
+      "call": "0xc620b8a",
+      "target": "lv_image_set_src",
+      "source": "bar7.bin",
+      "verification_window": "women-scroll-nonpositive-bar7"
+    },
+    {
+      "name": "health.women.main.nonpositive_bar9",
+      "call": "0xc620b9a",
+      "target": "lv_image_set_src",
+      "source": "bar9.bin",
+      "verification_window": "women-scroll-nonpositive-bar9"
+    },
+    {
+      "name": "health.women.main.nonpositive_bar10",
+      "call": "0xc620bc8",
+      "target": "lv_image_set_src",
+      "source": "bar10.bin",
+      "verification_window": "women-scroll-nonpositive-bar10"
+    },
+    {
+      "name": "health.women.main.left_event_code",
+      "call": "0xc620096",
+      "target": "lv_event_get_code",
+      "source": "event callback getter",
+      "verification_window": "women-scroll-left-event-code"
+    },
+    {
+      "name": "health.women.main.left_event_data",
+      "call": "0xc6200a2",
+      "target": "lv_event_get_user_data",
+      "source": "event callback getter",
+      "verification_window": "women-scroll-left-event-data"
+    },
+    {
+      "name": "health.women.main.right_event_code",
+      "call": "0xc62005a",
+      "target": "lv_event_get_code",
+      "source": "event callback getter",
+      "verification_window": "women-scroll-right-event-code"
+    },
+    {
+      "name": "health.women.main.right_event_data",
+      "call": "0xc620066",
+      "target": "lv_event_get_user_data",
+      "source": "event callback getter",
+      "verification_window": "women-scroll-right-event-data"
+    },
+    {
+      "name": "health.women.main.mark_event_data",
+      "call": "0xc620022",
+      "target": "lv_event_get_user_data",
+      "source": "event callback getter",
+      "verification_window": "women-scroll-mark-event-data"
+    },
+    {
+      "name": "health.women.main.scroll_event_code",
+      "call": "0xc6209d6",
+      "target": "lv_event_get_code",
+      "source": "event callback getter",
+      "verification_window": "women-scroll-scroll-event-code"
+    },
+    {
+      "name": "health.women.main.scroll_event_target",
+      "call": "0xc6209de",
+      "target": "lv_event_original_target",
+      "source": "event callback getter",
+      "verification_window": "women-scroll-scroll-event-target"
+    },
+    {
+      "name": "health.women.main.scroll_event_data",
+      "call": "0xc6209e6",
+      "target": "lv_event_get_user_data",
+      "source": "event callback getter",
+      "verification_window": "women-scroll-scroll-event-data"
+    }
+  ],
+  "evidence": "The pillar scroll callback 0xc6209cc checks event code 9 and 11, and on scroll end updates image sources after a position change. Its reset, positive-offset, and nonpositive-offset paths call the listed image setter sites. The arrow callbacks 0xc620090 and 0xc620054 check event code 7 and retrieve event user data; the mark callback retrieves user data. Wrapper 0xc588210 tail-jumps to event-code getter, 0xc588310 to user-data getter, and 0xc5879e0 to original-target getter.",
+  "scope": "Each image hook sees only its listed branch and call site. Event getters are scoped by callback call site and active main-page state.",
+  "limitations": "Page slots are not a thread synchronization mechanism. Altering event codes, object pointers, or event data can break page state or navigation. Static analysis only; device behavior and recovery remain unverified. Avoid recording private health values.",
+  "verification_windows": [
+    "women-scroll-reset-bar2",
+    "women-scroll-reset-bar4",
+    "women-scroll-reset-bar3",
+    "women-scroll-reset-bar1",
+    "women-scroll-reset-bar5",
+    "women-scroll-positive-bar8",
+    "women-scroll-positive-bar7",
+    "women-scroll-positive-bar9",
+    "women-scroll-positive-bar6",
+    "women-scroll-nonpositive-bar8",
+    "women-scroll-nonpositive-bar6",
+    "women-scroll-nonpositive-bar7",
+    "women-scroll-nonpositive-bar9",
+    "women-scroll-nonpositive-bar10",
+    "women-scroll-left-event-code",
+    "women-scroll-left-event-data",
+    "women-scroll-right-event-code",
+    "women-scroll-right-event-data",
+    "women-scroll-mark-event-data",
+    "women-scroll-scroll-event-code",
+    "women-scroll-scroll-event-target",
+    "women-scroll-scroll-event-data"
+  ],
+  "device_validation": "pending"
+}

@@ -1,0 +1,159 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "remote camera main page",
+  "descriptor": "0x200d1d50",
+  "descriptor_root_slot": "0x200d1d80",
+  "state_slot": "0x20111bc8",
+  "create": "0x0c54aee0",
+  "destroy": "0x0c54aca4",
+  "points": [
+    {
+      "name": "apps.camera.shutter.press_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc54bac4",
+        "0xc54baf4"
+      ],
+      "interpretation": "Both shutter builder branches register callback 0x0c54b539 with event filter 1.",
+      "verification_windows": [
+        "remote-camera-apps-camera-shutter-press_register-1",
+        "remote-camera-apps-camera-shutter-press_register-2"
+      ]
+    },
+    {
+      "name": "apps.camera.shutter.release_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc54bad0",
+        "0xc54bb00"
+      ],
+      "interpretation": "Both shutter builder branches register callback 0x0c54b539 with event filter 8.",
+      "verification_windows": [
+        "remote-camera-apps-camera-shutter-release_register-1",
+        "remote-camera-apps-camera-shutter-release_register-2"
+      ]
+    },
+    {
+      "name": "apps.camera.shutter.event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "calls": [
+        "0xc54b542"
+      ],
+      "interpretation": "The callback treats code 1 as pressed and code 8 as release; for the active shutter it starts capture or a countdown.",
+      "verification_windows": [
+        "remote-camera-apps-camera-shutter-event_code-1"
+      ]
+    },
+    {
+      "name": "apps.camera.shutter.pressed_icon",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "calls": [
+        "0xc54b59e"
+      ],
+      "interpretation": "The code-1 path assigns camera_shut_pressed.bin to the active shutter image.",
+      "verification_windows": [
+        "remote-camera-apps-camera-shutter-pressed_icon-1"
+      ]
+    },
+    {
+      "name": "apps.camera.shutter.released_icon",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "calls": [
+        "0xc54b56c"
+      ],
+      "interpretation": "The code-8 path assigns camera_shut.bin to the active shutter image.",
+      "verification_windows": [
+        "remote-camera-apps-camera-shutter-released_icon-1"
+      ]
+    },
+    {
+      "name": "apps.camera.delay.register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc54bb5a"
+      ],
+      "interpretation": "The shutter builder registers the delay-selection callback 0x0c54b24d for event filter 7.",
+      "verification_windows": [
+        "remote-camera-apps-camera-delay-register-1"
+      ]
+    },
+    {
+      "name": "apps.camera.delay.event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "calls": [
+        "0xc54b252"
+      ],
+      "interpretation": "For code 7 the callback cycles delay state between off, 3 seconds and 5 seconds and updates the button image.",
+      "verification_windows": [
+        "remote-camera-apps-camera-delay-event_code-1"
+      ]
+    },
+    {
+      "name": "apps.camera.hint.text",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc54ae32"
+      ],
+      "interpretation": "The hint builder obtains tips_open.remote_camera and passes it to the hint label.",
+      "verification_windows": [
+        "remote-camera-apps-camera-hint-text-1"
+      ]
+    },
+    {
+      "name": "apps.camera.hint.register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc54ae9a"
+      ],
+      "interpretation": "The hint builder registers callback 0x0c54b1c1 with event filter 7.",
+      "verification_windows": [
+        "remote-camera-apps-camera-hint-register-1"
+      ]
+    },
+    {
+      "name": "apps.camera.hint.event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "calls": [
+        "0xc54b1c4"
+      ],
+      "interpretation": "For code 7 the callback changes page state and invokes the shutter-view builder.",
+      "verification_windows": [
+        "remote-camera-apps-camera-hint-event_code-1"
+      ]
+    }
+  ],
+  "evidence": "The remote camera app registration supplies the page descriptor. The create callback stores its root in 0x20111bc8 and destroy clears it. The shutter builder registers the same callback for press and release in two UI construction branches; the callback checks the current shutter object and performs immediate capture or countdown on release. The delay callback cycles off, 3 and 5 seconds. Hint-building and button callbacks provide a separate entry path.",
+  "scope": "Only listed call sites while the remote-camera main root is present. Other camera control, phone-side and connection-state paths are not intercepted.",
+  "limitations": "Mutating events can desynchronize visual feedback and capture state. Replacement icon sources must remain valid for the UI resource lifetime. The root checks do not stop concurrent execution; shared entry publication and rollback need system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "remote-camera-manifest",
+    "remote-camera-root-create",
+    "remote-camera-root-destroy",
+    "remote-camera-shutter-handler",
+    "remote-camera-delay-handler",
+    "remote-camera-apps-camera-shutter-press_register-1",
+    "remote-camera-apps-camera-shutter-press_register-2",
+    "remote-camera-apps-camera-shutter-release_register-1",
+    "remote-camera-apps-camera-shutter-release_register-2",
+    "remote-camera-apps-camera-shutter-event_code-1",
+    "remote-camera-apps-camera-shutter-pressed_icon-1",
+    "remote-camera-apps-camera-shutter-released_icon-1",
+    "remote-camera-apps-camera-delay-register-1",
+    "remote-camera-apps-camera-delay-event_code-1",
+    "remote-camera-apps-camera-hint-text-1",
+    "remote-camera-apps-camera-hint-register-1",
+    "remote-camera-apps-camera-hint-event_code-1"
+  ],
+  "device_validation": "pending"
+}

@@ -1,0 +1,105 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "launcher main page",
+  "state_slot": "0x201102f4",
+  "descriptor_root_slot": "0x200d0d3c",
+  "icon_insert": "0x0c5177a4",
+  "icon_click": "0x0c517418",
+  "layout_button": "0x0c51761c",
+  "points": [
+    {
+      "name": "system.launcher.icon.click_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc51782e"
+      ],
+      "interpretation": "Icon insertion registers callback 0x0c517419 for filter 4 with the application ID as user data.",
+      "verification_windows": [
+        "launcher-interactions-system-launcher-icon-click_register-1"
+      ]
+    },
+    {
+      "name": "system.launcher.icon.app_id",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "calls": [
+        "0xc517422"
+      ],
+      "interpretation": "The callback retrieves a user-data word and uses its low 16 bits as app ID for launch or, in edit mode, the uninstall flow.",
+      "verification_windows": [
+        "launcher-interactions-system-launcher-icon-app_id-1"
+      ]
+    },
+    {
+      "name": "system.launcher.icon.source",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "calls": [
+        "0xc5177d2"
+      ],
+      "interpretation": "Icon insertion assigns the resource pointer stored in the application list record.",
+      "verification_windows": [
+        "launcher-interactions-system-launcher-icon-source-1"
+      ]
+    },
+    {
+      "name": "system.launcher.icon.caption",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc51788c",
+        "0xc5179a6"
+      ],
+      "interpretation": "Two launcher layout branches assign the name stored in the application list record to an icon caption label.",
+      "verification_windows": [
+        "launcher-interactions-system-launcher-icon-caption-1",
+        "launcher-interactions-system-launcher-icon-caption-2"
+      ]
+    },
+    {
+      "name": "system.launcher.layout.register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc517b24"
+      ],
+      "interpretation": "The layout button registers 0x0c51761d with the all-events filter 0.",
+      "verification_windows": [
+        "launcher-interactions-system-launcher-layout-register-1"
+      ]
+    },
+    {
+      "name": "system.launcher.layout.event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "calls": [
+        "0xc517622"
+      ],
+      "interpretation": "The handler processes events 1, 5, and 7; for 5 it considers scroll distance, while 7 proceeds directly to navigation.",
+      "verification_windows": [
+        "launcher-interactions-system-launcher-layout-event_code-1"
+      ]
+    }
+  ],
+  "evidence": "The main-page create and destroy callbacks set and clear the page root global. Icon insertion loads its ID from an application record, registers the click callback with event filter 4, and sets its image and optional captions. The callback reads the ID from event user data and selects app navigation or the edit/uninstall branch. The layout button registers a separate handler with filter 0, which interprets event codes and navigation.",
+  "scope": "Only the recorded call sites while the launcher main page root is active; other launch mechanisms, layout update paths or background activity are outside these points.",
+  "limitations": "The app ID must resolve to an appropriate currently registered application; in edit mode it may affect an uninstall flow. Modifying icon sources requires valid resource lifetime. Page root checks are not thread barriers; shared-entry publication and rollback require system-wide quiescence. Device behavior is unverified.",
+  "verification_windows": [
+    "launcher-icon-click-callback-literal",
+    "launcher-layout-callback-literal",
+    "launcher-icon-app-dispatch",
+    "launcher-icon-uninstall-branch",
+    "launcher-root-publish",
+    "launcher-root-clear",
+    "launcher-interactions-system-launcher-icon-click_register-1",
+    "launcher-interactions-system-launcher-icon-app_id-1",
+    "launcher-interactions-system-launcher-icon-source-1",
+    "launcher-interactions-system-launcher-icon-caption-1",
+    "launcher-interactions-system-launcher-icon-caption-2",
+    "launcher-interactions-system-launcher-layout-register-1",
+    "launcher-interactions-system-launcher-layout-event_code-1"
+  ],
+  "device_validation": "pending"
+}

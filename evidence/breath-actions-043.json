@@ -1,0 +1,303 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "breath main",
+    "breath session",
+    "breath information"
+  ],
+  "main_root": "0x2011d0f4",
+  "main_descriptor_root": "0x200dac44",
+  "session_view": "0x2011d104",
+  "session_descriptor_root": "0x200dacb8",
+  "info_root": "0x2011d09c",
+  "info_descriptor": "0x200daba0",
+  "points": [
+    {
+      "name": "health.breath.modes.register",
+      "calls": [
+        "0xc629b5c",
+        "0xc629c74"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Two loop branches register mode selection callback C62A3A4 with mode index as user data.",
+      "verification_windows": [
+        "breath-health-breath-modes-register-1",
+        "breath-health-breath-modes-register-2"
+      ]
+    },
+    {
+      "name": "health.breath.mode_data",
+      "calls": [
+        "0xc62a3aa"
+      ],
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "Mode selection callback stores the user data as the current mode.",
+      "verification_windows": [
+        "breath-health-breath-mode_data-1"
+      ]
+    },
+    {
+      "name": "health.breath.info_text",
+      "calls": [
+        "0xc629bf2"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The mode list sets train_info.breath.",
+      "verification_windows": [
+        "breath-health-breath-info_text-1"
+      ]
+    },
+    {
+      "name": "health.breath.start_register",
+      "calls": [
+        "0xc629d9a"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The initial mode view registers C62AF84 with user data 0, which starts training.",
+      "verification_windows": [
+        "breath-health-breath-start_register-1"
+      ]
+    },
+    {
+      "name": "health.breath.start_text",
+      "calls": [
+        "0xc629e54"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The mode view sets click_start.breath.",
+      "verification_windows": [
+        "breath-health-breath-start_text-1"
+      ]
+    },
+    {
+      "name": "health.breath.mode_bg",
+      "calls": [
+        "0xc629dd2"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The mode branch sets yoga or abdominal image source.",
+      "verification_windows": [
+        "breath-health-breath-mode_bg-1"
+      ]
+    },
+    {
+      "name": "health.breath.box_bg",
+      "calls": [
+        "0xc629e74"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Mode 0 sets the box image source.",
+      "verification_windows": [
+        "breath-health-breath-box_bg-1"
+      ]
+    },
+    {
+      "name": "health.breath.buzz_bg",
+      "calls": [
+        "0xc629e7c"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Mode 1 sets the buzz image source.",
+      "verification_windows": [
+        "breath-health-breath-buzz_bg-1"
+      ]
+    },
+    {
+      "name": "health.breath.interrupted_text",
+      "calls": [
+        "0xc62a1e0"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Interrupted result screen displays training_interrupted.breath.",
+      "verification_windows": [
+        "breath-health-breath-interrupted_text-1"
+      ]
+    },
+    {
+      "name": "health.breath.retry_register",
+      "calls": [
+        "0xc62a24e"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Interrupted result screen registers C62AF84 with user data 0.",
+      "verification_windows": [
+        "breath-health-breath-retry_register-1"
+      ]
+    },
+    {
+      "name": "health.breath.result_done_register",
+      "calls": [
+        "0xc62a2aa"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Interrupted result screen registers C62AF84 with user data 3.",
+      "verification_windows": [
+        "breath-health-breath-result_done_register-1"
+      ]
+    },
+    {
+      "name": "health.breath.time_register",
+      "calls": [
+        "0xc62a4ce"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The breath time setting registers C62AF84 with user data 2.",
+      "verification_windows": [
+        "breath-health-breath-time_register-1"
+      ]
+    },
+    {
+      "name": "health.breath.explain_register",
+      "calls": [
+        "0xc62a51c"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The training explanation row registers C62980C.",
+      "verification_windows": [
+        "breath-health-breath-explain_register-1"
+      ]
+    },
+    {
+      "name": "health.breath.duration_text",
+      "calls": [
+        "0xc62a6fa"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The duration selector sets minute_title.breath.",
+      "verification_windows": [
+        "breath-health-breath-duration_text-1"
+      ]
+    },
+    {
+      "name": "health.breath.duration_confirm",
+      "calls": [
+        "0xc62a892"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The duration selector registers C62AF84 with user data 1.",
+      "verification_windows": [
+        "breath-health-breath-duration_confirm-1"
+      ]
+    },
+    {
+      "name": "health.breath.action_data",
+      "calls": [
+        "0xc62af8a"
+      ],
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "C62AF84 dispatches start, time save, duration selection and mode list from event user data.",
+      "verification_windows": [
+        "breath-health-breath-action_data-1"
+      ]
+    },
+    {
+      "name": "health.breath.session.stop_register",
+      "calls": [
+        "0xc62bd98"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Screen 1 stop icon registers C62BFCC with user data 0, which executes the end branch.",
+      "verification_windows": [
+        "breath-health-breath-session-stop_register-1"
+      ]
+    },
+    {
+      "name": "health.breath.session.restart_register",
+      "calls": [
+        "0xc62bdd2"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Screen 1 restart icon registers C62BFCC with user data 1.",
+      "verification_windows": [
+        "breath-health-breath-session-restart_register-1"
+      ]
+    },
+    {
+      "name": "health.breath.session.stop_text",
+      "calls": [
+        "0xc62be24"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Screen 1 displays screen1_stop.breath.",
+      "verification_windows": [
+        "breath-health-breath-session-stop_text-1"
+      ]
+    },
+    {
+      "name": "health.breath.session.restart_text",
+      "calls": [
+        "0xc62be84"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Screen 1 displays screen1_restart.breath.",
+      "verification_windows": [
+        "breath-health-breath-session-restart_text-1"
+      ]
+    },
+    {
+      "name": "health.breath.session.action_data",
+      "calls": [
+        "0xc62bfda"
+      ],
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "C62BFCC dispatches end, restart and title actions by event user data.",
+      "verification_windows": [
+        "breath-health-breath-session-action_data-1"
+      ]
+    }
+  ],
+  "evidence": "App 4 registers three page descriptors. Main mode creation registers the common action callback and sets localized text and image resources. The session creates a view with a screen builder that registers stop and restart to one callback with distinct user data; the callback executes separate end and restart branches. The information page stores and clears its root.",
+  "scope": "Recorded shared UI calls only; no claim of all calls, sensor logic or training algorithm coverage. The common event data reader may handle several actions as described.",
+  "limitations": "Changing callback pointers or event data can break training and page cleanup; mode index is used to address an array. Source objects and text must remain valid. Root slots are not thread barriers. Device behavior and recovery have not been validated.",
+  "verification_windows": [
+    "lifecycle-state-clear-health-breath-info",
+    "breath-health-breath-modes-register-1",
+    "breath-health-breath-modes-register-2",
+    "breath-health-breath-mode_data-1",
+    "breath-health-breath-info_text-1",
+    "breath-health-breath-start_register-1",
+    "breath-health-breath-start_text-1",
+    "breath-health-breath-mode_bg-1",
+    "breath-health-breath-box_bg-1",
+    "breath-health-breath-buzz_bg-1",
+    "breath-health-breath-interrupted_text-1",
+    "breath-health-breath-retry_register-1",
+    "breath-health-breath-result_done_register-1",
+    "breath-health-breath-time_register-1",
+    "breath-health-breath-explain_register-1",
+    "breath-health-breath-duration_text-1",
+    "breath-health-breath-duration_confirm-1",
+    "breath-health-breath-action_data-1",
+    "breath-health-breath-session-stop_register-1",
+    "breath-health-breath-session-restart_register-1",
+    "breath-health-breath-session-stop_text-1",
+    "breath-health-breath-session-restart_text-1",
+    "breath-health-breath-session-action_data-1",
+    "breath-mode-event-dispatch",
+    "breath-session-event-dispatch",
+    "breath-info-root-destroy"
+  ],
+  "device_validation": "pending"
+}

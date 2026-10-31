@@ -1,0 +1,209 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 31,
+  "page_id": 0,
+  "descriptor": "0x200da7a0",
+  "state_slot": "0x2011ce40",
+  "descriptor_root_slot": "0x200da7d0",
+  "points": [
+    {
+      "name": "health.women.main.left_icon",
+      "call": "0xc6202c4",
+      "target": "lv_image_set_src",
+      "source": "left_icon.bin",
+      "verification_window": "women-main-left-icon"
+    },
+    {
+      "name": "health.women.main.left_empty_icon",
+      "call": "0xc6202fc",
+      "target": "lv_image_set_src",
+      "source": "left_icon_nodata.bin",
+      "verification_window": "women-main-left-empty-icon"
+    },
+    {
+      "name": "health.women.main.right_icon",
+      "call": "0xc62032a",
+      "target": "lv_image_set_src",
+      "source": "right_icon.bin",
+      "verification_window": "women-main-right-icon"
+    },
+    {
+      "name": "health.women.main.right_empty_icon",
+      "call": "0xc62035e",
+      "target": "lv_image_set_src",
+      "source": "right_icon_nodata.bin",
+      "verification_window": "women-main-right-empty-icon"
+    },
+    {
+      "name": "health.women.main.left_register",
+      "call": "0xc6202d8",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc620091, event filter 7",
+      "verification_window": "women-main-left-register"
+    },
+    {
+      "name": "health.women.main.right_register",
+      "call": "0xc62033e",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc620055, event filter 7",
+      "verification_window": "women-main-right-register"
+    },
+    {
+      "name": "health.women.main.mark_register",
+      "call": "0xc6204ac",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc620015, event filter 7",
+      "verification_window": "women-main-mark-register"
+    },
+    {
+      "name": "health.women.main.pillar_register",
+      "call": "0xc620d04",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc6209cd",
+      "verification_window": "women-main-pillar-register"
+    },
+    {
+      "name": "health.women.main.pillar_current_bar7",
+      "call": "0xc620d36",
+      "target": "lv_image_set_src",
+      "source": "bar7.bin",
+      "verification_window": "women-main-pillar-current-bar7"
+    },
+    {
+      "name": "health.women.main.pillar_current_bar8",
+      "call": "0xc620e6c",
+      "target": "lv_image_set_src",
+      "source": "bar8.bin",
+      "verification_window": "women-main-pillar-current-bar8"
+    },
+    {
+      "name": "health.women.main.pillar_current_bar9",
+      "call": "0xc620e76",
+      "target": "lv_image_set_src",
+      "source": "bar9.bin",
+      "verification_window": "women-main-pillar-current-bar9"
+    },
+    {
+      "name": "health.women.main.pillar_current_bar6",
+      "call": "0xc620e7e",
+      "target": "lv_image_set_src",
+      "source": "bar6.bin",
+      "verification_window": "women-main-pillar-current-bar6"
+    },
+    {
+      "name": "health.women.main.pillar_current_bar10",
+      "call": "0xc620ea8",
+      "target": "lv_image_set_src",
+      "source": "bar10.bin",
+      "verification_window": "women-main-pillar-current-bar10"
+    },
+    {
+      "name": "health.women.main.pillar_next_bar2",
+      "call": "0xc620d8a",
+      "target": "lv_image_set_src",
+      "source": "bar2.bin",
+      "verification_window": "women-main-pillar-next-bar2"
+    },
+    {
+      "name": "health.women.main.pillar_next_bar4",
+      "call": "0xc620dee",
+      "target": "lv_image_set_src",
+      "source": "bar4.bin",
+      "verification_window": "women-main-pillar-next-bar4"
+    },
+    {
+      "name": "health.women.main.pillar_next_bar1",
+      "call": "0xc620df6",
+      "target": "lv_image_set_src",
+      "source": "bar1.bin",
+      "verification_window": "women-main-pillar-next-bar1"
+    },
+    {
+      "name": "health.women.main.pillar_next_bar3",
+      "call": "0xc620dfe",
+      "target": "lv_image_set_src",
+      "source": "bar3.bin",
+      "verification_window": "women-main-pillar-next-bar3"
+    },
+    {
+      "name": "health.women.main.pillar_previous_bar2_or4",
+      "call": "0xc620e08",
+      "target": "lv_image_set_src",
+      "source": "bar2.bin or bar4.bin",
+      "verification_window": "women-main-pillar-previous-bar2-or4"
+    },
+    {
+      "name": "health.women.main.pillar_previous_bar3",
+      "call": "0xc620e4e",
+      "target": "lv_image_set_src",
+      "source": "bar3.bin",
+      "verification_window": "women-main-pillar-previous-bar3"
+    },
+    {
+      "name": "health.women.main.pillar_previous_bar5",
+      "call": "0xc620e5c",
+      "target": "lv_image_set_src",
+      "source": "bar5.bin",
+      "verification_window": "women-main-pillar-previous-bar5"
+    },
+    {
+      "name": "health.women.main.pillar_previous_bar1",
+      "call": "0xc620e64",
+      "target": "lv_image_set_src",
+      "source": "bar1.bin",
+      "verification_window": "women-main-pillar-previous-bar1"
+    },
+    {
+      "name": "health.women.main.date_caption",
+      "call": "0xc6216e0",
+      "target": "lvx_label_set_text",
+      "source": "formatted date",
+      "verification_window": "women-main-date-caption"
+    },
+    {
+      "name": "health.women.main.status_no_record",
+      "call": "0xc621842",
+      "target": "lvx_label_set_text",
+      "source": "no_record_today.wm",
+      "verification_window": "women-main-status-no-record"
+    },
+    {
+      "name": "health.women.main.status_ovulation_day",
+      "call": "0xc621856",
+      "target": "lvx_label_set_text",
+      "source": "ovulation_day.wm",
+      "verification_window": "women-main-status-ovulation-day"
+    }
+  ],
+  "evidence": "Main creator sets state slot and invokes 0xc620160 for available data. This builder creates the arrow/mark controls and 0xc620c30 constructs the pillar using conditional image calls; the latter is also called by deferred function 0xc621218. Arrow registrations use filter 7 and callbacks 0xc620091/0xc620055, which call 0xc621090 in opposite directions. The mark registration uses filter 7 and callback 0xc620015. The pillar helper registers 0xc6209cd. Formatting helper 0xc62166c sets the date; 0xc6217b4 sets the two stated status labels. Both helpers have multiple callers.",
+  "scope": "These entries filter individual call sites while main state is active. Pillar calls inside loops can fire repeatedly; a single call may receive more than one image. Date/status helper calls may occur from any of their callers while the main state remains active; they do not identify a specific label object. Scroll-update branches are documented in women-scroll-043.json; formatted status strings are not covered by these entries.",
+  "limitations": "Both slots are installation guards, not a cross-thread synchronization mechanism. Deferred callbacks, asynchronous destruction, health data effects, recovery and all device behavior require on-device verification. Avoid recording private health values.",
+  "verification_windows": [
+    "women-main-left-icon",
+    "women-main-left-empty-icon",
+    "women-main-right-icon",
+    "women-main-right-empty-icon",
+    "women-main-left-register",
+    "women-main-right-register",
+    "women-main-mark-register",
+    "women-main-pillar-register",
+    "women-main-pillar-current-bar7",
+    "women-main-pillar-current-bar8",
+    "women-main-pillar-current-bar9",
+    "women-main-pillar-current-bar6",
+    "women-main-pillar-current-bar10",
+    "women-main-pillar-next-bar2",
+    "women-main-pillar-next-bar4",
+    "women-main-pillar-next-bar1",
+    "women-main-pillar-next-bar3",
+    "women-main-pillar-previous-bar2-or4",
+    "women-main-pillar-previous-bar3",
+    "women-main-pillar-previous-bar5",
+    "women-main-pillar-previous-bar1",
+    "women-main-date-caption",
+    "women-main-status-no-record",
+    "women-main-status-ovulation-day"
+  ],
+  "device_validation": "pending"
+}

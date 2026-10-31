@@ -1,0 +1,215 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "points": [
+    {
+      "name": "apps.phonemute.disconnect_icon",
+      "call": "0xc624192",
+      "target": "lv_image_set_src",
+      "source": "disconn.bin",
+      "verification_window": "phone-utilities-apps-phonemute-disconnect_icon"
+    },
+    {
+      "name": "apps.phonemute.disconnect_text",
+      "call": "0xc6241de",
+      "target": "lvx_label_set_text",
+      "source": "blue_break.mute",
+      "verification_window": "phone-utilities-apps-phonemute-disconnect_text"
+    },
+    {
+      "name": "apps.phonemute.retry_text",
+      "call": "0xc62423e",
+      "target": "lvx_label_set_text",
+      "source": "blue_retry.mute",
+      "verification_window": "phone-utilities-apps-phonemute-retry_text"
+    },
+    {
+      "name": "apps.phonemute.disconnect_confirm_text",
+      "call": "0xc6242d2",
+      "target": "lvx_label_set_text",
+      "source": "blue_know.mute",
+      "verification_window": "phone-utilities-apps-phonemute-disconnect_confirm_text"
+    },
+    {
+      "name": "apps.phonemute.disconnect_confirm_register",
+      "call": "0xc62429e",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc624641 filter 7",
+      "verification_window": "phone-utilities-apps-phonemute-disconnect_confirm_register"
+    },
+    {
+      "name": "apps.phonemute.permission_text",
+      "call": "0xc624348",
+      "target": "lvx_label_set_text",
+      "source": "dnd_permission.mute",
+      "verification_window": "phone-utilities-apps-phonemute-permission_text"
+    },
+    {
+      "name": "apps.phonemute.permission_register",
+      "call": "0xc6243e8",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc62464d filter 7",
+      "verification_window": "phone-utilities-apps-phonemute-permission_register"
+    },
+    {
+      "name": "apps.phonemute.failure_icon",
+      "call": "0xc624426",
+      "target": "lv_image_set_src",
+      "source": "fail.bin",
+      "verification_window": "phone-utilities-apps-phonemute-failure_icon"
+    },
+    {
+      "name": "apps.phonemute.failure_text",
+      "call": "0xc6244dc",
+      "target": "lvx_label_set_text",
+      "source": "bt_unconnected.mute",
+      "verification_window": "phone-utilities-apps-phonemute-failure_text"
+    },
+    {
+      "name": "apps.phonemute.failure_confirm_text",
+      "call": "0xc62456e",
+      "target": "lvx_label_set_text",
+      "source": "blue_know.mute",
+      "verification_window": "phone-utilities-apps-phonemute-failure_confirm_text"
+    },
+    {
+      "name": "apps.phonemute.failure_confirm_register",
+      "call": "0xc62453a",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc624641 filter 7",
+      "verification_window": "phone-utilities-apps-phonemute-failure_confirm_register"
+    },
+    {
+      "name": "apps.phonemute.muted_icon",
+      "call": "0xc623ae0",
+      "target": "lv_image_set_src",
+      "source": "mute.bin",
+      "verification_window": "phone-utilities-apps-phonemute-muted_icon"
+    },
+    {
+      "name": "apps.phonemute.ring_icon",
+      "call": "0xc623bca",
+      "target": "lv_image_set_src",
+      "source": "nomute.bin",
+      "verification_window": "phone-utilities-apps-phonemute-ring_icon"
+    },
+    {
+      "name": "apps.phonemute.mode_text",
+      "call": "0xc623b10",
+      "target": "lvx_label_set_text",
+      "source": "mute_mode.mute or ring.mute",
+      "verification_window": "phone-utilities-apps-phonemute-mode_text"
+    },
+    {
+      "name": "apps.phonemute.mode_register",
+      "call": "0xc623bbc",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc6239c9 filter 7",
+      "verification_window": "phone-utilities-apps-phonemute-mode_register"
+    },
+    {
+      "name": "apps.phonemute.progress_text",
+      "call": "0xc623d4e",
+      "target": "lvx_label_set_text",
+      "source": "close_ing.mute or open_ring.mute",
+      "verification_window": "phone-utilities-apps-phonemute-progress_text"
+    },
+    {
+      "name": "apps.phonemute.toast_text",
+      "call": "0xc623cca",
+      "target": "lvx_label_set_text",
+      "source": "mute_toast.mute or ring_toast.mute",
+      "verification_window": "phone-utilities-apps-phonemute-toast_text"
+    },
+    {
+      "name": "apps.find_phone.phone_icon",
+      "call": "0xc624d60",
+      "target": "lv_image_set_src",
+      "source": "phone.bin",
+      "verification_window": "phone-utilities-apps-find_phone-phone_icon"
+    },
+    {
+      "name": "apps.find_phone.bell_text",
+      "call": "0xc6250fa",
+      "target": "lvx_label_set_text",
+      "source": "bell.find_phone",
+      "verification_window": "phone-utilities-apps-find_phone-bell_text"
+    },
+    {
+      "name": "apps.find_phone.bluetooth_icon",
+      "call": "0xc624df8",
+      "target": "lv_image_set_src",
+      "source": "disconn.bin",
+      "verification_window": "phone-utilities-apps-find_phone-bluetooth_icon"
+    },
+    {
+      "name": "apps.find_phone.bluetooth_text",
+      "call": "0xc624e36",
+      "target": "lvx_label_set_text",
+      "source": "bt_disconn.find_phone",
+      "verification_window": "phone-utilities-apps-find_phone-bluetooth_text"
+    },
+    {
+      "name": "apps.find_phone.retry_text",
+      "call": "0xc624eae",
+      "target": "lvx_label_set_text",
+      "source": "conn_retry.find_phone",
+      "verification_window": "phone-utilities-apps-find_phone-retry_text"
+    },
+    {
+      "name": "apps.find_phone.app_failure_icon",
+      "call": "0xc624f7a",
+      "target": "lv_image_set_src",
+      "source": "fail.bin",
+      "verification_window": "phone-utilities-apps-find_phone-app_failure_icon"
+    },
+    {
+      "name": "apps.find_phone.app_failure_text",
+      "call": "0xc624fc8",
+      "target": "lvx_label_set_text",
+      "source": "app_disconnected.find_phone_app",
+      "verification_window": "phone-utilities-apps-find_phone-app_failure_text"
+    },
+    {
+      "name": "apps.find_phone.button_register",
+      "call": "0xc624a24",
+      "target": "lv_obj_add_event_cb",
+      "source": "shared helper; callback depends on caller; filter 7",
+      "verification_window": "phone-utilities-apps-find_phone-button_register"
+    }
+  ],
+  "evidence": "The manifests 0xc623994 and 0xc624964 register one descriptor each. Mute creator stores root at 0x2011ce90 and its destroy clears it. Find-phone creator stores root at 0x2011ceec; destroy clears it only after checking the resource handle 0x2011cf64. UI branches and shared button helper yield the listed calls.",
+  "scope": "Only listed page callbacks and UI setter/registration sites. Mute status text and find-phone button registrations can represent multiple branches at a shared call site.",
+  "limitations": "If find-phone handle is zero at destroy, the application root may remain nonzero; the two-slot guard can reject future installation or removal rather than assuming quiescence. Slots do not guarantee thread synchronization. Bluetooth, fusion subscriptions, callbacks, device behavior and recovery are not device-verified.",
+  "verification_windows": [
+    "phone-utilities-apps-phonemute-disconnect_icon",
+    "phone-utilities-apps-phonemute-disconnect_text",
+    "phone-utilities-apps-phonemute-retry_text",
+    "phone-utilities-apps-phonemute-disconnect_confirm_text",
+    "phone-utilities-apps-phonemute-disconnect_confirm_register",
+    "phone-utilities-apps-phonemute-permission_text",
+    "phone-utilities-apps-phonemute-permission_register",
+    "phone-utilities-apps-phonemute-failure_icon",
+    "phone-utilities-apps-phonemute-failure_text",
+    "phone-utilities-apps-phonemute-failure_confirm_text",
+    "phone-utilities-apps-phonemute-failure_confirm_register",
+    "phone-utilities-apps-phonemute-muted_icon",
+    "phone-utilities-apps-phonemute-ring_icon",
+    "phone-utilities-apps-phonemute-mode_text",
+    "phone-utilities-apps-phonemute-mode_register",
+    "phone-utilities-apps-phonemute-progress_text",
+    "phone-utilities-apps-phonemute-toast_text",
+    "phone-utilities-apps-find_phone-phone_icon",
+    "phone-utilities-apps-find_phone-bell_text",
+    "phone-utilities-apps-find_phone-bluetooth_icon",
+    "phone-utilities-apps-find_phone-bluetooth_text",
+    "phone-utilities-apps-find_phone-retry_text",
+    "phone-utilities-apps-find_phone-app_failure_icon",
+    "phone-utilities-apps-find_phone-app_failure_text",
+    "phone-utilities-apps-find_phone-button_register",
+    "phone-mute-create",
+    "find-phone-create",
+    "find-phone-button-helper"
+  ],
+  "device_validation": "pending"
+}

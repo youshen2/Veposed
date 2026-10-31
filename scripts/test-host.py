@@ -33,3 +33,14 @@ command[command.index(str(root / "examples/host/main.c"))] = str(root / "tests/n
 command[command.index(str(output))] = str(output) + "-named"
 subprocess.run(command, cwd=root, check=True)
 subprocess.run([str(output) + "-named"], cwd=root, check=True)
+
+command[command.index(str(root / "tests/named_api.c"))] = str(root / "tests/contracts.c")
+command[command.index(str(output) + "-named")] = str(output) + "-contracts"
+subprocess.run(command, cwd=root, check=True)
+subprocess.run([str(output) + "-contracts"], cwd=root, check=True)
+
+command[command.index(str(root / "tests/contracts.c"))] = str(root / "tests/site_capacity.c")
+command[command.index(str(output) + "-contracts")] = str(output) + "-capacity"
+subprocess.run(command, cwd=root, check=True)
+subprocess.run([str(output) + "-capacity"], cwd=root, check=True)
+subprocess.run([str(output) + "-capacity", "raw"], cwd=root, check=True)

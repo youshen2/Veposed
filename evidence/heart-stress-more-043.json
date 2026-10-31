@@ -1,0 +1,383 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "pressure explanation",
+    "heart rate abnormal",
+    "heart rate explanation",
+    "resting heart rate",
+    "heart rate settings catalog"
+  ],
+  "shared_catalog_create": "0xc668b64",
+  "catalog_descriptor": "0x200dc0d8",
+  "other_candidate_descriptor": "0x200dc064",
+  "points": [
+    {
+      "name": "health.stress.explain.text1",
+      "calls": [
+        "0xc62db5c"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Pressure explanation builder sets saturation1.pressure; one or both language-layout branches are recorded.",
+      "verification_windows": [
+        "heart-stress-health-stress-explain-text1-1"
+      ]
+    },
+    {
+      "name": "health.stress.explain.text2",
+      "calls": [
+        "0xc62dba2",
+        "0xc62df82"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Pressure explanation builder sets saturation2.pressure; one or both language-layout branches are recorded.",
+      "verification_windows": [
+        "heart-stress-health-stress-explain-text2-1",
+        "heart-stress-health-stress-explain-text2-2"
+      ]
+    },
+    {
+      "name": "health.stress.explain.text3",
+      "calls": [
+        "0xc62dbee",
+        "0xc62dfce"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Pressure explanation builder sets saturation3.pressure; one or both language-layout branches are recorded.",
+      "verification_windows": [
+        "heart-stress-health-stress-explain-text3-1",
+        "heart-stress-health-stress-explain-text3-2"
+      ]
+    },
+    {
+      "name": "health.stress.explain.text4",
+      "calls": [
+        "0xc62dd0a",
+        "0xc62e0ea"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Pressure explanation builder sets saturation4.pressure; one or both language-layout branches are recorded.",
+      "verification_windows": [
+        "heart-stress-health-stress-explain-text4-1",
+        "heart-stress-health-stress-explain-text4-2"
+      ]
+    },
+    {
+      "name": "health.stress.explain.text5",
+      "calls": [
+        "0xc62dd50",
+        "0xc62e130"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Pressure explanation builder sets saturation5.pressure; one or both language-layout branches are recorded.",
+      "verification_windows": [
+        "heart-stress-health-stress-explain-text5-1",
+        "heart-stress-health-stress-explain-text5-2"
+      ]
+    },
+    {
+      "name": "health.stress.explain.text8",
+      "calls": [
+        "0xc62de80",
+        "0xc62e260"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Pressure explanation builder sets saturation8.pressure; one or both language-layout branches are recorded.",
+      "verification_windows": [
+        "heart-stress-health-stress-explain-text8-1",
+        "heart-stress-health-stress-explain-text8-2"
+      ]
+    },
+    {
+      "name": "health.stress.explain.text9",
+      "calls": [
+        "0xc62dcbe",
+        "0xc62e09e"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Pressure explanation builder sets saturation9.pressure; one or both language-layout branches are recorded.",
+      "verification_windows": [
+        "heart-stress-health-stress-explain-text9-1",
+        "heart-stress-health-stress-explain-text9-2"
+      ]
+    },
+    {
+      "name": "health.stress.explain.wear_icon1",
+      "calls": [
+        "0xc62ddd2",
+        "0xc62e1b2"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Two layout branches set health/wear1.bin.",
+      "verification_windows": [
+        "heart-stress-health-stress-explain-wear_icon1-1",
+        "heart-stress-health-stress-explain-wear_icon1-2"
+      ]
+    },
+    {
+      "name": "health.stress.explain.wear_icon2",
+      "calls": [
+        "0xc62de3e",
+        "0xc62e21e"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Two layout branches set health/wear2.bin.",
+      "verification_windows": [
+        "heart-stress-health-stress-explain-wear_icon2-1",
+        "heart-stress-health-stress-explain-wear_icon2-2"
+      ]
+    },
+    {
+      "name": "health.heart_rate.explain.wear_text1",
+      "calls": [
+        "0xc664664"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation page case 7 sets measure1.health.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-explain-wear_text1-1"
+      ]
+    },
+    {
+      "name": "health.heart_rate.explain.wear_text2",
+      "calls": [
+        "0xc6646e2"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation page case 7 sets measure2.health.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-explain-wear_text2-1"
+      ]
+    },
+    {
+      "name": "health.heart_rate.explain.wear_text5",
+      "calls": [
+        "0xc66473c"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation page case 7 sets measure5.health.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-explain-wear_text5-1"
+      ]
+    },
+    {
+      "name": "health.heart_rate.explain.wear_text6",
+      "calls": [
+        "0xc664796"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation page case 7 sets measure6.health.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-explain-wear_text6-1"
+      ]
+    },
+    {
+      "name": "health.heart_rate.explain.wear_icon1",
+      "calls": [
+        "0xc664602"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Explanation page case 7 sets health/wear1.bin.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-explain-wear_icon1-1"
+      ]
+    },
+    {
+      "name": "health.heart_rate.explain.wear_icon2",
+      "calls": [
+        "0xc664688"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Explanation page case 7 sets health/wear2.bin.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-explain-wear_icon2-1"
+      ]
+    },
+    {
+      "name": "health.heart_rate.explain.detail_text",
+      "calls": [
+        "0xc664534"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Explanation page cases 3, 4 and 5 use one loop to set one or three text values from the initialized resource array; the same caller is reached multiple times.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-explain-detail_text-1"
+      ]
+    },
+    {
+      "name": "health.heart_rate.abnormal.beat_text",
+      "calls": [
+        "0xc663878"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Beat branch sets beatexp1.hr.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-abnormal-beat_text-1"
+      ]
+    },
+    {
+      "name": "health.heart_rate.abnormal.info_icon",
+      "calls": [
+        "0xc663412",
+        "0xc6638b8"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Two branches set heartrate/icon_info.bin.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-abnormal-info_icon-1",
+        "heart-stress-health-heart_rate-abnormal-info_icon-2"
+      ]
+    },
+    {
+      "name": "health.heart_rate.abnormal.info_register",
+      "calls": [
+        "0xc663422",
+        "0xc6638c8"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Two branches register C661454 with event filter 7; callback dispatches navigation based on event user data.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-abnormal-info_register-1",
+        "heart-stress-health-heart_rate-abnormal-info_register-2"
+      ]
+    },
+    {
+      "name": "health.heart_rate.abnormal.chart_register",
+      "calls": [
+        "0xc662f06"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The abnormal chart builder registers C6614BC with event filter 0x1d for each applicable chart.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-abnormal-chart_register-1"
+      ]
+    },
+    {
+      "name": "health.heart_rate.abnormal.chart_div",
+      "calls": [
+        "0xc66307a",
+        "0xc66309e"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Two divider objects use hr_abnormal_chart_div.bin.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-abnormal-chart_div-1",
+        "heart-stress-health-heart_rate-abnormal-chart_div-2"
+      ]
+    },
+    {
+      "name": "health.heart_rate.rest.date_today",
+      "calls": [
+        "0xc667bb2"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Current-time formatted date label.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-rest-date_today-1"
+      ]
+    },
+    {
+      "name": "health.heart_rate.rest.date_prev1",
+      "calls": [
+        "0xc667c1e"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Date label after subtracting 1296000 seconds.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-rest-date_prev1-1"
+      ]
+    },
+    {
+      "name": "health.heart_rate.rest.date_prev2",
+      "calls": [
+        "0xc667cac"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Date label after subtracting a further 1209600 seconds.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-rest-date_prev2-1"
+      ]
+    },
+    {
+      "name": "health.heart_rate.rest.chart_register",
+      "calls": [
+        "0xc667d02"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The resting-heart-rate chart registers C626348 with event filter 0x1d; callback draws chart labels.",
+      "verification_windows": [
+        "heart-stress-health-heart_rate-rest-chart_register-1"
+      ]
+    }
+  ],
+  "evidence": "The registered descriptors identify the five pages and their create/destroy slots. Pressure explanation dispatches to two layout builders for page argument 2. Heart-rate explanation case 7 displays wear instructions; cases 3/4/5 use a text loop. Abnormal and resting heart rate build charts and register chart or information event callbacks. The settings catalog create/destroy functions are shared with a separate candidate descriptor, so event internals are not attributed exclusively to this descriptor.",
+  "scope": "Recorded display and registration calls; no sensor, measurement algorithm or stored result hooks. The info callback may also be used by other heart-rate pages and is not separately named here.",
+  "limitations": "Altering status text can misrepresent health data. Changing event callback registrations can break navigation and chart drawing. Values and image/text resources must remain valid. State slots are not thread barriers. Device behavior and recovery have not been validated.",
+  "verification_windows": [
+    "heart-stress-health-stress-explain-text1-1",
+    "heart-stress-health-stress-explain-text2-1",
+    "heart-stress-health-stress-explain-text2-2",
+    "heart-stress-health-stress-explain-text3-1",
+    "heart-stress-health-stress-explain-text3-2",
+    "heart-stress-health-stress-explain-text4-1",
+    "heart-stress-health-stress-explain-text4-2",
+    "heart-stress-health-stress-explain-text5-1",
+    "heart-stress-health-stress-explain-text5-2",
+    "heart-stress-health-stress-explain-text8-1",
+    "heart-stress-health-stress-explain-text8-2",
+    "heart-stress-health-stress-explain-text9-1",
+    "heart-stress-health-stress-explain-text9-2",
+    "heart-stress-health-stress-explain-wear_icon1-1",
+    "heart-stress-health-stress-explain-wear_icon1-2",
+    "heart-stress-health-stress-explain-wear_icon2-1",
+    "heart-stress-health-stress-explain-wear_icon2-2",
+    "heart-stress-health-heart_rate-explain-wear_text1-1",
+    "heart-stress-health-heart_rate-explain-wear_text2-1",
+    "heart-stress-health-heart_rate-explain-wear_text5-1",
+    "heart-stress-health-heart_rate-explain-wear_text6-1",
+    "heart-stress-health-heart_rate-explain-wear_icon1-1",
+    "heart-stress-health-heart_rate-explain-wear_icon2-1",
+    "heart-stress-health-heart_rate-explain-detail_text-1",
+    "heart-stress-health-heart_rate-abnormal-beat_text-1",
+    "heart-stress-health-heart_rate-abnormal-info_icon-1",
+    "heart-stress-health-heart_rate-abnormal-info_icon-2",
+    "heart-stress-health-heart_rate-abnormal-info_register-1",
+    "heart-stress-health-heart_rate-abnormal-info_register-2",
+    "heart-stress-health-heart_rate-abnormal-chart_register-1",
+    "heart-stress-health-heart_rate-abnormal-chart_div-1",
+    "heart-stress-health-heart_rate-abnormal-chart_div-2",
+    "heart-stress-health-heart_rate-rest-date_today-1",
+    "heart-stress-health-heart_rate-rest-date_prev1-1",
+    "heart-stress-health-heart_rate-rest-date_prev2-1",
+    "heart-stress-health-heart_rate-rest-chart_register-1",
+    "heart-stress-heart-info-callback",
+    "heart-stress-pressure-explanation-dispatch",
+    "heart-stress-heart-catalog-create"
+  ],
+  "device_validation": "pending"
+}

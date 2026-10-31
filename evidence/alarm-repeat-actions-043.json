@@ -1,0 +1,83 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "alarm custom repeat rule",
+  "descriptor": "0x200d1360",
+  "descriptor_root_slot": "0x200d1390",
+  "descriptor_private_slot": "0x200d139c",
+  "state_alias_not_cleared_on_destroy": "0x20111484",
+  "create": "0x0c53c134",
+  "destroy": "0x0c53bf58",
+  "registration": "0x0c53af1c",
+  "points": [
+    {
+      "name": "apps.alarm.repeat.weekday_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc53c3c2",
+        "0xc53c41a"
+      ],
+      "interpretation": "The list-item builder registers the entry-defined weekday callback on the row and its check control using filter 7 and weekday index as user data.",
+      "verification_windows": [
+        "alarm-repeat-apps-alarm-repeat-weekday_register-1",
+        "alarm-repeat-apps-alarm-repeat-weekday_register-2"
+      ]
+    },
+    {
+      "name": "apps.alarm.repeat.weekday_index",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "calls": [
+        "0xc53c432"
+      ],
+      "interpretation": "The weekday callback reads its index and toggles the corresponding bit and displayed check state. Its valid domain is 0..6.",
+      "verification_windows": [
+        "alarm-repeat-apps-alarm-repeat-weekday_index-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.repeat.event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "calls": [
+        "0xc53c43c"
+      ],
+      "interpretation": "The weekday callback enters the toggle branch only when event code equals 7 and the index is in range.",
+      "verification_windows": [
+        "alarm-repeat-apps-alarm-repeat-event_code-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.repeat.weekday_caption",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc53c3f8"
+      ],
+      "interpretation": "The list-item builder sets the localized weekday name on each created row label.",
+      "verification_windows": [
+        "alarm-repeat-apps-alarm-repeat-weekday_caption-1"
+      ]
+    }
+  ],
+  "evidence": "The alarm manifest registers the descriptor. Its create routine allocates state, fills seven entries with weekday labels and a common callback, publishes it as descriptor private data and constructs the list. Destroy frees descriptor private data and clears that slot; it does not clear the independent 0x20111484 alias. The builder registers the per-entry callback on both the row and its check control. The callback reads event user data and event code, checks the code and index, and toggles a weekday bit.",
+  "scope": "The listed calls in the custom-repeat list builder and weekday callback while the descriptor root exists; other paths that edit or persist alarm repeat settings are not intercepted.",
+  "limitations": "Indices outside 0..6 can reach an undefined-instruction trap. Altering callbacks or event values may leave the UI and saved repeat state inconsistent. Descriptor slots reduce page-lifetime exposure but are not a concurrency barrier. Shared-entry publication and rollback require system-wide quiescence. Device behavior is unverified.",
+  "verification_windows": [
+    "alarm-repeat-descriptor",
+    "alarm-repeat-app-array",
+    "alarm-repeat-app-registration",
+    "alarm-repeat-state-create",
+    "alarm-repeat-state-destroy",
+    "alarm-repeat-weekday-assignment",
+    "alarm-repeat-weekday-callback-literal",
+    "alarm-repeat-list-builder-call",
+    "alarm-repeat-apps-alarm-repeat-weekday_register-1",
+    "alarm-repeat-apps-alarm-repeat-weekday_register-2",
+    "alarm-repeat-apps-alarm-repeat-weekday_index-1",
+    "alarm-repeat-apps-alarm-repeat-event_code-1",
+    "alarm-repeat-apps-alarm-repeat-weekday_caption-1"
+  ],
+  "device_validation": "pending"
+}

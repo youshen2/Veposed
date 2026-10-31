@@ -1,0 +1,290 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "alarm custom repeat",
+    "alarm edit",
+    "alarm repeat rules",
+    "alarm smart reminder",
+    "alarm time selection"
+  ],
+  "points": [
+    {
+      "name": "apps.alarm.custom.confirm_register",
+      "calls": [
+        "0xc53c2b6"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C53C01C, which assembles weekday bits and updates the alarm record or database.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-custom-confirm_register-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.edit.confirm_register",
+      "calls": [
+        "0xc53d256"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C53C718, which adds or updates the alarm record and navigates.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-edit-confirm_register-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.edit.confirm_data",
+      "calls": [
+        "0xc53c720"
+      ],
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "C53C718 reads a pointer to the edit view and dereferences its alarm record at offset 132.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-edit-confirm_data-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.edit.row_register",
+      "calls": [
+        "0xc53ca84"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Row builder registers the callback stored in each row record; the caller can run once per row.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-edit-row_register-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.edit.switch_register",
+      "calls": [
+        "0xc53cc32"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The smart-reminder row registers C53CDFC with event filter 30.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-edit-switch_register-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.edit.off_text",
+      "calls": [
+        "0xc53cc20"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets unopenswitch.alarm in the reminder row.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-edit-off_text-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.edit.on_text",
+      "calls": [
+        "0xc53cd4c"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets openswitch.alarm when the reminder is enabled.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-edit-on_text-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.edit.remind_text",
+      "calls": [
+        "0xc53cc74"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets remind.alarm on the reminder row.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-edit-remind_text-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.smart.options_register",
+      "calls": [
+        "0xc53f35c",
+        "0xc53f398"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Two controls register C53F454 with user data 0 and 1 respectively.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-smart-options_register-1",
+        "alarm-pages-apps-alarm-smart-options_register-2"
+      ]
+    },
+    {
+      "name": "apps.alarm.smart.event_code",
+      "calls": [
+        "0xc53f45c"
+      ],
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The callback proceeds only for event code 7.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-smart-event_code-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.smart.choice",
+      "calls": [
+        "0xc53f46c"
+      ],
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The callback branches on option value 1 and may update an alarm record.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-smart-choice-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.smart.title_text",
+      "calls": [
+        "0xc53f2b6"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The page sets remind.alarm.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-smart-title_text-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.smart.info_text",
+      "calls": [
+        "0xc53f302"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The page sets remindinformation.alarm.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-smart-info_text-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.time.roller_register",
+      "calls": [
+        "0xc53fb2a",
+        "0xc53fbaa"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Hour and minute rollers register C53F5A0 for multiple event codes.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-time-roller_register-1",
+        "alarm-pages-apps-alarm-time-roller_register-2"
+      ]
+    },
+    {
+      "name": "apps.alarm.time.ampm_register",
+      "calls": [
+        "0xc53fe4c"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The 12-hour branch registers C53F5A0 on the AM/PM roller.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-time-ampm_register-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.time.roller_event_code",
+      "calls": [
+        "0xc53f5cc"
+      ],
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "C53F5A0 branches on event codes 9, 11 and 12.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-time-roller_event_code-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.time.confirm_register",
+      "calls": [
+        "0xc53fd44"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C53F750; it converts the selected time and updates or creates an alarm.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-time-confirm_register-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.time.confirm_data",
+      "calls": [
+        "0xc53f758"
+      ],
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "C53F750 reads and immediately dereferences the time-picker state pointer.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-time-confirm_data-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.time.hour_text",
+      "calls": [
+        "0xc53f6b0"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Roller callback sets time_hour.alarm.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-time-hour_text-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.time.minute_text",
+      "calls": [
+        "0xc53f6fe"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Roller callback sets time_min.alarm.",
+      "verification_windows": [
+        "alarm-pages-apps-alarm-time-minute_text-1"
+      ]
+    }
+  ],
+  "evidence": "The alarm manifest submits six startup page descriptors. The selected create and destroy callbacks assign and clear each descriptor private slot; custom and edit leave some other globals as stale aliases. The shared page manager sets descriptor root before calling create. The time editor registers hour, minute and optional AM/PM rollers to one event handler, and a separate confirmation handler applies the selected time.",
+  "scope": "Specific shared UI and event calls. Alarm scheduler, database backend, other save paths and notification delivery are not fully intercepted. The time and smart view register callbacks before their private descriptor field is assigned, so active scope uses the descriptor root.",
+  "limitations": "Wrong event-data pointers can crash; altered option values or skipped saves can produce incorrect alarms. Skipping lifecycle or callbacks can leave subscriptions or data inconsistent. State/root checks are not thread barriers. Device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "alarm-pages-apps-alarm-custom-confirm_register-1",
+    "alarm-pages-apps-alarm-edit-confirm_register-1",
+    "alarm-pages-apps-alarm-edit-confirm_data-1",
+    "alarm-pages-apps-alarm-edit-row_register-1",
+    "alarm-pages-apps-alarm-edit-switch_register-1",
+    "alarm-pages-apps-alarm-edit-off_text-1",
+    "alarm-pages-apps-alarm-edit-on_text-1",
+    "alarm-pages-apps-alarm-edit-remind_text-1",
+    "alarm-pages-apps-alarm-smart-options_register-1",
+    "alarm-pages-apps-alarm-smart-options_register-2",
+    "alarm-pages-apps-alarm-smart-event_code-1",
+    "alarm-pages-apps-alarm-smart-choice-1",
+    "alarm-pages-apps-alarm-smart-title_text-1",
+    "alarm-pages-apps-alarm-smart-info_text-1",
+    "alarm-pages-apps-alarm-time-roller_register-1",
+    "alarm-pages-apps-alarm-time-roller_register-2",
+    "alarm-pages-apps-alarm-time-ampm_register-1",
+    "alarm-pages-apps-alarm-time-roller_event_code-1",
+    "alarm-pages-apps-alarm-time-confirm_register-1",
+    "alarm-pages-apps-alarm-time-confirm_data-1",
+    "alarm-pages-apps-alarm-time-hour_text-1",
+    "alarm-pages-apps-alarm-time-minute_text-1",
+    "alarm-pages-custom-confirm",
+    "alarm-pages-edit-confirm",
+    "alarm-pages-smart-options",
+    "alarm-pages-time-confirm",
+    "alarm-pages-time-assignment"
+  ],
+  "device_validation": "pending"
+}

@@ -1,0 +1,34 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "points": [
+    {
+      "name": "ui.object.class_allocate",
+      "entry": "0x1c028f81",
+      "file_offset": "0x763c0",
+      "veneer": "0x0c5891f8",
+      "contract": "word2",
+      "evidence": "The implementation walks the class inheritance chain to find instance size, allocates an object, stores class and parent and links it as a child or screen; firmware logs identify lv_obj_class_create_obj. Callers such as the label constructor then separately invoke 0x1c029074 to initialize the object."
+    },
+    {
+      "name": "ui.object.event_add",
+      "entry": "0x002bf7ad",
+      "file_offset": "0x49618",
+      "veneer": "0x0c5883f0",
+      "contract": "word4",
+      "evidence": "The entry prepares the object event list and forwards object event list, callback, filter and user data to 0x002bfc24. That routine allocates a descriptor, stores callback, user data and filter, inserts it and returns the descriptor."
+    },
+    {
+      "name": "ui.object.event_remove",
+      "entry": "0x002bf811",
+      "file_offset": "0x4967c",
+      "veneer": "0x0c589570",
+      "contract": "word2",
+      "evidence": "The function iterates an object event list, compares each descriptor callback pointer to argument 1, removes the first match and returns 1; it returns 0 if none is removed."
+    }
+  ],
+  "scope": "all calls passing through each shared entry",
+  "limitations": "A class-allocate return is not yet initialized; replacing it with NULL or an incompatible object can break callers that initialize unconditionally. Event callback and user-data addresses must remain valid for the registered lifetime. Suppressing or substituting event registration/removal changes event delivery and lifetime. Shared-entry publication and rollback require system-wide quiescence, which is not yet established. No device validation.",
+  "validation": "Exact AP mapping, entry and veneer bytes plus static call-chain analysis; core relocation-plan tests. Full firmware execution and device testing pending.",
+  "device_validation": "pending"
+}

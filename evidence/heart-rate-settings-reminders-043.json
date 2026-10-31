@@ -1,0 +1,40 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "points": [
+    {
+      "name": "health.heart_rate.setting.option_search_limit",
+      "call": "0xc66862a",
+      "return_pc": "0xc66862e",
+      "state_slot": "0x2011fa08",
+      "contract": "word1",
+      "evidence": "The setting-item callback obtains user data as the upper bound of its search for the current event target among rows. The selected index influences a switch on page type 8, 9, 10 or 11; cases write health-monitoring or alert settings and publish events. The option-page constructor allocates a row state object into the slot, and the destructor frees and clears it. One observed low-alert registration passes user data 4."
+    },
+    {
+      "name": "health.heart_rate.reminder.ignore_register",
+      "call": "0xc6698a6",
+      "return_pc": "0xc6698aa",
+      "state_slot": "0x2011fa1c",
+      "contract": "word4",
+      "evidence": "The heart-rate reminder page constructs the button labeled by ignore.hr and registers callback 0x0c669424 for event code 7, with alert type as user data. That callback closes the reminder without issuing the dismiss-today message."
+    },
+    {
+      "name": "health.heart_rate.reminder.dismiss_register",
+      "call": "0xc66990e",
+      "return_pc": "0xc669912",
+      "state_slot": "0x2011fa1c",
+      "contract": "word4",
+      "evidence": "The same page constructs the button labeled by dismiss_today.health and registers callback 0x0c66938c for event code 7, with alert type as user data. The descriptor return is unused by this caller."
+    },
+    {
+      "name": "health.heart_rate.reminder.dismiss_type",
+      "call": "0xc669392",
+      "return_pc": "0xc669396",
+      "state_slot": "0x2011fa1c",
+      "contract": "word1",
+      "evidence": "The dismiss-today callback reads user data and encodes 3, 4 or 5 into a notification command, with log strings for high, low and AF heart-rate reminders respectively. Other values leave the type field zero but still submit the command and close the reminder; they are not a safe suppression mechanism."
+    }
+  ],
+  "limitations": "All four names are filtered by exact callsite and an observed page-state slot. The search bound is not the selected index: invalid values can index beyond the allocated row array or pick the wrong setting. Registration hooks affect these buttons only; replacing callbacks or userdata requires valid ABI and lifetime. Alert modifications can change actual reminder behavior. Page state is not system-wide quiescence; shared physical hook installation and rollback remain unverified on device.",
+  "device_validation": "pending"
+}

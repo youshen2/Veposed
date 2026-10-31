@@ -1,0 +1,15 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "ui.image.set_source",
+  "entry": "0x1c06ceb5",
+  "data_alias": "0x3c06ceb4",
+  "file_offset": "0xba2f4",
+  "prototype": "void(void *image, const void *source)",
+  "prologue": "2de9f0430d468fb004af0446bef720fa",
+  "evidence": "Code at 0x1c06ceb4 preserves R0 as image object and R1 as source, classifies the source and loads metadata; strings identify lv_image_set_src. Firmware veneer 0x0c587fa0 branches to this entry. The first eight bytes are PUSH.W, MOV and SUB SP and can be copied by the current Thumb planner.",
+  "lifetime": "Source may point to a descriptor or to a file/symbol string; ownership varies by source type and callers must supply a valid source for its required lifetime.",
+  "scope": "global, no callsite or object filter; quiescence of all threads using the target is required when patching and restoring",
+  "device_validation": "pending",
+  "upstream": "https://github.com/lvgl/lvgl/blob/master/include/lvgl/widgets/lv_image.h"
+}

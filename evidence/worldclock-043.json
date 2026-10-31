@@ -1,0 +1,137 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 59,
+  "points": [
+    {
+      "name": "apps.worldclock.main.empty_caption",
+      "call": "0xc601728",
+      "target": "lvx_label_set_text",
+      "source": "remind.worldclock",
+      "verification_window": "worldclock-apps-worldclock-main-empty_caption"
+    },
+    {
+      "name": "apps.worldclock.main.empty_add_icon",
+      "call": "0xc601762",
+      "target": "lv_image_set_src",
+      "source": "add_btn.bin",
+      "verification_window": "worldclock-apps-worldclock-main-empty_add_icon"
+    },
+    {
+      "name": "apps.worldclock.main.empty_icon",
+      "call": "0xc60179a",
+      "target": "lv_image_set_src",
+      "source": "null_icon.bin",
+      "verification_window": "worldclock-apps-worldclock-main-empty_icon"
+    },
+    {
+      "name": "apps.worldclock.main.empty_add_register",
+      "call": "0xc601784",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc600de5, filter 7",
+      "verification_window": "worldclock-apps-worldclock-main-empty_add_register"
+    },
+    {
+      "name": "apps.worldclock.main.single_add_icon",
+      "call": "0xc6017f2",
+      "target": "lv_image_set_src",
+      "source": "add_btn.bin",
+      "verification_window": "worldclock-apps-worldclock-main-single_add_icon"
+    },
+    {
+      "name": "apps.worldclock.main.single_add_register",
+      "call": "0xc601806",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc600de5, filter 7",
+      "verification_window": "worldclock-apps-worldclock-main-single_add_register"
+    },
+    {
+      "name": "apps.worldclock.add_list.more_caption_create",
+      "call": "0xc6008a6",
+      "target": "lvx_label_set_text",
+      "source": "more_add.worldclock",
+      "verification_window": "worldclock-apps-worldclock-add_list-more_caption_create"
+    },
+    {
+      "name": "apps.worldclock.add_list.more_caption_update",
+      "call": "0xc600baa",
+      "target": "lvx_label_set_text",
+      "source": "more_add.worldclock",
+      "verification_window": "worldclock-apps-worldclock-add_list-more_caption_update"
+    },
+    {
+      "name": "apps.worldclock.add_list.city_register_create",
+      "call": "0xc600928",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc600a11, filter 7",
+      "verification_window": "worldclock-apps-worldclock-add_list-city_register_create"
+    },
+    {
+      "name": "apps.worldclock.add_list.city_register_update",
+      "call": "0xc600c1a",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc600a11, filter 7",
+      "verification_window": "worldclock-apps-worldclock-add_list-city_register_update"
+    },
+    {
+      "name": "apps.worldclock.detail.initial_time",
+      "call": "0xc6001f2",
+      "target": "lvx_label_set_text",
+      "source": "formatted time",
+      "verification_window": "worldclock-apps-worldclock-detail-initial_time"
+    },
+    {
+      "name": "apps.worldclock.detail.initial_weekday",
+      "call": "0xc6001fc",
+      "target": "lvx_label_set_text",
+      "source": "formatted weekday",
+      "verification_window": "worldclock-apps-worldclock-detail-initial_weekday"
+    },
+    {
+      "name": "apps.worldclock.detail.refresh_time",
+      "call": "0xc5fff56",
+      "target": "lvx_label_set_text",
+      "source": "formatted time",
+      "verification_window": "worldclock-apps-worldclock-detail-refresh_time"
+    },
+    {
+      "name": "apps.worldclock.detail.refresh_weekday",
+      "call": "0xc5fff62",
+      "target": "lvx_label_set_text",
+      "source": "formatted weekday",
+      "verification_window": "worldclock-apps-worldclock-detail-refresh_weekday"
+    },
+    {
+      "name": "apps.worldclock.detail.delete_register",
+      "call": "0xc6002a6",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc5ffae1, filter 7",
+      "verification_window": "worldclock-apps-worldclock-detail-delete_register"
+    }
+  ],
+  "evidence": "Manifest 0xc5ffa20 registers three descriptors. Each page allocates a separate state pointer and its destroy callback frees and clears that pointer. Detail page registers timer 0xc6003b8 at 1000 ms; when its state and labels exist, it calls the refresh helper 0xc5ffea0. Main and list functions set the named images, labels and event registrations.",
+  "scope": "Page lifecycle pointer slots and listed setter/registration call sites. List callbacks can run repeatedly for different items; initial and timer-refresh labels use different call sites.",
+  "limitations": "Page state checks are not thread synchronization. Timers, queued callbacks and navigation may race destruction; device behavior and recovery remain unverified. Skipping callbacks or changing event pointers can disrupt page operation.",
+  "verification_windows": [
+    "worldclock-apps-worldclock-main-empty_caption",
+    "worldclock-apps-worldclock-main-empty_add_icon",
+    "worldclock-apps-worldclock-main-empty_icon",
+    "worldclock-apps-worldclock-main-empty_add_register",
+    "worldclock-apps-worldclock-main-single_add_icon",
+    "worldclock-apps-worldclock-main-single_add_register",
+    "worldclock-apps-worldclock-add_list-more_caption_create",
+    "worldclock-apps-worldclock-add_list-more_caption_update",
+    "worldclock-apps-worldclock-add_list-city_register_create",
+    "worldclock-apps-worldclock-add_list-city_register_update",
+    "worldclock-apps-worldclock-detail-initial_time",
+    "worldclock-apps-worldclock-detail-initial_weekday",
+    "worldclock-apps-worldclock-detail-refresh_time",
+    "worldclock-apps-worldclock-detail-refresh_weekday",
+    "worldclock-apps-worldclock-detail-delete_register",
+    "worldclock-detail-create",
+    "worldclock-list-create",
+    "worldclock-main-create",
+    "worldclock-timer-callback"
+  ],
+  "device_validation": "pending"
+}

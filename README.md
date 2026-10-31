@@ -30,6 +30,8 @@ python3 vep.py suite --firmware /path/to/[.bin的固件包路径]
 
 运行后将会输出 `dist/Veposed-[机型]-[版本号].face`，安装此表盘后点击“Install Veposed“来安装通用框架和「Veposed 管理器」。
 
+已核对的功能、参数、作用范围与证据见 [Hook 点对照表](docs/hook-points-xiaomi-band-10-pro-3.101.043.md)。
+
 ## Python 模块与命名接口
 
 Veposed 支持使用`Python`编写模块。
@@ -107,6 +109,8 @@ python3 tools/firmware.py address /path/to/firmware.bin --address 0x1c06cac1
 
 安装失败会隔离本次会话，尝试恢复全部已安装 Hook。恢复某一项失败时仍继续恢复其他项，并保留失败项的原始字节、句柄和所有权。
 
+卸载或发布失败的回调型 Hook 会保留已创建的原函数及分发编号，清除回调，避免暂停的旧调用恢复后误用新模块。本次运行最多分配 32 个分发编号，卸载后不复用，原生自检占用一个；耗尽时返回 `VEP_CAPACITY`。这不能解决内联代码写入期间的并发执行、原始替换回调或运行时卸载风险，设备行为仍待验证。
+
 日志损坏、截断、读取失败、写入失败或同步失败都会阻止继续注入。
 
 主动停止 Hook：
@@ -115,6 +119,10 @@ python3 tools/firmware.py address /path/to/firmware.bin --address 0x1c06cac1
 printf disable > /dev/veposed
 cat /data/veposed-status.txt
 ```
+
+排查 `reason=2`、`last=-7` 时，`-7` 表示内存错误：可能来自地址访问检查或缓存发布失败，不能仅凭这个数字判断原因。较新的状态记录还包含 `phase` 和 `slot`：`selftest-attach`、`selftest-call`、`selftest-restore` 分别表示正在安装、调用或恢复自检指针；`slot` 是该次自检指针槽的地址。保留完整状态文本有助于定位失败环节。若 runtime 在写状态文件之前退出或崩溃，文件可能仍是旧记录，不能据此断定当前启动已到达所示阶段。
+
+当前内存范围和缓存发布实现已通过主机模拟检查，加载标记和持久隔离的回退流程也通过了主机测试；这些结果不能代替手环实测。查找手机页面在特定销毁分支可能保留非零根槽，此时相关 Hook 的静止检查可能拒绝安装或卸载，见 [运行时内存证据](evidence/runtime-memory.json) 和 [手机工具页面证据](evidence/phone-utilities-043.json)。
 
 若上次加载已在早期崩溃，先创建外部禁用文件，然后手动加载 runtime，取得安全模式中的恢复服务：
 

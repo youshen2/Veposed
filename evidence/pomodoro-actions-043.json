@@ -1,0 +1,237 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "pomodoro main",
+    "pomodoro duration set",
+    "pomodoro info",
+    "pomodoro activity",
+    "pomodoro notice",
+    "pomodoro end"
+  ],
+  "points": [
+    {
+      "name": "apps.pomodoro.main.set_text",
+      "call": "0xc5457b4",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Main screen sets set_time.tomatotimer.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-main-set_text"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.main.set_register",
+      "call": "0xc5457d8",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C5456D8, which opens the focus-time setting page.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-main-set_register"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.main.start_icon",
+      "call": "0xc5457fe",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The main view sets tomato_clock/clickable.bin.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-main-start_icon"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.main.start_register",
+      "call": "0xc545850",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C545CBC, which prepares DND state and navigates to the activity or notice page.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-main-start_register"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.activity.set_text",
+      "call": "0xc5444d6",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Activity screen sets set_time.tomatotimer.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-activity-set_text"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.activity.click_icon",
+      "call": "0xc544514",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Activity screen sets tomato_clock/clickable.bin.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-activity-click_icon"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.activity.end_register",
+      "call": "0xc5445b4",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C5441C4, which persists daily totals, restores DND state and navigates to the end page.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-activity-end_register"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.activity.control_register",
+      "call": "0xc5445fa",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C544B14, which branches on activity state to pause, resume or begin a phase.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-activity-control_register"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.activity.state_text",
+      "call": "0xc544ca2",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Activity resume sets focusing.tomatotimer or resting.tomatotimer according to phase.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-activity-state_text"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.end.confirm_register",
+      "call": "0xc54518c",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C5450E0 to emit feedback and finish the page.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-end-confirm_register"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.notice.icon",
+      "call": "0xc545f46",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Notice page sets tomato_clock/icon.bin.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-notice-icon"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.notice.text",
+      "call": "0xc545fa2",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Notice page sets hint_text.tomatotimer.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-notice-text"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.notice.confirm_register",
+      "call": "0xc545fdc",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C545EB0 to enable DND and open the activity page.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-notice-confirm_register"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.info.name_text",
+      "call": "0xc5453ec",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Info page sets name_info.tomatotimer.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-info-name_text"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.set.roller_register",
+      "call": "0xc5462d4",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C54616C with filter 12 to update feedback when the selected minute changes.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-set-roller_register"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.set.confirm_register",
+      "call": "0xc5463b8",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C5460CC, which saves focus or rest duration and closes the setting page.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-set-confirm_register"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.set.unit_text",
+      "call": "0xc546352",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets min.tomatotimer.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-set-unit_text"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.set.top_shadow",
+      "call": "0xc5462f8",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets common/shadow_top.bin.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-set-top_shadow"
+      ]
+    },
+    {
+      "name": "apps.pomodoro.set.bottom_shadow",
+      "call": "0xc54631e",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets common/shadow_btm.bin.",
+      "verification_windows": [
+        "pomodoro-apps-pomodoro-set-bottom_shadow"
+      ]
+    }
+  ],
+  "manifest": "0xc543d70",
+  "manifest_note": "The installer copies six descriptor pointers from flash table 0x2cd23918 onto the stack and passes that array and count 6 to the app installer.",
+  "evidence": "The page descriptors have separate create and destroy slots and page-state allocations. Activity control handles multiple timer states; ending persists daily totals and restores DND. Duration confirmation saves focus/rest configuration.",
+  "main_destroy_risk": "The main destroy path loads [0x20111794] and dereferences it without first checking the allocation pointer; create can return early if an earlier allocation fails. Skipping or disrupting creation can expose the same crash.",
+  "scope": "Only the listed lifecycle and shared LVGL UI/registration calls. Timer implementation, DND backend and filesystem storage are not directly intercepted.",
+  "limitations": "Mutating callback registration may leave DND or persistent data inconsistent. Labels may not represent timer state. State slots do not provide thread barriers. Device behavior and recovery have not been validated.",
+  "verification_windows": [
+    "pomodoro-apps-pomodoro-main-set_text",
+    "pomodoro-apps-pomodoro-main-set_register",
+    "pomodoro-apps-pomodoro-main-start_icon",
+    "pomodoro-apps-pomodoro-main-start_register",
+    "pomodoro-apps-pomodoro-activity-set_text",
+    "pomodoro-apps-pomodoro-activity-click_icon",
+    "pomodoro-apps-pomodoro-activity-end_register",
+    "pomodoro-apps-pomodoro-activity-control_register",
+    "pomodoro-apps-pomodoro-activity-state_text",
+    "pomodoro-apps-pomodoro-end-confirm_register",
+    "pomodoro-apps-pomodoro-notice-icon",
+    "pomodoro-apps-pomodoro-notice-text",
+    "pomodoro-apps-pomodoro-notice-confirm_register",
+    "pomodoro-apps-pomodoro-info-name_text",
+    "pomodoro-apps-pomodoro-set-roller_register",
+    "pomodoro-apps-pomodoro-set-confirm_register",
+    "pomodoro-apps-pomodoro-set-unit_text",
+    "pomodoro-apps-pomodoro-set-top_shadow",
+    "pomodoro-apps-pomodoro-set-bottom_shadow",
+    "pomodoro-manifest",
+    "pomodoro-main-destroy-null-risk",
+    "pomodoro-main-start",
+    "pomodoro-activity-end",
+    "pomodoro-duration-confirm"
+  ],
+  "device_validation": "pending"
+}

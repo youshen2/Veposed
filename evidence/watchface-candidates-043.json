@@ -1,0 +1,14 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "status": "research-only; not registered",
+  "main_page": {
+    "create": "0x0c5f353c",
+    "destroy": "0x0c5f275c",
+    "refresh": "0x0c5f32b8",
+    "container_slot": "0x20119778",
+    "watchface_instance_slot": "0x20119774",
+    "finding": "The destroy callback reparents and hides the container instead of clearing its global slot. The refresh path destroys the previous instance and clears its slot before assigning a newly created instance. Neither slot has been established as an adequate install-time quiescence barrier."
+  },
+  "limitations": "Main-page state remains a research candidate; no device validation. The page lifecycle and global entry publication/rollback need further evidence."
+}

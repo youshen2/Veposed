@@ -1,0 +1,223 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "oxygen settings",
+    "oxygen low-alert threshold"
+  ],
+  "settings_state": "0x2011e724",
+  "threshold_state": "0x2011e760",
+  "threshold_descriptor": "0x200db630",
+  "threshold_root_slot": "0x200db660",
+  "threshold_create": "0x0c64dd10",
+  "threshold_destroy": "0x0c64d99c",
+  "threshold_resume": "0x0c64da44",
+  "settings_click": "0x0c64d838",
+  "threshold_click": "0x0c64d9bc",
+  "points": [
+    {
+      "name": "health.oxygen.settings.monitor_register",
+      "calls": [
+        "0xc64d586"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers callback 0x0c64d839 with filter 7 and user data 0.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-settings-monitor_register-1"
+      ]
+    },
+    {
+      "name": "health.oxygen.settings.low_register",
+      "calls": [
+        "0xc64d620"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers the same callback with filter 7 and user data 1.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-settings-low_register-1"
+      ]
+    },
+    {
+      "name": "health.oxygen.settings.click_data",
+      "calls": [
+        "0xc64d840"
+      ],
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The callback reads user data; 0 handles monitoring and 1 navigates to the threshold page.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-settings-click_data-1"
+      ]
+    },
+    {
+      "name": "health.oxygen.settings.low_initial_hide",
+      "calls": [
+        "0xc64d542"
+      ],
+      "target": "lv_obj_add_flag",
+      "contract": "void2",
+      "interpretation": "The builder adds hidden flag 1 if monitoring is not enabled.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-settings-low_initial_hide-1"
+      ]
+    },
+    {
+      "name": "health.oxygen.settings.low_initial_show",
+      "calls": [
+        "0xc64d652"
+      ],
+      "target": "lv_obj_clear_flag",
+      "contract": "void2",
+      "interpretation": "The builder clears hidden flag 1 when monitoring is enabled.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-settings-low_initial_show-1"
+      ]
+    },
+    {
+      "name": "health.oxygen.settings.low_disable_hide",
+      "calls": [
+        "0xc64d918"
+      ],
+      "target": "lv_obj_add_flag",
+      "contract": "void2",
+      "interpretation": "The monitor callback hides the low-alert row when disabling monitoring.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-settings-low_disable_hide-1"
+      ]
+    },
+    {
+      "name": "health.oxygen.settings.low_refresh_hide",
+      "calls": [
+        "0xc64d6de"
+      ],
+      "target": "lv_obj_add_flag",
+      "contract": "void2",
+      "interpretation": "The settings listener hides the low-alert row if monitoring is not enabled.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-settings-low_refresh_hide-1"
+      ]
+    },
+    {
+      "name": "health.oxygen.settings.low_refresh_show",
+      "calls": [
+        "0xc64d72e"
+      ],
+      "target": "lv_obj_clear_flag",
+      "contract": "void2",
+      "interpretation": "The settings listener shows the low-alert row if monitoring is enabled.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-settings-low_refresh_show-1"
+      ]
+    },
+    {
+      "name": "health.oxygen.threshold.hint",
+      "calls": [
+        "0xc64de00",
+        "0xc64db46"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The create and resume builders display low_waring1.oxygen.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-threshold-hint-1",
+        "oxygen-settings-health-oxygen-threshold-hint-2"
+      ]
+    },
+    {
+      "name": "health.oxygen.threshold.option_register_first",
+      "calls": [
+        "0xc64de86",
+        "0xc64dbc8"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The create and resume builders register the first option callback with filter 7 and user data 4.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-threshold-option_register_first-1",
+        "oxygen-settings-health-oxygen-threshold-option_register_first-2"
+      ]
+    },
+    {
+      "name": "health.oxygen.threshold.option_register_default",
+      "calls": [
+        "0xc64dec4",
+        "0xc64dc06"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The create and resume builders register option callbacks in the ordinary layout with filter 7 and user data 4.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-threshold-option_register_default-1",
+        "oxygen-settings-health-oxygen-threshold-option_register_default-2"
+      ]
+    },
+    {
+      "name": "health.oxygen.threshold.option_register_alt",
+      "calls": [
+        "0xc64df58",
+        "0xc64dca6"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The create and resume builders register option callbacks in the alternate layout with filter 7 and user data 4.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-threshold-option_register_alt-1",
+        "oxygen-settings-health-oxygen-threshold-option_register_alt-2"
+      ]
+    },
+    {
+      "name": "health.oxygen.threshold.option_count",
+      "calls": [
+        "0xc64d9c4"
+      ],
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The callback uses event user data as the scan bound while finding the current option object.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-threshold-option_count-1"
+      ]
+    },
+    {
+      "name": "health.oxygen.threshold.option_target",
+      "calls": [
+        "0xc64d9cc"
+      ],
+      "target": "lv_event_current_target",
+      "contract": "word1",
+      "interpretation": "The callback matches the current event target against the option objects to select the persisted value.",
+      "verification_windows": [
+        "oxygen-settings-health-oxygen-threshold-option_target-1"
+      ]
+    }
+  ],
+  "evidence": "The oxygen application manifest registers both page descriptors. The settings builder registers monitoring and low-alert controls using one callback with user data 0 and 1. The callback dispatches these cases. The threshold create and resume builders construct four options, each registered to one callback with user data 4. That callback scans option objects and writes the corresponding disabled, 90, 85 or 80 selection. Both pages clear their root slots on destroy.",
+  "scope": "Only listed settings and threshold call sites while the respective page is active. Other ways to change monitoring, threshold persistence, measurement or alert delivery are not intercepted.",
+  "limitations": "The option count controls an array scan; changing it or the target can cause invalid accesses. Mutating registrations and visibility can desynchronize UI and persisted health settings. Root slots are not thread barriers; shared-entry publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "lifecycle-state-clear-health-oxygen-threshold",
+    "oxygen-settings-health-oxygen-settings-monitor_register-1",
+    "oxygen-settings-health-oxygen-settings-low_register-1",
+    "oxygen-settings-health-oxygen-settings-click_data-1",
+    "oxygen-settings-health-oxygen-settings-low_initial_hide-1",
+    "oxygen-settings-health-oxygen-settings-low_initial_show-1",
+    "oxygen-settings-health-oxygen-settings-low_disable_hide-1",
+    "oxygen-settings-health-oxygen-settings-low_refresh_hide-1",
+    "oxygen-settings-health-oxygen-settings-low_refresh_show-1",
+    "oxygen-settings-health-oxygen-threshold-hint-1",
+    "oxygen-settings-health-oxygen-threshold-hint-2",
+    "oxygen-settings-health-oxygen-threshold-option_register_first-1",
+    "oxygen-settings-health-oxygen-threshold-option_register_first-2",
+    "oxygen-settings-health-oxygen-threshold-option_register_default-1",
+    "oxygen-settings-health-oxygen-threshold-option_register_default-2",
+    "oxygen-settings-health-oxygen-threshold-option_register_alt-1",
+    "oxygen-settings-health-oxygen-threshold-option_register_alt-2",
+    "oxygen-settings-health-oxygen-threshold-option_count-1",
+    "oxygen-settings-health-oxygen-threshold-option_target-1",
+    "oxygen-settings-click",
+    "oxygen-threshold-click",
+    "oxygen-threshold-resume"
+  ],
+  "device_validation": "pending"
+}

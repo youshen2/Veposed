@@ -1,0 +1,110 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 16,
+  "pages": [
+    "layout",
+    "pick",
+    "category",
+    "sport",
+    "choose"
+  ],
+  "registration": "0xc50d0a0",
+  "page_array_file_offset": "0xc5f7e8",
+  "points": [
+    {
+      "name": "home.layout.option_register",
+      "call": "0xc511ff8",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C511EE8 with filter 4 and a bit mask identifying the layout.",
+      "verification_window": "home-more-pages-home-layout-option_register"
+    },
+    {
+      "name": "home.layout.event_code",
+      "call": "0xc511ef0",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The callback enters its layout-selection branch when event code equals 4.",
+      "verification_window": "home-more-pages-home-layout-event_code"
+    },
+    {
+      "name": "home.layout.event_data",
+      "call": "0xc511f08",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The callback writes the low 16 bits into the layout navigation data.",
+      "verification_window": "home-more-pages-home-layout-event_data"
+    },
+    {
+      "name": "home.choose.item_register",
+      "call": "0xc5119c6",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C5117D8 with filter 7 and a candidate record value as user data.",
+      "verification_window": "home-more-pages-home-choose-item_register"
+    },
+    {
+      "name": "home.choose.item_name",
+      "call": "0xc511a3a",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The app descriptor supplies the name of a candidate card.",
+      "verification_window": "home-more-pages-home-choose-item_name"
+    },
+    {
+      "name": "home.choose.calendar_icon",
+      "call": "0xc511bb4",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets the static calendar preview resource.",
+      "verification_window": "home-more-pages-home-choose-calendar_icon"
+    },
+    {
+      "name": "home.choose.calendar_day",
+      "call": "0xc511c80",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets formatted day of month on the calendar preview.",
+      "verification_window": "home-more-pages-home-choose-calendar_day"
+    },
+    {
+      "name": "home.choose.calendar_weekday",
+      "call": "0xc511c8a",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets formatted weekday on the calendar preview.",
+      "verification_window": "home-more-pages-home-choose-calendar_weekday"
+    },
+    {
+      "name": "home.choose.calendar_preview",
+      "call": "0xc511d7c",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets a dynamically allocated calendar-preview image source.",
+      "verification_window": "home-more-pages-home-choose-calendar_preview"
+    }
+  ],
+  "evidence": "The home registration routine copies eight descriptors into a stack array. Each page creator sets the recorded state, and each destroy path clears that state. Layout selection registers event filter 4 with a bit mask. The card selection builder registers a callback and populates name and optional calendar preview.",
+  "scope": "Specific lifecycle slots and recorded shared call sites; other page actions and app entry paths are not included.",
+  "limitations": "The layout event data participates in navigation and selection; arbitrary replacements may lead to invalid layouts. Calendar preview image may be dynamically allocated and its lifetime is managed by the page. State and root slots do not provide thread synchronization. Device behavior and recovery are unverified.",
+  "verification_windows": [
+    "home-more-pages-home-layout-option_register",
+    "home-more-pages-home-layout-event_code",
+    "home-more-pages-home-layout-event_data",
+    "home-more-pages-home-choose-item_register",
+    "home-more-pages-home-choose-item_name",
+    "home-more-pages-home-choose-calendar_icon",
+    "home-more-pages-home-choose-calendar_day",
+    "home-more-pages-home-choose-calendar_weekday",
+    "home-more-pages-home-choose-calendar_preview",
+    "home-more-layout-create",
+    "home-more-layout-destroy",
+    "home-more-layout-handler",
+    "home-more-choose-create",
+    "home-more-choose-handler",
+    "home-more-category-create",
+    "home-more-sport-create"
+  ],
+  "device_validation": "pending"
+}

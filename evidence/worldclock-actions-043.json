@@ -1,0 +1,146 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 59,
+  "points": [
+    {
+      "name": "apps.worldclock.main.add_event_code",
+      "call": "0xc600dea",
+      "target": "lv_event_get_code",
+      "meaning": "click opens app 59 page 1",
+      "verification_window": "worldclock-actions-main-add-event-code"
+    },
+    {
+      "name": "apps.worldclock.main.city_event_code",
+      "call": "0xc600d0c",
+      "target": "lv_event_get_code",
+      "meaning": "callback checks code 7",
+      "verification_window": "worldclock-actions-main-city-event-code"
+    },
+    {
+      "name": "apps.worldclock.main.city_event_data",
+      "call": "0xc600d14",
+      "target": "lv_event_get_user_data",
+      "meaning": "selected city pointer passed to detail page",
+      "verification_window": "worldclock-actions-main-city-event-data"
+    },
+    {
+      "name": "apps.worldclock.add_list.city_event_code",
+      "call": "0xc600a18",
+      "target": "lv_event_get_code",
+      "meaning": "city count checked before click dispatch",
+      "verification_window": "worldclock-actions-add-list-city-event-code"
+    },
+    {
+      "name": "apps.worldclock.add_list.city_event_data",
+      "call": "0xc600a66",
+      "target": "lv_event_get_user_data",
+      "meaning": "city pointer passed to add function",
+      "verification_window": "worldclock-actions-add-list-city-event-data"
+    },
+    {
+      "name": "apps.worldclock.detail.delete_event_code",
+      "call": "0xc5ffae8",
+      "target": "lv_event_get_code",
+      "meaning": "callback checks code 7",
+      "verification_window": "worldclock-actions-detail-delete-event-code"
+    },
+    {
+      "name": "apps.worldclock.detail.delete_event_data",
+      "call": "0xc5ffaf0",
+      "target": "lv_event_get_user_data",
+      "meaning": "city pointer passed to removal function",
+      "verification_window": "worldclock-actions-detail-delete-event-data"
+    },
+    {
+      "name": "apps.worldclock.main.city_register_create",
+      "call": "0xc60144e",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc600d05 filter 7",
+      "verification_window": "worldclock-actions-main-city-register-create"
+    },
+    {
+      "name": "apps.worldclock.main.city_register_update",
+      "call": "0xc6011f2",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc600d05 filter 7",
+      "verification_window": "worldclock-actions-main-city-register-update"
+    },
+    {
+      "name": "apps.worldclock.main.city_name_create",
+      "call": "0xc60142a",
+      "target": "lvx_label_set_text",
+      "meaning": "city translation",
+      "verification_window": "worldclock-actions-main-city-name-create"
+    },
+    {
+      "name": "apps.worldclock.main.city_name_update",
+      "call": "0xc6011ce",
+      "target": "lvx_label_set_text",
+      "meaning": "city translation",
+      "verification_window": "worldclock-actions-main-city-name-update"
+    },
+    {
+      "name": "apps.worldclock.main.city_time",
+      "call": "0xc601034",
+      "target": "lvx_label_set_text",
+      "meaning": "formatted time in shared helper",
+      "verification_window": "worldclock-actions-main-city-time"
+    },
+    {
+      "name": "apps.worldclock.main.city_ampm",
+      "call": "0xc60107a",
+      "target": "lvx_label_set_text",
+      "meaning": "am.worldclock or pm.worldclock",
+      "verification_window": "worldclock-actions-main-city-ampm"
+    },
+    {
+      "name": "apps.worldclock.main.city_offset",
+      "call": "0xc600f36",
+      "target": "lvx_label_set_text",
+      "meaning": "formatted fast or slow offset",
+      "verification_window": "worldclock-actions-main-city-offset"
+    },
+    {
+      "name": "apps.worldclock.main.city_local_time",
+      "call": "0xc600f7a",
+      "target": "lvx_label_set_text",
+      "meaning": "local_time.worldclock",
+      "verification_window": "worldclock-actions-main-city-local-time"
+    },
+    {
+      "name": "apps.worldclock.main.limit_caption_update",
+      "call": "0xc601258",
+      "target": "lvx_label_set_text",
+      "meaning": "upper_twenty_num.worldclock",
+      "verification_window": "worldclock-actions-main-limit-caption-update"
+    }
+  ],
+  "evidence": "Main add callback 0xc600de4 navigates to add-list page on code 7. City callback 0xc600d04 passes its user data to page 2. Add-list callback 0xc600a10 reads city count before event dispatch, reads a city pointer on code 7, and calls the add routine; it displays an upper-limit hint at count 20. Detail callback 0xc5ffae0 reads a city pointer and calls the removal routine on code 7. Main row creation and update register the same callback. Time and offset helpers are called from both row creation and update.",
+  "scope": "Individual caller-filtered event getters, row registrations, and text setters; shared helpers may fire for any city in either creation or update.",
+  "limitations": "Changing city pointers or event codes can alter saved city data or cause invalid access. The add callback checks count before testing event code; suppressing a code alone does not suppress every branch. Page slots do not establish thread quiescence; device behavior and recovery are unverified.",
+  "verification_windows": [
+    "worldclock-actions-main-add-event-code",
+    "worldclock-actions-main-city-event-code",
+    "worldclock-actions-main-city-event-data",
+    "worldclock-actions-add-list-city-event-code",
+    "worldclock-actions-add-list-city-event-data",
+    "worldclock-actions-detail-delete-event-code",
+    "worldclock-actions-detail-delete-event-data",
+    "worldclock-actions-main-city-register-create",
+    "worldclock-actions-main-city-register-update",
+    "worldclock-actions-main-city-name-create",
+    "worldclock-actions-main-city-name-update",
+    "worldclock-actions-main-city-time",
+    "worldclock-actions-main-city-ampm",
+    "worldclock-actions-main-city-offset",
+    "worldclock-actions-main-city-local-time",
+    "worldclock-actions-main-limit-caption-update",
+    "worldclock-actions-city-click",
+    "worldclock-actions-add-click",
+    "worldclock-actions-delete-click",
+    "worldclock-actions-time-helper",
+    "worldclock-actions-offset-helper"
+  ],
+  "device_validation": "pending"
+}

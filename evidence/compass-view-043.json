@@ -1,0 +1,116 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "compass",
+  "descriptor": "0x200d0204",
+  "descriptor_root_slot": "0x200d0234",
+  "state_slot": "0x2010fbec",
+  "create": "0x0c4fe530",
+  "destroy": "0x0c4fd6c0",
+  "calibration_view": "0x0c4fdefc",
+  "compass_view": "0x0c4fd7c0",
+  "sensor_callback": "0x0c4fe278",
+  "refresh": "0x0c4fdfac",
+  "points": [
+    {
+      "name": "apps.compass.calibration_icon",
+      "call": "0xc4fdf32",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The calibration view sets compass.bin as its icon.",
+      "verification_window": "compass-view-calibration_icon"
+    },
+    {
+      "name": "apps.compass.calibration_hint",
+      "call": "0xc4fdf74",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The calibration view displays the localized hintdown.calibration.",
+      "verification_window": "compass-view-calibration_hint"
+    },
+    {
+      "name": "apps.compass.background",
+      "call": "0xc4fd88a",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The compass view sets background.bin.",
+      "verification_window": "compass-view-background"
+    },
+    {
+      "name": "apps.compass.scale_normal",
+      "call": "0xc4fdbba",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The compass view sets scale2.bin; refresh toggles its visibility according to the calculated heading.",
+      "verification_window": "compass-view-scale_normal"
+    },
+    {
+      "name": "apps.compass.scale_zero",
+      "call": "0xc4fdbfe",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The compass view sets scale3.bin; refresh toggles its visibility according to the calculated heading.",
+      "verification_window": "compass-view-scale_zero"
+    },
+    {
+      "name": "apps.compass.north_icon",
+      "call": "0xc4fdc28",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The compass view sets N.bin and later rotates the object during refresh.",
+      "verification_window": "compass-view-north_icon"
+    },
+    {
+      "name": "apps.compass.east_icon",
+      "call": "0xc4fdc64",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The compass view sets E.bin and later rotates the object during refresh.",
+      "verification_window": "compass-view-east_icon"
+    },
+    {
+      "name": "apps.compass.south_icon",
+      "call": "0xc4fdca2",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The compass view sets S.bin and later rotates the object during refresh.",
+      "verification_window": "compass-view-south_icon"
+    },
+    {
+      "name": "apps.compass.west_icon",
+      "call": "0xc4fdce0",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The compass view sets W.bin and later rotates the object during refresh.",
+      "verification_window": "compass-view-west_icon"
+    },
+    {
+      "name": "apps.compass.degree_unit",
+      "call": "0xc4fdd4c",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The compass view initializes its degree-unit label with the degree symbol.",
+      "verification_window": "compass-view-degree_unit"
+    }
+  ],
+  "evidence": "The compass page creates an allocated state and calibration view. The sensor callback may build the compass view on observed calibration states 3 or 4; resume can rebuild either view. The compass view sets its directional image sources, and the refresh routine subsequently rotates the corresponding objects and formats the heading through a separate variadic function.",
+  "scope": "Only the listed calibration and view initialization setters while compass page state is active. Sensor measurements, calibration completion and formatted heading updates are not intercepted.",
+  "limitations": "Direction icon replacements change visible orientation indicators without changing sensor results. Image resources must remain valid while used. State slots are not thread barriers; shared-entry publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "compass-view-calibration_icon",
+    "compass-view-calibration_hint",
+    "compass-view-background",
+    "compass-view-scale_normal",
+    "compass-view-scale_zero",
+    "compass-view-north_icon",
+    "compass-view-east_icon",
+    "compass-view-south_icon",
+    "compass-view-west_icon",
+    "compass-view-degree_unit",
+    "compass-create-calibration",
+    "compass-calibration-transition",
+    "compass-heading-format",
+    "compass-view-resume"
+  ],
+  "device_validation": "pending"
+}

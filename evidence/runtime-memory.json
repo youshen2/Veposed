@@ -5,7 +5,7 @@
     "last_error": -7,
     "active_sites": 0
   },
-  "issue": "The startup-only PSRAM memory gate excluded native module allocations from Umem.",
+  "issue": "The previous startup-only PSRAM memory gate excluded native module allocations from Umem, a plausible cause of the observed hook failure. Error -7 is a general memory error, and the reported status lacks a startup phase and slot address; the report alone cannot prove which operation failed.",
   "heap": {
     "start": "0x3c271400",
     "end_exclusive": "0x3dfc0000",
@@ -48,5 +48,37 @@
     "Dynamic code cache publisher regression",
     "Existing rollback and persistent isolation tests"
   ],
-  "device_retest": "pending"
+  "device_retest": "pending",
+  "diagnostic_limits": [
+    "Error -7 also covers rejected memory reads or writes and nonzero cache-publisher results; the reported status does not identify the failing operation.",
+    "The newer status record includes startup phase and self-test slot address for a future device retest.",
+    "The memory mapping and cache publisher changes remain unverified on the device."
+  ],
+  "host_revalidation": {
+    "date": "2026-10-31",
+    "result": "pass",
+    "checks": [
+      {
+        "command": "cargo test --workspace",
+        "result": "core hook and recovery, named registry, memory-map and native API tests passed"
+      },
+      {
+        "command": "python3 scripts/test-recovery.py",
+        "result": "crash, failed-hook, corrupt journal, sync failure, and in-flight recovery scenarios passed"
+      },
+      {
+        "command": "python3 scripts/test-bootstrap.py --lua build/test-tools/lua-5.4.8/src/lua",
+        "result": "one-shot latch and disabled/load-failure scenarios passed with mocked insmod"
+      },
+      {
+        "command": "python3 scripts/test-installer.py --lua build/test-tools/lua-5.4.8/src/lua",
+        "result": "installer and recovery scenarios passed against mocked Lua runtime"
+      },
+      {
+        "command": "python3 scripts/test-module.py",
+        "result": "publisher ordering, bounds, and failure propagation passed on host"
+      }
+    ],
+    "limits": "Host tests do not execute the Vela loader, target cache hardware, actual restart or physical device. The old -7 report lacks the stage and address needed for attribution."
+  }
 }

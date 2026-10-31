@@ -1,0 +1,30 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "settings.return_to_dial.selected_option",
+  "page_create": "0x0c54e2f0",
+  "page_destroy": "0x0c54e0dc",
+  "page_root_slot": "0x20111c90",
+  "row_builder": "0x0c54e12c",
+  "register_event_call": "0x0c54e1b8",
+  "event_callback": "0x0c54e374",
+  "getter_call": "0x0c54e38c",
+  "return_pc": "0x0c54e390",
+  "entry": "0x002bfd89",
+  "write_alias": "0x200bfd88",
+  "file_offset": "0x49bf4",
+  "expected": "80b4c06800afbd465df8047b704700bf",
+  "contract": "word1",
+  "evidence": "The row builder rejects indices above 2 and registers a callback for event code 7 with its row index as user data. The callback checks event code 7, calls the user-data getter, truncates its return to 8 bits, converts it to decimal and writes persist.back_dial_id. The getter veneer branches to SRAM code that returns the word at event + 12. The page root is set before building and cleared by the destroy callback.",
+  "scope": "the user-data getter call in the return-to-dial option click callback while its page root is active",
+  "limitations": "The 0, 1, 2 option values are inferred from the row builder bound. The underlying getter is shared globally; page root and caller filters do not prove quiescence of other callers during inline patch publication or rollback.",
+  "verification_windows": [
+    "return-to-dial-register-click",
+    "return-to-dial-read-click-option",
+    "return-to-dial-destroy"
+  ],
+  "device_validation": "pending",
+  "registration_name": "settings.return_to_dial.option_register",
+  "registration_return_pc": "0x0c54e1bc",
+  "registration_evidence": "Event registration uses object, callback, code 7 and row index as user data; its result is ignored by the caller."
+}

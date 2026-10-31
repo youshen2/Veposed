@@ -1,0 +1,175 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 22,
+  "page_id": 19,
+  "state_slot": "0x201134e8",
+  "descriptor_root_slot": "0x200d3f98",
+  "points": [
+    {
+      "name": "settings.system.row_register_create",
+      "call": "0xc57121e",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc5713e9 filter 7",
+      "verification_window": "settings-system-row-register-create"
+    },
+    {
+      "name": "settings.system.row_register_update",
+      "call": "0xc570948",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc5713e9 filter 7",
+      "verification_window": "settings-system-row-register-update"
+    },
+    {
+      "name": "settings.system.row_event_code",
+      "call": "0xc5713f0",
+      "target": "lv_event_get_code",
+      "meaning": "callback checks code 7",
+      "verification_window": "settings-system-row-event-code"
+    },
+    {
+      "name": "settings.system.row_index",
+      "call": "0xc5713f8",
+      "target": "lv_event_get_user_data",
+      "meaning": "index selects an action table; callback has no local bounds check",
+      "verification_window": "settings-system-row-index"
+    }
+  ],
+  "menu_tables": [
+    {
+      "branch": "compact",
+      "rows": [
+        {
+          "index": 0,
+          "translation_key": "sys_reboot.settings",
+          "action": 0
+        },
+        {
+          "index": 1,
+          "translation_key": "sys_poweroff.settings",
+          "action": 1
+        },
+        {
+          "index": 2,
+          "translation_key": "sys_reset.settings",
+          "action": 3
+        }
+      ],
+      "verification_window": "settings-system-compact-rows"
+    },
+    {
+      "branch": "extended_nonzero",
+      "rows": [
+        {
+          "index": 0,
+          "translation_key": "system_update.settings",
+          "action": 5
+        },
+        {
+          "index": 1,
+          "translation_key": "sys_poweroff.settings",
+          "action": 1
+        },
+        {
+          "index": 2,
+          "translation_key": "sys_reboot.settings",
+          "action": 0
+        },
+        {
+          "index": 3,
+          "translation_key": "sys_newphone.settings",
+          "action": 2
+        },
+        {
+          "index": 4,
+          "translation_key": "restore_system.settings",
+          "action": 7
+        },
+        {
+          "index": 5,
+          "translation_key": "sys_reset.settings",
+          "action": 3
+        },
+        {
+          "index": 6,
+          "translation_key": "sys_user.settings",
+          "action": 4
+        },
+        {
+          "index": 7,
+          "translation_key": "about.settings",
+          "action": 9
+        },
+        {
+          "index": 8,
+          "translation_key": "regulation.settings",
+          "action": 25
+        }
+      ],
+      "verification_window": "settings-system-extended_nonzero-rows"
+    },
+    {
+      "branch": "extended_zero",
+      "rows": [
+        {
+          "index": 0,
+          "translation_key": "system_update.settings",
+          "action": 5
+        },
+        {
+          "index": 1,
+          "translation_key": "sys_poweroff.settings",
+          "action": 1
+        },
+        {
+          "index": 2,
+          "translation_key": "sys_reboot.settings",
+          "action": 0
+        },
+        {
+          "index": 3,
+          "translation_key": "sys_newphone.settings",
+          "action": 2
+        },
+        {
+          "index": 4,
+          "translation_key": "restore_system.settings",
+          "action": 7
+        },
+        {
+          "index": 5,
+          "translation_key": "sys_reset.settings",
+          "action": 3
+        },
+        {
+          "index": 6,
+          "translation_key": "about.settings",
+          "action": 9
+        },
+        {
+          "index": 7,
+          "translation_key": "regulation.settings",
+          "action": 25
+        }
+      ],
+      "verification_window": "settings-system-extended_zero-rows"
+    }
+  ],
+  "evidence": "Settings manifest registers this descriptor. Creator assigns root before creating the list; destroy clears it. Row creation and update register callback 0xc5713e8. The callback reads event code and an index, chooses one of three tables, then dispatches the stored action. The label initialization routine writes translation strings; the table initialization routine assigns them in order. Actions 0, 1 and 3 open reboot, power-off and reset confirmation respectively; other action cases call navigation or other functions.",
+  "scope": "The four listed event call sites and statically recovered initial row tables. Reduced and extended modes are selected by sub_C4C4C68; extended table is selected by the byte returned by sub_C4BF490. List count uses 8 plus that byte, whose Boolean range is not proven.",
+  "limitations": "The click callback uses row index without a local bounds check. Changing an index can invoke a different action, including reboot, power-off or reset confirmation; do not infer that a changed selection is safe. Slots are not thread synchronization. Device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "settings-system-row-register-create",
+    "settings-system-row-register-update",
+    "settings-system-row-event-code",
+    "settings-system-row-index",
+    "settings-system-compact-rows",
+    "settings-system-extended_nonzero-rows",
+    "settings-system-extended_zero-rows",
+    "settings-system-create",
+    "settings-system-row-callback",
+    "settings-system-labels",
+    "settings-system-label-assignment"
+  ],
+  "device_validation": "pending"
+}

@@ -1,0 +1,95 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "list_descriptor": "0x200da20c",
+  "list_root_slot": "0x200da23c",
+  "detail_descriptor": "0x200da280",
+  "detail_root_slot": "0x200da2b0",
+  "list_create": "0x0c609940",
+  "list_row_builder": "0x0c609664",
+  "row_callback": "0x0c60962c",
+  "detail_create": "0x0c609af0",
+  "points": [
+    {
+      "name": "apps.weather.alert.row_register",
+      "call": "0xc609706",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "page_root_slot": "0x200da23c",
+      "interpretation": "The row builder registers callback 0x0c60962d for filter 7, passing the row index as user data.",
+      "verification_window": "weather-alert-apps-weather-alert-row_register"
+    },
+    {
+      "name": "apps.weather.alert.row_event_code",
+      "call": "0xc609634",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "page_root_slot": "0x200da23c",
+      "interpretation": "The row callback reads the event code, and only code 7 navigates to alert detail with its user data.",
+      "verification_window": "weather-alert-apps-weather-alert-row_event_code"
+    },
+    {
+      "name": "apps.weather.alert.row_icon",
+      "call": "0xc609716",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "page_root_slot": "0x200da23c",
+      "interpretation": "The row builder sets alert_big_icon.bin for each constructed alert row.",
+      "verification_window": "weather-alert-apps-weather-alert-row_icon"
+    },
+    {
+      "name": "apps.weather.alert.row_caption",
+      "call": "0xc6097ee",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "page_root_slot": "0x200da23c",
+      "interpretation": "The row builder sets the localized alert.weather caption.",
+      "verification_window": "weather-alert-apps-weather-alert-row_caption"
+    },
+    {
+      "name": "apps.weather.alert.row_time",
+      "call": "0xc6098d2",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "page_root_slot": "0x200da23c",
+      "interpretation": "The row builder displays a formatted time buffer for each row.",
+      "verification_window": "weather-alert-apps-weather-alert-row_time"
+    },
+    {
+      "name": "apps.weather.alert_detail.caption",
+      "call": "0xc609c1c",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "page_root_slot": "0x200da2b0",
+      "interpretation": "The detail page displays the localized alert.weather caption.",
+      "verification_window": "weather-alert-apps-weather-alert_detail-caption"
+    },
+    {
+      "name": "apps.weather.alert_detail.body",
+      "call": "0xc609c5a",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "page_root_slot": "0x200da2b0",
+      "interpretation": "The detail page displays the alert body from the indexed weather data record.",
+      "verification_window": "weather-alert-apps-weather-alert_detail-body"
+    }
+  ],
+  "evidence": "The weather manifest registers both descriptors. The page manager owns each descriptor root slot. The list create callback calls the row builder for each alert; the builder registers a row callback with event filter 7 and index user data. The callback checks the event code and passes the index to navigation page 0x00210004. The detail page indexes weather records and displays the body.",
+  "scope": "Only the recorded list row and detail display calls while the respective descriptor root is present. Other weather alert data ingestion, background notifications and detail navigation paths are not covered.",
+  "limitations": "The row builder call sites are shared by rows. Altering event user data can send an invalid index to the detail page. Page root checks are not thread barriers; shared-entry publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "navigation-page-descriptor-apps-weather-alert-3",
+    "navigation-page-descriptor-apps-weather-alert-4",
+    "weather-alert-apps-weather-alert-row_register",
+    "weather-alert-apps-weather-alert-row_event_code",
+    "weather-alert-apps-weather-alert-row_icon",
+    "weather-alert-apps-weather-alert-row_caption",
+    "weather-alert-apps-weather-alert-row_time",
+    "weather-alert-apps-weather-alert_detail-caption",
+    "weather-alert-apps-weather-alert_detail-body",
+    "weather-alert-row-callback",
+    "weather-alert-list-builder-call",
+    "weather-alert-detail-index"
+  ],
+  "device_validation": "pending"
+}

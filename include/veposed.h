@@ -30,14 +30,26 @@ typedef struct {
 #define VEP_VOID2 1u
 #define VEP_WORD2 2u
 #define VEP_WORD4 3u
+#define VEP_VOID0 4u
+#define VEP_WORD0 5u
+#define VEP_VOID1 6u
+#define VEP_WORD1 7u
+#define VEP_VOID3 8u
+#define VEP_WORD3 9u
+#define VEP_VOID4 10u
 /* Board-only recipe; modules use names through attach_named/hook_text. */
 typedef struct {
     uint8_t name[48];
     uint32_t contract;
     vep_target target;
     uintptr_t caller;          /* 0 = any callsite */
+    uintptr_t caller2;         /* optional second normalized return PC */
     uintptr_t subject_slot;    /* 0 = any object; otherwise args[0] must match *slot */
     uintptr_t quiescent_slot;  /* *slot must be zero while installing */
+    uintptr_t active_slot;     /* *slot must be nonzero when dispatching */
+    uintptr_t quiescent_slot2; /* optional additional slot that must be zero */
+    uintptr_t active_slot2;    /* optional alternative active slot (OR) */
+    uint32_t text_arg1;        /* 1 if argument 1 is a NUL-terminated text string */
 } vep_named_point;
 typedef struct {
     uint8_t name[48];
@@ -52,6 +64,7 @@ typedef struct {
     int32_t (*guard_write)(const uint8_t *record); /* fsync before returning success */
     const vep_named_point *points;
     uint32_t point_count;
+    size_t point_size; /* sizeof(vep_named_point); identifies the board recipe layout */
 } vep_platform;
 
 typedef struct {
@@ -64,7 +77,7 @@ typedef struct {
     uintptr_t result;
     uint32_t return_early;
     uintptr_t original; /* read-only; valid only for this callback invocation */
-    uint32_t contract;  /* read-only VEP_VOID2 / VEP_WORD2 / VEP_WORD4 */
+    uint32_t contract;  /* read-only VEP_VOID0..4 / VEP_WORD0..4 */
 } vep_call;
 
 typedef void (*vep_callback)(vep_call *call, void *user_data);
@@ -118,8 +131,9 @@ typedef struct {
 int32_t veposed_list_modules(vep_module_info *output, size_t capacity, uint32_t *count);
 
 /* Names are NUL terminated (max 47 bytes). Text is copied (max 95 bytes).
+ * hook_text requires a point marked text_arg1 by the board recipe.
  * attach_named supports before/after, argument/result edits and return_early.
- * Only the declared 2 or 4 argument words are meaningful. VOID2 has no result.
+ * Only the declared argument words are meaningful. VOID contracts have no result.
  * Normal priority, module switches, detach and recovery apply to named hooks.
  */
 int32_t veposed_attach_named(uint32_t owner, const uint8_t *name,

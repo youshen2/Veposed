@@ -1,0 +1,33 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "watchface.dual_time.selected_index",
+  "page_create": "0x0c5f1f20",
+  "page_destroy": "0x0c5f1ef0",
+  "page_root_slot": "0x20119740",
+  "row_create": "0x0c5f20c4",
+  "row_update": "0x0c5f2220",
+  "event_callback": "0x0c5f2014",
+  "register_event_calls": [
+    "0x0c5f2192",
+    "0x0c5f22d0"
+  ],
+  "getter_call": "0x0c5f201a",
+  "return_pc": "0x0c5f201e",
+  "entry": "0x002bfd89",
+  "contract": "word1",
+  "evidence": "The dual-time page creates a root and stores it in 0x20119740 before building the list. Both row creation and update register event 7 with the row index as user data. The shared callback reads that data, uses indices 0 through 42 (larger unsigned values become 0), stores the chosen index, persists it under watchface_dual_time and publishes the chosen table entry. The destroy callback clears the page root.",
+  "scope": "dual-time option selection callback while the dual-time page root is active",
+  "limitations": "Indices refer to firmware order, not a stable timezone identifier; module changes affect the selected/persisted option. The common getter requires system-wide quiescence during publication and rollback. Static analysis only.",
+  "verification_windows": [
+    "watchface-dual-time-index-read",
+    "watchface-dual-time-register-create",
+    "watchface-dual-time-register-update",
+    "watchface-dual-time-page-cleanup"
+  ],
+  "device_validation": "pending",
+  "registration_names": [
+    "watchface.dual_time.option_register"
+  ],
+  "registration_evidence": "The create and update row paths register the same event-7 callback with the timezone index as user data. The create path ignores the descriptor; the update function returns it to its caller."
+}

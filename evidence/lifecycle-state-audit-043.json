@@ -1,0 +1,1336 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "scope": "Each configured page-lifecycle hook pair and its first quiescent slot. Static inspection of the destroy callback, not a proof of concurrency or completed cleanup.",
+  "method": "For each page identify the descriptor callback and recover the instruction that clears the first quiescent slot; for zero-filled regions, inspect the zero-fill call and its arguments. When present, the second slot is descriptor +48 and its page-manager lifecycle is documented separately in page-lifecycle-043.json. Conditional clears are documented in the callback and cannot imply cleanup if execution fails or is skipped.",
+  "points": [
+    {
+      "page": "settings.about",
+      "destroy_callback": "0xc54d551",
+      "state_slot": "0x20111c20",
+      "descriptor_root_slot": "0x200d2060",
+      "clear_instruction": "0xc54d566",
+      "kind": "zero_region",
+      "verification_window": "lifecycle-state-clear-settings-about",
+      "region_length": 76,
+      "explanation": "The callback calls the mapped memory-fill helper with value 0; its region begins at the recorded slot."
+    },
+    {
+      "page": "settings.display.brightness",
+      "destroy_callback": "0xc554ea1",
+      "state_slot": "0x2011233c",
+      "descriptor_root_slot": "0x200d287c",
+      "clear_instruction": "0xc554ed4",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-display-brightness"
+    },
+    {
+      "page": "settings.dnd",
+      "destroy_callback": "0xc559705",
+      "state_slot": "0x20112648",
+      "descriptor_root_slot": "0x200d2b4c",
+      "clear_instruction": "0xc55974a",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-dnd"
+    },
+    {
+      "page": "settings.battery",
+      "destroy_callback": "0xc54e465",
+      "state_slot": "0x20111d5c",
+      "descriptor_root_slot": "0x200d231c",
+      "clear_instruction": "0xc54e472",
+      "kind": "zero_region",
+      "verification_window": "lifecycle-state-clear-settings-battery",
+      "region_length": 40,
+      "explanation": "The callback calls the mapped memory-fill helper with value 0; its region begins at the recorded slot."
+    },
+    {
+      "page": "settings.connectivity",
+      "destroy_callback": "0xc551161",
+      "state_slot": "0x20111f88",
+      "descriptor_root_slot": "0x200d24fc",
+      "clear_instruction": "0xc5511b8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-connectivity"
+    },
+    {
+      "page": "health.heart_rate",
+      "destroy_callback": "0xc664c65",
+      "state_slot": "0x2011f99c",
+      "descriptor_root_slot": "0x200dbeb0",
+      "clear_instruction": "0xc664d08",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-heart_rate"
+    },
+    {
+      "page": "watchface.dual_time",
+      "destroy_callback": "0xc5f1ef1",
+      "state_slot": "0x20119740",
+      "descriptor_root_slot": "0x200d8c90",
+      "clear_instruction": "0xc5f1f10",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-watchface-dual_time"
+    },
+    {
+      "page": "apps.mijia.scene",
+      "destroy_callback": "0xc5076b1",
+      "state_slot": "0x2010ff20",
+      "descriptor_root_slot": "0x200d05b4",
+      "clear_instruction": "0xc507748",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-mijia-scene"
+    },
+    {
+      "page": "apps.timer",
+      "destroy_callback": "0xc4ff515",
+      "state_slot": "0x2010fcc8",
+      "descriptor_root_slot": "0x200d02ec",
+      "clear_instruction": "0xc4ff52a",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-timer"
+    },
+    {
+      "page": "apps.alarm",
+      "destroy_callback": "0xc53d375",
+      "state_slot": "0x20111570",
+      "descriptor_root_slot": "0x200d14c8",
+      "clear_instruction": "0xc53d3ca",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-alarm"
+    },
+    {
+      "page": "apps.weather",
+      "destroy_callback": "0xc60f139",
+      "state_slot": "0x2011ad7c",
+      "descriptor_root_slot": "0x200da414",
+      "clear_instruction": "0xc60f15c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-weather"
+    },
+    {
+      "page": "health.sleep",
+      "destroy_callback": "0xc63de59",
+      "state_slot": "0x2011d620",
+      "descriptor_root_slot": "0x200db1a8",
+      "clear_instruction": "0xc63de6e",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-sleep"
+    },
+    {
+      "page": "health.oxygen",
+      "destroy_callback": "0xc64aca1",
+      "state_slot": "0x2011e6cc",
+      "descriptor_root_slot": "0x200db504",
+      "clear_instruction": "0xc64acba",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-oxygen"
+    },
+    {
+      "page": "system.launcher",
+      "destroy_callback": "0xc51755d",
+      "state_slot": "0x201102f4",
+      "descriptor_root_slot": "0x200d0d3c",
+      "clear_instruction": "0xc517578",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-system-launcher"
+    },
+    {
+      "page": "sports.list",
+      "destroy_callback": "0xc58fb05",
+      "state_slot": "0x200d5060",
+      "descriptor_root_slot": "0x200d5054",
+      "clear_instruction": "0xc58fb36",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-sports-list",
+      "explanation": "The callback receives the registered descriptor as argument 0 and clears its +60 private pointer when it was nonzero; an already-zero value is unchanged."
+    },
+    {
+      "page": "health.stress",
+      "destroy_callback": "0xc62fec5",
+      "state_slot": "0x2011d198",
+      "descriptor_root_slot": "0x200dadf8",
+      "clear_instruction": "0xc62ff32",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-stress"
+    },
+    {
+      "page": "health.breath",
+      "destroy_callback": "0xc629ead",
+      "state_slot": "0x2011d0f4",
+      "descriptor_root_slot": "0x200dac44",
+      "clear_instruction": "0xc629ef4",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-breath"
+    },
+    {
+      "page": "health.heart_rate.settings",
+      "destroy_callback": "0xc667e91",
+      "state_slot": "0x2011f9b4",
+      "descriptor_root_slot": "0x200dc020",
+      "clear_instruction": "0xc667ecc",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-heart_rate-settings"
+    },
+    {
+      "page": "health.stress.settings",
+      "destroy_callback": "0xc633485",
+      "state_slot": "0x2011d244",
+      "descriptor_root_slot": "0x200daf54",
+      "clear_instruction": "0xc6334aa",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-stress-settings"
+    },
+    {
+      "page": "health.sleep.settings",
+      "destroy_callback": "0xc640e09",
+      "state_slot": "0x2011d64c",
+      "descriptor_root_slot": "0x200db334",
+      "clear_instruction": "0xc640e24",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-sleep-settings"
+    },
+    {
+      "page": "health.oxygen.settings",
+      "destroy_callback": "0xc64d459",
+      "state_slot": "0x2011e724",
+      "descriptor_root_slot": "0x200db5ec",
+      "clear_instruction": "0xc64d47e",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-oxygen-settings"
+    },
+    {
+      "page": "health.breath.session",
+      "destroy_callback": "0xc62b305",
+      "state_slot": "0x2011d104",
+      "descriptor_root_slot": "0x200dacb8",
+      "clear_instruction": "0xc62b37a",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-breath-session"
+    },
+    {
+      "page": "apps.compass",
+      "destroy_callback": "0xc4fd6c1",
+      "state_slot": "0x2010fbec",
+      "descriptor_root_slot": "0x200d0234",
+      "clear_instruction": "0xc4fd6f0",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-compass"
+    },
+    {
+      "page": "apps.flashlight",
+      "destroy_callback": "0xc508711",
+      "state_slot": "0x2011003c",
+      "descriptor_root_slot": "0x200d07a0",
+      "clear_instruction": "0xc508752",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-flashlight"
+    },
+    {
+      "page": "apps.calendar",
+      "destroy_callback": "0xc4e6c4d",
+      "state_slot": "0x2010ed48",
+      "descriptor_root_slot": "0x200cf64c",
+      "clear_instruction": "0xc4e6c78",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-calendar"
+    },
+    {
+      "page": "apps.stopwatch",
+      "destroy_callback": "0xc4fb045",
+      "state_slot": "0x2010f9a4",
+      "descriptor_root_slot": "0x200d0148",
+      "clear_instruction": "0xc4fb0bc",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-stopwatch"
+    },
+    {
+      "page": "system.notifications.detail",
+      "destroy_callback": "0xc5260a9",
+      "state_slot": "0x20110eb0",
+      "descriptor_root_slot": "0x200d1164",
+      "clear_instruction": "0xc5260f4",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-system-notifications-detail"
+    },
+    {
+      "page": "system.notifications.aggregation",
+      "destroy_callback": "0xc525b19",
+      "state_slot": "0x20110e88",
+      "descriptor_root_slot": "0x200d10f0",
+      "clear_instruction": "0xc525b20",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-system-notifications-aggregation"
+    },
+    {
+      "page": "health.activity",
+      "destroy_callback": "0xc4d1db5",
+      "state_slot": "0x2010dcd4",
+      "descriptor_root_slot": "0x200cf07c",
+      "clear_instruction": "0xc4d1d5c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-activity",
+      "explanation": "The destroy callback calls cleanup helper 0x0c4d1d18, which conditionally clears the slot if nonzero."
+    },
+    {
+      "page": "apps.media",
+      "destroy_callback": "0xc51b385",
+      "state_slot": "0x20110918",
+      "descriptor_root_slot": "0x200d0f50",
+      "clear_instruction": "0xc51b3ac",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-media"
+    },
+    {
+      "page": "apps.recorder",
+      "destroy_callback": "0xc618d25",
+      "state_slot": "0x2011cc48",
+      "descriptor_root_slot": "0x200da5bc",
+      "clear_instruction": "0xc618d7e",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-recorder"
+    },
+    {
+      "page": "health.vitality",
+      "destroy_callback": "0xc64fca5",
+      "state_slot": "0x2011e828",
+      "descriptor_root_slot": "0x200db780",
+      "clear_instruction": "0xc64fce8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-vitality"
+    },
+    {
+      "page": "health.women",
+      "destroy_callback": "0xc6211bd",
+      "state_slot": "0x2011ce40",
+      "descriptor_root_slot": "0x200da7d0",
+      "clear_instruction": "0xc6211e4",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-women"
+    },
+    {
+      "page": "settings.sound",
+      "destroy_callback": "0xc56fc81",
+      "state_slot": "0x20113448",
+      "descriptor_root_slot": "0x200d3d4c",
+      "clear_instruction": "0xc56fca6",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-sound"
+    },
+    {
+      "page": "settings.vibration",
+      "destroy_callback": "0xc56fcc5",
+      "state_slot": "0x20113488",
+      "descriptor_root_slot": "0x200d3dc0",
+      "clear_instruction": "0xc56fcec",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-vibration"
+    },
+    {
+      "page": "settings.notification_center",
+      "destroy_callback": "0xc5682a9",
+      "state_slot": "0x2011314c",
+      "descriptor_root_slot": "0x200d387c",
+      "clear_instruction": "0xc5682c8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-notification_center"
+    },
+    {
+      "page": "settings.control_center",
+      "destroy_callback": "0xc5517e5",
+      "state_slot": "0x20111fbc",
+      "descriptor_root_slot": "0x200d2610",
+      "clear_instruction": "0xc551820",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-control_center"
+    },
+    {
+      "page": "health.activity.explain",
+      "destroy_callback": "0xc4d0f45",
+      "state_slot": "0x2010dafc",
+      "descriptor_root_slot": "0x200cefd8",
+      "clear_instruction": "0xc4d0f60",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-activity-explain"
+    },
+    {
+      "page": "apps.calendar.detail",
+      "destroy_callback": "0xc4e6071",
+      "state_slot": "0x2010eb60",
+      "descriptor_root_slot": "0x200cf5d8",
+      "clear_instruction": "0xc4e608c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-calendar-detail"
+    },
+    {
+      "page": "apps.weather.forecast",
+      "destroy_callback": "0xc60ead9",
+      "state_slot": "0x2011ad70",
+      "descriptor_root_slot": "0x200da3a0",
+      "clear_instruction": "0xc60eae8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-weather-forecast"
+    },
+    {
+      "page": "apps.weather.reminder",
+      "destroy_callback": "0xc60fbd9",
+      "state_slot": "0x2011ad88",
+      "descriptor_root_slot": "0x200da488",
+      "clear_instruction": "0xc60fbe4",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-weather-reminder"
+    },
+    {
+      "page": "apps.weather.detail",
+      "destroy_callback": "0xc609f19",
+      "state_slot": "0x2011a3a8",
+      "descriptor_root_slot": "0x200da324",
+      "clear_instruction": "0xc609f4a",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-weather-detail"
+    },
+    {
+      "page": "health.oxygen.threshold",
+      "destroy_callback": "0xc64d99d",
+      "state_slot": "0x2011e760",
+      "descriptor_root_slot": "0x200db660",
+      "clear_instruction": "0xc64d9ae",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-oxygen-threshold"
+    },
+    {
+      "page": "health.sleep.settings_list",
+      "destroy_callback": "0xc641529",
+      "state_slot": "0x2011d654",
+      "descriptor_root_slot": "0x200db3a8",
+      "clear_instruction": "0xc641544",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-sleep-settings_list"
+    },
+    {
+      "page": "health.sleep.survey",
+      "destroy_callback": "0xc6404a5",
+      "state_slot": "0x2011d624",
+      "descriptor_root_slot": "0x200db21c",
+      "clear_instruction": "0xc6404d8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-sleep-survey"
+    },
+    {
+      "page": "health.sleep.survey_done",
+      "destroy_callback": "0xc640bf1",
+      "state_slot": "0x2011d640",
+      "descriptor_root_slot": "0x200db2c0",
+      "clear_instruction": "0xc640c0c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-sleep-survey_done"
+    },
+    {
+      "page": "health.oxygen.measure",
+      "destroy_callback": "0xc64c3a1",
+      "state_slot": "0x2011e718",
+      "descriptor_root_slot": "0x200db578",
+      "clear_instruction": "0xc64c40e",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-oxygen-measure"
+    },
+    {
+      "page": "health.oxygen.low_chart",
+      "destroy_callback": "0xc649985",
+      "state_slot": "0x2011e6a8",
+      "descriptor_root_slot": "0x200db490",
+      "clear_instruction": "0xc6499b6",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-oxygen-low_chart"
+    },
+    {
+      "page": "health.breath.info",
+      "destroy_callback": "0xc6295a1",
+      "state_slot": "0x2011d09c",
+      "descriptor_root_slot": "0x200dabd0",
+      "clear_instruction": "0xc6295aa",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-breath-info"
+    },
+    {
+      "page": "health.sleep.hrv_detail",
+      "destroy_callback": "0xc63c151",
+      "state_slot": "0x2011d604",
+      "descriptor_root_slot": "0x200db03c",
+      "clear_instruction": "0xc63c168",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-sleep-hrv_detail"
+    },
+    {
+      "page": "health.sleep.hrv_explain",
+      "destroy_callback": "0xc63d319",
+      "state_slot": "0x2011d608",
+      "descriptor_root_slot": "0x200db0b0",
+      "clear_instruction": "0xc63d32e",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-sleep-hrv_explain"
+    },
+    {
+      "page": "health.sleep.hrv_info",
+      "destroy_callback": "0xc63d791",
+      "state_slot": "0x2011d60c",
+      "descriptor_root_slot": "0x200db124",
+      "clear_instruction": "0xc63d7a8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-sleep-hrv_info"
+    },
+    {
+      "page": "health.stress.measure",
+      "destroy_callback": "0xc632181",
+      "state_slot": "0x2011d234",
+      "descriptor_root_slot": "0x200dae6c",
+      "clear_instruction": "0xc6321f2",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-stress-measure"
+    },
+    {
+      "page": "health.stress.month",
+      "destroy_callback": "0xc632c25",
+      "state_slot": "0x2011d23c",
+      "descriptor_root_slot": "0x200daee0",
+      "clear_instruction": "0xc632c46",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-stress-month"
+    },
+    {
+      "page": "health.stress.explain",
+      "destroy_callback": "0xc62d8c5",
+      "state_slot": "0x2011d194",
+      "descriptor_root_slot": "0x200dad84",
+      "clear_instruction": "0xc62d8d8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-stress-explain"
+    },
+    {
+      "page": "health.heart_rate.abnormal",
+      "destroy_callback": "0xc662b39",
+      "state_slot": "0x2011f8e8",
+      "descriptor_root_slot": "0x200dbdc8",
+      "clear_instruction": "0xc662b54",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-heart_rate-abnormal"
+    },
+    {
+      "page": "health.heart_rate.explain",
+      "destroy_callback": "0xc663b49",
+      "state_slot": "0x2011f924",
+      "descriptor_root_slot": "0x200dbe3c",
+      "clear_instruction": "0xc663b86",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-heart_rate-explain"
+    },
+    {
+      "page": "health.heart_rate.rest",
+      "destroy_callback": "0xc6679b5",
+      "state_slot": "0x2011f9a0",
+      "descriptor_root_slot": "0x200dbfac",
+      "clear_instruction": "0xc6679d0",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-heart_rate-rest"
+    },
+    {
+      "page": "health.heart_rate.catalog",
+      "destroy_callback": "0xc668471",
+      "state_slot": "0x2011fa0c",
+      "descriptor_root_slot": "0x200dc108",
+      "clear_instruction": "0xc668482",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-heart_rate-catalog"
+    },
+    {
+      "page": "sports.categories",
+      "destroy_callback": "0xc58ee59",
+      "state_slot": "0x200d4f6c",
+      "descriptor_root_slot": "0x200d4f60",
+      "clear_instruction": "0xc58ee68",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-sports-categories"
+    },
+    {
+      "page": "sports.category_list",
+      "destroy_callback": "0xc58fbb1",
+      "state_slot": "0x200d50d4",
+      "descriptor_root_slot": "0x200d50c8",
+      "clear_instruction": "0xc58fbcc",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-sports-category_list"
+    },
+    {
+      "page": "sports.list_edit",
+      "destroy_callback": "0xc58f0d5",
+      "state_slot": "0x20114978",
+      "descriptor_root_slot": "0x200d4fd4",
+      "clear_instruction": "0xc58f10c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-sports-list_edit"
+    },
+    {
+      "page": "sports.countdown",
+      "destroy_callback": "0xc596ee5",
+      "state_slot": "0x20114b24",
+      "descriptor_root_slot": "0x200d53b0",
+      "clear_instruction": "0xc596f2c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-sports-countdown"
+    },
+    {
+      "page": "sports.settings",
+      "destroy_callback": "0xc5be24d",
+      "state_slot": "0x200d7f88",
+      "descriptor_root_slot": "0x200d7f7c",
+      "clear_instruction": "0xc5be27c",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-sports-settings",
+      "explanation": "The registered descriptor is callback argument 0; its +60 allocation is freed and cleared."
+    },
+    {
+      "page": "sports.settings.detail",
+      "destroy_callback": "0xc5b9af5",
+      "state_slot": "0x200d7cbc",
+      "descriptor_root_slot": "0x200d7cb0",
+      "clear_instruction": "0xc5b9b30",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-sports-settings-detail",
+      "explanation": "The registered descriptor is callback argument 0; its +60 allocation is freed and cleared."
+    },
+    {
+      "page": "sports.settings.switch",
+      "destroy_callback": "0xc5be9e1",
+      "state_slot": "0x200d8048",
+      "descriptor_root_slot": "0x200d803c",
+      "clear_instruction": "0xc5be9fe",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-sports-settings-switch",
+      "explanation": "The registered descriptor is callback argument 0; its +60 allocation is freed and cleared."
+    },
+    {
+      "page": "sports.settings.radio",
+      "destroy_callback": "0xc5bdebd",
+      "state_slot": "0x200d7f14",
+      "descriptor_root_slot": "0x200d7f08",
+      "clear_instruction": "0xc5bdf0e",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-sports-settings-radio",
+      "explanation": "The registered descriptor is callback argument 0; its +60 allocation is freed and cleared."
+    },
+    {
+      "page": "sports.settings.picker",
+      "destroy_callback": "0xc5bba05",
+      "state_slot": "0x200d7ea0",
+      "descriptor_root_slot": "0x200d7e94",
+      "clear_instruction": "0xc5bba2e",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-sports-settings-picker",
+      "explanation": "The registered descriptor is callback argument 0; its +60 allocation is freed and cleared."
+    },
+    {
+      "page": "sports.waiting",
+      "destroy_callback": "0xc5cc5e1",
+      "state_slot": "0x200d850c",
+      "descriptor_root_slot": "0x200d8500",
+      "clear_instruction": "0xc58ab90",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-sports-waiting",
+      "explanation": "Destroy passes its descriptor to helper C58AB80, which frees and clears descriptor +60.",
+      "cleanup_call_window": "lifecycle-cleanup-call-sports-waiting"
+    },
+    {
+      "page": "sports.realtime",
+      "destroy_callback": "0xc595d5d",
+      "state_slot": "0x200d5344",
+      "descriptor_root_slot": "0x200d5338",
+      "clear_instruction": "0xc58ab90",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-sports-realtime",
+      "explanation": "Destroy passes its descriptor to helper C58AB80, which frees and clears descriptor +60.",
+      "cleanup_call_window": "lifecycle-cleanup-call-sports-realtime"
+    },
+    {
+      "page": "sports.voice",
+      "destroy_callback": "0xc597919",
+      "state_slot": "0x20114b4c",
+      "descriptor_root_slot": "0x200d5580",
+      "clear_instruction": "0xc597926",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-sports-voice"
+    },
+    {
+      "page": "sports.warmup",
+      "destroy_callback": "0xc5d1429",
+      "state_slot": "0x20117900",
+      "descriptor_root_slot": "0x200d86e4",
+      "clear_instruction": "0xc5d1482",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-sports-warmup"
+    },
+    {
+      "page": "sports.warmup_explain",
+      "destroy_callback": "0xc5ce3b5",
+      "state_slot": "0x20117780",
+      "descriptor_root_slot": "0x200d85f0",
+      "clear_instruction": "0xc5ce3ce",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-sports-warmup_explain"
+    },
+    {
+      "page": "sports.warmup_anim",
+      "destroy_callback": "0xc5ced99",
+      "state_slot": "0x201178d8",
+      "descriptor_root_slot": "0x200d8664",
+      "clear_instruction": "0xc5cef1c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-sports-warmup_anim"
+    },
+    {
+      "page": "sports.settings.ephemeris",
+      "destroy_callback": "0xc5b9be5",
+      "state_slot": "0x2011711c",
+      "descriptor_root_slot": "0x200d7d24",
+      "clear_instruction": "0xc5b9c12",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-sports-settings-ephemeris"
+    },
+    {
+      "page": "sports.settings.ephemeris_sub",
+      "destroy_callback": "0xc5ba545",
+      "state_slot": "0x2011718c",
+      "descriptor_root_slot": "0x200d7d98",
+      "clear_instruction": "0xc5ba560",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-sports-settings-ephemeris_sub"
+    },
+    {
+      "page": "sports.settings.general",
+      "destroy_callback": "0xc5bb0d5",
+      "state_slot": "0x200d7e18",
+      "descriptor_root_slot": "0x200d7e0c",
+      "clear_instruction": "0xc5bb104",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-sports-settings-general"
+    },
+    {
+      "page": "apps.pomodoro.main",
+      "destroy_callback": "0xc545625",
+      "state_slot": "0x2011179c",
+      "descriptor_root_slot": "0x200d1bb8",
+      "clear_instruction": "0xc545642",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-pomodoro-main"
+    },
+    {
+      "page": "apps.pomodoro.set",
+      "destroy_callback": "0xc54609d",
+      "state_slot": "0x201117a8",
+      "descriptor_root_slot": "0x200d1ca0",
+      "clear_instruction": "0xc5460b8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-pomodoro-set"
+    },
+    {
+      "page": "apps.pomodoro.info",
+      "destroy_callback": "0xc5452c5",
+      "state_slot": "0x20111724",
+      "descriptor_root_slot": "0x200d1b44",
+      "clear_instruction": "0xc5452e0",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-pomodoro-info"
+    },
+    {
+      "page": "apps.pomodoro.activity",
+      "destroy_callback": "0xc543dc9",
+      "state_slot": "0x20111700",
+      "descriptor_root_slot": "0x200d1a3c",
+      "clear_instruction": "0xc543e02",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-pomodoro-activity"
+    },
+    {
+      "page": "apps.pomodoro.notice",
+      "destroy_callback": "0xc545e81",
+      "state_slot": "0x201117a0",
+      "descriptor_root_slot": "0x200d1c2c",
+      "clear_instruction": "0xc545e9c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-pomodoro-notice"
+    },
+    {
+      "page": "apps.pomodoro.end",
+      "destroy_callback": "0xc5450a5",
+      "state_slot": "0x20111720",
+      "descriptor_root_slot": "0x200d1ad0",
+      "clear_instruction": "0xc5450c6",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-pomodoro-end"
+    },
+    {
+      "page": "apps.alarm.custom",
+      "destroy_callback": "0xc53bf59",
+      "state_slot": "0x200d139c",
+      "descriptor_root_slot": "0x200d1390",
+      "clear_instruction": "0xc53bf78",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-apps-alarm-custom",
+      "explanation": "The destroy callback clears descriptor +60; some legacy application globals retain a stale alias."
+    },
+    {
+      "page": "apps.alarm.edit",
+      "destroy_callback": "0xc53c6f1",
+      "state_slot": "0x200d1438",
+      "descriptor_root_slot": "0x200d142c",
+      "clear_instruction": "0xc53c710",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-apps-alarm-edit",
+      "explanation": "The destroy callback clears descriptor +60; some legacy application globals retain a stale alias."
+    },
+    {
+      "page": "apps.alarm.repeat_page",
+      "destroy_callback": "0xc53e811",
+      "state_slot": "0x200d1570",
+      "descriptor_root_slot": "0x200d1564",
+      "clear_instruction": "0xc53e838",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-apps-alarm-repeat_page",
+      "explanation": "The destroy callback clears descriptor +60; some legacy application globals retain a stale alias."
+    },
+    {
+      "page": "apps.alarm.smart",
+      "destroy_callback": "0xc53f23d",
+      "state_slot": "0x200d160c",
+      "descriptor_root_slot": "0x200d1600",
+      "clear_instruction": "0xc53f262",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-apps-alarm-smart",
+      "explanation": "The destroy callback clears descriptor +60; some legacy application globals retain a stale alias."
+    },
+    {
+      "page": "apps.alarm.time",
+      "destroy_callback": "0xc53f559",
+      "state_slot": "0x200d1680",
+      "descriptor_root_slot": "0x200d1674",
+      "clear_instruction": "0xc53f582",
+      "kind": "descriptor_private_store_zero",
+      "verification_window": "lifecycle-state-clear-apps-alarm-time",
+      "explanation": "The destroy callback clears descriptor +60; some legacy application globals retain a stale alias."
+    },
+    {
+      "page": "apps.media.volume",
+      "destroy_callback": "0xc51ed21",
+      "state_slot": "0x20110b3c",
+      "descriptor_root_slot": "0x200d0edc",
+      "clear_instruction": "0xc51ed3c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-media-volume"
+    },
+    {
+      "page": "apps.timer.custom",
+      "destroy_callback": "0xc500c95",
+      "state_slot": "0x2010fdb8",
+      "descriptor_root_slot": "0x200d03c0",
+      "clear_instruction": "0xc500ca4",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-timer-custom"
+    },
+    {
+      "page": "settings.screenshot",
+      "destroy_callback": "0xc56ef71",
+      "state_slot": "0x20113428",
+      "descriptor_root_slot": "0x200d3cb0",
+      "clear_instruction": "0xc56ef84",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-screenshot"
+    },
+    {
+      "page": "health.oxygen.explanation",
+      "destroy_callback": "0xc649081",
+      "state_slot": "0x200db41c",
+      "descriptor_root_slot": "0x200db41c",
+      "clear_instruction": "0xca6abfe",
+      "kind": "page_manager_root",
+      "verification_window": "lifecycle-root-clear",
+      "explanation": "Destroy callback leaves the application root set; the page manager clears descriptor +48 after the UI destroy callback on its synchronous path. The asynchronous path is queued separately."
+    },
+    {
+      "page": "settings.gnss",
+      "destroy_callback": "0xc55e081",
+      "state_slot": "0x20112a14",
+      "descriptor_root_slot": "0x200d3068",
+      "clear_instruction": "0xc55e09c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-gnss"
+    },
+    {
+      "page": "settings.wear",
+      "destroy_callback": "0xc5723f1",
+      "state_slot": "0x20113590",
+      "descriptor_root_slot": "0x200d4398",
+      "clear_instruction": "0xc57240a",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-wear"
+    },
+    {
+      "page": "home.main",
+      "destroy_callback": "0xc50fa75",
+      "state_slot": "0x201101b8",
+      "descriptor_root_slot": "0x200d0978",
+      "clear_instruction": "0xc50faf6",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-home-main"
+    },
+    {
+      "page": "home.edit",
+      "destroy_callback": "0xc50def5",
+      "state_slot": "0x201101ac",
+      "descriptor_root_slot": "0x200d08f8",
+      "clear_instruction": "0xc50df2a",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-home-edit"
+    },
+    {
+      "page": "home.add",
+      "destroy_callback": "0xc50d109",
+      "state_slot": "0x20110198",
+      "descriptor_root_slot": "0x200d0878",
+      "clear_instruction": "0xc50d116",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-home-add"
+    },
+    {
+      "page": "home.layout",
+      "destroy_callback": "0xc511eb9",
+      "state_slot": "0x2011024c",
+      "descriptor_root_slot": "0x200d0b04",
+      "clear_instruction": "0xc511ec2",
+      "kind": "zero_region",
+      "verification_window": "lifecycle-state-clear-home-layout",
+      "region_length": 4,
+      "explanation": "Destroy invokes the firmware memory-fill helper with zero for the 4-byte slot."
+    },
+    {
+      "page": "home.pick",
+      "destroy_callback": "0xc510141",
+      "state_slot": "0x201101dc",
+      "descriptor_root_slot": "0x200d09f0",
+      "clear_instruction": "0xc510160",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-home-pick"
+    },
+    {
+      "page": "home.category",
+      "destroy_callback": "0xc5121d1",
+      "state_slot": "0x20110260",
+      "descriptor_root_slot": "0x200d0bec",
+      "clear_instruction": "0xc5121e6",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-home-category"
+    },
+    {
+      "page": "home.sport",
+      "destroy_callback": "0xc5121a5",
+      "state_slot": "0x20110270",
+      "descriptor_root_slot": "0x200d0b78",
+      "clear_instruction": "0xc5121b8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-home-sport"
+    },
+    {
+      "page": "home.choose",
+      "destroy_callback": "0xc511565",
+      "state_slot": "0x20110240",
+      "descriptor_root_slot": "0x200d0a84",
+      "clear_instruction": "0xc511582",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-home-choose"
+    },
+    {
+      "page": "settings.display.timeout",
+      "destroy_callback": "0xc5580fd",
+      "state_slot": "0x201124e8",
+      "descriptor_root_slot": "0x200d2a50",
+      "clear_instruction": "0xc55814a",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-display-timeout"
+    },
+    {
+      "page": "settings.display.keep_awake",
+      "destroy_callback": "0xc555e2d",
+      "state_slot": "0x20112398",
+      "descriptor_root_slot": "0x200d28f0",
+      "clear_instruction": "0xc555e7a",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-display-keep_awake"
+    },
+    {
+      "page": "settings.display.raise_mode",
+      "destroy_callback": "0xc556209",
+      "state_slot": "0x201123b0",
+      "descriptor_root_slot": "0x200d2968",
+      "clear_instruction": "0xc55622c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-display-raise_mode"
+    },
+    {
+      "page": "settings.display.raise_schedule",
+      "destroy_callback": "0xc558205",
+      "state_slot": "0x201124fc",
+      "descriptor_root_slot": "0x200d2ad8",
+      "clear_instruction": "0xc558256",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-display-raise_schedule"
+    },
+    {
+      "page": "settings.display.aod_schedule",
+      "destroy_callback": "0xc556681",
+      "state_slot": "0x201123e8",
+      "descriptor_root_slot": "0x200d29dc",
+      "clear_instruction": "0xc5566ca",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-display-aod_schedule"
+    },
+    {
+      "page": "settings.display.main",
+      "destroy_callback": "0xc552135",
+      "state_slot": "0x201121b0",
+      "descriptor_root_slot": "0x200d2720",
+      "clear_instruction": "0xc55221c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-display-main"
+    },
+    {
+      "page": "settings.display.aod_detail",
+      "destroy_callback": "0xc554455",
+      "state_slot": "0x20112304",
+      "descriptor_root_slot": "0x200d2794",
+      "clear_instruction": "0xc5544c0",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-display-aod_detail"
+    },
+    {
+      "page": "settings.display.aod_switch",
+      "destroy_callback": "0xc55451d",
+      "state_slot": "0x20112318",
+      "descriptor_root_slot": "0x200d2808",
+      "clear_instruction": "0xc554536",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-display-aod_switch"
+    },
+    {
+      "page": "apps.recorder.upload",
+      "destroy_callback": "0xc61bacd",
+      "state_slot": "0x2011cc7c",
+      "descriptor_root_slot": "0x200da6a8",
+      "clear_instruction": "0xc61bb3c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-recorder-upload"
+    },
+    {
+      "page": "apps.recorder.remind",
+      "destroy_callback": "0xc61b569",
+      "state_slot": "0x2011cc70",
+      "descriptor_root_slot": "0x200da634",
+      "clear_instruction": "0xc61b574",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-recorder-remind"
+    },
+    {
+      "page": "apps.recorder.interrupt",
+      "destroy_callback": "0xc618711",
+      "state_slot": "0x200da548",
+      "descriptor_root_slot": "0x200da548",
+      "clear_instruction": "0xca6abfe",
+      "kind": "page_manager_root",
+      "verification_window": "lifecycle-root-clear",
+      "explanation": "Destroy only logs; the page manager clears descriptor root after callback on its synchronous path."
+    },
+    {
+      "page": "health.vitality.setting",
+      "destroy_callback": "0xc650ba5",
+      "state_slot": "0x2011e9c4",
+      "descriptor_root_slot": "0x200db824",
+      "clear_instruction": "0xc650bc4",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-vitality-setting"
+    },
+    {
+      "page": "health.vitality.explanation",
+      "destroy_callback": "0xc64f831",
+      "state_slot": "0x2011e7d4",
+      "descriptor_root_slot": "0x200db70c",
+      "clear_instruction": "0xc64f838",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-vitality-explanation"
+    },
+    {
+      "page": "health.vitality.hr_catalog",
+      "destroy_callback": "0xc668471",
+      "state_slot": "0x2011fa0c",
+      "descriptor_root_slot": "0x200dc094",
+      "clear_instruction": "0xc668482",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-vitality-hr_catalog"
+    },
+    {
+      "page": "health.women.notes",
+      "destroy_callback": "0xc62065d",
+      "state_slot": "0x200da71c",
+      "descriptor_root_slot": "0x200da71c",
+      "clear_instruction": "0xca6abfe",
+      "kind": "page_manager_root",
+      "verification_window": "lifecycle-root-clear",
+      "explanation": "Destroy only logs; the page manager clears descriptor root after callback on its synchronous path; asynchronous behavior is not confirmed."
+    },
+    {
+      "page": "health.sleep.explanation",
+      "destroy_callback": "0xc63bd79",
+      "state_slot": "0x2011d5fc",
+      "descriptor_root_slot": "0x200dafc8",
+      "clear_instruction": "0xc63bd94",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-health-sleep-explanation"
+    },
+    {
+      "page": "apps.worldclock.main",
+      "destroy_callback": "0xc600d6d",
+      "state_slot": "0x20119d64",
+      "descriptor_root_slot": "0x200d9e7c",
+      "clear_instruction": "0xc600d9a",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-worldclock-main"
+    },
+    {
+      "page": "apps.worldclock.add_list",
+      "destroy_callback": "0xc600411",
+      "state_slot": "0x20119d3c",
+      "descriptor_root_slot": "0x200d9e08",
+      "clear_instruction": "0xc60042e",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-worldclock-add_list"
+    },
+    {
+      "page": "apps.worldclock.detail",
+      "destroy_callback": "0xc5ffa95",
+      "state_slot": "0x20119cec",
+      "descriptor_root_slot": "0x200d9d94",
+      "clear_instruction": "0xc5ffac8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-worldclock-detail"
+    },
+    {
+      "page": "apps.todolist.main",
+      "destroy_callback": "0xc682971",
+      "state_slot": "0x2012034c",
+      "descriptor_root_slot": "0x200dcdc8",
+      "clear_instruction": "0xc6829a8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-todolist-main"
+    },
+    {
+      "page": "apps.todolist.list",
+      "destroy_callback": "0xc681531",
+      "state_slot": "0x2012031c",
+      "descriptor_root_slot": "0x200dcd54",
+      "clear_instruction": "0xc681546",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-todolist-list"
+    },
+    {
+      "page": "apps.todolist.detail",
+      "destroy_callback": "0xc680cf1",
+      "state_slot": "0x20120308",
+      "descriptor_root_slot": "0x200dcce0",
+      "clear_instruction": "0xc680d00",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-todolist-detail"
+    },
+    {
+      "page": "apps.todolist.sub_list",
+      "destroy_callback": "0xc682ff9",
+      "state_slot": "0x20120360",
+      "descriptor_root_slot": "0x200dce3c",
+      "clear_instruction": "0xc68300e",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-todolist-sub_list"
+    },
+    {
+      "page": "apps.phonemute",
+      "destroy_callback": "0xc623dd1",
+      "state_slot": "0x2011ce90",
+      "descriptor_root_slot": "0x200da8c8",
+      "clear_instruction": "0xc623e32",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-phonemute"
+    },
+    {
+      "page": "apps.find_phone",
+      "destroy_callback": "0xc625a99",
+      "state_slot": "0x2011ceec",
+      "descriptor_root_slot": "0x200da980",
+      "clear_instruction": "0xc625ac2",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-find_phone",
+      "explanation": "Conditional: when 0x2011cf64 is zero, destroy returns before clearing the root. Both slots remain guards; this may prevent installation or removal until state is cleared."
+    },
+    {
+      "page": "settings.main",
+      "destroy_callback": "0xc566371",
+      "state_slot": "0x201130a0",
+      "descriptor_root_slot": "0x200d34d0",
+      "clear_instruction": "0xc56638c",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-main"
+    },
+    {
+      "page": "settings.system",
+      "destroy_callback": "0xc5704f9",
+      "state_slot": "0x201134e8",
+      "descriptor_root_slot": "0x200d3f98",
+      "clear_instruction": "0xc570520",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-system"
+    },
+    {
+      "page": "settings.bluetooth",
+      "destroy_callback": "0xc562fc9",
+      "state_slot": "0x20112d8c",
+      "descriptor_root_slot": "0x200d32e4",
+      "clear_instruction": "0xc563004",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-bluetooth"
+    },
+    {
+      "page": "settings.bluetooth.headphone",
+      "destroy_callback": "0xc564621",
+      "state_slot": "0x20112dd8",
+      "descriptor_root_slot": "0x200d33e8",
+      "clear_instruction": "0xc564640",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-bluetooth-headphone"
+    },
+    {
+      "page": "apps.perpetual.main",
+      "destroy_callback": "0xc4f2399",
+      "state_slot": "0x2010f0ec",
+      "descriptor_root_slot": "0x200cf9bc",
+      "clear_instruction": "0xc4f23d8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-perpetual-main"
+    },
+    {
+      "page": "apps.perpetual.day_detail",
+      "destroy_callback": "0xc4f007d",
+      "state_slot": "0x2010f070",
+      "descriptor_root_slot": "0x200cf778",
+      "clear_instruction": "0xc4f0098",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-perpetual-day_detail"
+    },
+    {
+      "page": "apps.perpetual.show",
+      "destroy_callback": "0xc4f3791",
+      "state_slot": "0x2010f2bc",
+      "descriptor_root_slot": "0x200cfa30",
+      "clear_instruction": "0xc4f37c8",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-perpetual-show"
+    },
+    {
+      "page": "apps.perpetual.schedule",
+      "destroy_callback": "0xc4f60fd",
+      "state_slot": "0x2010f2c4",
+      "descriptor_root_slot": "0x200cfaa4",
+      "clear_instruction": "0xc4f6118",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-perpetual-schedule"
+    },
+    {
+      "page": "apps.perpetual.week",
+      "destroy_callback": "0xc4f6e85",
+      "state_slot": "0x2010f91c",
+      "descriptor_root_slot": "0x200cfb18",
+      "clear_instruction": "0xc4f6e96",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-perpetual-week"
+    },
+    {
+      "page": "settings.notify",
+      "destroy_callback": "0xc5676b1",
+      "state_slot": "0x20113134",
+      "descriptor_root_slot": "0x200d3808",
+      "clear_instruction": "0xc5676e6",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-notify"
+    },
+    {
+      "page": "apps.mijia.main",
+      "destroy_callback": "0xc5067dd",
+      "state_slot": "0x2010fef0",
+      "descriptor_root_slot": "0x200d0540",
+      "clear_instruction": "0xc506886",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-apps-mijia-main"
+    },
+    {
+      "page": "settings.down_key",
+      "destroy_callback": "0xc55db29",
+      "state_slot": "0x20112a04",
+      "descriptor_root_slot": "0x200d2fc8",
+      "clear_instruction": "0xc55db4e",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-down_key"
+    },
+    {
+      "page": "settings.quick_gesture",
+      "destroy_callback": "0xc55e439",
+      "state_slot": "0x20112a20",
+      "descriptor_root_slot": "0x200d3108",
+      "clear_instruction": "0xc55e464",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-quick_gesture"
+    },
+    {
+      "page": "settings.gesture_guide",
+      "destroy_callback": "0xc55f8ad",
+      "state_slot": "0x20112a74",
+      "descriptor_root_slot": "0x200d317c",
+      "clear_instruction": "0xc55f8c2",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-gesture_guide"
+    },
+    {
+      "page": "settings.gesture_action",
+      "destroy_callback": "0xc55fcb1",
+      "state_slot": "0x20112c8c",
+      "descriptor_root_slot": "0x200d31f0",
+      "clear_instruction": "0xc55fd2a",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-gesture_action"
+    },
+    {
+      "page": "settings.gesture_teach",
+      "destroy_callback": "0xc561265",
+      "state_slot": "0x20112cb0",
+      "descriptor_root_slot": "0x200d326c",
+      "clear_instruction": "0xc561280",
+      "kind": "store_zero",
+      "verification_window": "lifecycle-state-clear-settings-gesture_teach"
+    }
+  ],
+  "other_finding": "Alarm custom-repeat page global 0x20111484 is not cleared by its destroy callback, so alarm.repeat points instead use descriptor root and descriptor private slots. See alarm-repeat-actions-043.json. Oxygen explanation global 0x2011e690 is also not cleared by its destroy callback; its points use descriptor root 0x200db41c only. See oxygen-explanation-043.json. Recorder interrupt has no dedicated cleared application slot; its hooks use descriptor root only.",
+  "device_validation": "pending",
+  "zero_fill_emulation": {
+    "entry": "0x0027676d",
+    "veneer": "0x0c588981; 0x0c589521 reaches the same helper through the PSRAM veneer",
+    "lengths": [
+      4,
+      40,
+      76
+    ],
+    "result": "Unicorn ARM Thumb emulation of exact mapped firmware bytes cleared the target region and preserved both adjacent 4-byte sentinels.",
+    "reproduce": "python3 scripts/check-lifecycle-zero.py <firmware>",
+    "dependency": "unicorn 2.x",
+    "limitations": "Only the listed lengths, aligned destination and zero fill were emulated; no device behavior or concurrent execution was tested."
+  }
+}

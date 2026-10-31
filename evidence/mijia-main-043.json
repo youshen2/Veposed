@@ -1,0 +1,83 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 63,
+  "page_id": 0,
+  "state_slot": "0x2010fef0",
+  "descriptor_root_slot": "0x200d0540",
+  "points": [
+    {
+      "name": "apps.mijia.main.bt_icon",
+      "call": "0xc507ada",
+      "target": "lv_image_set_src",
+      "meaning": "disconn.bin",
+      "verification_window": "mijia-main-bt-icon"
+    },
+    {
+      "name": "apps.mijia.main.bt_message",
+      "call": "0xc507b40",
+      "target": "lvx_label_set_text",
+      "meaning": "blue_break.mihome",
+      "verification_window": "mijia-main-bt-message"
+    },
+    {
+      "name": "apps.mijia.main.bt_retry",
+      "call": "0xc507ba2",
+      "target": "lvx_label_set_text",
+      "meaning": "restart_app_conn.mijia",
+      "verification_window": "mijia-main-bt-retry"
+    },
+    {
+      "name": "apps.mijia.main.bt_confirm_register",
+      "call": "0xc50629e",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc506029 filter 7",
+      "verification_window": "mijia-main-bt-confirm-register"
+    },
+    {
+      "name": "apps.mijia.main.app_icon",
+      "call": "0xc507cc6",
+      "target": "lv_image_set_src",
+      "meaning": "fail.bin",
+      "verification_window": "mijia-main-app-icon"
+    },
+    {
+      "name": "apps.mijia.main.app_message",
+      "call": "0xc507cf4",
+      "target": "lvx_label_set_text",
+      "meaning": "app_disconnect.fusion",
+      "verification_window": "mijia-main-app-message"
+    },
+    {
+      "name": "apps.mijia.main.app_confirm_register",
+      "call": "0xc50627e",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc506029 filter 7",
+      "verification_window": "mijia-main-app-confirm-register"
+    },
+    {
+      "name": "apps.mijia.main.family_heading",
+      "call": "0xc5065cc",
+      "target": "lvx_label_set_text",
+      "meaning": "my_family.mihome",
+      "verification_window": "mijia-main-family-heading"
+    }
+  ],
+  "evidence": "Manifest 0xc505fac registers the main and show descriptors. Creator saves the root and branches to app or Bluetooth disconnected layouts; both register callback 0xc506029, which invokes the page-management function pointer with app id 63. Response handler builds the family heading when more than one home is returned. Destroy unsubscribes, frees data, and clears the main root.",
+  "scope": "Lifecycle pointer slots and eight distinct setter/registration call sites. Loading helper is shared by more than one caller and is not restricted to this page.",
+  "limitations": "Asynchronous responses and timers can race page destruction; root slots are not thread synchronization. Device behavior and recovery remain unverified. Replacing event callbacks can alter page operation.",
+  "verification_windows": [
+    "mijia-main-bt-icon",
+    "mijia-main-bt-message",
+    "mijia-main-bt-retry",
+    "mijia-main-bt-confirm-register",
+    "mijia-main-app-icon",
+    "mijia-main-app-message",
+    "mijia-main-app-confirm-register",
+    "mijia-main-family-heading",
+    "mijia-main-create",
+    "mijia-main-disconnect-button",
+    "mijia-main-response"
+  ],
+  "device_validation": "pending"
+}

@@ -1,0 +1,230 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "sleep setting",
+    "sleep setting list",
+    "sleep survey",
+    "sleep survey completion"
+  ],
+  "setting_callback": "0x0c6412ac",
+  "list_callback": "0x0c641738",
+  "survey_option_callback": "0x0c6407e4",
+  "survey_confirm_callback": "0x0c640a80",
+  "points": [
+    {
+      "name": "health.sleep.settings.switch_register",
+      "calls": [
+        "0xc6410b4"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers a common setting callback for filter 7; it uses a stored setting type to choose the update.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-settings-switch_register-1"
+      ]
+    },
+    {
+      "name": "health.sleep.settings.description",
+      "calls": [
+        "0xc641110",
+        "0xc6411e0"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Create and resume set the description selected by setting type.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-settings-description-1",
+        "sleep-actions-health-sleep-settings-description-2"
+      ]
+    },
+    {
+      "name": "health.sleep.settings_list.disturb_register",
+      "calls": [
+        "0xc641964"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers the common navigation callback with user data 3.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-settings_list-disturb_register-1"
+      ]
+    },
+    {
+      "name": "health.sleep.settings_list.monitor_register",
+      "calls": [
+        "0xc641972"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers the common navigation callback with user data 0.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-settings_list-monitor_register-1"
+      ]
+    },
+    {
+      "name": "health.sleep.settings_list.breath_register",
+      "calls": [
+        "0xc641980"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers the common navigation callback with user data 1.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-settings_list-breath_register-1"
+      ]
+    },
+    {
+      "name": "health.sleep.settings_list.hrv_register",
+      "calls": [
+        "0xc641a30"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers the common navigation callback with user data 4.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-settings_list-hrv_register-1"
+      ]
+    },
+    {
+      "name": "health.sleep.settings_list.click_data",
+      "calls": [
+        "0xc641746"
+      ],
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The navigation callback uses event data as the destination setting type.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-settings_list-click_data-1"
+      ]
+    },
+    {
+      "name": "health.sleep.survey.option_register",
+      "calls": [
+        "0xc640602"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The builder registers one callback for each of five radio options, filter 7 and user data 0.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-survey-option_register-1"
+      ]
+    },
+    {
+      "name": "health.sleep.survey.option_target",
+      "calls": [
+        "0xc6407ea"
+      ],
+      "target": "lv_event_current_target",
+      "contract": "word1",
+      "interpretation": "The radio callback compares the current target to five option objects before updating selection.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-survey-option_target-1"
+      ]
+    },
+    {
+      "name": "health.sleep.survey.next_register",
+      "calls": [
+        "0xc640696"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The builder registers the confirmation callback with filter 7 and user data 0; it advances or persists responses.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-survey-next_register-1"
+      ]
+    },
+    {
+      "name": "health.sleep.survey.question",
+      "calls": [
+        "0xc640582",
+        "0xc6408d4"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The builder and page update set the translated question text.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-survey-question-1",
+        "sleep-actions-health-sleep-survey-question-2"
+      ]
+    },
+    {
+      "name": "health.sleep.survey_done.icon",
+      "calls": [
+        "0xc640c3c"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The completion view displays sleep_success.bin.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-survey_done-icon-1"
+      ]
+    },
+    {
+      "name": "health.sleep.survey_done.title",
+      "calls": [
+        "0xc640c9c"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The completion view displays record_completed.sleep.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-survey_done-title-1"
+      ]
+    },
+    {
+      "name": "health.sleep.survey_done.description",
+      "calls": [
+        "0xc640cf8"
+      ],
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The completion view displays more_info.sleep.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-survey_done-description-1"
+      ]
+    },
+    {
+      "name": "health.sleep.survey_done.button_register",
+      "calls": [
+        "0xc640d66"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The completion view registers a callback that requests navigation finish.",
+      "verification_windows": [
+        "sleep-actions-health-sleep-survey_done-button_register-1"
+      ]
+    }
+  ],
+  "evidence": "The sleep manifest registers all four page descriptors. The setting page registers a switch callback which uses a stored type to change the corresponding state. The setting list registers one navigation callback with values 0, 1, 3 and 4. The survey registers a common callback on five options and a confirmation callback; it advances and can persist responses. The completion view contains an icon, two strings and a finish callback. Each page state slot is cleared in its destroy callback.",
+  "scope": "Only recorded calls while the relevant page is active. Sleep sensing, backend settings and other data-entry paths are not intercepted.",
+  "limitations": "Sleep responses and settings can be sensitive. Changing event data or callbacks can desynchronize or alter saved data. Image resources must remain valid while used. State slots are not thread barriers; shared-entry publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "lifecycle-state-clear-health-sleep-settings_list",
+    "lifecycle-state-clear-health-sleep-survey",
+    "lifecycle-state-clear-health-sleep-survey_done",
+    "sleep-actions-health-sleep-settings-switch_register-1",
+    "sleep-actions-health-sleep-settings-description-1",
+    "sleep-actions-health-sleep-settings-description-2",
+    "sleep-actions-health-sleep-settings_list-disturb_register-1",
+    "sleep-actions-health-sleep-settings_list-monitor_register-1",
+    "sleep-actions-health-sleep-settings_list-breath_register-1",
+    "sleep-actions-health-sleep-settings_list-hrv_register-1",
+    "sleep-actions-health-sleep-settings_list-click_data-1",
+    "sleep-actions-health-sleep-survey-option_register-1",
+    "sleep-actions-health-sleep-survey-option_target-1",
+    "sleep-actions-health-sleep-survey-next_register-1",
+    "sleep-actions-health-sleep-survey-question-1",
+    "sleep-actions-health-sleep-survey-question-2",
+    "sleep-actions-health-sleep-survey_done-icon-1",
+    "sleep-actions-health-sleep-survey_done-title-1",
+    "sleep-actions-health-sleep-survey_done-description-1",
+    "sleep-actions-health-sleep-survey_done-button_register-1",
+    "sleep-settings-switch-callback",
+    "sleep-settings-list-click-callback",
+    "sleep-survey-choice-callback",
+    "sleep-survey-confirm-callback"
+  ],
+  "device_validation": "pending"
+}

@@ -1,0 +1,32 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "settings.display.auto_brightness_hint",
+  "page_create": "0x0c5555ac",
+  "content_create": "0x0c5551d8",
+  "page_destroy": "0x0c554ea0",
+  "language_refresh": "0x0c5550b8",
+  "label_slot": "0x20112354",
+  "page_root_slot": "0x2011233c",
+  "setter_entry": "0x1c06f039",
+  "evidence": "The page create stores the root at 0x2011233c; content creation stores the label at 0x20112354 and sets its localized text at 0x0c55542a. Language refresh uses the same slot and setter at 0x0c55515c. Destroy clears the root at 0x0c554ed4 but does not clear the label slot. The active root filter prevents matching a stale label slot after page destruction; caller filters select both setter return PCs and the subject filter identifies the specific label.",
+  "scope": "auto_brightness.settings label in the brightness settings page; text only",
+  "verification_windows": [
+    {
+      "name": "brightness-hint-create",
+      "file_offset": "0x495426",
+      "expected": "0146304634f031f8daf8003033481e46"
+    },
+    {
+      "name": "brightness-hint-language-refresh",
+      "file_offset": "0x495158",
+      "expected": "2846082534f098f931682068c9680023"
+    },
+    {
+      "name": "brightness-hint-destroy",
+      "file_offset": "0x494ec8",
+      "expected": "104e114b0460286834600c6014601c70"
+    }
+  ],
+  "device_validation": "pending"
+}

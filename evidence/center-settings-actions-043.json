@@ -1,0 +1,90 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "points": [
+    {
+      "name": "settings.notification_center.focus_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc568530",
+        "0xc5687a8"
+      ],
+      "state_slot": "0x2011314c",
+      "interpretation": "The create and rebuild paths register callback 0x0c5683d9 for filter 7 with user data 0.",
+      "verification_windows": [
+        "center-settings-settings-notification_center-focus_register-1",
+        "center-settings-settings-notification_center-focus_register-2"
+      ]
+    },
+    {
+      "name": "settings.notification_center.focus_data",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "calls": [
+        "0xc5683dc"
+      ],
+      "state_slot": "0x2011314c",
+      "interpretation": "The callback enters its setting change path only when the retrieved data is 0; enabling also checks the wrist-related system state.",
+      "verification_windows": [
+        "center-settings-settings-notification_center-focus_data-1"
+      ]
+    },
+    {
+      "name": "settings.notification_center.focus_hint",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc568566",
+        "0xc5687f2"
+      ],
+      "state_slot": "0x2011314c",
+      "interpretation": "Create and rebuild set focus_notify_tips.settings on the same stored hint label.",
+      "verification_windows": [
+        "center-settings-settings-notification_center-focus_hint-1",
+        "center-settings-settings-notification_center-focus_hint-2"
+      ]
+    },
+    {
+      "name": "settings.control_center.toggle_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc55190e"
+      ],
+      "state_slot": "0x20111fbc",
+      "interpretation": "The list builder registers callback 0x0c551979 for filter 7; its handler changes persist.fusion_center_state.",
+      "verification_windows": [
+        "center-settings-settings-control_center-toggle_register-1"
+      ]
+    },
+    {
+      "name": "settings.control_center.hint",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc551946"
+      ],
+      "state_slot": "0x20111fbc",
+      "interpretation": "The list builder sets control_center_lable.settings on its description label.",
+      "verification_windows": [
+        "center-settings-settings-control_center-hint-1"
+      ]
+    }
+  ],
+  "evidence": "The settings app registers the page descriptors. The notification-center create and rebuild paths register the same switch callback and set its hint; the callback uses event data 0 to enter the state-change branch. The control-center list builder registers a callback that writes persist.fusion_center_state and updates its switch state. Both page lifecycle destroy paths clear their corresponding state slots.",
+  "scope": "Only the listed call sites while their respective settings pages are active. Other notification and control-center state changes are not intercepted.",
+  "limitations": "Suppressing callbacks may leave UI and persistent state inconsistent. State checks are not thread barriers; shared-entry publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "notification-center-focus-handler",
+    "control-center-toggle-handler",
+    "center-settings-settings-notification_center-focus_register-1",
+    "center-settings-settings-notification_center-focus_register-2",
+    "center-settings-settings-notification_center-focus_data-1",
+    "center-settings-settings-notification_center-focus_hint-1",
+    "center-settings-settings-notification_center-focus_hint-2",
+    "center-settings-settings-control_center-toggle_register-1",
+    "center-settings-settings-control_center-hint-1"
+  ],
+  "device_validation": "pending"
+}

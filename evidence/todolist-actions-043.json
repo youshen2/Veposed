@@ -1,0 +1,109 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 60,
+  "points": [
+    {
+      "name": "apps.todolist.list.checkbox_index",
+      "call": "0xc681ade",
+      "target": "lv_event_get_user_data",
+      "meaning": "passed to sub_C680490 to change state",
+      "verification_window": "todolist-actions-list-checkbox-index"
+    },
+    {
+      "name": "apps.todolist.list.sub_list_index",
+      "call": "0xc6815f6",
+      "target": "lv_event_get_user_data",
+      "meaning": "passed in navigation data to page 3",
+      "verification_window": "todolist-actions-list-sub-list-index"
+    },
+    {
+      "name": "apps.todolist.list.detail_index",
+      "call": "0xc6815b2",
+      "target": "lv_event_get_user_data",
+      "meaning": "passed in navigation data to page 2",
+      "verification_window": "todolist-actions-list-detail-index"
+    },
+    {
+      "name": "apps.todolist.sub_list.toggle_index",
+      "call": "0xc683268",
+      "target": "lv_event_get_user_data",
+      "meaning": "directly indexes and rearranges subitem records",
+      "verification_window": "todolist-actions-sub-list-toggle-index"
+    },
+    {
+      "name": "apps.todolist.list.row_title",
+      "call": "0xc681644",
+      "target": "lvx_label_set_text",
+      "meaning": "item title",
+      "verification_window": "todolist-actions-list-row-title"
+    },
+    {
+      "name": "apps.todolist.list.row_progress",
+      "call": "0xc681742",
+      "target": "lvx_label_set_text",
+      "meaning": "formatted completed/total counts",
+      "verification_window": "todolist-actions-list-row-progress"
+    },
+    {
+      "name": "apps.todolist.list.row_repeat",
+      "call": "0xc681820",
+      "target": "lvx_label_set_text",
+      "meaning": "formatted repeat schedule",
+      "verification_window": "todolist-actions-list-row-repeat"
+    },
+    {
+      "name": "apps.todolist.list.row_time_plain",
+      "call": "0xc681db6",
+      "target": "lvx_label_set_text",
+      "meaning": "formatted date/time",
+      "verification_window": "todolist-actions-list-row-time-plain"
+    },
+    {
+      "name": "apps.todolist.list.row_time_alternate",
+      "call": "0xc681e30",
+      "target": "lvx_label_set_text",
+      "meaning": "formatted date/time",
+      "verification_window": "todolist-actions-list-row-time-alternate"
+    },
+    {
+      "name": "apps.todolist.list.row_mask_overdue",
+      "call": "0xc681efe",
+      "target": "lv_image_set_src",
+      "meaning": "mask_gray.bin",
+      "verification_window": "todolist-actions-list-row-mask-overdue"
+    },
+    {
+      "name": "apps.todolist.list.row_mask_current",
+      "call": "0xc681f78",
+      "target": "lv_image_set_src",
+      "meaning": "mask_right.bin",
+      "verification_window": "todolist-actions-list-row-mask-current"
+    }
+  ],
+  "evidence": "The list callbacks registered in todolist-043.json retrieve a row index via 0xc588310. Checkbox callback passes it with the current list state to 0xc680490; two row callbacks pass it in navigation data to detail or sub-list. Sub-list callback retrieves the index, directly addresses a 12-byte subitem record, updates its state and reorders records. List row builder invokes the title, progress, repeat and time helpers from both row creation and update paths.",
+  "scope": "Individual event-data getters and UI setter call sites; row helpers may fire repeatedly for different tasks. Formatted time through the separate variadic text function is not included.",
+  "limitations": "The sub-list callback uses the returned index without a local bounds check and may write task state. Replacing indices can target another item, corrupt memory or trigger invalid accesses. Slots do not guarantee thread quiescence; device behavior and recovery are unverified. Avoid recording task contents.",
+  "verification_windows": [
+    "todolist-actions-list-checkbox-index",
+    "todolist-actions-list-sub-list-index",
+    "todolist-actions-list-detail-index",
+    "todolist-actions-sub-list-toggle-index",
+    "todolist-actions-list-row-title",
+    "todolist-actions-list-row-progress",
+    "todolist-actions-list-row-repeat",
+    "todolist-actions-list-row-time-plain",
+    "todolist-actions-list-row-time-alternate",
+    "todolist-actions-list-row-mask-overdue",
+    "todolist-actions-list-row-mask-current",
+    "todolist-actions-checkbox",
+    "todolist-actions-list-sub",
+    "todolist-actions-list-detail",
+    "todolist-actions-sub-toggle",
+    "todolist-actions-title",
+    "todolist-actions-progress",
+    "todolist-actions-repeat",
+    "todolist-actions-time"
+  ],
+  "device_validation": "pending"
+}

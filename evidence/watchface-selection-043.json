@@ -1,0 +1,60 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "state_slot": "0x2011999c",
+  "page_create": "0x0c5f6b70",
+  "page_destroy": "0x0c5f7ef0",
+  "scope": "specified call sites while selection state is present; covers both normal and AOD modes where those calls occur",
+  "evidence": "The selection on_create allocates 56 bytes, stores the pointer at 0x2011999c and creates the tileview before refresh. The destruction callback frees and clears the state slot. The tile preview builder creates a label and sets it to a resolved watchface name or fallback. The tips builder sets a label from tips1.watchface. The tileview and drag callbacks read the event code at the specified sites; the drag-start callback formats a position/total string before setting a label.",
+  "points": [
+    {
+      "name": "watchface.selection.preview_name",
+      "call": "0x0c5f75c6",
+      "return_pc": "0x0c5f75ca",
+      "contract": "void2"
+    },
+    {
+      "name": "watchface.selection.hint",
+      "call": "0x0c5f6b20",
+      "return_pc": "0x0c5f6b24",
+      "contract": "void2"
+    },
+    {
+      "name": "watchface.selection.tile_event_code",
+      "call": "0x0c5f62ea",
+      "return_pc": "0x0c5f62ee",
+      "contract": "word1"
+    },
+    {
+      "name": "watchface.selection.drag_start_event_code",
+      "call": "0x0c5f849a",
+      "return_pc": "0x0c5f849e",
+      "contract": "word1"
+    },
+    {
+      "name": "watchface.selection.drag_motion_event_code",
+      "call": "0x0c5f7f7a",
+      "return_pc": "0x0c5f7f7e",
+      "contract": "word1"
+    },
+    {
+      "name": "watchface.selection.drag_position_text",
+      "call": "0x0c5f8576",
+      "return_pc": "0x0c5f857a",
+      "contract": "void2"
+    }
+  ],
+  "limitations": "Only the specified setter and getter calls are covered, not all updates or all event paths. Modifying event codes can disrupt drag state or send an incompatible event into a branch. Changing display text does not change the selected face or position. Page state alone is not proof of system-wide quiescence for shared physical entries. No device validation.",
+  "verification_windows": [
+    "watchface-selection-preview-name",
+    "watchface-selection-empty-hint",
+    "watchface-selection-tile-event",
+    "watchface-selection-drag-start-event",
+    "watchface-selection-drag-motion-event",
+    "watchface-selection-drag-position",
+    "watchface-selection-state-create",
+    "watchface-selection-state-destroy",
+    "watchface-selection-state-clear"
+  ],
+  "device_validation": "pending"
+}

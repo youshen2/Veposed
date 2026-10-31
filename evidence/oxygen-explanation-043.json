@@ -1,0 +1,172 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 14,
+  "page_id": 2,
+  "descriptor": "0x200db3ec",
+  "descriptor_root_slot": "0x200db41c",
+  "stale_application_root": "0x2011e690",
+  "points": [
+    {
+      "name": "health.oxygen.explanation.intro",
+      "call": "0xc649156",
+      "target": "lvx_label_set_text",
+      "source": "exp.oxygen",
+      "verification_window": "oxygen-explanation-intro"
+    },
+    {
+      "name": "health.oxygen.explanation.saturation1",
+      "call": "0xc6491a2",
+      "target": "lvx_label_set_text",
+      "source": "saturation1.oxygen",
+      "verification_window": "oxygen-explanation-saturation1"
+    },
+    {
+      "name": "health.oxygen.explanation.saturation2",
+      "call": "0xc6491e8",
+      "target": "lvx_label_set_text",
+      "source": "saturation2.oxygen",
+      "verification_window": "oxygen-explanation-saturation2"
+    },
+    {
+      "name": "health.oxygen.explanation.saturation3",
+      "call": "0xc649236",
+      "target": "lvx_label_set_text",
+      "source": "saturation3.oxygen",
+      "verification_window": "oxygen-explanation-saturation3"
+    },
+    {
+      "name": "health.oxygen.explanation.measure_title",
+      "call": "0xc64928e",
+      "target": "lvx_label_set_text",
+      "source": "measure.health",
+      "verification_window": "oxygen-explanation-measure_title"
+    },
+    {
+      "name": "health.oxygen.explanation.measure_nb1",
+      "call": "0xc6492ee",
+      "target": "lvx_label_set_text",
+      "source": "measure_saturation_with_nb_1.health",
+      "verification_window": "oxygen-explanation-measure_nb1"
+    },
+    {
+      "name": "health.oxygen.explanation.measure_nb2",
+      "call": "0xc649380",
+      "target": "lvx_label_set_text",
+      "source": "measure_saturation_with_nb_2.health",
+      "verification_window": "oxygen-explanation-measure_nb2"
+    },
+    {
+      "name": "health.oxygen.explanation.measure6_intro",
+      "call": "0xc6493fc",
+      "target": "lvx_label_set_text",
+      "source": "measure6.health",
+      "verification_window": "oxygen-explanation-measure6_intro"
+    },
+    {
+      "name": "health.oxygen.explanation.low1",
+      "call": "0xc6494cc",
+      "target": "lvx_label_set_text",
+      "source": "low_exp1.oxygen",
+      "verification_window": "oxygen-explanation-low1"
+    },
+    {
+      "name": "health.oxygen.explanation.low2",
+      "call": "0xc649510",
+      "target": "lvx_label_set_text",
+      "source": "low_exp2.oxygen",
+      "verification_window": "oxygen-explanation-low2"
+    },
+    {
+      "name": "health.oxygen.explanation.low4",
+      "call": "0xc649550",
+      "target": "lvx_label_set_text",
+      "source": "low_exp4.oxygen",
+      "verification_window": "oxygen-explanation-low4"
+    },
+    {
+      "name": "health.oxygen.explanation.measure1",
+      "call": "0xc649634",
+      "target": "lvx_label_set_text",
+      "source": "measure1.health",
+      "verification_window": "oxygen-explanation-measure1"
+    },
+    {
+      "name": "health.oxygen.explanation.measure2",
+      "call": "0xc6496b2",
+      "target": "lvx_label_set_text",
+      "source": "measure2.health",
+      "verification_window": "oxygen-explanation-measure2"
+    },
+    {
+      "name": "health.oxygen.explanation.measure5",
+      "call": "0xc64970c",
+      "target": "lvx_label_set_text",
+      "source": "measure5.health",
+      "verification_window": "oxygen-explanation-measure5"
+    },
+    {
+      "name": "health.oxygen.explanation.measure6",
+      "call": "0xc649766",
+      "target": "lvx_label_set_text",
+      "source": "measure6.health",
+      "verification_window": "oxygen-explanation-measure6"
+    },
+    {
+      "name": "health.oxygen.explanation.intro_wear1",
+      "call": "0xc649324",
+      "target": "lv_image_set_src",
+      "source": "wear1.bin",
+      "verification_window": "oxygen-explanation-intro_wear1"
+    },
+    {
+      "name": "health.oxygen.explanation.intro_wear2",
+      "call": "0xc6493a0",
+      "target": "lv_image_set_src",
+      "source": "wear2.bin",
+      "verification_window": "oxygen-explanation-intro_wear2"
+    },
+    {
+      "name": "health.oxygen.explanation.measure_wear1",
+      "call": "0xc6495d2",
+      "target": "lv_image_set_src",
+      "source": "wear1.bin",
+      "verification_window": "oxygen-explanation-measure_wear1"
+    },
+    {
+      "name": "health.oxygen.explanation.measure_wear2",
+      "call": "0xc649658",
+      "target": "lv_image_set_src",
+      "source": "wear2.bin",
+      "verification_window": "oxygen-explanation-measure_wear2"
+    }
+  ],
+  "evidence": "The oxygen manifest registers the explanation descriptor. The create callback stores its root and navigation data and calls the builder, which selects branches using the navigation data (2, 3 or 5). The destroy callback logs without clearing the application root; only the descriptor root is used as the guard. Each recorded call sets the named translation or image.",
+  "scope": "Listed calls within the three known builder branches; other routes or oxygen pages are not included.",
+  "limitations": "Descriptor root indicates the page lifecycle, not thread quiescence. Skipping lifecycle callbacks or modifying explanatory text can disrupt the page. These entries are statically analyzed only; device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "oxygen-explanation-intro",
+    "oxygen-explanation-saturation1",
+    "oxygen-explanation-saturation2",
+    "oxygen-explanation-saturation3",
+    "oxygen-explanation-measure_title",
+    "oxygen-explanation-measure_nb1",
+    "oxygen-explanation-measure_nb2",
+    "oxygen-explanation-measure6_intro",
+    "oxygen-explanation-low1",
+    "oxygen-explanation-low2",
+    "oxygen-explanation-low4",
+    "oxygen-explanation-measure1",
+    "oxygen-explanation-measure2",
+    "oxygen-explanation-measure5",
+    "oxygen-explanation-measure6",
+    "oxygen-explanation-intro_wear1",
+    "oxygen-explanation-intro_wear2",
+    "oxygen-explanation-measure_wear1",
+    "oxygen-explanation-measure_wear2",
+    "oxygen-explanation-create",
+    "oxygen-explanation-destroy",
+    "oxygen-explanation-dispatch"
+  ],
+  "device_validation": "pending"
+}

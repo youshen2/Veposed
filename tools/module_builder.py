@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "sdk"))
 from veposed import Module
 from firmware import PROFILE, generate_header, verify
+from thumb_check import verify_runtime_profile
 from elf import inspect
 from face import pack, unpack, preview, module_face_id
 from build_device_support import executable
@@ -36,6 +37,7 @@ def compile_module(source, firmware, output, *, face=True, profile_path=PROFILE)
     )
     profile = json.loads(Path(profile_path).read_text())
     _, verified = verify(firmware, profile)
+    verified["inline_relocations_verified"] = verify_runtime_profile(profile)
     namespace = runpy.run_path(str(source))
     module = namespace.get("module")
     if not isinstance(module, Module):

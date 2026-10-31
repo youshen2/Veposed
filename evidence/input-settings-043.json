@@ -1,0 +1,57 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 22,
+  "points": [
+    {
+      "name": "settings.gesture_guide.step1",
+      "call": "0xc55f93e",
+      "target": "lvx_label_set_text",
+      "source": "prof_1.guesture",
+      "verification_window": "input-settings-settings-gesture_guide-step1"
+    },
+    {
+      "name": "settings.gesture_guide.step2",
+      "call": "0xc55f99e",
+      "target": "lvx_label_set_text",
+      "source": "prof_2.guesture",
+      "verification_window": "input-settings-settings-gesture_guide-step2"
+    },
+    {
+      "name": "settings.gesture_guide.step3",
+      "call": "0xc55f9fa",
+      "target": "lvx_label_set_text",
+      "source": "prof_3.guesture",
+      "verification_window": "input-settings-settings-gesture_guide-step3"
+    },
+    {
+      "name": "settings.gesture_guide.step4",
+      "call": "0xc55fa56",
+      "target": "lvx_label_set_text",
+      "source": "prof_4.guesture",
+      "verification_window": "input-settings-settings-gesture_guide-step4"
+    },
+    {
+      "name": "settings.gesture_guide.step5",
+      "call": "0xc55fab0",
+      "target": "lvx_label_set_text",
+      "source": "prof_5.guesture",
+      "verification_window": "input-settings-settings-gesture_guide-step5"
+    }
+  ],
+  "evidence": "Settings manifest 0xc54d214 registers the three descriptors. Down-key and quick-gesture creators allocate page state, while the gesture guide stores its page root. Their destroy handlers clear those respective slots. Gesture guide creator and language-change handler both call builder 0xc55f8dc, which sets five translated description labels.",
+  "scope": "Lifecycle callbacks for three pages and five gesture-guide text setter sites. Language changes rebuild the guide and invoke the same sites again.",
+  "limitations": "Page state and root slots are not thread synchronization; queued updates may race destruction. Skipping destroy may bypass cleanup. Device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "input-settings-settings-gesture_guide-step1",
+    "input-settings-settings-gesture_guide-step2",
+    "input-settings-settings-gesture_guide-step3",
+    "input-settings-settings-gesture_guide-step4",
+    "input-settings-settings-gesture_guide-step5",
+    "input-settings-down-key-create",
+    "input-settings-gesture-create",
+    "input-settings-guide-create",
+    "input-settings-guide-language-refresh"
+  ],
+  "device_validation": "pending"
+}

@@ -1,0 +1,27 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "settings.battery.long_mode_click_data",
+  "page_create": "0x0c54f678",
+  "page_builder": "0x0c54ebc0",
+  "page_cleanup": "0x0c54e464",
+  "page_root_slot": "0x20111d5c",
+  "register_event_call": "0x0c54efb8",
+  "event_callback": "0x0c54f748",
+  "getter_call": "0x0c54f750",
+  "return_pc": "0x0c54f754",
+  "entry": "0x002bfd89",
+  "contract": "word1",
+  "evidence": "The page builder registers event code 7 on the long-endurance control with user data 1. Its callback obtains that data via the shared getter, then invokes the event-target getter and handles the control only if the data equals 1. That branch queries the switch state and triggers the corresponding long-mode handling. The page root is cleared by cleanup.",
+  "scope": "the user-data getter call in the battery long-endurance control callback while the battery page root is active",
+  "limitations": "Overriding this value with anything except 1 bypasses this callback branch, but the switch may already have changed visually; refresh or reconcile UI state separately. This does not stop other mechanisms from changing long-endurance mode. Shared-entry publication and rollback need system-wide quiescence; device behavior is unverified.",
+  "verification_windows": [
+    "battery-long-mode-register-click",
+    "battery-long-mode-read-click-data",
+    "battery-page-cleanup-root"
+  ],
+  "device_validation": "pending",
+  "registration_name": "settings.battery.long_mode_register",
+  "registration_return_pc": "0x0c54efbc",
+  "registration_evidence": "Event registration uses object, callback, code 7 and user data 1; its result is ignored by the caller."
+}

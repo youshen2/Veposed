@@ -1,0 +1,142 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 22,
+  "pages": [
+    "dispalyraisewrist",
+    "wristliftbright",
+    "displayrestdisplay"
+  ],
+  "points": [
+    {
+      "name": "settings.display.raise_mode.dial_register",
+      "call": "0xc556344",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C556580 with filter 7 and data 0.",
+      "verification_window": "display-schedules-settings-display-raise_mode-dial_register"
+    },
+    {
+      "name": "settings.display.raise_mode.wrist_register",
+      "call": "0xc5563d8",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers C556580 with filter 7 and data 1.",
+      "verification_window": "display-schedules-settings-display-raise_mode-wrist_register"
+    },
+    {
+      "name": "settings.display.raise_mode.event_code",
+      "call": "0xc55658e",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The handler checks event code 7 before applying its branch.",
+      "verification_window": "display-schedules-settings-display-raise_mode-event_code"
+    },
+    {
+      "name": "settings.display.raise_mode.event_data",
+      "call": "0xc556598",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The low byte selects option 0 or 1 before updating the display mode.",
+      "verification_window": "display-schedules-settings-display-raise_mode-event_data"
+    },
+    {
+      "name": "settings.display.raise_schedule.mode_register",
+      "call": "0xc5592ba",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The mode builder registers callback C5583EC with filter 7.",
+      "verification_window": "display-schedules-settings-display-raise_schedule-mode_register"
+    },
+    {
+      "name": "settings.display.raise_schedule.time_register",
+      "call": "0xc5593d4",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The time-row builder registers callback C558750 with filter 7.",
+      "verification_window": "display-schedules-settings-display-raise_schedule-time_register"
+    },
+    {
+      "name": "settings.display.raise_schedule.mode_data",
+      "call": "0xc5583f0",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The callback branches on option values 0, 1, and 2.",
+      "verification_window": "display-schedules-settings-display-raise_schedule-mode_data"
+    },
+    {
+      "name": "settings.display.raise_schedule.time_data",
+      "call": "0xc558756",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The callback branches on values 3 and 4 for the start and end time views.",
+      "verification_window": "display-schedules-settings-display-raise_schedule-time_data"
+    },
+    {
+      "name": "settings.display.aod_schedule.mode_register",
+      "call": "0xc5577b2",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The mode builder registers C556E94 with filter 7.",
+      "verification_window": "display-schedules-settings-display-aod_schedule-mode_register"
+    },
+    {
+      "name": "settings.display.aod_schedule.timed_register",
+      "call": "0xc557894",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The timed option registers C556E94 with filter 7 and data 2.",
+      "verification_window": "display-schedules-settings-display-aod_schedule-timed_register"
+    },
+    {
+      "name": "settings.display.aod_schedule.time_register",
+      "call": "0xc5579ba",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The time-row builder registers a callback with filter 7.",
+      "verification_window": "display-schedules-settings-display-aod_schedule-time_register"
+    },
+    {
+      "name": "settings.display.aod_schedule.mode_data",
+      "call": "0xc556e9c",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The callback branches on options 0, 1 and 2 before changing the display mode.",
+      "verification_window": "display-schedules-settings-display-aod_schedule-mode_data"
+    },
+    {
+      "name": "settings.display.aod_schedule.reminder",
+      "call": "0xc557822",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the rest_disp_reminder.settings translation.",
+      "verification_window": "display-schedules-settings-display-aod_schedule-reminder"
+    }
+  ],
+  "evidence": "The settings manifest registers the three page descriptors. Each creator stores allocated page state, and each destroyer frees and clears it. UI builders register event callbacks for display modes and time rows. The handlers inspect the event data and call the relevant display or wrist setting functions.",
+  "scope": "The listed lifecycle slots and UI call sites; other settings and direct writes to display state are not covered.",
+  "limitations": "The callbacks can change device display power and wrist activation behavior. Modifying user data or skipping registrations can desynchronize options and stored state. Page state and root slots do not stop other threads; device behavior and recovery are unverified.",
+  "verification_windows": [
+    "display-schedules-settings-display-raise_mode-dial_register",
+    "display-schedules-settings-display-raise_mode-wrist_register",
+    "display-schedules-settings-display-raise_mode-event_code",
+    "display-schedules-settings-display-raise_mode-event_data",
+    "display-schedules-settings-display-raise_schedule-mode_register",
+    "display-schedules-settings-display-raise_schedule-time_register",
+    "display-schedules-settings-display-raise_schedule-mode_data",
+    "display-schedules-settings-display-raise_schedule-time_data",
+    "display-schedules-settings-display-aod_schedule-mode_register",
+    "display-schedules-settings-display-aod_schedule-timed_register",
+    "display-schedules-settings-display-aod_schedule-time_register",
+    "display-schedules-settings-display-aod_schedule-mode_data",
+    "display-schedules-settings-display-aod_schedule-reminder",
+    "display-schedules-raise-create",
+    "display-schedules-raise-handler",
+    "display-schedules-wrist-create",
+    "display-schedules-wrist-handler",
+    "display-schedules-wrist-time",
+    "display-schedules-aod-create",
+    "display-schedules-aod-handler"
+  ],
+  "device_validation": "pending"
+}

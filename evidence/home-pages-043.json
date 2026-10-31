@@ -1,0 +1,151 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 16,
+  "pages": [
+    "main",
+    "edit",
+    "add"
+  ],
+  "registration": "0xc50d0a0",
+  "page_array_file_offset": "0xc5f7e8",
+  "points": [
+    {
+      "name": "home.main.scroll0_register",
+      "call": "0xc50b200",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers the shared scroll callback with filter 0 and a pointer to container state.",
+      "verification_window": "home-pages-home-main-scroll0_register"
+    },
+    {
+      "name": "home.main.scroll1_register",
+      "call": "0xc50b220",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers the shared scroll callback with filter 0 and a pointer to container state.",
+      "verification_window": "home-pages-home-main-scroll1_register"
+    },
+    {
+      "name": "home.main.scroll2_register",
+      "call": "0xc50b23e",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers the shared scroll callback with filter 0 and a pointer to container state.",
+      "verification_window": "home-pages-home-main-scroll2_register"
+    },
+    {
+      "name": "home.main.scroll3_register",
+      "call": "0xc50b25a",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers the shared scroll callback with filter 0 and a pointer to container state.",
+      "verification_window": "home-pages-home-main-scroll3_register"
+    },
+    {
+      "name": "home.edit.add_register",
+      "call": "0xc50dc9e",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers callback C50E2F4 with filter 7 and user data 1.",
+      "verification_window": "home-pages-home-edit-add_register"
+    },
+    {
+      "name": "home.edit.confirm_register",
+      "call": "0xc50dd66",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers callback C50E2F4 with filter 7 and user data 0.",
+      "verification_window": "home-pages-home-edit-confirm_register"
+    },
+    {
+      "name": "home.edit.event_code",
+      "call": "0xc50e2fc",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The callback checks for codes 7, 4, or 5.",
+      "verification_window": "home-pages-home-edit-event_code"
+    },
+    {
+      "name": "home.edit.event_data",
+      "call": "0xc50e304",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The callback selects an action using the low byte of event data.",
+      "verification_window": "home-pages-home-edit-event_data"
+    },
+    {
+      "name": "home.edit.add_icon",
+      "call": "0xc50dcbc",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Uses add.bin or add_gray.bin depending on the number of existing cards.",
+      "verification_window": "home-pages-home-edit-add_icon"
+    },
+    {
+      "name": "home.edit.shadow",
+      "call": "0xc50dd06",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Sets the common shadow button image.",
+      "verification_window": "home-pages-home-edit-shadow"
+    },
+    {
+      "name": "home.add.item_name",
+      "call": "0xc50d3a8",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The card provider supplies the name for each candidate item.",
+      "verification_window": "home-pages-home-add-item_name"
+    },
+    {
+      "name": "home.add.item_icon",
+      "call": "0xc50d410",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The card provider supplies the image source for each candidate item.",
+      "verification_window": "home-pages-home-add-item_icon"
+    },
+    {
+      "name": "home.add.item_register",
+      "call": "0xc50d45c",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers callback C50D12C with filter 7 and a pointer to the card record.",
+      "verification_window": "home-pages-home-add-item_register"
+    },
+    {
+      "name": "home.add.event_code",
+      "call": "0xc50d13e",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The add callback checks for event code 7 before adding a card.",
+      "verification_window": "home-pages-home-add-event_code"
+    }
+  ],
+  "evidence": "The home registration routine copies eight descriptor pointers into a stack array and passes it to the app registration function. Creators and destroyers establish and clear separate main, edit, and add state slots. The main builder registers four scroll handlers; the edit builder registers add and confirm controls; the add builder creates candidate items and registers their add callback.",
+  "scope": "Only listed creation and event call sites. Main scrolling uses a shared callback and pointer-valued user data; other widget editing and navigation paths are not intercepted.",
+  "limitations": "Changing event data or skipping registrations can break navigation or card state; add-item event data is a live card-record pointer. Image sources and card records must remain valid. Page slots are not thread barriers. Device behavior and recovery are unverified.",
+  "verification_windows": [
+    "home-pages-home-main-scroll0_register",
+    "home-pages-home-main-scroll1_register",
+    "home-pages-home-main-scroll2_register",
+    "home-pages-home-main-scroll3_register",
+    "home-pages-home-edit-add_register",
+    "home-pages-home-edit-confirm_register",
+    "home-pages-home-edit-event_code",
+    "home-pages-home-edit-event_data",
+    "home-pages-home-edit-add_icon",
+    "home-pages-home-edit-shadow",
+    "home-pages-home-add-item_name",
+    "home-pages-home-add-item_icon",
+    "home-pages-home-add-item_register",
+    "home-pages-home-add-event_code",
+    "home-pages-main-create",
+    "home-pages-edit-create",
+    "home-pages-add-create",
+    "home-pages-edit-handler",
+    "home-pages-add-handler"
+  ],
+  "device_validation": "pending"
+}

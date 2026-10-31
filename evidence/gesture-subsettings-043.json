@@ -1,0 +1,74 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 22,
+  "points": [
+    {
+      "name": "settings.gesture_action.selected_index",
+      "call": "0xc56021e",
+      "target": "lv_event_get_user_data",
+      "source": "callback indexes action mapping with no bounds check",
+      "verification_window": "gesture-subsettings-settings-gesture_action-selected_index"
+    },
+    {
+      "name": "settings.gesture_action.first_register",
+      "call": "0xc560a50",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc560219; event 7",
+      "verification_window": "gesture-subsettings-settings-gesture_action-roll_register"
+    },
+    {
+      "name": "settings.gesture_action.camera_register",
+      "call": "0xc560b8a",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc560219; event 7",
+      "verification_window": "gesture-subsettings-settings-gesture_action-shake_register"
+    },
+    {
+      "name": "settings.gesture_action.other_register",
+      "call": "0xc560cde",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc560219; event 7",
+      "verification_window": "gesture-subsettings-settings-gesture_action-snap_register"
+    },
+    {
+      "name": "settings.gesture_action.training_register",
+      "call": "0xc5600b0",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc5606a5; event 7",
+      "verification_window": "gesture-subsettings-settings-gesture_action-training_register"
+    },
+    {
+      "name": "settings.gesture_teach.roll_register",
+      "call": "0xc56133e",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc561219; user data 2",
+      "verification_window": "gesture-subsettings-settings-gesture_teach-roll_register"
+    },
+    {
+      "name": "settings.gesture_teach.shake_register",
+      "call": "0xc561380",
+      "target": "lv_obj_add_event_cb",
+      "source": "callback 0xc561219; user data 3",
+      "verification_window": "gesture-subsettings-settings-gesture_teach-shake_register"
+    }
+  ],
+  "evidence": "Settings manifest registers page IDs 34 and 35. Page 34 stores its root at 0xc560fae and clears it at 0xc55fd2a; page 35 allocates a state object and clears it on destruction. Page 35 registers callback 0xc561219 with event data 2 or 3; the callback stores that value in its state and opens page 34. Page 34 uses event getter at 0xc56021e in callback 0xc560219 to index an action pointer table and persist the selected action based on gesture type. The same action-list builder registers this callback at three sites for the first, camera and other options; these sites are not exclusive to a gesture type. A separate training callback sets timers and subscriptions.",
+  "scope": "Lifecycle slots for the two pages; three option registration sites, one training registration site, one option-index read and two teaching choices. Builders may run repeatedly during training.",
+  "limitations": "The action callback indexes its table without a bounds check; a replacement index must be valid for the current list and table. Root/state checks are not synchronization and do not prove timers or queued callbacks have stopped. Device behavior and rollback remain unverified.",
+  "verification_windows": [
+    "gesture-subsettings-settings-gesture_action-selected_index",
+    "gesture-subsettings-settings-gesture_action-roll_register",
+    "gesture-subsettings-settings-gesture_action-shake_register",
+    "gesture-subsettings-settings-gesture_action-snap_register",
+    "gesture-subsettings-settings-gesture_action-training_register",
+    "gesture-subsettings-settings-gesture_teach-roll_register",
+    "gesture-subsettings-settings-gesture_teach-shake_register",
+    "gesture-action-create",
+    "gesture-action-callback",
+    "gesture-action-training-callback",
+    "gesture-teach-create",
+    "gesture-teach-callback"
+  ],
+  "device_validation": "pending"
+}

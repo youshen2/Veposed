@@ -41,6 +41,8 @@ python3 "$SKILL_DIR/scripts/map_firmware.py" \
 3. 业务 Hook 从页面字符串和控件创建/赋值链找稳定入口，记录调用点过滤、对象槽和静止条件，参见 [Hook 与恢复](references/hook-and-recovery.md)。
 4. 写出 [适配表契约](references/profile-contract.md) 中的字段和独立 evidence。对新版本保留新文件，不覆盖现有已验证版本。
 
+对于当前 p67cn 3.101.043，可使用 `scripts/inventory_pages.py --repo "$REPO" --firmware "$FIRMWARE" --profile "$PROFILE" --out "$REPO/build/page-candidates.json" --markdown "$REPO/build/page-candidates.md"` 生成启动数据中的应用和页面描述符候选。该脚本仅接受此精确目标，先验证固件；它的结构匹配、包名关联和创建函数仅是候选，须结合页面创建函数、注册路径和生命周期逐项核实。其他固件应重新恢复结构与映射，不照搬扫描结果。
+
 ## 校验、构建与交付
 
 ```sh

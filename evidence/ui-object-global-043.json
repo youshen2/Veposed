@@ -1,0 +1,45 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "points": [
+    {
+      "name": "ui.label.set_text",
+      "target": "lvx_label_set_text",
+      "entry": "0x1c06f039",
+      "contract": "void2",
+      "args": [
+        "label object",
+        "NUL-terminated text"
+      ]
+    },
+    {
+      "name": "ui.object.set_size",
+      "target": "lv_obj_set_size",
+      "entry": "0x1c02a2d1",
+      "contract": "void3",
+      "args": [
+        "object",
+        "width",
+        "height"
+      ]
+    },
+    {
+      "name": "ui.object.add_flag",
+      "target": "lv_obj_add_flag",
+      "entry": "0x1c028bd9",
+      "contract": "void2",
+      "args": [
+        "object",
+        "bit flags"
+      ]
+    }
+  ],
+  "evidence": [
+    "os-version-043.json",
+    "about-os-size-043.json",
+    "about-interaction-043.json"
+  ],
+  "scope": "each name dispatches for all calls to the respective shared entry, including system applications and watchface UI",
+  "limitations": "Caller and object slots are unrestricted. Changing arguments or skipping a call can affect unrelated pages; modules must apply their own verified selection and respect pointer ownership. These points do not cover calls that bypass the identified functions. Installation and rollback require system-wide quiescence.",
+  "device_validation": "pending"
+}

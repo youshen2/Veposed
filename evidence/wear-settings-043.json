@@ -1,0 +1,92 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 22,
+  "page_id": 62,
+  "descriptor": "0x200d4368",
+  "state_slot": "0x20113590",
+  "descriptor_root_slot": "0x200d4398",
+  "points": [
+    {
+      "name": "settings.wear.left_wrist_register",
+      "call": "0xc572708",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers common callback with filter 7 and user data 0.",
+      "verification_window": "wear-settings-left_wrist_register"
+    },
+    {
+      "name": "settings.wear.right_wrist_register",
+      "call": "0xc572768",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers common callback with filter 7 and user data 1.",
+      "verification_window": "wear-settings-right_wrist_register"
+    },
+    {
+      "name": "settings.wear.left_crown_register",
+      "call": "0xc572834",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers common callback with filter 7 and user data 2.",
+      "verification_window": "wear-settings-left_crown_register"
+    },
+    {
+      "name": "settings.wear.right_crown_register",
+      "call": "0xc572894",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Registers common callback with filter 7 and user data 3.",
+      "verification_window": "wear-settings-right_crown_register"
+    },
+    {
+      "name": "settings.wear.event_code",
+      "call": "0xc57243c",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The common callback gates the indexed dispatch on event code 7.",
+      "verification_window": "wear-settings-event_code"
+    },
+    {
+      "name": "settings.wear.event_data",
+      "call": "0xc572444",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The common callback uses the returned word directly as an index into a 28-byte-stride table before switching on its selected field.",
+      "verification_window": "wear-settings-event_data"
+    },
+    {
+      "name": "settings.wear.wrist_caption",
+      "call": "0xc57268c",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the wrist.settings translation on the wrist group label.",
+      "verification_window": "wear-settings-wrist_caption"
+    },
+    {
+      "name": "settings.wear.crown_caption",
+      "call": "0xc5727b4",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "Sets the crown.settings translation on the crown group label.",
+      "verification_window": "wear-settings-crown_caption"
+    }
+  ],
+  "evidence": "The settings manifest registers the descriptor. The create routine reads persistent wrist/crown state, builds two groups of radio options, and registers the common callback with event filter 7 and indices 0 through 3. The callback uses the event data as a table index, and writes wrist or crown properties based on the table entry. Destroy clears the title-view state slot and releases the radio groups.",
+  "scope": "Recorded registration and event-getter calls only; other property writers and device orientation paths are not covered.",
+  "limitations": "The callback computes a table address from the supplied index without a visible bounds check. Invalid event data can access invalid memory. Changing a selection alters persistent device orientation. State and root slots are not thread synchronization. Device behavior and recovery are unverified.",
+  "verification_windows": [
+    "wear-settings-left_wrist_register",
+    "wear-settings-right_wrist_register",
+    "wear-settings-left_crown_register",
+    "wear-settings-right_crown_register",
+    "wear-settings-event_code",
+    "wear-settings-event_data",
+    "wear-settings-wrist_caption",
+    "wear-settings-crown_caption",
+    "wear-settings-create",
+    "wear-settings-destroy",
+    "wear-settings-handler"
+  ],
+  "device_validation": "pending"
+}

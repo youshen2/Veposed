@@ -1,0 +1,80 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "sports categories",
+    "sports category list",
+    "sports list edit",
+    "sports countdown"
+  ],
+  "points": [
+    {
+      "name": "sports.list_edit.flag_icon",
+      "call": "0xc58f414",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The row builder selects sport_flag.bin or sport_unflag.bin for each item.",
+      "verification_windows": [
+        "sports-assets-sports-list_edit-flag_icon"
+      ]
+    },
+    {
+      "name": "sports.list_edit.delete_icon",
+      "call": "0xc58f42a",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The row builder selects sport_del.bin or sport_undel.bin for each item according to the list count.",
+      "verification_windows": [
+        "sports-assets-sports-list_edit-delete_icon"
+      ]
+    },
+    {
+      "name": "sports.list_edit.gradient_icon",
+      "call": "0xc58f506",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The edit view sets sports/list/gradient.bin after building its rows.",
+      "verification_windows": [
+        "sports-assets-sports-list_edit-gradient_icon"
+      ]
+    },
+    {
+      "name": "sports.countdown.initial_icon",
+      "call": "0xc596d7a",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The countdown page formats the initial realtime/1.bin path and passes it to the image setter.",
+      "verification_windows": [
+        "sports-assets-sports-countdown-initial_icon"
+      ]
+    },
+    {
+      "name": "sports.countdown.animation_icon",
+      "call": "0xc596e60",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "The animation callback updates the image source with realtime/1.bin through realtime/3.bin according to elapsed time.",
+      "verification_windows": [
+        "sports-assets-sports-countdown-animation_icon"
+      ]
+    }
+  ],
+  "edit_create_entry": "0xc58f66c",
+  "edit_create_analysis": "The descriptor points to Thumb 0xc58f66d. The bytes at 0xc58f660..0xc58f66b are a literal pool; IDA treats part as instructions. The actual entry at 0xc58f66c begins with PUSH.W and saves R1 as the root.",
+  "category_scope": "The two category descriptors invoke the shared list builder with different descriptor-private allocations. Only their lifecycle slots are named here.",
+  "countdown_scope": "Initial and animation image setter calls only; the animation ready callback starts a sport and is not altered.",
+  "limitations": "Changing countdown display can misrepresent progress; skipping lifecycle calls can break timers and starting a workout. Source lifetime matters. State and descriptor slots are not thread barriers; device behavior and recovery are unverified.",
+  "verification_windows": [
+    "sports-assets-sports-list_edit-flag_icon",
+    "sports-assets-sports-list_edit-delete_icon",
+    "sports-assets-sports-list_edit-gradient_icon",
+    "sports-assets-sports-countdown-initial_icon",
+    "sports-assets-sports-countdown-animation_icon",
+    "sports-assets-edit-create-entry",
+    "sports-assets-countdown-start",
+    "sports-assets-countdown-animation",
+    "sports-assets-categories-destroy",
+    "sports-assets-category-list-destroy"
+  ],
+  "device_validation": "pending"
+}

@@ -1,0 +1,9 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "caller_filters_verified": 64,
+  "method": "tools/firmware.py decodes each configured Thumb BL return-PC, follows either a direct target or one aligned LDR.W PC absolute veneer with Thumb bit, and checks any declared call-site metadata against the filter.",
+  "validation": "Exact AP identity and 64 configured caller filters pass; tools/tests/test_firmware.py exercises direct and veneer calls, mismatched target, inconsistent metadata, absent primary caller, invalid Thumb bit and non-BL instruction.",
+  "limitations": "Static call destination validation does not prove ABI, semantic scope, object lifetime, all-thread quiescence, or behavior on device. Indirect calls and other veneer forms need separate verifier support.",
+  "device_validation": "pending"
+}

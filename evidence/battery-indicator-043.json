@@ -1,0 +1,21 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "settings.battery.charge_indicator_source",
+  "page_create": "0x0c54f678",
+  "build_ui": "0x0c54ebc0",
+  "page_cleanup": "0x0c54e464",
+  "page_root_slot": "0x20111d5c",
+  "call": "0x0c54ec52",
+  "return_pc": "0x0c54ec56",
+  "source": "/resource/app/system/icon/charge_indic.bin",
+  "entry": "0x1c06ceb5",
+  "evidence": "The battery UI builder creates an image object at 0x0c54ec3c, loads that object into R0 and the charge indicator path into R1, and calls the image-source veneer at 0x0c54ec52. The veneer branches to lv_image_set_src. The page root is set on creation and zeroed by cleanup.",
+  "scope": "the specified charge-indicator image-source call while the battery page is active",
+  "verification_window": {
+    "name": "battery-charge-indicator-source",
+    "file_offset": "0x48ec4e",
+    "expected": "4846bd4939f0a5f94346484642460921"
+  },
+  "device_validation": "pending"
+}

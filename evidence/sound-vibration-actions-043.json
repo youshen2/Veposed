@@ -1,0 +1,97 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "sound_page_state": "0x20113448",
+  "vibration_page_state": "0x20113488",
+  "points": [
+    {
+      "name": "settings.sound.dnd_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "call": "0xc56f9ca",
+      "state_slot": "0x20113448",
+      "interpretation": "Registers the common action callback with event filter 7 and user data 0 for the disturb.settings row.",
+      "verification_window": "sound-vibration-settings-sound-dnd_register"
+    },
+    {
+      "name": "settings.sound.vibration_toggle_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "call": "0xc56fa56",
+      "state_slot": "0x20113448",
+      "interpretation": "Registers the common action callback with event filter 7 and user data 1 for vibrate_mode.settings.",
+      "verification_window": "sound-vibration-settings-sound-vibration_toggle_register"
+    },
+    {
+      "name": "settings.sound.vibration_mode_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "call": "0xc56faa0",
+      "state_slot": "0x20113448",
+      "interpretation": "Registers the common action callback with event filter 7 and user data 2 for vibrate_mode_display.settings.",
+      "verification_window": "sound-vibration-settings-sound-vibration_mode_register"
+    },
+    {
+      "name": "settings.sound.action_id",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "call": "0xc56f2ca",
+      "state_slot": "0x20113448",
+      "interpretation": "The callback interprets 0 as opening the disturb settings path, 1 as toggling the vibration setting, and 2 as opening the vibration mode path when allowed.",
+      "verification_window": "sound-vibration-settings-sound-action_id"
+    },
+    {
+      "name": "settings.vibration.selection_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "call": "0xc570092",
+      "state_slot": "0x20113488",
+      "interpretation": "A two-iteration builder registers the same selection callback for filter 7, passing 0 and 1 as user data.",
+      "verification_window": "sound-vibration-settings-vibration-selection_register"
+    },
+    {
+      "name": "settings.vibration.selection_data",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "call": "0xc56fd32",
+      "state_slot": "0x20113488",
+      "interpretation": "The callback uses the registered value as a bound while searching option objects; expected values are 0 or 1, not an unrestricted integer.",
+      "verification_window": "sound-vibration-settings-vibration-selection_data"
+    },
+    {
+      "name": "settings.vibration.selection_target",
+      "target": "lv_event_current_target",
+      "contract": "word1",
+      "call": "0xc56fd3a",
+      "state_slot": "0x20113488",
+      "interpretation": "The callback compares the current event target against the option controls and selects a standard or enhanced mode path.",
+      "verification_window": "sound-vibration-settings-vibration-selection_target"
+    },
+    {
+      "name": "settings.vibration.confirm_event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "call": "0xc56fe56",
+      "state_slot": "0x20113488",
+      "interpretation": "The enhancement confirmation callback applies mode 2 and sends updates only when event code equals 7.",
+      "verification_window": "sound-vibration-settings-vibration-confirm_event_code"
+    }
+  ],
+  "evidence": "The settings app manifest registers both page descriptors. Each page creates and clears its allocated state. The sound page registers a common callback for three rows, with distinct user-data values. The vibration page builds two options and registers the selection callback with values 0 and 1; the callback also compares the current target to the option objects. The enhancement dialog invokes a separate event-code handler.",
+  "scope": "Only the listed call sites while the respective page state is present. Other paths that change vibration, sound or do-not-disturb settings are not intercepted.",
+  "limitations": "Values outside the observed registration domains may lead to invalid option accesses. Changing behavior can desynchronize UI and persisted settings. Page state is not a thread barrier; shared-entry publication and rollback require system-wide quiescence. Device behavior is unverified.",
+  "verification_windows": [
+    "sound-action-handler",
+    "vibration-selection-handler",
+    "vibration-confirm-handler",
+    "sound-vibration-settings-sound-dnd_register",
+    "sound-vibration-settings-sound-vibration_toggle_register",
+    "sound-vibration-settings-sound-vibration_mode_register",
+    "sound-vibration-settings-sound-action_id",
+    "sound-vibration-settings-vibration-selection_register",
+    "sound-vibration-settings-vibration-selection_data",
+    "sound-vibration-settings-vibration-selection_target",
+    "sound-vibration-settings-vibration-confirm_event_code"
+  ],
+  "device_validation": "pending"
+}

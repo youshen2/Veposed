@@ -1,0 +1,201 @@
+# 小米手环 10 Pro / 3.101.043 导航页面 ID
+
+本表记录精确 AP 镜像中页面描述符的**启动初始值**。页面描述符里的 `page_id`、`app_id` 与导航动作 `field("page_id")`、`field("app_id")` 的数字字段对应；导航请求也可能通过名称指定页面，不能假定每次请求都有这两个数字。固件可能在运行时改写描述符，这些映射尚未真机验证。
+
+| 页面 | 描述符名称 | 应用 ID | 页面 ID | 描述符 RAM 地址 | 页面创建函数 |
+| --- | --- | --- | --- | --- | --- |
+| 设置：关于本机 | `about` | `0x16` | `0x18` | `0x200d2030` | `0x0c54d635` |
+| 设置：亮度 | `brightset` | `0x16` | `0x07` | `0x200d284c` | `0x0c5555ad` |
+| 设置：勿扰与睡眠 | `disturb` | `0x16` | `0x0e` | `0x200d2b1c` | `0x0c559ca9` |
+| 设置：电池 | `battery_setting` | `0x16` | `0x1d` | `0x200d22ec` | `0x0c54f679` |
+| 设置：更多连接 | `settings_page_bt_network` | `0x16` | `0x2b` | `0x200d24cc` | `0x0c5511e5` |
+| 心率主页面 | `default` | `0x05` | `0x00` | `0x200dbe80` | `0x0c664ffd` |
+| 表盘：双时区选择 | `dual_time` | `0x02` | `0x08` | `0x200d8c60` | `0x0c5f1f21` |
+| 米家：场景列表 | `show` | `0x3f` | `0x01` | `0x200d0584` | `0x0c5077b1` |
+| 计时器主页面 | `main` | `0x26` | `0x00` | `0x200d02bc` | `0x0c4ffab1` |
+| 闹钟主页面 | `main` | `0x28` | `0x00` | `0x200d1498` | `0x0c53d711` |
+| 天气主页面 | `main` | `0x21` | `0x01` | `0x200da3e4` | `0x0c60fa01` |
+| 睡眠主页面 | `default` | `0x0c` | `0x00` | `0x200db178` | `0x0c63e345` |
+| 血氧主页面 | `main` | `0x0e` | `0x00` | `0x200db4d4` | `0x0c64be19` |
+| 应用列表主页面 | `page_main` | `0x01` | `0x00` | `0x200d0d0c` | `0xc517c81` |
+| 运动列表主页面 | `page_home_list` | `0x0f` | `0x00` | `0x200d5024` | `0xc58fb4d` |
+| 压力主页面 | `main` | `0x03` | `0x00` | `0x200dadc8` | `0xc63107d` |
+| 呼吸主页面 | `main` | `0x04` | `0x00` | `0x200dac14` | `0xc629f31` |
+| 心率设置页面 | `setting` | `0x05` | `0x01` | `0x200dbff0` | `0xc6681f5` |
+| 压力设置页面 | `setting` | `0x03` | `0x03` | `0x200daf24` | `0xc6336c1` |
+| 睡眠设置页面 | `setting` | `0x0c` | `0x02` | `0x200db304` | `0xc640ef9` |
+| 血氧设置页面 | `setting` | `0x0e` | `0x03` | `0x200db5bc` | `0xc64d745` |
+| 呼吸过程页面 | `view` | `0x04` | `0x01` | `0x200dac88` | `0xc62b819` |
+| 指南针主页面 | `main` | `0x18` | `0x00` | `0x200d0204` | `0xc4fe531` |
+| 手电筒主页面 | `main` | `0x1a` | `0x00` | `0x200d0770` | `0xc509005` |
+| 日历主页面 | `main` | `0x1b` | `0x00` | `0x200cf61c` | `0xc4e9705` |
+| 秒表主页面 | `main` | `0x20` | `0x00` | `0x200d0118` | `0xc4fa1c1` |
+| 通知详情页面 | `page_detail` | `0x14` | `0x00` | `0x200d1134` | `0xc52613d` |
+| 通知聚合页面 | `page_aggregation` | `0x14` | `0x01` | `0x200d10c0` | `0xc525afd` |
+
+| 活动主页面 | `main` | `0x13` | `0x00` | `0x200cf04c` | `0xc4d1e2d` |
+| 媒体主页面 | `page_media` | `0x15` | `0x00` | `0x200d0f20` | `0xc51b1e1` |
+| 录音主页面 | `main` | `0x29` | `0x00` | `0x200da58c` | `0xc61a88d` |
+| 活力主页面 | `main` | `0x36` | `0x00` | `0x200db750` | `0xc650901` |
+| 女性健康主页面 | `main` | `0x1f` | `0x00` | `0x200da7a0` | `0xc621945` |
+
+| 声音设置页面 | `sound` | `0x16` | `0x05` | `0x200d3d1c` | `0xc56f819` |
+| 振动设置页面 | `vibration` | `0x16` | `0x1a` | `0x200d3d90` | `0xc56ff6d` |
+
+| 通知中心设置页面 | `settings_page_notify_center` | `0x16` | `0x29` | `0x200d384c` | `0xc56863d` |
+| 控制中心设置页面 | `settings_page_control_center` | `0x16` | `0x2a` | `0x200d25e0` | `0xc55183d` |
+
+| 活动数据说明页面 | `explain` | `0x13` | `0x01` | `0x200cefa8` | `0xc4d10a5` |
+
+| 日历日程详情页面 | `detail` | `0x1b` | `0x01` | `0x200cf5a8` | `0xc4e6be5` |
+| 天气逐日预报页面 | `fdaily_detail` | `0x21` | `0x05` | `0x200da370` | `0xc60eb0d` |
+| 天气连接提示页面 | `reminder` | `0x21` | `0x02` | `0x200da458` | `0xc60fca9` |
+
+| 天气详情页面 | `detail` | `0x21` | `0x00` | `0x200da2f4` | `0xc60aa2d` |
+
+| 天气预警列表页面 | `alert` | `0x21` | `0x03` | `0x200da20c` | `0xc609941` |
+
+| 天气预警详情页面 | `alert_detail` | `0x21` | `0x04` | `0x200da280` | `0xc609af1` |
+
+| 血氧低值提醒设置页面 | `setting_low` | `0x0e` | `0x04` | `0x200db630` | `0xc64dd11` |
+
+| 睡眠设置列表页面 | `settinglist` | `0x0c` | `0x03` | `0x200db378` | `0xc641775` |
+| 睡眠问卷页面 | `research` | `0x0c` | `0x04` | `0x200db1ec` | `0xc640735` |
+| 睡眠问卷完成页面 | `researchtips` | `0x0c` | `0x05` | `0x200db290` | `0xc640da5` |
+
+| 血氧测量页面 | `monitor` | `0x0e` | `0x01` | `0x200db548` | `0xc64c46d` |
+| 血氧低值图表页面 | `low_chart` | `0x0e` | `0x05` | `0x200db460` | `0xc64a189` |
+
+| 呼吸练习说明页面 | `info` | `0x04` | `0x02` | `0x200daba0` | `0xc629761` |
+
+| 睡眠心率变异性详情页面 | `detail` | `0x0c` | `0x06` | `0x200db00c` | `0xc63c299` |
+| 睡眠心率变异性说明页面 | `explanation` | `0x0c` | `0x08` | `0x200db080` | `0xc63d721` |
+| 睡眠心率变异性信息页面 | `info` | `0x0c` | `0x07` | `0x200db0f4` | `0xc63dd6d` |
+| 压力测量页面 | `moniter` | `0x03` | `0x01` | `0x200dae3c` | `0xc631ddd` |
+| 压力月度页面 | `month` | `0x03` | `0x04` | `0x200daeb0` | `0xc63342d` |
+
+| 压力说明页面 | `explanation` | `0x03` | `0x02` | `0x200dad54` | `0xc62e2e1` |
+| 异常心率页面 | `abnormal` | `0x05` | `0x03` | `0x200dbd98` | `0xc662c95` |
+| 心率说明页面 | `explanation` | `0x05` | `0x02` | `0x200dbe0c` | `0xc6643f5` |
+| 静息心率页面 | `hrrest` | `0x05` | `0x05` | `0x200dbf7c` | `0xc667a75` |
+| 心率设置目录页面 | `settingvCatalog` | `0x05` | `0x04` | `0x200dc0d8` | `0xc668b65` |
+
+| 运动分类页面 | `page_categories` | `0x0f` | `0x01` | `0x200d4f30` | `0xc58ee85` |
+| 同一运动分类列表页面 | `page_same_category_sport` | `0x0f` | `0x02` | `0x200d5098` | `0xc58fbed` |
+| 运动列表编辑页面 | `page_list_edit` | `0x0f` | `0x05` | `0x200d4fa4` | `0xc58f66d` |
+| 运动倒计时页面 | `page_countdown` | `0x0f` | `0x1c` | `0x200d5380` | `0xc596c65` |
+
+| 运动设置主页面 | `page_setting` | `0x0f` | `0x07` | `0x200d7f4c` | `0xc5be3d9` |
+| 运动设置详情页面 | `page_setting_details` | `0x0f` | `0x09` | `0x200d7c80` | `0xc5b9b51` |
+| 运动提醒开关页面 | `page_reminder_switch` | `0x0f` | `0x0a` | `0x200d800c` | `0xc5bf0d1` |
+| 运动设置单选页面 | `page_setting_radio_select` | `0x0f` | `0x0b` | `0x200d7ed8` | `0xc5bdf69` |
+| 运动设置数值选择页面 | `page_setting_picker_select` | `0x0f` | `0x0c` | `0x200d7e64` | `0xc5bde45` |
+
+| 运动准备页面 | `page_waiting` | `0x0f` | `0x06` | `0x200d84d0` | `0xc5ccac5` |
+| 运动实时页面 | `page_realtime` | `0x0f` | `0x08` | `0x200d5308` | `0xc595f25` |
+| 运动语音音量页面 | `page_realtime_speech_volume` | `0x0f` | `0x11` | `0x200d5550` | `0xc5979a5` |
+
+| 运动热身页面 | `page_warmup` | `0x0f` | `0x13` | `0x200d86b4` | `0xc5d1ced` |
+| 运动热身说明页面 | `page_explain` | `0x0f` | `0x14` | `0x200d85c0` | `0xc5ce89d` |
+| 运动热身动画页面 | `page_warmup_animation` | `0x0f` | `0x15` | `0x200d8634` | `0xc5cf0a5` |
+| 运动星历更新页面 | `page_setting_ephemeris` | `0x0f` | `0x0d` | `0x200d7cf4` | `0xc5ba351` |
+| 运动星历更新子页面 | `page_setting_ephemeris_sub` | `0x0f` | `0x0e` | `0x200d7d68` | `0xc5bae0d` |
+| 运动通用设置页面 | `page_setting` | `0x0f` | `0x1b` | `0x200d7ddc` | `0xc5bb205` |
+
+| 番茄专注主页面 | `main` | `0x3a` | `0x00` | `0x200d1b88` | `0xc5458f5` |
+| 番茄专注时长设置页面 | `set` | `0x3a` | `0x01` | `0x200d1c70` | `0xc5461d5` |
+| 番茄专注说明页面 | `info` | `0x3a` | `0x02` | `0x200d1b14` | `0xc5452f5` |
+| 番茄专注进行页面 | `activity` | `0x3a` | `0x03` | `0x200d1a0c` | `0xc544941` |
+| 番茄专注提示页面 | `notice` | `0x3a` | `0x04` | `0x200d1bfc` | `0xc545ee9` |
+| 番茄专注结束页面 | `end` | `0x3a` | `0x05` | `0x200d1aa0` | `0xc5450f9` |
+
+| 闹钟自定义重复页面 | `custom_rule_setting` | `0x28` | `0x03` | `0x200d1360` | `0xc53c135` |
+| 闹钟编辑页面 | `alarm_edit` | `0x28` | `0x04` | `0x200d13fc` | `0xc53d0e9` |
+| 闹钟重复规则页面 | `repeate_rule_setting` | `0x28` | `0x02` | `0x200d1534` | `0xc53ebd9` |
+| 闹钟智能提醒页面 | `smart_remind` | `0x28` | `0x05` | `0x200d15d0` | `0xc53f3f9` |
+| 闹钟时间选择页面 | `time_setting` | `0x28` | `0x01` | `0x200d1644` | `0xc53f96d` |
+
+| 媒体音量页面 | `page_media_volume` | `0x15` | `0x02` | `0x200d0eac` | `0xc51edc5` |
+
+| 计时器自定义时间页面 | `set` | `0x26` | `0x01` | `0x200d0390` | `0xc5012b5` |
+
+| 截屏设置页面 | `settings_page_screenshot` | `0x16` | `0x3f` | `0x200d3c80` | `0xc56f05d` |
+
+| 血氧说明页面 | `explanation` | `0x0e` | `0x02` | `0x200db3ec` | `0xc6497b9` |
+
+| 定位模式设置页面 | `setting_gnss` | `0x16` | `0x26` | `0x200d3038` | `0xc55e101` |
+
+| 佩戴方向设置页面 | `settings_page_wear` | `0x16` | `0x3e` | `0x200d4368` | `0xc572575` |
+
+| 主屏主页 | `page_main` | `0x10` | `0x00` | `0x200d0948` | `0xc50fb65` |
+| 主屏卡片编辑页面 | `page_edit` | `0x10` | `0x02` | `0x200d08c8` | `0xc50df9d` |
+| 主屏卡片添加页面 | `page_add` | `0x10` | `0x03` | `0x200d0848` | `0xc50d501` |
+
+| 主屏布局选择页面 | `page_select` | `0x10` | `0x01` | `0x200d0ad4` | `0xc511f41` |
+| 主屏卡片挑选页面 | `page_pick` | `0x10` | `0x04` | `0x200d09c0` | `0xc511001` |
+| 主屏运动分类页面 | `page_category` | `0x10` | `0x05` | `0x200d0bbc` | `0xc512695` |
+| 主屏运动选择页面 | `page_sport` | `0x10` | `0x06` | `0x200d0b48` | `0xc51282d` |
+| 主屏卡片选择页面 | `page_select` | `0x10` | `0x07` | `0x200d0a54` | `0xc511e31` |
+
+| 熄屏时间设置页面 | `displayresttime` | `0x16` | `0x09` | `0x200d2a20` | `0xc557f19` |
+| 屏幕常亮设置页面 | `displayalwayson` | `0x16` | `0x45` | `0x200d28c0` | `0xc555ee1` |
+
+| 抬腕显示方式页面 | `dispalyraisewrist` | `0x16` | `0x0c` | `0x200d2938` | `0xc55645d` |
+| 抬腕亮屏时段页面 | `wristliftbright` | `0x16` | `0x0d` | `0x200d2aa8` | `0xc559135` |
+| 息屏显示时段页面 | `displayrestdisplay` | `0x16` | `0x08` | `0x200d29ac` | `0xc557619` |
+
+| 显示设置主页 | `display` | `0x16` | `0x06` | `0x200d26f0` | `0xc552f29` |
+| 息屏显示详细设置页面 | `brightalwaysdetail` | `0x16` | `0x0b` | `0x200d2764` | `0xc553d51` |
+| 息屏显示开关页面 | `brightalwayson` | `0x16` | `0x0a` | `0x200d27d8` | `0xc554969` |
+
+| 录音上传页面 | `upload` | `0x29` | `0x04` | `0x200da678` | `0xc61bb69` |
+| 录音上传提醒页面 | `remind` | `0x29` | `0x05` | `0x200da604` | `0xc61b8f1` |
+| 录音中断页面 | `interrupt` | `0x29` | `0x06` | `0x200da518` | `0xc618795` |
+
+| 活力设置页面 | `setting` | `0x36` | `0x01` | `0x200db7f4` | `0xc650e9d` |
+| 活力说明页面 | `explanation` | `0x36` | `0x02` | `0x200db6dc` | `0xc64f931` |
+| 活力中的心率设置目录页面 | `setting` | `0x36` | `0x04` | `0x200dc064` | `0xc668b65` |
+
+| 女性健康说明页面 | `notes` | `0x1f` | `0x01` | `0x200da6ec` | `0xc620955` |
+
+| 睡眠说明页面 | `explanation` | `0x0c` | `0x01` | `0x200daf98` | `0xc63bda9` |
+
+| 世界时钟主页 | `main` | `0x3b` | `0x00` | `0x200d9e4c` | `0xc601859` |
+| 世界时钟添加城市列表 | `add_list` | `0x3b` | `0x01` | `0x200d9dd8` | `0xc6005bd` |
+| 世界时钟城市详情 | `page_detail` | `0x3b` | `0x02` | `0x200d9d64` | `0xc60008d` |
+
+| 待办事项主页 | `main` | `0x3c` | `0x00` | `0x200dcd98` | `0xc682bbd` |
+| 待办事项列表 | `list_page` | `0x3c` | `0x01` | `0x200dcd24` | `0xc681911` |
+| 待办事项详情 | `detail` | `0x3c` | `0x02` | `0x200dccb0` | `0xc6814a9` |
+| 待办事项子列表 | `sub_list_page` | `0x3c` | `0x03` | `0x200dce0c` | `0xc683401` |
+
+| 手机静音 | `mute` | `0x3d` | `0x00` | `0x200da898` | `0xc6240c5` |
+| 查找手机 | `main` | `0x27` | `0x00` | `0x200da950` | `0xc625111` |
+
+| 设置主页 | `main` | `0x16` | `0x00` | `0x200d34a0` | `0xc5669ad` |
+
+| 系统设置页面 | `system` | `0x16` | `0x13` | `0x200d3f68` | `0xc570c89` |
+
+| 蓝牙设置页面 | `bluetooth` | `0x16` | `0x02` | `0x200d32b4` | `0xc563c99` |
+| 蓝牙耳机详情页面 | `headphone_info` | `0x16` | `0x03` | `0x200d33b8` | `0xc564b25` |
+
+| 万年历主页 | `main` | `0x45` | `0x00` | `0x200cf98c` | `0xc4f35d5` |
+| 万年历日期详情 | `detail` | `0x45` | `0x01` | `0x200cf748` | `0xc4f12f9` |
+| 万年历展示页 | `show` | `0x45` | `0x02` | `0x200cfa00` | `0xc4f6075` |
+| 万年历日程详情 | `title` | `0x45` | `0x03` | `0x200cfa74` | `0xc4f6b85` |
+| 万年历周视图 | `detail` | `0x45` | `0x04` | `0x200cfae8` | `0xc4f972d` |
+
+| 通知设置页面 | `notify` | `0x16` | `0x1c` | `0x200d37d8` | `0xc56808d` |
+
+| 米家主页 | `main` | `0x3f` | `0x00` | `0x200d0510` | `0xc5061dd` |
+
+| 下按键设置 | `down_key` | `0x16` | `0x16` | `0x200d2f98` | `0xc55de05` |
+| 快捷手势设置 | `quick_guesture` | `0x16` | `0x20` | `0x200d30d8` | `0xc55f58d` |
+| 快捷手势说明 | `guesture_prof` | `0x16` | `0x21` | `0x200d314c` | `0xc55fadd` |
+
+| 手势功能设置 | `guesture_sub_settings` | `0x16` | `0x22` | `0x200d31c0` | `0xc560f95` |
+| 手势教学选择 | `guesture_tch` | `0x16` | `0x23` | `0x200d323c` | `0xc5612a9` |
+
+证据与 AP 文件偏移见 [navigation-page-ids-043.json](../evidence/navigation-page-ids-043.json)。页面创建函数与现有的页面生命周期分析交叉核对；适配表验证描述符的 116 字节原始内容。此表不是完整的应用和页面目录，也不证明名称导航、直接调用或其他固件版本使用相同编号。
+
+其余符合启动数据结构的条目列在[页面描述符候选目录](navigation-page-candidates-xiaomi-band-10-pro-3.101.043.md)，用途和注册状态仍需逐条核对。

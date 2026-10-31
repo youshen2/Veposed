@@ -1,0 +1,188 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "sport settings",
+    "sport settings detail",
+    "reminder switch",
+    "radio select",
+    "picker select"
+  ],
+  "points": [
+    {
+      "name": "sports.settings.switch.register",
+      "calls": [
+        "0xc5bf0a0",
+        "0xc5bf0c6"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Two layout paths register C5BEFC8 on the setting row or inner element. User data is a pointer to the setting record.",
+      "verification_windows": [
+        "sports-settings-sports-settings-switch-register-1",
+        "sports-settings-sports-settings-switch-register-2"
+      ]
+    },
+    {
+      "name": "sports.settings.switch.event_data",
+      "calls": [
+        "0xc5bf01e"
+      ],
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "C5BEFC8 forwards the user-data record to the reminder setting row builder.",
+      "verification_windows": [
+        "sports-settings-sports-settings-switch-event_data-1"
+      ]
+    },
+    {
+      "name": "sports.settings.picker.confirm_register",
+      "calls": [
+        "0xc5bd660",
+        "0xc5bd7a2"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Two picker layout branches register C5BC940, which validates event and saves the chosen setting.",
+      "verification_windows": [
+        "sports-settings-sports-settings-picker-confirm_register-1",
+        "sports-settings-sports-settings-picker-confirm_register-2"
+      ]
+    },
+    {
+      "name": "sports.settings.picker.confirm_register_alt",
+      "calls": [
+        "0xc5bd8c0",
+        "0xc5bdc46"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Two additional picker layout branches register the same confirmation callback.",
+      "verification_windows": [
+        "sports-settings-sports-settings-picker-confirm_register_alt-1",
+        "sports-settings-sports-settings-picker-confirm_register_alt-2"
+      ]
+    },
+    {
+      "name": "sports.settings.picker.event_data",
+      "calls": [
+        "0xc5bca10"
+      ],
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The confirmation callback reads a setting-record pointer, dereferences the record and writes selected values.",
+      "verification_windows": [
+        "sports-settings-sports-settings-picker-event_data-1"
+      ]
+    },
+    {
+      "name": "sports.settings.picker.change_register",
+      "calls": [
+        "0xc5bda56"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "A picker branch registers C5BD3E0 with filter 0 for picker interaction state.",
+      "verification_windows": [
+        "sports-settings-sports-settings-picker-change_register-1"
+      ]
+    },
+    {
+      "name": "sports.settings.picker.focus_register",
+      "calls": [
+        "0xc5bda62"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "A picker branch registers C5BC830 with filter 9.",
+      "verification_windows": [
+        "sports-settings-sports-settings-picker-focus_register-1"
+      ]
+    },
+    {
+      "name": "sports.settings.picker.value_register",
+      "calls": [
+        "0xc5bda6e"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "A picker branch registers C5BD060 with filter 11 to refresh associated picker state.",
+      "verification_windows": [
+        "sports-settings-sports-settings-picker-value_register-1"
+      ]
+    },
+    {
+      "name": "sports.settings.radio.runway_register",
+      "calls": [
+        "0xc5c25aa"
+      ],
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Type 36 branch registers runway confirmation callback C5C1984, which writes several sport settings.",
+      "verification_windows": [
+        "sports-settings-sports-settings-radio-runway_register-1"
+      ]
+    },
+    {
+      "name": "sports.settings.radio.runway_data",
+      "calls": [
+        "0xc5c198a"
+      ],
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "Runway confirmation reads and dereferences a setting-record pointer before writing configuration.",
+      "verification_windows": [
+        "sports-settings-sports-settings-radio-runway_data-1"
+      ]
+    },
+    {
+      "name": "sports.settings.radio.gradient",
+      "calls": [
+        "0xc5c24fe"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Type 36 branch sets sports/list/gradient.bin.",
+      "verification_windows": [
+        "sports-settings-sports-settings-radio-gradient-1"
+      ]
+    },
+    {
+      "name": "sports.settings.radio.mask",
+      "calls": [
+        "0xc5c250e"
+      ],
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Type 36 branch sets sports/setting/gradient_mask.bin.",
+      "verification_windows": [
+        "sports-settings-sports-settings-radio-mask-1"
+      ]
+    }
+  ],
+  "evidence": "The sports manifest registers the five descriptors. Each create stores a private allocation at descriptor +60; each destroy clears it. The switch row callback retrieves its data and rebuilds setting rows. The picker confirmation callback reads a record pointer, derives a value from picker state and invokes setting-save functions. The type-36 radio button callback reads the same kind of event data, saves multiple settings and emits notifications.",
+  "scope": "Specific shared LVGL registration and user-data calls only; no claim to intercept all ways of modifying sport settings. Picker registration pairs cover four distinct static call sites and the three other picker callbacks belong to one branch.",
+  "limitations": "User-data results are pointers to records, not booleans; replacing them with invalid or mismatched pointers can crash or corrupt settings. Skipping callbacks or page destruction can leave configuration, timers or resources inconsistent. The slots do not provide a thread barrier. Device behavior and rollback remain unverified.",
+  "verification_windows": [
+    "sports-settings-sports-settings-switch-register-1",
+    "sports-settings-sports-settings-switch-register-2",
+    "sports-settings-sports-settings-switch-event_data-1",
+    "sports-settings-sports-settings-picker-confirm_register-1",
+    "sports-settings-sports-settings-picker-confirm_register-2",
+    "sports-settings-sports-settings-picker-confirm_register_alt-1",
+    "sports-settings-sports-settings-picker-confirm_register_alt-2",
+    "sports-settings-sports-settings-picker-event_data-1",
+    "sports-settings-sports-settings-picker-change_register-1",
+    "sports-settings-sports-settings-picker-focus_register-1",
+    "sports-settings-sports-settings-picker-value_register-1",
+    "sports-settings-sports-settings-radio-runway_register-1",
+    "sports-settings-sports-settings-radio-runway_data-1",
+    "sports-settings-sports-settings-radio-gradient-1",
+    "sports-settings-sports-settings-radio-mask-1",
+    "sports-settings-switch-user-data",
+    "sports-settings-picker-save-data",
+    "sports-settings-radio-user-data",
+    "sports-settings-picker-actual-destroy"
+  ],
+  "device_validation": "pending"
+}

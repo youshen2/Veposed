@@ -7,8 +7,8 @@ pub mod thumb;
 use core::ffi::c_void;
 
 pub const MAX_MODULES: usize = 16;
-pub const MAX_SITES: usize = 16;
-pub const MAX_CALLBACKS: usize = 8;
+pub const MAX_SITES: usize = 32;
+pub const MAX_CALLBACKS: usize = 32;
 pub type Result<T> = core::result::Result<T, Error>;
 
 #[repr(i32)]
@@ -121,6 +121,18 @@ struct Site {
     raw_owner: Option<u32>,
     token: u32,
     installed: bool,
+    // A suspended caller may still hold the dispatcher address. Never reuse it
+    // until the runtime itself is restarted with all old callers gone.
+    retired: bool,
+}
+
+impl Site {
+    fn retire(mut self) -> Self {
+        self.installed = false;
+        self.retired = true;
+        self.listeners = [None; MAX_CALLBACKS];
+        self
+    }
 }
 
 #[repr(C)]
@@ -186,13 +198,16 @@ impl Invocation {
             original: self.original,
             contract,
         };
-        let mut entered = [None; MAX_CALLBACKS];
+        let mut entered = [0; MAX_CALLBACKS];
         let mut count = 0;
-        for listener in self.listeners.iter().flatten().filter(|l| l.enabled) {
+        for (index, listener) in self.listeners.iter().enumerate() {
+            let Some(listener) = listener.as_ref().filter(|l| l.enabled) else {
+                continue;
+            };
             if !matches(listener.owner, listener.token) {
                 continue;
             }
-            entered[count] = Some(*listener);
+            entered[count] = index;
             count += 1;
             if let Some(callback) = listener.callbacks.before {
                 unsafe { callback(&mut context, listener.callbacks.user_data) };
@@ -204,7 +219,8 @@ impl Invocation {
         if context.return_early == 0 {
             context.result = original(context.args);
         }
-        for listener in entered[..count].iter().rev().flatten() {
+        for index in entered[..count].iter().rev() {
+            let listener = self.listeners[*index].as_ref().unwrap();
             if let Some(callback) = listener.callbacks.after {
                 unsafe { callback(&mut context, listener.callbacks.user_data) };
             }
@@ -238,10 +254,14 @@ impl<M: Memory> Engine<M> {
         self.sites.iter().flatten().filter(|s| s.installed).count()
     }
 
+    pub fn vacant_site(&self) -> Option<usize> {
+        self.sites.iter().position(Option::is_none)
+    }
+
     pub fn target_site(&self, target: Target) -> Option<usize> {
         self.sites
             .iter()
-            .position(|s| s.is_some_and(|s| s.target.key() == target.key()))
+            .position(|s| s.is_some_and(|s| !s.retired && s.target.key() == target.key()))
     }
 
     pub fn original_for(&self, target: Target) -> Option<usize> {
@@ -294,6 +314,12 @@ impl<M: Memory> Engine<M> {
     /// Quarantine callbacks before restoring every physical site. Continue past
     /// individual failures and retain those records for a subsequent retry.
     pub fn rollback_all(&mut self) -> Result<()> {
+        self.rollback_where(|_| true)
+    }
+
+    /// Retain sites whose restore condition is not yet met, while restoring
+    /// other sites and keeping every callback disabled for a later retry.
+    pub fn rollback_where(&mut self, mut can_restore: impl FnMut(usize) -> bool) -> Result<()> {
         for module in self.modules.iter_mut().flatten() {
             module.enabled = false;
         }
@@ -305,12 +331,25 @@ impl<M: Memory> Engine<M> {
         let mut failure = None;
         for index in (0..MAX_SITES).rev() {
             if let Some(site) = self.sites[index] {
+                if site.retired {
+                    continue;
+                }
                 if !site.installed {
                     self.sites[index] = None;
                     continue;
                 }
+                if !can_restore(index) {
+                    failure.get_or_insert(Error::Busy);
+                    continue;
+                }
                 match self.restore(site.patch) {
-                    Ok(()) => self.sites[index] = None,
+                    Ok(()) => {
+                        self.sites[index] = if site.raw_owner.is_some() {
+                            None
+                        } else {
+                            Some(site.retire())
+                        }
+                    }
                     Err(error) => {
                         failure.get_or_insert(error);
                     }
@@ -374,13 +413,18 @@ impl<M: Memory> Engine<M> {
             Target::Inline { function, .. } => (self.memory.code(function & !1, 16)?.write, 16),
         };
         let end = start.checked_add(size).ok_or(Error::Argument)?;
-        Ok(self.sites.iter().flatten().any(|site| {
-            let (other, size) = match site.patch {
-                Patch::Pointer { slot, .. } => (slot, core::mem::size_of::<usize>()),
-                Patch::Inline { memory, .. } => (memory.write, 16),
-            };
-            start < other.saturating_add(size) && other < end
-        }))
+        Ok(self
+            .sites
+            .iter()
+            .flatten()
+            .filter(|site| !site.retired)
+            .any(|site| {
+                let (other, size) = match site.patch {
+                    Patch::Pointer { slot, .. } => (slot, core::mem::size_of::<usize>()),
+                    Patch::Inline { memory, .. } => (memory.write, 16),
+                };
+                start < other.saturating_add(size) && other < end
+            }))
     }
 
     fn prepare(
@@ -485,8 +529,17 @@ impl<M: Memory> Engine<M> {
         // Retain ownership if both publication and rollback fail, allowing a retry.
         self.sites[index] = Some(site);
         if let Err(error) = self.apply(site.patch) {
+            // A failed publication may already have exposed the dispatcher.
+            // Disable callbacks even if restoration itself also fails.
+            let mut abandoned = site;
+            abandoned.listeners = [None; MAX_CALLBACKS];
+            self.sites[index] = Some(abandoned);
             if self.restore(site.patch).is_ok() {
-                self.sites[index] = None;
+                self.sites[index] = if site.raw_owner.is_some() {
+                    None
+                } else {
+                    Some(abandoned.retire())
+                };
             }
             return Err(error);
         }
@@ -522,6 +575,7 @@ impl<M: Memory> Engine<M> {
                 raw_owner: Some(owner),
                 token,
                 installed: true,
+                retired: false,
             },
         )?;
         Ok((token, original))
@@ -541,7 +595,7 @@ impl<M: Memory> Engine<M> {
         let existing = self
             .sites
             .iter()
-            .position(|s| s.is_some_and(|s| s.target.key() == target.key()));
+            .position(|s| s.is_some_and(|s| !s.retired && s.target.key() == target.key()));
         if existing.is_none() && self.overlaps(target)? {
             return Err(Error::Conflict);
         }
@@ -580,6 +634,7 @@ impl<M: Memory> Engine<M> {
                     raw_owner: None,
                     token,
                     installed: true,
+                    retired: false,
                 },
             )?;
         } else {
@@ -641,7 +696,7 @@ impl<M: Memory> Engine<M> {
             };
             if site.listeners.iter().flatten().count() == 1 {
                 self.restore(site.patch)?;
-                self.sites[index] = None;
+                self.sites[index] = Some(site.retire());
             } else {
                 site.listeners[position..].rotate_left(1);
                 site.listeners[MAX_CALLBACKS - 1] = None;

@@ -1,0 +1,48 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "activity data explanation",
+  "descriptor": "0x200cefa8",
+  "descriptor_root_slot": "0x200cefd8",
+  "state_slot": "0x2010dafc",
+  "create": "0x0c4d10a4",
+  "destroy": "0x0c4d0f44",
+  "section_builder": "0x0c4d0f74",
+  "section_builder_calls": [
+    "0x0c4d1160",
+    "0x0c4d11b2",
+    "0x0c4d1204",
+    "0x0c4d1258"
+  ],
+  "points": [
+    {
+      "name": "health.activity.explain.section_title",
+      "call": "0xc4d1028",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The common section builder sets the title from its record at offset 8; the page invokes the builder for step, calorie, intensity and standing explanations.",
+      "verification_window": "activity-explain-section_title"
+    },
+    {
+      "name": "health.activity.explain.section_body",
+      "call": "0xc4d1066",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The common section builder sets the body from its record at offset 16; the same call serves all four sections.",
+      "verification_window": "activity-explain-section_body"
+    }
+  ],
+  "evidence": "The activity manifest registers the explanation descriptor. Its create callback stores the root, prepares translated step, calorie, intensity and standing title/body records and calls the same section builder four times. The builder sets a title and body from record offsets 8 and 16. Destroy clears the root after removing its children.",
+  "scope": "Only the two shared label calls from the four section-builder invocations while this page root is active. Other pages and the header are outside this scope.",
+  "limitations": "All sections share each call site; blindly replacing text affects every section. Root slots are not thread barriers; shared-entry publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "lifecycle-state-clear-health-activity-explain",
+    "activity-explain-section_title",
+    "activity-explain-section_body",
+    "activity-explain-section-builder-1",
+    "activity-explain-section-builder-2",
+    "activity-explain-section-builder-3",
+    "activity-explain-section-builder-4"
+  ],
+  "device_validation": "pending"
+}

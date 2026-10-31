@@ -1,0 +1,103 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "timer main recent items",
+    "timer run view",
+    "timer done reminder"
+  ],
+  "state_slots": {
+    "main": [
+      "0x2010fcc8",
+      "0x200d02ec"
+    ],
+    "done": [
+      "0x2010fc8c",
+      null
+    ]
+  },
+  "points": [
+    {
+      "name": "apps.timer.recent_register",
+      "call": "0xc4ffa14",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The recent-item builder registers C4FFEE0 with filter 7 and a pointer to an eight-byte duration record in user data.",
+      "verification_window": "timer-run-apps-timer-recent_register"
+    },
+    {
+      "name": "apps.timer.recent_hm_unit",
+      "call": "0xc4ff89a",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The hour and minute branches set a translated unit on the recent-item label.",
+      "verification_window": "timer-run-apps-timer-recent_hm_unit"
+    },
+    {
+      "name": "apps.timer.recent_seconds_unit",
+      "call": "0xc4ffa7a",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The seconds-only branch sets the sec.timer translation on the recent-item label.",
+      "verification_window": "timer-run-apps-timer-recent_seconds_unit"
+    },
+    {
+      "name": "apps.timer.run.stop_register",
+      "call": "0xc500af8",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The run view registers C500508 on the stop control with filter 7.",
+      "verification_window": "timer-run-apps-timer-run-stop_register"
+    },
+    {
+      "name": "apps.timer.run.toggle_register",
+      "call": "0xc500b32",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The run view registers C500814 on the start/pause control with filter 7.",
+      "verification_window": "timer-run-apps-timer-run-toggle_register"
+    },
+    {
+      "name": "apps.timer.run.stop_event_code",
+      "call": "0xc50051c",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The stop callback checks for event code 7 before executing the stop path.",
+      "verification_window": "timer-run-apps-timer-run-stop_event_code"
+    },
+    {
+      "name": "apps.timer.run.toggle_event_code",
+      "call": "0xc500830",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "interpretation": "The toggle callback checks for event code 7 before switching the timer state.",
+      "verification_window": "timer-run-apps-timer-run-toggle_event_code"
+    },
+    {
+      "name": "apps.timer.done.caption",
+      "call": "0xc4ff118",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The reminder creation sets the translation for end.timer on its label.",
+      "verification_window": "timer-run-apps-timer-done-caption"
+    }
+  ],
+  "evidence": "The main page creates a run view under its root and the two controls register callbacks filtered on event code 7. Both callbacks check that code before changing the timer state. Recent entries register a callback whose event user data points to a duration record. The reminder creates a label from end.timer.",
+  "scope": "Only the recorded shared function call sites while their respective state or root slot is nonzero; timer backend operations and other paths are not covered.",
+  "limitations": "Skipping event actions or changing user data can leave the timer, reminder, and view state inconsistent. The slots are not thread barriers; patch publication and rollback require system-wide quiescence. Device behavior and recovery are unverified.",
+  "verification_windows": [
+    "timer-run-apps-timer-recent_register",
+    "timer-run-apps-timer-recent_hm_unit",
+    "timer-run-apps-timer-recent_seconds_unit",
+    "timer-run-apps-timer-run-stop_register",
+    "timer-run-apps-timer-run-toggle_register",
+    "timer-run-apps-timer-run-stop_event_code",
+    "timer-run-apps-timer-run-toggle_event_code",
+    "timer-run-apps-timer-done-caption",
+    "timer-run-recent-callback",
+    "timer-run-stop-callback",
+    "timer-run-toggle-callback",
+    "timer-run-run-create"
+  ],
+  "device_validation": "pending"
+}

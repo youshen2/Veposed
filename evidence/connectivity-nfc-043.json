@@ -1,0 +1,32 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "names": [
+    "settings.connectivity.nfc.event_code",
+    "settings.connectivity.nfc.click_data"
+  ],
+  "page_create": "0x0c5511e4",
+  "page_destroy": "0x0c551160",
+  "page_root_slot": "0x20111f88",
+  "row_builder": "0x0c55128c",
+  "register_event_call": "0x0c5512d4",
+  "event_callback": "0x0c551300",
+  "event_code_call": "0x0c551308",
+  "event_code_return_pc": "0x0c55130c",
+  "user_data_call": "0x0c551316",
+  "user_data_return_pc": "0x0c55131a",
+  "evidence": "The more-connect page stores its root before list construction and clears it on destroy. The NFC row registers event code 7 with user data 0. Its callback reads event code and continues only for 7, then reads user data and continues only when its low byte is 0. It looks up the row, calls the NFC switch path based on the current state, toggles the global state byte and updates the row.",
+  "scope": "the two getter calls in the NFC row callback while the more-connect settings page is active",
+  "limitations": "Changing code or user data only bypasses this callback, not other NFC paths. The row UI may already have changed state and may need reconciliation. Both getter entries are shared system-wide, so publication and rollback require all affected threads to be quiescent.",
+  "verification_windows": [
+    "nfc-click-register",
+    "nfc-click-event-code",
+    "nfc-click-user-data",
+    "nfc-page-root-create",
+    "nfc-page-root-destroy"
+  ],
+  "device_validation": "pending",
+  "registration_name": "settings.connectivity.nfc.click_register",
+  "registration_return_pc": "0x0c5512d8",
+  "registration_evidence": "Event registration uses object, callback, code 7 and user data 0; its result is ignored by the caller."
+}

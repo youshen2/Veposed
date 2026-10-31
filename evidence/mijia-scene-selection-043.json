@@ -1,0 +1,40 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "apps.mijia.scene.selected_index",
+  "page_create": "0x0c5077b0",
+  "page_destroy": "0x0c5076b0",
+  "page_root_slot": "0x2010ff20",
+  "scene_list_slot": "0x2010ff2c",
+  "row_create": "0x0c506e30",
+  "row_update": "0x0c506bd0",
+  "register_event_calls": [
+    "0x0c506f32",
+    "0x0c506fc2",
+    "0x0c506cf4",
+    "0x0c506d7e"
+  ],
+  "event_callback": "0x0c5074bc",
+  "getter_call": "0x0c5074c2",
+  "return_pc": "0x0c5074c6",
+  "entry": "0x002bfd89",
+  "contract": "word1",
+  "evidence": "The Mi Home scene page stores its root at 0x2010ff20 during creation and clears it on destruction. Row creation and updates register click event 7 with the list index as user data. The shared callback reads it, compares it to the scene count at scene_list + 8 with a signed GE condition, calculates the entry address from the list base plus index * 32, and dispatches scene handling unless a prior scene is already executing.",
+  "scope": "scene index read on a Mi Home scene-list click while its page root is active",
+  "limitations": "Changing the index can execute a different real-world scene. The module must preserve a nonnegative index below the current count; firmware uses a signed upper-bound check and a negative value can point before the list. Do not treat an out-of-range value as a safe way to suppress execution. The underlying getter is shared system-wide and requires quiescence during publication and rollback.",
+  "verification_windows": [
+    "mijia-scene-click-read",
+    "mijia-scene-register-create",
+    "mijia-scene-register-update",
+    "mijia-page-root-create",
+    "mijia-page-root-clear",
+    "mijia-scene-register-create-alt",
+    "mijia-scene-register-update-alt"
+  ],
+  "device_validation": "pending",
+  "registration_names": [
+    "apps.mijia.scene.register_create",
+    "apps.mijia.scene.register_update"
+  ],
+  "registration_evidence": "Both branches of row creation and row update register the scene click callback; event code 7 and user data index are passed. These four caller paths ignore the returned descriptor."
+}

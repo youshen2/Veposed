@@ -13,6 +13,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from firmware import PROFILE, generate_header, verify
+from thumb_check import verify_runtime_profile
 from elf import inspect
 from build_device_support import executable
 
@@ -47,6 +48,7 @@ def main():
         args.publisher = ROOT / "platform/p67cn/publisher.c"
     profile = json.loads(args.profile.read_text())
     _, firmware_report = verify(args.firmware, profile)
+    firmware_report["inline_relocations_verified"] = verify_runtime_profile(profile)
     variant = "manager" if args.manager else "image-probe" if args.image_probe else "self-test"
     output = ROOT / "build" / profile["target"] / variant
     output.mkdir(parents=True, exist_ok=True)

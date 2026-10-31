@@ -1,0 +1,45 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "names": [
+    "apps.sports.list_edit.event_code",
+    "apps.sports.list_edit.action_data",
+    "apps.sports.list_edit.flag_register",
+    "apps.sports.list_edit.delete_register",
+    "apps.sports.list_edit.done_register"
+  ],
+  "page_create": "0x0c58f664",
+  "page_destroy": "0x0c58f0d4",
+  "page_root_slot": "0x20114970",
+  "page_builder": "0x0c58f178",
+  "event_callback": "0x0c58f76c",
+  "event_code_call": "0x0c58f77e",
+  "event_code_return_pc": "0x0c58f782",
+  "user_data_call": "0x0c58f788",
+  "user_data_return_pc": "0x0c58f78c",
+  "evidence": "The sport list edit page stores its root in 0x20114970 and clears it on destroy. Its builder registers the same callback for event code 4 with data 0 on completion, 1 on the delete control and 2 on the flag control. The callback reads both getters and processes those branches only when the event code equals 4.",
+  "scope": "getter calls in the sport list-edit callback while its page root is active",
+  "limitations": "Changing the action data to another valid branch can use an incompatible event target and corrupt list state. A different low-byte value skips all three branches, while changing the event code skips the common branch. These points do not intercept other sports editing paths. Shared-entry publication and rollback require system-wide quiescence. The data slot is a page-lifecycle indicator, not proof of all-thread quiescence; skipping a registration may make its control nonfunctional.",
+  "verification_windows": [
+    "sport-list-edit-event",
+    "sport-list-edit-data",
+    "sport-list-edit-actions-register",
+    "sport-list-edit-done-register",
+    "sport-list-edit-root-create",
+    "sport-list-edit-root-destroy",
+    "sport-edit-flag-register",
+    "sport-edit-delete-register",
+    "sport-edit-done-register",
+    "sport-edit-data-create",
+    "sport-edit-build-before-root",
+    "sport-edit-data-destroy"
+  ],
+  "device_validation": "pending",
+  "registration_calls": {
+    "flag": "0x0c58f436",
+    "delete": "0x0c58f442",
+    "done": "0x0c58f568"
+  },
+  "registration_active_slot": "0x20114978",
+  "registration_evidence": "On initial page creation, the edit-data allocation is saved at 0x20114978 before sub_0c58f178 constructs controls; the root is assigned to 0x20114970 only after the builder returns. Thus root-based active filtering would miss the initial callback registrations. The destroy function clears the root and frees/clears the edit-data slot. The three registration callsites pass event code 4 and user-data values 2, 1 and 0 respectively; they do not use the returned descriptor."
+}

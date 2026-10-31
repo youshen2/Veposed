@@ -1,0 +1,61 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "timer_done reminder, distinct from timer main page",
+  "creation": "0x0c4fef8c",
+  "destroy": "0x0c4fedc0",
+  "reminder_registration": "0x0c4ff304",
+  "root_slot": "0x2010fc8c",
+  "points": [
+    {
+      "name": "apps.timer.done.close_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "call": "0xc4ff07c",
+      "return_pc": "0xc4ff080",
+      "verification_window": "timer-done-apps-timer-done-close_register",
+      "interpretation": "Close button registers callback 0x0c4fef4d, filter 7, user data null."
+    },
+    {
+      "name": "apps.timer.done.restart_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "call": "0xc4ff0fa",
+      "return_pc": "0xc4ff0fe",
+      "verification_window": "timer-done-apps-timer-done-restart_register",
+      "interpretation": "Restart button registers callback 0x0c4feebd, filter 7, user data null."
+    },
+    {
+      "name": "apps.timer.done.close_event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "call": "0xc4fef60",
+      "return_pc": "0xc4fef64",
+      "verification_window": "timer-done-apps-timer-done-close_event_code",
+      "interpretation": "Close handler compares event code to 7 before its timer-done dismissal actions."
+    },
+    {
+      "name": "apps.timer.done.restart_event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "call": "0xc4feed2",
+      "return_pc": "0xc4feed6",
+      "verification_window": "timer-done-apps-timer-done-restart_event_code",
+      "interpretation": "Restart handler compares event code to 7 before its timer restart and navigation actions."
+    }
+  ],
+  "evidence": "The reminder setup passes the create and destroy callbacks to the reminder framework. Create stores root at 0x0c4fefae; destroy clears it at 0x0c4fede6. The UI builder registers the close and restart callbacks on controls with event filter 7. Each handler obtains the LVGL event code and enters its own action branch only if code equals 7.",
+  "scope": "Only the two registered callbacks and the recorded getter calls while the reminder root is nonzero. Other timer start, stop, snooze or dismiss paths are not covered.",
+  "limitations": "Changing the event code can bypass the corresponding branch, but does not establish the state of the timer or other notification UI; the root slot is not a thread execution barrier. The shared LVGL entries need system-wide quiescence for patch publication and rollback. Device behavior is unverified.",
+  "verification_windows": [
+    "timer-done-root-create",
+    "timer-done-root-destroy",
+    "timer-done-callback-literals",
+    "timer-done-reminder-registration",
+    "timer-done-apps-timer-done-close_register",
+    "timer-done-apps-timer-done-restart_register",
+    "timer-done-apps-timer-done-close_event_code",
+    "timer-done-apps-timer-done-restart_event_code"
+  ],
+  "device_validation": "pending"
+}

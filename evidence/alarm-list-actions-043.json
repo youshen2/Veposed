@@ -1,0 +1,107 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "alarm main page",
+  "state_slot": "0x20111570",
+  "descriptor_root_slot": "0x200d14c8",
+  "create": "0x0c53d710",
+  "destroy": "0x0c53d374",
+  "points": [
+    {
+      "name": "apps.alarm.list.row_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc53dcc0",
+        "0xc53dd9c"
+      ],
+      "interpretation": "List update and row creation register the entry-defined callback with filter 7 and the current row index as user data. Alarm rows normally select 0x0c53d689; the add row uses another callback.",
+      "verification_windows": [
+        "alarm-list-apps-alarm-list-row_register-1",
+        "alarm-list-apps-alarm-list-row_register-2"
+      ]
+    },
+    {
+      "name": "apps.alarm.list.switch_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc53dd12",
+        "0xc53dde4"
+      ],
+      "interpretation": "List update and row creation register callback 0x0c53d405 with filter 30 and row index as user data.",
+      "verification_windows": [
+        "alarm-list-apps-alarm-list-switch_register-1",
+        "alarm-list-apps-alarm-list-switch_register-2"
+      ]
+    },
+    {
+      "name": "apps.alarm.list.row_event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "calls": [
+        "0xc53d690"
+      ],
+      "interpretation": "The existing-alarm row callback only enters its edit/navigation branch when event code equals 7.",
+      "verification_windows": [
+        "alarm-list-apps-alarm-list-row_event_code-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.list.row_index",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "calls": [
+        "0xc53d6a0"
+      ],
+      "interpretation": "The existing-alarm row callback resolves this value to an alarm record, copies the record into the editor state, then navigates to the edit page.",
+      "verification_windows": [
+        "alarm-list-apps-alarm-list-row_index-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.list.switch_event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "calls": [
+        "0xc53d41c"
+      ],
+      "interpretation": "The switch callback resolves the row index first and writes the switched state into the UI and alarm record only for event code 30.",
+      "verification_windows": [
+        "alarm-list-apps-alarm-list-switch_event_code-1"
+      ]
+    },
+    {
+      "name": "apps.alarm.list.switch_index",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "calls": [
+        "0xc53d40c"
+      ],
+      "interpretation": "The switch callback resolves the index before its event-code check and uses it to index a 28-byte UI row; an invalid index may corrupt memory.",
+      "verification_windows": [
+        "alarm-list-apps-alarm-list-switch_index-1"
+      ]
+    }
+  ],
+  "evidence": "The main-page lifecycle allocates and publishes its state, freeing it and clearing the slot on destroy. The list builder puts the existing-alarm callback into each row record; row create/update register that record callback with filter 7 and row index. Switch create/update register the state-change callback with filter 30 and row index. Handler disassembly establishes the event tests, alarm resolution and record writes.",
+  "scope": "Only the listed creation/update registration call sites and two individual callbacks; other alarm management paths are not covered.",
+  "limitations": "The index must address a valid current alarm row; overriding it with an out-of-range value can cause invalid memory access. Suppressing or rewriting an operation can leave visual and saved state inconsistent. The page state and root slots do not stop concurrent threads; publication and rollback of shared entry patches require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "alarm-list-page-state-create",
+    "alarm-list-page-state-destroy",
+    "alarm-list-row-callback-assignment",
+    "alarm-list-row-callback-literal",
+    "alarm-list-switch-callback-literal-creation",
+    "alarm-list-switch-callback-literal-update",
+    "alarm-list-apps-alarm-list-row_register-1",
+    "alarm-list-apps-alarm-list-row_register-2",
+    "alarm-list-apps-alarm-list-switch_register-1",
+    "alarm-list-apps-alarm-list-switch_register-2",
+    "alarm-list-apps-alarm-list-row_event_code-1",
+    "alarm-list-apps-alarm-list-row_index-1",
+    "alarm-list-apps-alarm-list-switch_event_code-1",
+    "alarm-list-apps-alarm-list-switch_index-1"
+  ],
+  "device_validation": "pending"
+}

@@ -1,7 +1,7 @@
 """Vela Lua .face container (single screen, 32-bit BGRA preview).
 
 Layout adapted from AIR-pixel/miband11-watchface-maker's documented compiler
-format (MIT); see NOTICE.md. The target preview is 336 x 480 for Band 10 Pro.
+format (MIT); see licenses/face-format-MIT.txt. The target preview is 336 x 480 for Band 10 Pro.
 """
 
 from pathlib import PurePosixPath

@@ -1,0 +1,17 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "ui.object.delete",
+  "entry": "0x1c02ecdd",
+  "file_offset": "0x7c11c",
+  "write_alias": "0x3c02ecdc",
+  "expected": "90f83330db0600d5704780b500affff7",
+  "veneer": "0x0c588de8",
+  "contract": "void1",
+  "evidence": "The entry checks bit 0x10 at object + 51 and returns immediately if set; otherwise it calls 0x1c02eb88. That function sets the bit, sends a deletion event and invokes deletion logic, with firmware log string lv_obj_delete. Many system callers use the verified veneer.",
+  "relocation": "For this exact entry and eight bytes only, copy LDRB.W and LSLS, branch locally on the same condition, and jump absolutely to either original entry + 8 or + 10. Both resume points lie outside the eight-byte patch. Other instruction patterns are rejected.",
+  "validation": "scripts/test-thumb-relocation.py compares original and trampoline with Unicorn for both branch outcomes and multiple flag values, checking destination, general registers, LR, SP and condition flags. It does not execute the full delete operation.",
+  "scope": "all calls through this entry; direct calls to internal deletion logic are outside scope",
+  "limitations": "The object may be freed by the original call; after callbacks must not dereference it. Skipping deletion may retain resources or invalidate page lifecycle. Shared-entry publication and restoration require proven system-wide quiescence; no device validation.",
+  "device_validation": "pending"
+}

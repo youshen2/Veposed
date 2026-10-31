@@ -1,0 +1,19 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "name": "settings.return_to_dial.selected_description",
+  "page_create": "0x0c54e2f0",
+  "list_row_builder": "0x0c54e12c",
+  "page_destroy": "0x0c54e0dc",
+  "page_root_slot": "0x20111c90",
+  "call": "0x0c54e256",
+  "return_pc": "0x0c54e25a",
+  "entry": "0x1c06f039",
+  "evidence": "The page creator stores its root in 0x20111c90 before building the list. The row builder reads persist.back_dial_id, selects the matching row, formats return_to_dial_info.settings into a stack buffer and passes that buffer and its newly-created label to the label-text veneer. The destroy callback clears the page root. The label is local, so dispatch uses the exact call site and active root, not a subject slot. Selection and language callbacks rebuild the list.",
+  "scope": "the description of the selected return-to-dial setting while the page is active",
+  "verification_windows": [
+    "return-to-dial-selected-description",
+    "return-to-dial-destroy"
+  ],
+  "device_validation": "pending"
+}

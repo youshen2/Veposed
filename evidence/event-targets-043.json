@@ -1,0 +1,44 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "names": [
+    "ui.event.current_target",
+    "ui.event.original_target",
+    "ui.event.parameter"
+  ],
+  "event_send": "0x002bf691",
+  "event_bubble": "0x002bf5e5",
+  "contract": "word1",
+  "fields": [
+    {
+      "name": "current_target",
+      "offset": 0,
+      "entry": "0x002bfd45",
+      "veneer": "0x0c588ce8"
+    },
+    {
+      "name": "original_target",
+      "offset": 4,
+      "entry": "0x002bfd55",
+      "veneer": "0x0c5879e0"
+    },
+    {
+      "name": "parameter",
+      "offset": 16,
+      "entry": "0x002bfd79",
+      "veneer": "0x0c588da8"
+    }
+  ],
+  "evidence": "The event sender initially stores the supplied object in both event words 0 and 1 and the supplied parameter at offset 16. On bubbling, the dispatcher obtains the parent of word 0 and replaces word 0 before recursive dispatch; word 1 is left unchanged. Three veneers branch to the corresponding SRAM leaf getters. These semantics are based on this firmware and do not assume upstream field order.",
+  "reference_comparison": "https://github.com/lvgl/lvgl/blob/v8.3.11/src/core/lv_event.h",
+  "scope": "each getter affects all callers; return values are pointer words with event-dependent object and lifetime",
+  "limitations": "Do not replace pointers unless the replacement satisfies the specific caller contract. Shared-entry install and rollback require system-wide quiescence; static analysis and relocation tests do not validate device behavior.",
+  "verification_windows": [
+    "event-send-initialize",
+    "event-bubble-target",
+    "event-current-target-veneer",
+    "event-original-target-veneer",
+    "event-parameter-veneer"
+  ],
+  "device_validation": "pending"
+}

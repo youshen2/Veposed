@@ -1,0 +1,166 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "pages": [
+    "sport waiting",
+    "sport realtime",
+    "sport speech volume"
+  ],
+  "points": [
+    {
+      "name": "sports.waiting.start_register",
+      "call": "0xc5cdae6",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The waiting view registers C5CD790 with event filter 4; its callback passes the sport record to C5CD4DC, which checks storage and selects a training/start flow.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-start_register"
+      ]
+    },
+    {
+      "name": "sports.waiting.start_data",
+      "call": "0xc5cd7a2",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "C5CD790 reads a sport record pointer and passes it to the waiting-view click handler.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-start_data"
+      ]
+    },
+    {
+      "name": "sports.waiting.settings_register",
+      "call": "0xc5cdb64",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The waiting view registers C5CCE38, which navigates to the sport settings page.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-settings_register"
+      ]
+    },
+    {
+      "name": "sports.waiting.settings_data",
+      "call": "0xc5cce44",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The callback reads the sport record and uses its first word as sport type when opening settings.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-settings_data"
+      ]
+    },
+    {
+      "name": "sports.waiting.warmup_register",
+      "call": "0xc5cdc80",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The waiting view registers C5CCFA0 when the warmup branch is enabled.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-warmup_register"
+      ]
+    },
+    {
+      "name": "sports.waiting.warmup_data",
+      "call": "0xc5ccfa6",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The warmup callback reads a sport record pointer and uses a nested pointer before navigating.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-warmup_data"
+      ]
+    },
+    {
+      "name": "sports.waiting.swim_register",
+      "call": "0xc5cddfc",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The swim sport branch registers C5CCE78, which opens the radio-select page for pool length.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-swim_register"
+      ]
+    },
+    {
+      "name": "sports.waiting.swim_data",
+      "call": "0xc5cce7e",
+      "target": "lv_event_get_user_data",
+      "contract": "word1",
+      "interpretation": "The swim-length callback reads a sport record pointer and dereferences its nested data.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-swim_data"
+      ]
+    },
+    {
+      "name": "sports.waiting.runway_register",
+      "call": "0xc5cdcea",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The sport type 208 branch registers C5CCE28 to navigate to sport page 4.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-runway_register"
+      ]
+    },
+    {
+      "name": "sports.waiting.course_info_register",
+      "call": "0xc5ccbd8",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "Certain course variants register C5CC928 on their info icon.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-course_info_register"
+      ]
+    },
+    {
+      "name": "sports.waiting.course_info_icon",
+      "call": "0xc5ccbc4",
+      "target": "lv_image_set_src",
+      "contract": "void2",
+      "interpretation": "Certain course variants set sports/warmup/image/info.bin.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-course_info_icon"
+      ]
+    },
+    {
+      "name": "sports.waiting.sport_text",
+      "call": "0xc5cdb20",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The non-course branch resolves and sets a localized sport name.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-sport_text"
+      ]
+    },
+    {
+      "name": "sports.waiting.course_text",
+      "call": "0xc5cdbd2",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "interpretation": "The course branch resolves and sets a course name.",
+      "verification_windows": [
+        "sports-waiting-sports-waiting-course_text"
+      ]
+    }
+  ],
+  "evidence": "The sports manifest registers the three selected descriptors. Waiting and realtime create call C58AB40, which stores its return at descriptor +60; both destroy paths call C58AB80 with the descriptor, freeing and clearing the same slot. The voice page stores a root and clears it on destroy before cleaning other state. The waiting builder registers distinct handlers for the start, settings, warmup, pool-length and runway branches.",
+  "scope": "Only the recorded registration, event-data and UI calls. Training execution, other navigation paths, timer callbacks, sport measurements and voice media internals are not intercepted.",
+  "limitations": "The event data points return pointers to live sport records, sometimes with nested pointers; replacing them incorrectly can crash or corrupt state. Suppressing start can prevent storage checks and training; skipping destruction can strand timers, media and sensors. Guards are not thread barriers and the voice volume callback is asynchronous. Device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "sports-waiting-sports-waiting-start_register",
+    "sports-waiting-sports-waiting-start_data",
+    "sports-waiting-sports-waiting-settings_register",
+    "sports-waiting-sports-waiting-settings_data",
+    "sports-waiting-sports-waiting-warmup_register",
+    "sports-waiting-sports-waiting-warmup_data",
+    "sports-waiting-sports-waiting-swim_register",
+    "sports-waiting-sports-waiting-swim_data",
+    "sports-waiting-sports-waiting-runway_register",
+    "sports-waiting-sports-waiting-course_info_register",
+    "sports-waiting-sports-waiting-course_info_icon",
+    "sports-waiting-sports-waiting-sport_text",
+    "sports-waiting-sports-waiting-course_text",
+    "sports-waiting-waiting-builder-entry",
+    "sports-waiting-waiting-start-click",
+    "sports-waiting-waiting-start-flow",
+    "sports-waiting-wait-create-call",
+    "sports-waiting-realtime-create-call",
+    "sports-waiting-release-helper"
+  ],
+  "device_validation": "pending"
+}

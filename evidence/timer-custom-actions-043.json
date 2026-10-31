@@ -1,0 +1,165 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "descriptor": "0x200d0390",
+  "descriptor_root_slot": "0x200d03c0",
+  "create": "0x0c5012b4",
+  "destroy": "0x0c500c94",
+  "state_slot": "0x2010fdb8",
+  "caption_slot": "0x2010fdb0",
+  "points": [
+    {
+      "name": "apps.timer.custom.hours_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc50162e",
+        "0xc501672"
+      ],
+      "verification_windows": [
+        "timer-custom-apps-timer-custom-hours_register-1",
+        "timer-custom-apps-timer-custom-hours_register-2"
+      ],
+      "interpretation": "Both registrations use callback 0x0c500d79; filters are 9 and 7 respectively."
+    },
+    {
+      "name": "apps.timer.custom.minutes_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc501680",
+        "0xc50168e"
+      ],
+      "verification_windows": [
+        "timer-custom-apps-timer-custom-minutes_register-1",
+        "timer-custom-apps-timer-custom-minutes_register-2"
+      ],
+      "interpretation": "Both registrations use callback 0x0c500e3d; filters are 9 and 7 respectively."
+    },
+    {
+      "name": "apps.timer.custom.seconds_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc50169c",
+        "0xc5016aa"
+      ],
+      "verification_windows": [
+        "timer-custom-apps-timer-custom-seconds_register-1",
+        "timer-custom-apps-timer-custom-seconds_register-2"
+      ],
+      "interpretation": "Both registrations use callback 0x0c500f01; filters are 9 and 7 respectively."
+    },
+    {
+      "name": "apps.timer.custom.start_register",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "calls": [
+        "0xc501708"
+      ],
+      "verification_windows": [
+        "timer-custom-apps-timer-custom-start_register-1"
+      ],
+      "interpretation": "Registers callback 0x0c500bd1 with filter 7. The callback reads all three pickers and starts a positive duration."
+    },
+    {
+      "name": "apps.timer.custom.hours_event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "calls": [
+        "0xc500d7c"
+      ],
+      "verification_windows": [
+        "timer-custom-apps-timer-custom-hours_event_code-1"
+      ],
+      "interpretation": "The callback enters the hour selector branch only when event code equals 9."
+    },
+    {
+      "name": "apps.timer.custom.minutes_event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "calls": [
+        "0xc500e40"
+      ],
+      "verification_windows": [
+        "timer-custom-apps-timer-custom-minutes_event_code-1"
+      ],
+      "interpretation": "The callback enters the minute selector branch only when event code equals 9."
+    },
+    {
+      "name": "apps.timer.custom.seconds_event_code",
+      "target": "lv_event_get_code",
+      "contract": "word1",
+      "calls": [
+        "0xc500f04"
+      ],
+      "verification_windows": [
+        "timer-custom-apps-timer-custom-seconds_event_code-1"
+      ],
+      "interpretation": "The callback enters the second selector branch only when event code equals 9."
+    },
+    {
+      "name": "apps.timer.custom.hours_caption",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc500cf2"
+      ],
+      "verification_windows": [
+        "timer-custom-apps-timer-custom-hours_caption-1"
+      ],
+      "interpretation": "The hour selection routine sets the full_hour.common translation on the optional caption label."
+    },
+    {
+      "name": "apps.timer.custom.minutes_caption",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc500db6"
+      ],
+      "verification_windows": [
+        "timer-custom-apps-timer-custom-minutes_caption-1"
+      ],
+      "interpretation": "The minute selection routine sets the full_min.common translation on the optional caption label."
+    },
+    {
+      "name": "apps.timer.custom.seconds_caption",
+      "target": "lvx_label_set_text",
+      "contract": "void2",
+      "calls": [
+        "0xc500e7a"
+      ],
+      "verification_windows": [
+        "timer-custom-apps-timer-custom-seconds_caption-1"
+      ],
+      "interpretation": "The second selection routine sets the sec.common translation on the optional caption label."
+    }
+  ],
+  "evidence": "The set-page descriptor is registered by the timer application. Its create callback allocates and stores page state; destroy frees and clears it. The page builder registers callbacks for each picker for filters 9 and 7. The three callbacks only call the corresponding selector when the fetched event code equals 9. The selected helper also updates an optional caption and active picker. The start callback parses all picker strings, checks for a positive duration, and can start a timer.",
+  "scope": "Only the listed call sites while the page state is nonzero. Selector helpers may also be called by non-LVGL paths; intercepting an event does not prevent all ways to change the selection.",
+  "limitations": "Picker and timer state may become inconsistent if callbacks are skipped or parameters changed. The caption and page state slots must remain valid; shared entry publication and rollback require system-wide quiescence. Device behavior is unverified.",
+  "verification_windows": [
+    "timer-custom-state-create",
+    "timer-custom-state-destroy",
+    "timer-custom-register-callback-literals",
+    "timer-custom-apps-timer-custom-hours_register-1",
+    "timer-custom-apps-timer-custom-hours_register-2",
+    "timer-custom-apps-timer-custom-minutes_register-1",
+    "timer-custom-apps-timer-custom-minutes_register-2",
+    "timer-custom-apps-timer-custom-seconds_register-1",
+    "timer-custom-apps-timer-custom-seconds_register-2",
+    "timer-custom-apps-timer-custom-start_register-1",
+    "timer-custom-apps-timer-custom-hours_event_code-1",
+    "timer-custom-apps-timer-custom-minutes_event_code-1",
+    "timer-custom-apps-timer-custom-seconds_event_code-1",
+    "timer-custom-apps-timer-custom-hours_caption-1",
+    "timer-custom-apps-timer-custom-minutes_caption-1",
+    "timer-custom-apps-timer-custom-seconds_caption-1",
+    "timer-custom-page-descriptor",
+    "timer-custom-registration-array",
+    "timer-custom-registration"
+  ],
+  "device_validation": "pending",
+  "registration": "0x0c4fec60",
+  "registration_array_file_offset": "0xc5e8dc"
+}

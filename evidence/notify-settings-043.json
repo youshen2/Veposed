@@ -1,0 +1,70 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "app_id": 22,
+  "page_id": 28,
+  "state_slot": "0x20113134",
+  "descriptor_root_slot": "0x200d3808",
+  "points": [
+    {
+      "name": "settings.notify.red_dot_register",
+      "call": "0xc567c08",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc56773d reads/writes setting 0",
+      "verification_window": "settings-notify-red-dot-register"
+    },
+    {
+      "name": "settings.notify.screen_register",
+      "call": "0xc567d68",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc567919 reads/writes setting 3",
+      "verification_window": "settings-notify-screen-register"
+    },
+    {
+      "name": "settings.notify.wrist_register",
+      "call": "0xc567e18",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc5679d1 reads/writes setting 2",
+      "verification_window": "settings-notify-wrist-register"
+    },
+    {
+      "name": "settings.notify.wear_register",
+      "call": "0xc567f80",
+      "target": "lv_obj_add_event_cb",
+      "meaning": "callback 0xc5679a5 reads/writes setting 7",
+      "verification_window": "settings-notify-wear-register"
+    },
+    {
+      "name": "settings.notify.red_dot_info",
+      "call": "0xc567c7e",
+      "target": "lvx_label_set_text",
+      "meaning": "red_dot_reminder_info.settings",
+      "verification_window": "settings-notify-red-dot-info"
+    },
+    {
+      "name": "settings.notify.wrist_info",
+      "call": "0xc567efe",
+      "target": "lvx_label_set_text",
+      "meaning": "hang_wrist_notify_explain.settings",
+      "verification_window": "settings-notify-wrist-info"
+    }
+  ],
+  "evidence": "Settings manifest registers this descriptor. Creator stores content root then calls builder, and destroy unsubscribes two update subscriptions and clears root. Four LVGL registrations use filter 7 and distinct callbacks. Their callbacks call the same settings getter and setter with keys 0, 3, 2 and 7 respectively; screen callback also toggles the visibility of the wrist option.",
+  "scope": "Page lifecycle, four registration sites and two explanatory text setters. Setting getter/setter routines themselves are not exposed by these named entries.",
+  "limitations": "Replacing or skipping a registered callback can leave its setting and UI state out of sync. Root slots are not a thread synchronization primitive; subscription callbacks, device behavior and recovery remain unverified.",
+  "verification_windows": [
+    "settings-notify-red-dot-register",
+    "settings-notify-screen-register",
+    "settings-notify-wrist-register",
+    "settings-notify-wear-register",
+    "settings-notify-red-dot-info",
+    "settings-notify-wrist-info",
+    "notify-settings-create",
+    "notify-settings-builder",
+    "notify-settings-red-dot-callback",
+    "notify-settings-screen-callback",
+    "notify-settings-wrist-callback",
+    "notify-settings-wear-callback"
+  ],
+  "device_validation": "pending"
+}

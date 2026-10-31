@@ -34,6 +34,7 @@ pub struct Platform {
     pub guard_write: Option<unsafe extern "C" fn(*const u8) -> i32>,
     pub points: *const NamedPoint,
     pub point_count: u32,
+    pub point_size: usize,
 }
 
 #[repr(C)]
@@ -135,8 +136,9 @@ core::arch::global_asm!(
     ".balign 4",
     ".global veposed_trampolines",
     "veposed_trampolines:",
-    ".space 512",
+    ".space {storage}",
     ".previous",
+    storage = const MAX_SITES * veposed_core::thumb::TRAMPOLINE_SIZE,
 );
 
 #[cfg(target_arch = "arm")]
@@ -201,8 +203,9 @@ impl Memory for NativeMemory {
         #[cfg(target_arch = "arm")]
         {
             self.code(
-                core::ptr::addr_of!(veposed_trampolines) as usize + index * 32,
-                32,
+                core::ptr::addr_of!(veposed_trampolines) as usize
+                    + index * veposed_core::thumb::TRAMPOLINE_SIZE,
+                veposed_core::thumb::TRAMPOLINE_SIZE,
             )
         }
         #[cfg(not(target_arch = "arm"))]
@@ -323,7 +326,8 @@ fn quarantine(reason: u32, error: i32) -> Result<()> {
         let state = unsafe { &mut *STATE.0.get() };
         state.guard = state.guard.lock(reason, error);
         let rollback = if IN_FLIGHT.load(Ordering::Acquire) == 0 {
-            state.engine.rollback_all()
+            let named = &state.named;
+            state.engine.rollback_where(|site| !named.site_busy(site))
         } else {
             Err(Error::Busy)
         };
@@ -340,6 +344,7 @@ enum Operation {
     Configure,
     Install,
     NamedInstall,
+    Enable,
     Cleanup,
 }
 
@@ -366,8 +371,10 @@ fn mutate_state(operation: Operation, f: impl FnOnce(&mut State) -> Result<()>) 
         }
         state.guard
     };
-    if matches!(operation, Operation::Install | Operation::NamedInstall)
-        && guard.record.phase != recovery::ARMED
+    if matches!(
+        operation,
+        Operation::Install | Operation::NamedInstall | Operation::Enable
+    ) && guard.record.phase != recovery::ARMED
     {
         let next = match guard.arm() {
             Ok(next) => next,
@@ -388,14 +395,14 @@ fn mutate_state(operation: Operation, f: impl FnOnce(&mut State) -> Result<()>) 
         state.named.prune(&state.engine);
         result
     };
-    if let Err(error) = result {
-        if operation == Operation::Install
-            || (operation == Operation::NamedInstall
+    if let Err(error) = result
+        && (operation == Operation::Enable
+            || (matches!(operation, Operation::Install | Operation::NamedInstall)
                 && matches!(error, Error::Signature | Error::Memory | Error::Unsupported))
-            || (operation == Operation::Cleanup && matches!(error, Error::Memory | Error::Conflict))
-        {
-            let _ = quarantine(recovery::HOOK_FAILURE, error as i32);
-        }
+            || (operation == Operation::Cleanup
+                && matches!(error, Error::Memory | Error::Conflict)))
+    {
+        let _ = quarantine(recovery::HOOK_FAILURE, error as i32);
         return error as i32;
     }
     let closed = {
@@ -415,7 +422,7 @@ fn mutate_state(operation: Operation, f: impl FnOnce(&mut State) -> Result<()>) 
     {
         return error as i32;
     }
-    0
+    result.map_or_else(|error| error as i32, |()| 0)
 }
 
 #[cfg(target_arch = "arm")]
@@ -444,6 +451,9 @@ pub unsafe extern "C" fn veposed_init(platform: *const Platform) -> i32 {
         return Error::Abi as i32;
     }
     let platform = unsafe { *platform };
+    if platform.point_size != core::mem::size_of::<NamedPoint>() {
+        return Error::Abi as i32;
+    }
     #[cfg(target_arch = "arm")]
     if !unsafe { firmware_matches() } {
         return Error::Firmware as i32;
@@ -557,7 +567,12 @@ pub unsafe extern "C" fn veposed_attach(
 
 #[unsafe(no_mangle)]
 pub extern "C" fn veposed_detach(owner: u32, handle: u32) -> i32 {
-    mutate(Operation::Cleanup, |engine| engine.detach(owner, handle))
+    mutate_state(Operation::Cleanup, |state| {
+        if state.named.owner_busy(owner, Some(handle)) {
+            return Err(Error::Busy);
+        }
+        state.engine.detach(owner, handle)
+    })
 }
 
 #[unsafe(no_mangle)]
@@ -566,7 +581,7 @@ pub extern "C" fn veposed_set_enabled(owner: u32, enabled: u32) -> i32 {
         if enabled == 0 {
             Operation::Cleanup
         } else {
-            Operation::Install
+            Operation::Enable
         },
         |engine| engine.set_enabled(owner, enabled != 0),
     )
@@ -596,7 +611,12 @@ pub unsafe extern "C" fn veposed_list_modules(
 
 #[unsafe(no_mangle)]
 pub extern "C" fn veposed_unregister(owner: u32) -> i32 {
-    mutate(Operation::Cleanup, |engine| engine.unregister(owner))
+    mutate_state(Operation::Cleanup, |state| {
+        if state.named.owner_busy(owner, None) {
+            return Err(Error::Busy);
+        }
+        state.engine.unregister(owner)
+    })
 }
 
 #[unsafe(no_mangle)]
@@ -698,6 +718,10 @@ dispatchers!(
     entry4 => 4, entry5 => 5, entry6 => 6, entry7 => 7,
     entry8 => 8, entry9 => 9, entry10 => 10, entry11 => 11,
     entry12 => 12, entry13 => 13, entry14 => 14, entry15 => 15,
+    entry16 => 16, entry17 => 17, entry18 => 18, entry19 => 19,
+    entry20 => 20, entry21 => 21, entry22 => 22, entry23 => 23,
+    entry24 => 24, entry25 => 25, entry26 => 26, entry27 => 27,
+    entry28 => 28, entry29 => 29, entry30 => 30, entry31 => 31,
 );
 
 /// Symbols referenced by freestanding Rust/compiler-builtins and C modules.

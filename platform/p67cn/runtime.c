@@ -218,7 +218,7 @@ static void write_status(int32_t status) {
 
 __attribute__((constructor))
 static void module_init(void) {
-    vep_platform platform = { VEP_ABI_VERSION, sizeof(vep_platform), publish, vep_guard_read, vep_guard_write, VEP_NAMED_POINTS, VEP_NAMED_POINT_COUNT };
+    vep_platform platform = { VEP_ABI_VERSION, sizeof(vep_platform), publish, vep_guard_read, vep_guard_write, VEP_NAMED_POINTS, VEP_NAMED_POINT_COUNT, sizeof(vep_named_point) };
     int32_t rc = veposed_init(&platform);
     /* The identity guard precedes all firmware function calls. */
     if (rc != VEP_OK) { veposed_device_status = rc; return; }

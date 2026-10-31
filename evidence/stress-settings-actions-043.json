@@ -1,0 +1,88 @@
+{
+  "target": "xiaomi-band-10-pro-3.101.043",
+  "ap_sha256": "519307675665e4866d722a8119a98589c397b614ac3294cb87bfc86de45756ec",
+  "page": "pressure settings",
+  "descriptor": "0x200daf24",
+  "descriptor_root_slot": "0x200daf54",
+  "state_slot": "0x2011d244",
+  "create": "0x0c6336c0",
+  "destroy": "0xc633484",
+  "builder": "0x0c6334cc",
+  "monitor_callback": "0x0c633884",
+  "relax_callback": "0x0c63373c",
+  "settings_refresh": "0x0c633658",
+  "points": [
+    {
+      "name": "health.stress.settings.monitor_register",
+      "call": "0xc63358a",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The page builder registers callback 0x0c633885 with event filter 7 and user data 0.",
+      "verification_window": "stress-settings-monitor_register"
+    },
+    {
+      "name": "health.stress.settings.relax_register",
+      "call": "0xc633600",
+      "target": "lv_obj_add_event_cb",
+      "contract": "word4",
+      "interpretation": "The page builder registers callback 0x0c63373d with event filter 7 and user data 0.",
+      "verification_window": "stress-settings-relax_register"
+    },
+    {
+      "name": "health.stress.settings.relax_initial_hide",
+      "call": "0xc63356c",
+      "target": "lv_obj_add_flag",
+      "contract": "void2",
+      "interpretation": "When the monitor status is not 1 the builder adds flag 1 to the reminder row.",
+      "verification_window": "stress-settings-relax_initial_hide"
+    },
+    {
+      "name": "health.stress.settings.relax_initial_show",
+      "call": "0xc63362a",
+      "target": "lv_obj_clear_flag",
+      "contract": "void2",
+      "interpretation": "When the monitor status is 1 the builder clears flag 1 on the reminder row.",
+      "verification_window": "stress-settings-relax_initial_show"
+    },
+    {
+      "name": "health.stress.settings.relax_monitor_hide",
+      "call": "0xc6338a8",
+      "target": "lv_obj_add_flag",
+      "contract": "void2",
+      "interpretation": "The monitor callback adds flag 1 to the reminder row on its state-change path.",
+      "verification_window": "stress-settings-relax_monitor_hide"
+    },
+    {
+      "name": "health.stress.settings.relax_refresh_hide",
+      "call": "0xc633688",
+      "target": "lv_obj_add_flag",
+      "contract": "void2",
+      "interpretation": "The settings event listener adds flag 1 to the reminder row when the monitor status is not 1.",
+      "verification_window": "stress-settings-relax_refresh_hide"
+    },
+    {
+      "name": "health.stress.settings.relax_refresh_show",
+      "call": "0xc6336ae",
+      "target": "lv_obj_clear_flag",
+      "contract": "void2",
+      "interpretation": "The settings event listener clears flag 1 on the reminder row when the monitor status is 1.",
+      "verification_window": "stress-settings-relax_refresh_show"
+    }
+  ],
+  "evidence": "The pressure application registers the settings page descriptor. Its create stores the root and invokes the builder. The builder registers two event filter 7 callbacks for monitor and relax reminder rows. The monitor callback updates monitoring state and can hide the reminder row; the relax callback updates setting state. A settings event listener refreshes row visibility and switch state. Destroy clears the root.",
+  "scope": "Only recorded switch registrations and row visibility calls while the pressure settings root is active. Other ways of changing monitoring, persisted settings, and notification delivery are not intercepted.",
+  "limitations": "Replacing callbacks or hiding the row may desynchronize displayed and actual settings. Root slots are not thread barriers; shared-entry publication and rollback require system-wide quiescence. Device behavior remains unverified.",
+  "verification_windows": [
+    "stress-settings-monitor_register",
+    "stress-settings-relax_register",
+    "stress-settings-relax_initial_hide",
+    "stress-settings-relax_initial_show",
+    "stress-settings-relax_monitor_hide",
+    "stress-settings-relax_refresh_hide",
+    "stress-settings-relax_refresh_show",
+    "stress-settings-monitor-callback",
+    "stress-settings-relax-callback",
+    "stress-settings-refresh-callback"
+  ],
+  "device_validation": "pending"
+}

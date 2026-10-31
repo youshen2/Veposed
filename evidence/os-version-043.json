@@ -38,5 +38,8 @@
     "registration": "app_install and app_lookup, followed by launcher_add on a separate Lua event turn",
     "launcher_return": "Ignored: exact function ends with a logging call, whose return is not a status code"
   },
-  "device_validation": "pending"
+  "device_validation": "pending",
+  "page_destroy": "0x0c54d550",
+  "active_slot": "0x20111c20",
+  "lifecycle": "The about constructor stores the root before creating the OS label and updating its text. The destroy callback clears 76 bytes starting at the root slot, including the OS label slot. The dispatcher requires an active root as well as the label and caller match."
 }

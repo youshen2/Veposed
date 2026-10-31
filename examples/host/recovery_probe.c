@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
     journal = argv[1];
     const char *mode = argv[2];
     fail_write = strcmp(mode, "storage-fail") == 0;
-    vep_platform platform = { VEP_ABI_VERSION, sizeof(platform), 0, guard_read, guard_write, 0, 0 };
+    vep_platform platform = { VEP_ABI_VERSION, sizeof(platform), 0, guard_read, guard_write, 0, 0, sizeof(vep_named_point) };
     assert(veposed_init(&platform) == 0);
     vep_recovery_status status;
     assert(veposed_recovery_status(&status) == 0);
